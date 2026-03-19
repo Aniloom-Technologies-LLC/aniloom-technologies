@@ -22,11 +22,11 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
             <article class="card">
               <span class="section-caption">{post.data.category}</span>
               <h2>
-                <a href={`/blog/${post.slug}.html`}>{post.data.title}</a>
+                <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
               </h2>
               <p>{post.data.description}</p>
               <p>{post.data.publishDate.toLocaleDateString("en-US", { dateStyle: "long" })}</p>
-              <a class="primary-action" href={`/blog/${post.slug}.html`}>Read article</a>
+              <a class="primary-action" href={`/blog/${post.slug}/`}>Read article</a>
             </article>
           ))}
         </div>

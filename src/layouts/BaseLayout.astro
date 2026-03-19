@@ -4,6 +4,11 @@ interface NavItem {
   label: string;
 }
 
+interface FooterGroup {
+  title: string;
+  items: NavItem[];
+}
+
 interface ScriptItem {
   src: string;
   type?: "module";
@@ -15,6 +20,7 @@ interface Props {
   headerVariant?: "default" | "island";
   brandHref?: string;
   navItems?: NavItem[];
+  footerGroups?: FooterGroup[];
   scripts?: ScriptItem[];
 }
 
@@ -22,15 +28,45 @@ const {
   title,
   bodyClass = "",
   headerVariant = "default",
-  brandHref = "/index.html",
+  brandHref = "/",
   navItems = [
-    { href: "/education.html", label: "Education" },
-    { href: "/unity-assets.html", label: "Unity Assets" },
-    { href: "/blog.html", label: "Blog" },
-    { href: "/world-clock.html", label: "World Clock" },
-    { href: "/life-weeks.html", label: "Life Weeks" },
-    { href: "/test-scene.html", label: "3D Test" },
-    { href: "/index.html#contact", label: "Contact Us" },
+    { href: "/education/", label: "Education" },
+    { href: "/unity-assets/", label: "Unity Assets" },
+    { href: "/blog/", label: "Blog" },
+    { href: "/#contact", label: "Contact Us" },
+  ],
+  footerGroups = [
+    {
+      title: "Company",
+      items: [
+        { href: "/", label: "Home" },
+        { href: "/blog/", label: "Blog" },
+        { href: "mailto:hello@aniloom.tech", label: "hello@aniloom.tech" },
+      ],
+    },
+    {
+      title: "Services",
+      items: [
+        { href: "/education/", label: "Education" },
+        { href: "/unity-assets/", label: "Unity Assets" },
+        { href: "/#contact", label: "Start a Project" },
+      ],
+    },
+    {
+      title: "Labs",
+      items: [
+        { href: "/world-clock/", label: "World Clock" },
+        { href: "/life-weeks/", label: "Life Weeks" },
+        { href: "/test-scene/", label: "3D Test" },
+      ],
+    },
+    {
+      title: "Legal",
+      items: [
+        { href: "/privacy-policy/", label: "Privacy Policy" },
+        { href: "/terms-of-use/", label: "Terms of Use" },
+      ],
+    },
   ],
   scripts = [],
 } = Astro.props;
@@ -83,9 +119,42 @@ const bodyClasses = ["theme-dark", bodyClass].filter(Boolean).join(" ");
 
     <slot />
 
-    <footer class="site-footer">© 2025 Aniloom Technologies</footer>
+    <footer class="site-footer">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <a class="site-brand" href="/">Aniloom</a>
+          <p>
+            Aniloom Technologies LLC builds client-facing software, internal tooling, and
+            interactive digital experiences.
+          </p>
+        </div>
+        {
+          footerGroups.map((group) => (
+            <div class="site-footer__group">
+              <h2>{group.title}</h2>
+              <div class="site-footer__links">
+                {group.items.map((item) => (
+                  <a href={item.href}>{item.label}</a>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <div class="site-footer__bottom">
+        <span>© 2026 Aniloom Technologies LLC</span>
+      </div>
+      <div class="site-footer__pull" data-footer-pull aria-hidden="true">
+        <div class="site-footer__pull-handle" data-footer-handle></div>
+        <blockquote class="site-footer__quote" data-footer-quote>
+          <p data-footer-quote-text></p>
+          <cite data-footer-quote-source>Warren Buffett</cite>
+        </blockquote>
+      </div>
+    </footer>
 
     <script src="/assets/js/theme.js" defer></script>
+    <script src="/assets/js/footer-pull.js" defer></script>
     {
       scripts.map((script) => (
         <script src={script.src} type={script.type} defer={script.type !== "module"}></script>
