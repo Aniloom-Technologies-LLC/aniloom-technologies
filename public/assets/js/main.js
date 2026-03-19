@@ -343,9 +343,8 @@ const initScene = () => {
     });
 
     if (isLow) {
-      stopAnimation();
-      renderer.render(scene, camera);
-      captureSnapshot();
+      showCanvas();
+      startAnimation();
     } else {
       showCanvas();
       startAnimation();
@@ -373,10 +372,6 @@ const initScene = () => {
     camera.aspect = innerWidth / innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(innerWidth, innerHeight);
-    if (lowQualityMode) {
-      renderer.render(scene, camera);
-      captureSnapshot();
-    }
   });
 
   const clock = new THREE.Clock();
@@ -384,29 +379,11 @@ const initScene = () => {
   let animationFrameId = null;
   let shouldAnimate = false;
 
-  const hideCanvasForSnapshot = () => {
-    if (!sceneLayerEl) return;
-    sceneLayerEl.classList.add("scene-layer--static");
-    canvas.classList.add("scene-layer__canvas--hidden");
-  };
-
   const showCanvas = () => {
     if (!sceneLayerEl) return;
     sceneLayerEl.classList.remove("scene-layer--static");
     sceneLayerEl.style.backgroundImage = "";
     canvas.classList.remove("scene-layer__canvas--hidden");
-  };
-
-  const captureSnapshot = () => {
-    if (!sceneLayerEl) return;
-    try {
-      const snapshot = canvas.toDataURL("image/png");
-      sceneLayerEl.style.backgroundImage = `url(${snapshot})`;
-      hideCanvasForSnapshot();
-    } catch (error) {
-      console.warn("Snapshot capture failed, keeping live canvas.", error);
-      showCanvas();
-    }
   };
 
   const animateFrame = () => {
