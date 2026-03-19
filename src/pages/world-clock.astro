@@ -1,0 +1,100 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="World Clock — Aniloom Technologies"
+  bodyClass="world-clock-page"
+  headerVariant="island"
+  scripts={[{ src: "/assets/js/world-clock.js" }]}
+>
+  <main class="content world-clock-content">
+    <section>
+      <div class="panel clock-panel">
+        <span class="section-caption">World Clock</span>
+        <h2>Quick timezones we collaborate in.</h2>
+        <p>Monitor our core production windows across Northern America and Europe.</p>
+
+        <button
+          class="primary-clock"
+          type="button"
+          data-overlay-source="local"
+          data-label="Local"
+          data-cities="Current location"
+          data-tz=""
+        >
+          <div class="clock-label">Local Time</div>
+          <div class="clock-time" data-local-clock>--:--</div>
+          <div class="clock-date" data-local-date>Loading…</div>
+        </button>
+
+        <div class="clock-grid">
+          <button
+            class="clock-card"
+            type="button"
+            data-clock-item="pst"
+            data-tz="America/Los_Angeles"
+            data-label="PST"
+            data-cities="Los Angeles, San Francisco, Seattle, Vancouver, Portland"
+          >
+            <div class="clock-label">PST (Los Angeles, San Francisco, Seattle, Vancouver, Portland)</div>
+            <div class="time">--:--</div>
+            <div class="date">Loading…</div>
+          </button>
+          <button
+            class="clock-card"
+            type="button"
+            data-clock-item="et"
+            data-tz="America/New_York"
+            data-label="ET"
+            data-cities="New York, Toronto, Miami, Atlanta, Montreal"
+          >
+            <div class="clock-label">ET (New York, Toronto, Miami, Atlanta, Montreal)</div>
+            <div class="time">--:--</div>
+            <div class="date">Loading…</div>
+          </button>
+          <button
+            class="clock-card"
+            type="button"
+            data-clock-item="cet"
+            data-tz="Europe/Madrid"
+            data-label="CET"
+            data-cities="Madrid, Paris, Berlin, Rome, Amsterdam"
+          >
+            <div class="clock-label">CET (Madrid, Paris, Berlin, Rome, Amsterdam)</div>
+            <div class="time">--:--</div>
+            <div class="date">Loading…</div>
+          </button>
+          <button
+            class="clock-card"
+            type="button"
+            data-clock-item="eet"
+            data-tz="Europe/Kyiv"
+            data-label="EET"
+            data-cities="Kyiv, Tel Aviv, Athens, Bucharest, Helsinki"
+          >
+            <div class="clock-label">EET (Kyiv, Tel Aviv, Athens, Bucharest, Helsinki)</div>
+            <div class="time">--:--</div>
+            <div class="date">Loading…</div>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="clock-overlay" data-clock-overlay hidden>
+    <div class="clock-overlay__backdrop" data-overlay-close></div>
+    <div
+      class="clock-overlay__content"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="clock-overlay-label"
+      tabindex="-1"
+    >
+      <div class="clock-overlay__label" id="clock-overlay-label" data-overlay-label>PST</div>
+      <div class="clock-overlay__meta" data-overlay-meta>Los Angeles, San Francisco</div>
+      <div class="clock-overlay__time" data-overlay-time>--:--</div>
+      <div class="clock-overlay__date" data-overlay-date>Loading…</div>
+    </div>
+  </div>
+</BaseLayout>

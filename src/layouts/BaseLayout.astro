@@ -1,0 +1,109 @@
+---
+interface NavItem {
+  href: string;
+  label: string;
+}
+
+interface ScriptItem {
+  src: string;
+  type?: "module";
+}
+
+interface Props {
+  title: string;
+  bodyClass?: string;
+  headerVariant?: "default" | "island";
+  brandHref?: string;
+  navItems?: NavItem[];
+  scripts?: ScriptItem[];
+}
+
+const {
+  title,
+  bodyClass = "",
+  headerVariant = "default",
+  brandHref = "/index.html",
+  navItems = [
+    { href: "/education.html", label: "Education" },
+    { href: "/unity-assets.html", label: "Unity Assets" },
+    { href: "/blog.html", label: "Blog" },
+    { href: "/world-clock.html", label: "World Clock" },
+    { href: "/life-weeks.html", label: "Life Weeks" },
+    { href: "/test-scene.html", label: "3D Test" },
+    { href: "/index.html#contact", label: "Contact Us" },
+  ],
+  scripts = [],
+} = Astro.props;
+
+const bodyClasses = ["theme-dark", bodyClass].filter(Boolean).join(" ");
+---
+<!DOCTYPE html>
+<html lang="en" class="theme-dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+  </head>
+  <body class={bodyClasses}>
+    {
+      headerVariant === "island" ? (
+        <header class="island-header">
+          <a class="floating-island floating-island--brand" href={brandHref}>Aniloom</a>
+          <div class="floating-island floating-island--controls">
+            <button class="switch" data-theme-toggle type="button" aria-pressed="false">
+              <span class="switch-track">
+                <span class="switch-label" data-value="night">Night</span>
+                <span class="switch-label" data-value="day">Day</span>
+                <span class="switch-thumb"></span>
+              </span>
+            </button>
+            <button class="switch" data-quality-toggle type="button" aria-pressed="false">
+              <span class="switch-track">
+                <span class="switch-label" data-value="low">Low</span>
+                <span class="switch-label" data-value="high">High</span>
+                <span class="switch-thumb"></span>
+              </span>
+            </button>
+          </div>
+        </header>
+      ) : (
+        <header class="site-header">
+          <a class="site-brand" href={brandHref}>Aniloom</a>
+          <nav class="site-nav">
+            {navItems.map((item) => (
+              <a href={item.href}>{item.label}</a>
+            ))}
+          </nav>
+          <div class="header-controls">
+            <button class="switch" data-theme-toggle type="button" aria-pressed="false">
+              <span class="switch-track">
+                <span class="switch-label" data-value="night">Night</span>
+                <span class="switch-label" data-value="day">Day</span>
+                <span class="switch-thumb"></span>
+              </span>
+            </button>
+            <button class="switch" data-quality-toggle type="button" aria-pressed="false">
+              <span class="switch-track">
+                <span class="switch-label" data-value="low">Low</span>
+                <span class="switch-label" data-value="high">High</span>
+                <span class="switch-thumb"></span>
+              </span>
+            </button>
+          </div>
+        </header>
+      )
+    }
+
+    <slot />
+
+    <footer class="site-footer">© 2025 Aniloom Technologies</footer>
+
+    <script src="/assets/js/theme.js" defer></script>
+    {
+      scripts.map((script) => (
+        <script src={script.src} type={script.type} defer={script.type !== "module"}></script>
+      ))
+    }
+  </body>
+</html>

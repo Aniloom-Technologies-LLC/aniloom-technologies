@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Life Weeks — Aniloom Technologies"
+  bodyClass="life-weeks-page"
+  headerVariant="island"
+  scripts={[{ src: "/assets/js/life-weeks.js" }]}
+>
+  <main class="content life-weeks-content">
+    <section>
+      <div class="panel life-controls">
+        <span class="section-caption">Life calendar</span>
+        <h2>Plot your weeks.</h2>
+        <p>
+          Select your birth date, country, and sex to map how many weeks you have lived and what
+          future milestones look like statistically.
+        </p>
+        <form id="life-form" class="life-form">
+          <label class="life-field">
+            <span>Birth date</span>
+            <input
+              type="date"
+              id="birth-date"
+              name="birth-date"
+              min="1920-01-01"
+              value="2000-01-01"
+              required
+            />
+          </label>
+          <label class="life-field">
+            <span>Country</span>
+            <select id="country" name="country"></select>
+          </label>
+          <div class="life-field life-field--sex">
+            <span>Sex</span>
+            <button class="switch" data-sex-toggle type="button" aria-pressed="false">
+              <span class="switch-track">
+                <span class="switch-label" data-value="male">Male</span>
+                <span class="switch-label" data-value="female">Female</span>
+                <span class="switch-thumb"></span>
+              </span>
+            </button>
+            <input type="hidden" name="sex" id="life-sex" value="female" />
+          </div>
+          <button class="life-apply" type="submit">Apply</button>
+        </form>
+        <p class="life-caption">
+          Data sources: UN DESA 2022, WHO GHE 2021 — approximated for illustration.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="panel life-visual">
+        <div class="life-grid" id="life-grid" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

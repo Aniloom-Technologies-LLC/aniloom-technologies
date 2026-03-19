@@ -15,13 +15,22 @@
         <a href="world-clock.html">World Clock</a>
         <a href="life-weeks.html">Life Weeks</a>
         <a href="test-scene.html">3D Test</a>
+        <a href="#contact">Contact Us</a>
       </nav>
       <div class="header-controls">
-        <button class="toggle-button" data-theme-toggle type="button">
-          Night Mode
+        <button class="switch" data-theme-toggle type="button" aria-pressed="false">
+          <span class="switch-track">
+            <span class="switch-label" data-value="night">Night</span>
+            <span class="switch-label" data-value="day">Day</span>
+            <span class="switch-thumb"></span>
+          </span>
         </button>
-        <button class="toggle-button" data-quality-toggle type="button">
-          Low Quality
+        <button class="switch" data-quality-toggle type="button" aria-pressed="false">
+          <span class="switch-track">
+            <span class="switch-label" data-value="low">Low</span>
+            <span class="switch-label" data-value="high">High</span>
+            <span class="switch-thumb"></span>
+          </span>
         </button>
       </div>
     </header>
@@ -81,12 +90,12 @@
       </section>
 
       <section id="contact" data-scene-step="contact">
-        <div class="panel panel--minimal">
+        <div class="panel">
           <h2>Tell us what you’re building.</h2>
           <p>Share a brief outline and we’ll craft a tailored response.</p>
           <a
             class="primary-action"
-            href="mailto:aniloom.graphics@gmail.com?subject=Project%20estimate%20request&body=Hi%20Aniloom%20team%2C%20I%E2%80%99d%20like%20to%20estimate%20my%20project.%20It%20includes%3A%20"
+            href="mailto:hello@aniloom.tech?subject=Project%20estimate%20request&body=Hi%20Aniloom%20team%2C%20I%E2%80%99d%20like%20to%20estimate%20my%20project.%20It%20includes%3A%20"
           >
             Contact us
           </a>
@@ -94,9 +103,7 @@
       </section>
     </main>
 
-    <footer class="site-footer">
-      © 2025 Aniloom Technologies • Education • Unity Assets
-    </footer>
+    <footer class="site-footer">© 2025 Aniloom Technologies</footer>
 
     <script src="assets/js/theme.js" defer></script>
     <script type="module" src="assets/js/main.js"></script>

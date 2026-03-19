@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="3D Test — Aniloom Technologies"
+  scripts={[{ src: "/assets/js/test-scene.js", type: "module" }]}
+>
+  <div class="scene-layer">
+    <canvas id="scene-canvas"></canvas>
+  </div>
+
+  <main class="content content--lifted">
+    <section id="intro" data-scene-step="intro">
+      <div class="panel">
+        <span class="section-caption">Diagnostics</span>
+        <h1>3D Feature Check</h1>
+        <p>
+          This page runs a lighter Three.js scene—if you see the drifting orb and rings, WebGL is
+          working in your browser.
+        </p>
+        <p>
+          Use this to validate GPU support or troubleshoot local security settings blocking module
+          scripts.
+        </p>
+      </div>
+    </section>
+
+    <section id="details">
+      <div class="panel">
+        <span class="section-caption">Tips</span>
+        <h2>Still seeing nothing?</h2>
+        <p>
+          Try launching the site via a local web server instead of opening files directly (CORS may
+          block module imports). Ensure hardware acceleration is enabled, and update your browser if
+          WebGL2 is unavailable.
+        </p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

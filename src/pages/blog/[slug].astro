@@ -1,0 +1,38 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={`${post.data.title} — Aniloom Technologies`}>
+  <main class="content content--lifted">
+    <section>
+      <article class="panel article-shell">
+        <span class="section-caption">{post.data.category}</span>
+        <h1>{post.data.title}</h1>
+        <p>{post.data.description}</p>
+        <p>
+          {post.data.publishDate.toLocaleDateString("en-US", { dateStyle: "long" })}
+        </p>
+        <div class="article-tags">
+          {post.data.tags.map((tag: string) => (
+            <span class="placeholder-button">{tag}</span>
+          ))}
+        </div>
+        <div class="article-content">
+          <Content />
+        </div>
+      </article>
+    </section>
+  </main>
+</BaseLayout>

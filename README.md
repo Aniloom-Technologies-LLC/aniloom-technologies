@@ -1,28 +1,49 @@
 # Aniloom Technologies Web Experience
 
-Multi-page marketing site for Aniloom Technologies featuring a cinematic Three.js landing page and supporting sections.
+Astro-based multi-page marketing site for Aniloom Technologies featuring a cinematic Three.js
+landing page, supporting sections, and a content-driven blog.
+
+## Stack
+
+- Astro for static routing, layouts, and content collections
+- Markdown content in `src/content/blog`
+- Static assets served from `public/assets`
+- Existing client-side JavaScript for Three.js and interactive utilities
 
 ## Pages
 
-- `index.html` — immersive home experience with scroll-driven camera over AI domes, theme & quality toggles.
-- `education.html` — placeholder for learning resources.
-- `unity-assets.html` — overview of upcoming Unity tooling.
-- `world-clock.html` — live clocks for key collaboration cities.
-- `test-scene.html` — lightweight Three.js diagnostic scene to verify WebGL rendering.
-- `life-weeks.html` — interactive life calendar plotting weeks lived with survival projections.
+- `src/pages/index.astro` — immersive home experience with scroll-driven camera over AI domes
+- `src/pages/education.astro` — learning resources overview
+- `src/pages/unity-assets.astro` — Unity tooling overview
+- `src/pages/world-clock.astro` — live clocks for key collaboration cities
+- `src/pages/test-scene.astro` — lightweight Three.js diagnostic scene
+- `src/pages/life-weeks.astro` — interactive life calendar
+- `src/pages/blog/index.astro` — blog index for articles
+- `src/pages/blog/[slug].astro` — article detail route
 
-## Assets & Structure
+## Content Workflow
 
-- `assets/css/styles.css` — shared visual language, translucent panels, responsive layout, light/dark themes.
-- `assets/js/theme.js` — theme persistence, quality switch, and global events for the 3D scene.
-- `assets/js/main.js` — Three.js scene setup, animated domes, clouds, and scroll-based camera choreography.
-- `assets/js/world-clock.js` — timezone rendering for preset collaboration cities.
-- `assets/js/test-scene.js` — compact background scene for the diagnostic page.
-- `assets/js/life-weeks.js` — renders the life calendar visualization with longevity statistics.
+Add a new article by creating a Markdown file in `src/content/blog` with this frontmatter:
 
-## Usage
+```md
+---
+title: Your article title
+description: One-line summary for the listing page
+publishDate: 2026-03-19
+category: AI Systems
+tags:
+  - example
+  - article
+draft: false
+---
+```
 
-Open `index.html` in a modern browser. All pages load locally; no build step is required. The scene favors WebGL 2 capable browsers.
+## Commands
+
+- `npm install` — install dependencies
+- `npm run dev` — start Astro locally
+- `npm run build` — generate the production site in `dist/`
+- `ASTRO_TELEMETRY_DISABLED=1 npm run build` — build in restricted environments
 
 ## License
 

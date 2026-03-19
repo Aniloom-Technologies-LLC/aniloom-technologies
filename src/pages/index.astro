@@ -1,0 +1,85 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Aniloom Technologies"
+  scripts={[{ src: "/assets/js/main.js", type: "module" }]}
+  navItems={[
+    { href: "/education.html", label: "Education" },
+    { href: "/unity-assets.html", label: "Unity Assets" },
+    { href: "/blog.html", label: "Blog" },
+    { href: "/world-clock.html", label: "World Clock" },
+    { href: "/life-weeks.html", label: "Life Weeks" },
+    { href: "/test-scene.html", label: "3D Test" },
+    { href: "#contact", label: "Contact Us" },
+  ]}
+>
+  <div class="scene-layer">
+    <canvas id="scene-canvas"></canvas>
+  </div>
+
+  <main class="content">
+    <section id="intro-orbit" data-scene-step="orbit">
+      <div class="panel">
+        <span class="section-caption">Intro / Orbit</span>
+        <h1>Aniloom Technologies</h1>
+        <p>AI-driven software development.</p>
+        <p>We build web, mobile, games, and on-chain apps.</p>
+      </div>
+    </section>
+
+    <section id="dome-core" data-scene-step="core">
+      <div class="panel">
+        <span class="section-caption">Dome 0</span>
+        <h2>AI-Driven Core</h2>
+        <p>Intelligent systems, assistants, workflows.</p>
+      </div>
+    </section>
+
+    <section id="dome-web" data-scene-step="web">
+      <div class="panel">
+        <span class="section-caption">Dome 1</span>
+        <h2>Web Platforms</h2>
+        <p>Portals, dashboards, APIs.</p>
+      </div>
+    </section>
+
+    <section id="dome-mobile" data-scene-step="mobile">
+      <div class="panel">
+        <span class="section-caption">Dome 2</span>
+        <h2>Mobile Apps</h2>
+        <p>iOS, Android, cross-platform.</p>
+      </div>
+    </section>
+
+    <section id="dome-chain" data-scene-step="web3">
+      <div class="panel">
+        <span class="section-caption">Dome 3</span>
+        <h2>On-chain Apps</h2>
+        <p>Built on existing networks (Ethereum, Solana, etc.).</p>
+      </div>
+    </section>
+
+    <section id="dome-games" data-scene-step="games">
+      <div class="panel">
+        <span class="section-caption">Dome 4</span>
+        <h2>Games</h2>
+        <p>Unity, real-time VFX, interactive experiences.</p>
+      </div>
+    </section>
+
+    <section id="contact" data-scene-step="contact">
+      <div class="panel">
+        <h2>Tell us what you’re building.</h2>
+        <p>Share a brief outline and we’ll craft a tailored response.</p>
+        <a
+          class="primary-action"
+          href="mailto:hello@aniloom.tech?subject=Project%20estimate%20request&body=Hi%20Aniloom%20team%2C%20I%E2%80%99d%20like%20to%20estimate%20my%20project.%20It%20includes%3A%20"
+        >
+          Contact us
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
