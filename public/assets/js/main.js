@@ -1,7 +1,6 @@
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js";
 
 const THEME_STORAGE_KEY = "aniloom-theme";
-const QUALITY_STORAGE_KEY = "aniloom-quality";
 
 const getStoredValue = (key) => {
   try {
@@ -294,13 +293,6 @@ const initScene = () => {
     desiredLookAt = closestStop.lookAt.clone();
   };
 
-  const getInitialQuality = () => {
-    if (document.body.dataset.quality === "low") return true;
-    if (document.body.dataset.quality === "high") return false;
-    const stored = getStoredValue(QUALITY_STORAGE_KEY);
-    return stored === "low";
-  };
-
   const isDarkTheme = () =>
     document.body.classList.contains("theme-dark") ||
     (!document.body.classList.contains("theme-light") &&
@@ -327,51 +319,8 @@ const initScene = () => {
     });
   };
 
-  let lowQualityMode = getInitialQuality();
-  const applyQualityToScene = (isLow) => {
-    lowQualityMode = isLow;
-    renderer.setPixelRatio(
-      isLow ? 1 : Math.min(window.devicePixelRatio, 1.75)
-    );
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    cloudGroups.forEach((group, index) => {
-      group.visible = isLow ? index < 3 : true;
-    });
-    domeMaterials.forEach((entry) => {
-      entry.material.transmission = isLow ? 0.45 : 0.7;
-      entry.material.roughness = isLow ? 0.18 : 0.1;
-    });
-
-    if (isLow) {
-      showCanvas();
-      startAnimation();
-    } else {
-      showCanvas();
-      startAnimation();
-    }
-  };
-
   window.addEventListener("aniloom:theme-change", (event) => {
     applyThemeToScene(event.detail.theme);
-  });
-
-  window.addEventListener("aniloom:quality-change", (event) => {
-    applyQualityToScene(event.detail.lowQuality);
-  });
-
-  applyThemeToScene(isDarkTheme() ? "dark" : "light");
-  applyQualityToScene(lowQualityMode);
-
-  updateCameraTargetForScroll();
-  window.addEventListener("scroll", () => {
-    requestAnimationFrame(updateCameraTargetForScroll);
-  });
-
-  window.addEventListener("resize", () => {
-    const { innerWidth, innerHeight } = window;
-    camera.aspect = innerWidth / innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(innerWidth, innerHeight);
   });
 
   const clock = new THREE.Clock();
@@ -392,8 +341,8 @@ const initScene = () => {
     const delta = clock.getDelta();
     const elapsed = clock.getElapsedTime();
 
-    camera.position.lerp(desiredCameraPosition, lowQualityMode ? 0.04 : 0.06);
-    lookAtVector.lerp(desiredLookAt, lowQualityMode ? 0.05 : 0.07);
+    camera.position.lerp(desiredCameraPosition, 0.06);
+    lookAtVector.lerp(desiredLookAt, 0.07);
     camera.lookAt(lookAtVector);
 
     cloudGroups.forEach((group, idx) => {
@@ -409,7 +358,7 @@ const initScene = () => {
         (entry.baseHue + entry.phase + elapsed * rainbowColorSpeed * 0.1) % 1;
       tempColor.setHSL(hue, 0.42, entry.luminance);
       entry.material.color.lerp(tempColor, 0.15);
-      entry.material.opacity = lowQualityMode ? 0.88 : 0.93;
+      entry.material.opacity = 0.93;
     });
 
     connectionMeshes.forEach((mesh, idx) => {
@@ -438,6 +387,22 @@ const initScene = () => {
       animationFrameId = null;
     }
   };
+
+  applyThemeToScene(isDarkTheme() ? "dark" : "light");
+  showCanvas();
+  updateCameraTargetForScroll();
+  startAnimation();
+
+  window.addEventListener("scroll", () => {
+    requestAnimationFrame(updateCameraTargetForScroll);
+  });
+
+  window.addEventListener("resize", () => {
+    const { innerWidth, innerHeight } = window;
+    camera.aspect = innerWidth / innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+  });
 };
 
 document.addEventListener("DOMContentLoaded", initScene);

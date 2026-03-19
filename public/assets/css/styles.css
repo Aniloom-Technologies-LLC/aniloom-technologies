@@ -185,15 +185,12 @@ a {
 }
 
 .switch[data-state="day"] .switch-thumb,
-.switch[data-state="high"] .switch-thumb,
 .switch[data-state="female"] .switch-thumb {
   transform: translateX(100%);
 }
 
 .switch[data-state="night"] .switch-label[data-value="night"],
 .switch[data-state="day"] .switch-label[data-value="day"],
-.switch[data-state="low"] .switch-label[data-value="low"],
-.switch[data-state="high"] .switch-label[data-value="high"],
 .switch[data-state="male"] .switch-label[data-value="male"],
 .switch[data-state="female"] .switch-label[data-value="female"] {
   color: var(--text-primary);
@@ -215,8 +212,6 @@ a {
 
 .theme-dark .switch[data-state="night"] .switch-label[data-value="night"],
 .theme-dark .switch[data-state="day"] .switch-label[data-value="day"],
-.theme-dark .switch[data-state="low"] .switch-label[data-value="low"],
-.theme-dark .switch[data-state="high"] .switch-label[data-value="high"],
 .theme-dark .switch[data-state="male"] .switch-label[data-value="male"],
 .theme-dark .switch[data-state="female"] .switch-label[data-value="female"] {
   text-shadow: 0 0 12px rgba(130, 190, 255, 0.4);
@@ -224,8 +219,6 @@ a {
 
 .theme-light .switch[data-state="night"] .switch-label[data-value="night"],
 .theme-light .switch[data-state="day"] .switch-label[data-value="day"],
-.theme-light .switch[data-state="low"] .switch-label[data-value="low"],
-.theme-light .switch[data-state="high"] .switch-label[data-value="high"],
 .theme-light .switch[data-state="male"] .switch-label[data-value="male"],
 .theme-light .switch[data-state="female"] .switch-label[data-value="female"] {
   color: rgba(32, 22, 5, 0.9);
