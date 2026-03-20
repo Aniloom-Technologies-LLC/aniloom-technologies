@@ -1,19 +1,40 @@
 const footer = document.querySelector(".site-footer");
 const pull = document.querySelector("[data-footer-pull]");
 const quoteText = document.querySelector("[data-footer-quote-text]");
+const quoteSource = document.querySelector("[data-footer-quote-source]");
 
-if (footer && pull && quoteText) {
+if (footer && pull && quoteText && quoteSource) {
   const quotes = [
-    "Risk comes from not knowing what you're doing.",
-    "Price is what you pay. Value is what you get.",
-    "Someone's sitting in the shade today because someone planted a tree a long time ago.",
-    "Although our form is corporate, our attitude is partnership.",
-    "We want to make money only when our partners do.",
+    {
+      text: "Risk comes from not knowing what you're doing.",
+      source: "Warren Buffett",
+    },
+    {
+      text: "Price is what you pay. Value is what you get.",
+      source: "Warren Buffett",
+    },
+    {
+      text: "Someone's sitting in the shade today because someone planted a tree a long time ago.",
+      source: "Warren Buffett",
+    },
+    {
+      text: "Although our form is corporate, our attitude is partnership.",
+      source: "Warren Buffett",
+    },
+    {
+      text: "We want to make money only when our partners do.",
+      source: "Warren Buffett",
+    },
+    {
+      text: "We use AI not for hype, but to create measurable value for our partners.",
+      source: "Inokentii Anikieiev",
+    },
   ];
 
   let quoteIndex = Math.floor(Math.random() * quotes.length);
   let bottomPullCount = 0;
-  quoteText.textContent = `"${quotes[quoteIndex]}"`;
+  quoteText.textContent = `"${quotes[quoteIndex].text}"`;
+  quoteSource.textContent = quotes[quoteIndex].source;
 
   let pullAmount = 0;
   let animating = false;
@@ -38,7 +59,8 @@ if (footer && pull && quoteText) {
       nextIndex = Math.floor(Math.random() * quotes.length);
     }
     quoteIndex = nextIndex;
-    quoteText.textContent = `"${quotes[quoteIndex]}"`;
+    quoteText.textContent = `"${quotes[quoteIndex].text}"`;
+    quoteSource.textContent = quotes[quoteIndex].source;
   };
 
   const registerPull = () => {
