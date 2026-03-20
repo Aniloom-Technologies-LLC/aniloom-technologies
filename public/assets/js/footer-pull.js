@@ -1,9 +1,8 @@
 const footer = document.querySelector(".site-footer");
 const pull = document.querySelector("[data-footer-pull]");
-const handle = document.querySelector("[data-footer-handle]");
 const quoteText = document.querySelector("[data-footer-quote-text]");
 
-if (footer && pull && handle && quoteText) {
+if (footer && pull && quoteText) {
   const quotes = [
     "Although our form is corporate, our attitude is partnership.",
     "We eat our own cooking.",
@@ -17,13 +16,11 @@ if (footer && pull && handle && quoteText) {
   quoteText.textContent = quotes[quoteIndex];
 
   let pullAmount = 0;
-  let dragging = false;
-  let pointerStartY = 0;
-  let pointerStartPull = 0;
   let animating = false;
   let pullActivated = false;
+  let hideTimer = null;
 
-  const maxPull = 132;
+  const maxPull = 196;
 
   const setPull = (value) => {
     pullAmount = Math.max(0, Math.min(maxPull, value));
@@ -53,10 +50,7 @@ if (footer && pull && handle && quoteText) {
   };
 
   const relax = () => {
-    if (dragging) {
-      animating = false;
-      return;
-    }
+    if (!animating) return;
 
     if (pullAmount <= 0.5) {
       setPull(0);
@@ -74,54 +68,33 @@ if (footer && pull && handle && quoteText) {
     requestAnimationFrame(relax);
   };
 
+  const scheduleHide = () => {
+    if (hideTimer) {
+      window.clearTimeout(hideTimer);
+    }
+    hideTimer = window.setTimeout(() => {
+      startRelax();
+    }, 2000);
+  };
+
   const atBottom = () =>
     window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+
+  const revealBy = (amount) => {
+    animating = false;
+    setPull(pullAmount + amount);
+    registerPull();
+    scheduleHide();
+  };
 
   window.addEventListener(
     "wheel",
     (event) => {
       if (!atBottom() || event.deltaY <= 0) return;
-      setPull(pullAmount + event.deltaY * 0.22);
-      registerPull();
-      startRelax();
+      revealBy(event.deltaY * 0.26);
     },
     { passive: true }
   );
-
-  const beginDrag = (clientY) => {
-    dragging = true;
-    pointerStartY = clientY;
-    pointerStartPull = pullAmount;
-  };
-
-  const moveDrag = (clientY) => {
-    if (!dragging) return;
-    const delta = clientY - pointerStartY;
-    if (delta <= 0) {
-      setPull(pointerStartPull * 0.35);
-      return;
-    }
-    setPull(pointerStartPull + delta * 0.8);
-    registerPull();
-  };
-
-  const endDrag = () => {
-    if (!dragging) return;
-    dragging = false;
-    startRelax();
-  };
-
-  handle.addEventListener("pointerdown", (event) => {
-    beginDrag(event.clientY);
-    handle.setPointerCapture(event.pointerId);
-  });
-
-  handle.addEventListener("pointermove", (event) => {
-    moveDrag(event.clientY);
-  });
-
-  handle.addEventListener("pointerup", endDrag);
-  handle.addEventListener("pointercancel", endDrag);
 
   let touchStartY = null;
 
@@ -141,8 +114,7 @@ if (footer && pull && handle && quoteText) {
       const currentY = event.touches[0]?.clientY ?? touchStartY;
       const delta = touchStartY - currentY;
       if (delta > 0) {
-        setPull(delta * 0.45);
-        registerPull();
+        revealBy(delta * 0.45);
       }
     },
     { passive: true }
@@ -152,7 +124,6 @@ if (footer && pull && handle && quoteText) {
     "touchend",
     () => {
       touchStartY = null;
-      startRelax();
     },
     { passive: true }
   );
