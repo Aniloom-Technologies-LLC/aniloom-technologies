@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import GradientText from "../../components/GradientText";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
@@ -19,7 +20,7 @@ const { Content } = await render(post);
     <section>
       <article class="panel article-shell">
         <span class="section-caption">{post.data.category}</span>
-        <h1>{post.data.title}</h1>
+        <h1><GradientText>{post.data.title}</GradientText></h1>
         <p>{post.data.description}</p>
         <p>
           {post.data.publishDate.toLocaleDateString("en-US", { dateStyle: "long" })}

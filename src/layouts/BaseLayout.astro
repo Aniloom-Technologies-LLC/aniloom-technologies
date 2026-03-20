@@ -1,4 +1,6 @@
 ---
+import SplashCursor from "../components/SplashCursor";
+
 interface NavItem {
   href: string;
   label: string;
@@ -82,6 +84,7 @@ const bodyClasses = ["theme-dark", bodyClass].filter(Boolean).join(" ");
     <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
   <body class={bodyClasses}>
+    <SplashCursor client:load />
     {
       headerVariant === "island" ? (
         <header class="island-header">

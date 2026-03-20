@@ -1,34 +1,39 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import FloatingLines from "../components/FloatingLines";
+import GradientText from "../components/GradientText";
 ---
 
 <BaseLayout title="Education — Aniloom Technologies">
-  <main class="content content--lifted">
+  <main class="content content--lifted page-stage page-stage--lines">
+    <FloatingLines />
     <section>
-      <div class="panel">
+      <div class="panel panel--wide">
         <span class="section-caption">Education</span>
-        <h2>Learning resources, internal tools, and tutorials.</h2>
-        <p>Coming soon. Meanwhile, preview what we are curating.</p>
+        <h2><GradientText>Applied learning for AI production and technical systems.</GradientText></h2>
+        <p>
+          Structured training, internal playbooks, and technical breakdowns for teams adopting AI-assisted delivery and real-time tooling.
+        </p>
         <div class="cards">
           <article class="card">
             <h3>Workflow Playbooks</h3>
-            <p>Deep dives on AI-assisted production pipelines.</p>
-            <span class="placeholder-button">Preview soon</span>
+            <p>Operating notes for teams building with agent workflows, review gates, and reproducible delivery pipelines.</p>
+            <span class="placeholder-button">Structured series</span>
           </article>
           <article class="card">
             <h3>Unity Tech Art Labs</h3>
-            <p>Hands-on labs blending procedural VFX and automation.</p>
-            <span class="placeholder-button">Preview soon</span>
+            <p>Hands-on breakdowns covering shaders, animation utilities, validation layers, and scene-health workflows.</p>
+            <span class="placeholder-button">Practical labs</span>
           </article>
           <article class="card">
             <h3>Systems Thinking Streams</h3>
-            <p>Live streams exploring architecture decisions in the open.</p>
-            <span class="placeholder-button">Preview soon</span>
+            <p>Clear architectural commentary on product systems, not vague inspiration content.</p>
+            <span class="placeholder-button">Architecture notes</span>
           </article>
           <article class="card">
             <h3>AI Integration Guides</h3>
-            <p>Guided playbooks for connecting assistants to real products.</p>
-            <span class="placeholder-button">Preview soon</span>
+            <p>Integration guides for teams that need AI features to work inside real products with real constraints.</p>
+            <span class="placeholder-button">Implementation guides</span>
           </article>
         </div>
       </div>
