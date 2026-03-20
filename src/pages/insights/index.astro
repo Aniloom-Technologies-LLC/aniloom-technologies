@@ -7,26 +7,26 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
 );
 ---
 
-<BaseLayout title="Blog — Aniloom Technologies">
+<BaseLayout title="Insights — Aniloom Technologies">
   <main class="content content--lifted">
     <section>
       <div class="panel">
-        <span class="section-caption">Journal</span>
-        <h1>Blog & Articles</h1>
+        <span class="section-caption">Insights</span>
+        <h1>Technical Notes From the Studio</h1>
         <p>
-          Notes on AI-assisted engineering, technical art, and product systems from the Aniloom
-          studio.
+          Practical writing on AI systems, technical art pipelines, and product engineering choices
+          that affect real delivery.
         </p>
         <div class="cards">
           {posts.map((post) => (
             <article class="card">
               <span class="section-caption">{post.data.category}</span>
               <h2>
-                <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+                <a href={`/insights/${post.slug}/`}>{post.data.title}</a>
               </h2>
               <p>{post.data.description}</p>
               <p>{post.data.publishDate.toLocaleDateString("en-US", { dateStyle: "long" })}</p>
-              <a class="primary-action" href={`/blog/${post.slug}/`}>Read article</a>
+              <a class="primary-action" href={`/insights/${post.slug}/`}>Read insight</a>
             </article>
           ))}
         </div>

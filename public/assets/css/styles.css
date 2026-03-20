@@ -482,12 +482,110 @@ section {
   position: relative;
   z-index: 12;
   margin-top: 80px;
-  padding: 24px 24px 18px;
-  text-align: center;
+  padding: 40px 24px 22px;
+  --footer-pull: 0px;
   font-size: 0.95rem;
   color: var(--text-secondary);
   background: var(--footer-backdrop);
   border-top: 1px solid var(--panel-border);
+  overflow: clip;
+}
+
+.site-footer__grid {
+  width: min(1180px, calc(100% - 24px));
+  margin: 0 auto;
+  display: grid;
+  gap: 28px;
+  grid-template-columns: minmax(260px, 1.4fr) repeat(4, minmax(120px, 1fr));
+  align-items: start;
+}
+
+.site-footer__brand {
+  display: grid;
+  gap: 14px;
+}
+
+.site-footer__brand p {
+  margin: 0;
+  line-height: 1.7;
+  max-width: 32rem;
+}
+
+.site-footer__group {
+  display: grid;
+  gap: 12px;
+}
+
+.site-footer__group h2 {
+  margin: 0;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-primary);
+}
+
+.site-footer__links {
+  display: grid;
+  gap: 10px;
+}
+
+.site-footer__links a {
+  color: var(--text-secondary);
+}
+
+.site-footer__links a:hover,
+.site-footer__links a:focus-visible {
+  color: var(--text-primary);
+}
+
+.site-footer__bottom {
+  width: min(1180px, calc(100% - 24px));
+  margin: 28px auto 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--panel-border);
+  text-align: center;
+}
+
+.site-footer__pull {
+  width: min(760px, calc(100% - 24px));
+  margin: 0 auto;
+  max-height: calc(var(--footer-pull) + 24px);
+  opacity: min(calc(var(--footer-pull) / 72), 1);
+  transform: translateY(calc(var(--footer-pull) * 0.08));
+  transition: opacity 0.18s ease;
+}
+
+.site-footer__pull-handle {
+  width: 88px;
+  height: 10px;
+  margin: 12px auto 18px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent) 50%, transparent 100%);
+  opacity: 0.6;
+  touch-action: none;
+  cursor: ns-resize;
+}
+
+.site-footer__quote {
+  margin: 0;
+  padding: 0 0 12px;
+  text-align: center;
+}
+
+.site-footer__quote p {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.site-footer__quote cite {
+  display: block;
+  margin-top: 10px;
+  font-style: normal;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
 }
 
 .cards {
@@ -1287,6 +1385,10 @@ section {
     justify-self: stretch;
     text-align: center;
   }
+
+  .site-footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 560px) {
@@ -1311,5 +1413,9 @@ section {
 
   .panel {
     padding: 28px;
+  }
+
+  .site-footer__grid {
+    grid-template-columns: 1fr;
   }
 }

@@ -1,7 +1,7 @@
 # Aniloom Technologies Web Experience
 
 Astro-based multi-page marketing site for Aniloom Technologies featuring a cinematic Three.js
-landing page, supporting sections, and a content-driven blog.
+landing page, supporting sections, and a content-driven Insights section.
 
 ## Stack
 
@@ -18,12 +18,12 @@ landing page, supporting sections, and a content-driven blog.
 - `src/pages/world-clock.astro` — live clocks for key collaboration cities
 - `src/pages/test-scene.astro` — lightweight Three.js diagnostic scene
 - `src/pages/life-weeks.astro` — interactive life calendar
-- `src/pages/blog/index.astro` — blog index for articles
-- `src/pages/blog/[slug].astro` — article detail route
+- `src/pages/insights/index.astro` — Insights index for articles
+- `src/pages/insights/[slug].astro` — article detail route
 
 ## Content Workflow
 
-Add a new article by creating a Markdown file in `src/content/blog` with this frontmatter:
+Add a new Insight by creating a Markdown file in `src/content/blog` with this frontmatter:
 
 ```md
 ---
