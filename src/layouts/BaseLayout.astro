@@ -84,7 +84,14 @@ const bodyClasses = ["theme-dark", bodyClass].filter(Boolean).join(" ");
     <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
   <body class={bodyClasses}>
-    <SplashCursor client:load />
+    <SplashCursor
+      client:load
+      DYE_RESOLUTION={1024}
+      SIM_RESOLUTION={96}
+      SPLAT_RADIUS={0.12}
+      SPLAT_FORCE={4200}
+      COLOR_UPDATE_SPEED={6}
+    />
     {
       headerVariant === "island" ? (
         <header class="island-header">
