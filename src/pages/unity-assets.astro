@@ -6,7 +6,13 @@ import GradientText from "../components/GradientText";
 
 <BaseLayout title="Unity Assets — Aniloom Technologies">
   <main class="content content--lifted page-stage page-stage--lines">
-    <FloatingLines client:load density={12} />
+    <FloatingLines
+      client:load
+      lineCount={[5, 7, 6]}
+      lineDistance={[5, 7, 6]}
+      linesGradient={["#89dbff", "#91a4ff", "#d6c6ff"]}
+      bendStrength={-0.35}
+    />
     <section>
       <div class="panel panel--wide">
         <span class="section-caption">Unity Assets</span>

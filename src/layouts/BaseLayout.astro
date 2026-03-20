@@ -97,10 +97,14 @@ const bodyClasses = ["theme-dark", bodyClass].filter(Boolean).join(" ");
         <header class="island-header">
           <a class="floating-island floating-island--brand" href={brandHref}>Aniloom</a>
           <div class="floating-island floating-island--controls">
-            <button class="switch" data-theme-toggle type="button" aria-pressed="false">
+            <button class="switch theme-switch" data-theme-toggle type="button" aria-pressed="false">
               <span class="switch-track">
-                <span class="switch-label" data-value="night">Night</span>
-                <span class="switch-label" data-value="day">Day</span>
+                <span class="switch-label" data-value="night" aria-hidden="true">
+                  <img class="theme-icon" src="/assets/images/moon_icon.png" alt="" />
+                </span>
+                <span class="switch-label" data-value="day" aria-hidden="true">
+                  <img class="theme-icon" src="/assets/images/sun_icon.png" alt="" />
+                </span>
                 <span class="switch-thumb"></span>
               </span>
             </button>
@@ -115,10 +119,14 @@ const bodyClasses = ["theme-dark", bodyClass].filter(Boolean).join(" ");
             ))}
           </nav>
           <div class="header-controls">
-            <button class="switch" data-theme-toggle type="button" aria-pressed="false">
+            <button class="switch theme-switch" data-theme-toggle type="button" aria-pressed="false">
               <span class="switch-track">
-                <span class="switch-label" data-value="night">Night</span>
-                <span class="switch-label" data-value="day">Day</span>
+                <span class="switch-label" data-value="night" aria-hidden="true">
+                  <img class="theme-icon" src="/assets/images/moon_icon.png" alt="" />
+                </span>
+                <span class="switch-label" data-value="day" aria-hidden="true">
+                  <img class="theme-icon" src="/assets/images/sun_icon.png" alt="" />
+                </span>
                 <span class="switch-thumb"></span>
               </span>
             </button>
@@ -127,7 +135,50 @@ const bodyClasses = ["theme-dark", bodyClass].filter(Boolean).join(" ");
       )
     }
 
-    <slot />
+    <div class="page-shell">
+      <slot />
+    </div>
+
+    <div class="contact-modal" data-contact-modal hidden>
+      <div class="contact-modal__backdrop" data-contact-close></div>
+      <div
+        class="contact-modal__content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="contact-modal-title"
+        tabindex="-1"
+      >
+        <button class="contact-modal__close" type="button" aria-label="Close contact form" data-contact-close>
+          <span></span>
+          <span></span>
+        </button>
+        <span class="section-caption">Contact</span>
+        <h2 id="contact-modal-title">Start a Project</h2>
+        <p>
+          Share the essentials and we will reply with the most useful next step.
+        </p>
+        <form class="contact-form" data-contact-form>
+          <label class="contact-field">
+            <span>Name</span>
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label class="contact-field">
+            <span>Email</span>
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="contact-field contact-field--full">
+            <span>Project outline</span>
+            <textarea
+              name="project"
+              rows="5"
+              placeholder="What are you building, what stage are you at, and what kind of help do you need?"
+              required
+            ></textarea>
+          </label>
+          <button class="primary-action" type="submit">Draft Email</button>
+        </form>
+      </div>
+    </div>
 
     <footer class="site-footer">
       <div class="site-footer__grid">
@@ -163,6 +214,7 @@ const bodyClasses = ["theme-dark", bodyClass].filter(Boolean).join(" ");
     </footer>
 
     <script src="/assets/js/theme.js" defer></script>
+    <script src="/assets/js/contact-modal.js" defer></script>
     <script src="/assets/js/footer-pull.js" defer></script>
     {
       scripts.map((script) => (

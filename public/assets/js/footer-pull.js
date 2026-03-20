@@ -43,6 +43,8 @@ if (footer && pull && quoteText && quoteSource) {
 
   const maxPull = 224;
   const fullRevealPull = 176;
+  const isScrollable = () =>
+    document.documentElement.scrollHeight > window.innerHeight + 4;
 
   const setPull = (value) => {
     pullAmount = Math.max(0, Math.min(maxPull, value));
@@ -72,23 +74,9 @@ if (footer && pull && quoteText && quoteSource) {
     }
   };
 
-  const relax = () => {
-    if (!animating) return;
-
-    if (pullAmount <= 0.5) {
-      setPull(0);
-      animating = false;
-      return;
-    }
-
-    setPull(pullAmount * 0.82);
-    requestAnimationFrame(relax);
-  };
-
-  const startRelax = () => {
-    if (animating) return;
-    animating = true;
-    requestAnimationFrame(relax);
+  const collapse = () => {
+    animating = false;
+    setPull(0);
   };
 
   const scheduleHide = () => {
@@ -96,14 +84,16 @@ if (footer && pull && quoteText && quoteSource) {
       window.clearTimeout(hideTimer);
     }
     hideTimer = window.setTimeout(() => {
-      startRelax();
+      collapse();
     }, 2000);
   };
 
   const atBottom = () =>
+    isScrollable() &&
     window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
 
   const revealBy = (amount) => {
+    if (!isScrollable()) return;
     animating = false;
     setPull(pullAmount + amount);
     registerPull();
@@ -152,6 +142,16 @@ if (footer && pull && quoteText && quoteSource) {
     "touchend",
     () => {
       touchStartY = null;
+    },
+    { passive: true }
+  );
+
+  window.addEventListener(
+    "resize",
+    () => {
+      if (!isScrollable()) {
+        collapse();
+      }
     },
     { passive: true }
   );
