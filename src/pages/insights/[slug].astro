@@ -20,7 +20,7 @@ const { Content } = await render(post);
     <section>
       <article class="panel article-shell">
         <span class="section-caption">{post.data.category}</span>
-        <h1><GradientText>{post.data.title}</GradientText></h1>
+        <h1><GradientText client:load>{post.data.title}</GradientText></h1>
         <p>{post.data.description}</p>
         <p>
           {post.data.publishDate.toLocaleDateString("en-US", { dateStyle: "long" })}

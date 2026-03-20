@@ -4,23 +4,24 @@ const quoteText = document.querySelector("[data-footer-quote-text]");
 
 if (footer && pull && quoteText) {
   const quotes = [
+    "Risk comes from not knowing what you're doing.",
+    "Price is what you pay. Value is what you get.",
+    "Someone's sitting in the shade today because someone planted a tree a long time ago.",
     "Although our form is corporate, our attitude is partnership.",
-    "We eat our own cooking.",
     "We want to make money only when our partners do.",
-    "We do not view Berkshire shareholders as faceless members of an ever-shifting crowd.",
-    "I am a lucky fellow to have you as partners.",
   ];
 
   let quoteIndex = Math.floor(Math.random() * quotes.length);
   let bottomPullCount = 0;
-  quoteText.textContent = quotes[quoteIndex];
+  quoteText.textContent = `"${quotes[quoteIndex]}"`;
 
   let pullAmount = 0;
   let animating = false;
   let pullActivated = false;
   let hideTimer = null;
 
-  const maxPull = 196;
+  const maxPull = 224;
+  const fullRevealPull = 176;
 
   const setPull = (value) => {
     pullAmount = Math.max(0, Math.min(maxPull, value));
@@ -37,7 +38,7 @@ if (footer && pull && quoteText) {
       nextIndex = Math.floor(Math.random() * quotes.length);
     }
     quoteIndex = nextIndex;
-    quoteText.textContent = quotes[quoteIndex];
+    quoteText.textContent = `"${quotes[quoteIndex]}"`;
   };
 
   const registerPull = () => {
@@ -84,6 +85,11 @@ if (footer && pull && quoteText) {
     animating = false;
     setPull(pullAmount + amount);
     registerPull();
+
+    if (amount > 10 || pullAmount > 52) {
+      setPull(fullRevealPull);
+    }
+
     scheduleHide();
   };
 

@@ -13,7 +13,7 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
     <section>
       <div class="panel panel--wide">
         <span class="section-caption">Insights</span>
-        <h1><GradientText>Technical Notes From the Studio</GradientText></h1>
+        <h1><GradientText client:load>Technical Notes From the Studio</GradientText></h1>
         <p>
           Practical writing on AI systems, technical art pipelines, and product engineering choices
           that affect real delivery.

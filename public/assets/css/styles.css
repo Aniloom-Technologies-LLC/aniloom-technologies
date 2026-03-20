@@ -548,7 +548,7 @@ section {
 
 .site-footer__pull {
   width: min(1180px, calc(100% - 24px));
-  margin: 0 auto;
+  margin: 12px auto 0;
   max-height: calc(var(--footer-pull) + 4px);
   opacity: min(calc(var(--footer-pull) / 88), 1);
   overflow: hidden;
@@ -557,7 +557,7 @@ section {
 
 .site-footer__quote {
   margin: 0;
-  padding: 8px 0 18px;
+  padding: 18px 0 24px;
   text-align: center;
 }
 
@@ -566,11 +566,13 @@ section {
   color: var(--text-primary);
   font-size: 1rem;
   line-height: 1.7;
+  max-width: 52rem;
+  margin-inline: auto;
 }
 
 .site-footer__quote cite {
   display: block;
-  margin-top: 10px;
+  margin-top: 14px;
   font-style: normal;
   letter-spacing: 0.14em;
   text-transform: uppercase;

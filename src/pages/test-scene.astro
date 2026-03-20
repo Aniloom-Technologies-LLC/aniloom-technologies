@@ -15,7 +15,7 @@ import GradientText from "../components/GradientText";
     <section id="intro" data-scene-step="intro">
       <div class="panel">
         <span class="section-caption">Diagnostics</span>
-        <h1><GradientText>3D Feature Check</GradientText></h1>
+        <h1><GradientText client:load>3D Feature Check</GradientText></h1>
         <p>
           This page runs a lighter Three.js scene—if you see the drifting orb and rings, WebGL is
           working in your browser.
@@ -30,7 +30,7 @@ import GradientText from "../components/GradientText";
     <section id="details">
       <div class="panel">
         <span class="section-caption">Tips</span>
-        <h2><GradientText>Still seeing nothing?</GradientText></h2>
+        <h2><GradientText client:load>Still seeing nothing?</GradientText></h2>
         <p>
           Try launching the site via a local web server instead of opening files directly (CORS may
           block module imports). Ensure hardware acceleration is enabled, and update your browser if
