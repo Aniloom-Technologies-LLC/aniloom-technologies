@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import FloatingLines from "../../components/FloatingLines";
 import GradientText from "../../components/GradientText";
 
 const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
@@ -9,7 +10,14 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
 ---
 
 <BaseLayout title="Insights — Aniloom Technologies">
-  <main class="content content--lifted">
+  <main class="content content--lifted page-stage page-stage--lines">
+    <FloatingLines
+      client:load
+      lineCount={[5, 7, 6]}
+      lineDistance={[5, 7, 6]}
+      linesGradient={["#89dbff", "#91a4ff", "#d6c6ff"]}
+      bendStrength={-0.3}
+    />
     <section>
       <div class="panel panel--wide">
         <span class="section-caption">Insights</span>

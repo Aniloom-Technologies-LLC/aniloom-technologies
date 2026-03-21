@@ -1,6 +1,26 @@
 .floating-lines-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.92) 68%, transparent 96%);
+  transform: translate3d(0, var(--floating-lines-offset, 0px), 0);
+  will-change: transform;
+  mix-blend-mode: screen;
+  opacity: 0.95;
+}
+
+.floating-lines-container--scrollable {
+  top: -10vh;
+  height: 120vh;
+  min-height: 120vh;
+}
+
+.theme-light .floating-lines-container {
+  mix-blend-mode: screen;
+  opacity: 0.58;
 }

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import FloatingLines from "../components/FloatingLines";
 import GradientText from "../components/GradientText";
 ---
 
@@ -9,7 +10,14 @@ import GradientText from "../components/GradientText";
   headerVariant="island"
   scripts={[{ src: "/assets/js/world-clock.js" }]}
 >
-  <main class="content world-clock-content">
+  <main class="content world-clock-content page-stage page-stage--lines">
+    <FloatingLines
+      client:load
+      lineCount={[5, 7, 6]}
+      lineDistance={[5, 7, 6]}
+      linesGradient={["#89dbff", "#91a4ff", "#d6c6ff"]}
+      bendStrength={-0.3}
+    />
     <section>
       <div class="panel clock-panel">
         <span class="section-caption">World Clock</span>
@@ -83,7 +91,7 @@ import GradientText from "../components/GradientText";
     </section>
   </main>
 
-  <div class="clock-overlay" data-clock-overlay hidden>
+  <div class="clock-overlay" data-clock-overlay aria-hidden="true">
     <div class="clock-overlay__backdrop" data-overlay-close></div>
     <div
       class="clock-overlay__content"

@@ -18,18 +18,13 @@ const { Content } = await render(post);
 <BaseLayout title={`${post.data.title} — Aniloom Technologies`}>
   <main class="content content--lifted">
     <section>
-      <article class="panel article-shell">
+      <article class="panel article-shell insight-article">
         <span class="section-caption">{post.data.category}</span>
         <h1><GradientText client:load>{post.data.title}</GradientText></h1>
         <p>{post.data.description}</p>
         <p>
           {post.data.publishDate.toLocaleDateString("en-US", { dateStyle: "long" })}
         </p>
-        <div class="article-tags">
-          {post.data.tags.map((tag: string) => (
-            <span class="placeholder-button">{tag}</span>
-          ))}
-        </div>
         <div class="article-content">
           <Content />
         </div>

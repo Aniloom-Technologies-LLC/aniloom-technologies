@@ -32,8 +32,6 @@ const {
   headerVariant = "default",
   brandHref = "/",
   navItems = [
-    { href: "/education/", label: "Education" },
-    { href: "/unity-assets/", label: "Unity Assets" },
     { href: "/insights/", label: "Insights" },
     { href: "/#contact", label: "Contact Us" },
   ],
@@ -43,7 +41,7 @@ const {
       items: [
         { href: "/", label: "Home" },
         { href: "/insights/", label: "Insights" },
-        { href: "mailto:hello@aniloom.tech", label: "hello@aniloom.tech" },
+        { href: "mailto:support@aniloom.tech", label: "support@aniloom.tech" },
       ],
     },
     {
@@ -73,7 +71,7 @@ const {
   scripts = [],
 } = Astro.props;
 
-const bodyClasses = ["theme-dark", bodyClass].filter(Boolean).join(" ");
+const bodyClasses = [bodyClass].filter(Boolean).join(" ");
 ---
 <!DOCTYPE html>
 <html lang="en" class="theme-dark">
@@ -81,9 +79,45 @@ const bodyClasses = ["theme-dark", bodyClass].filter(Boolean).join(" ");
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <style is:inline>
+      html,
+      body {
+        background: #040a13;
+        color: #f2f6ff;
+      }
+    </style>
+    <script is:inline>
+      (() => {
+        const storageKey = "aniloom-theme";
+        const saved = localStorage.getItem(storageKey);
+        const theme = saved === "light" || saved === "dark" ? saved : "dark";
+        const className = theme === "light" ? "theme-light" : "theme-dark";
+        const palette =
+          theme === "light"
+            ? { background: "#f5f1e8", text: "#1a2431" }
+            : { background: "#040a13", text: "#f2f6ff" };
+        document.documentElement.dataset.initialTheme = theme;
+        document.documentElement.classList.remove("theme-light", "theme-dark");
+        document.documentElement.classList.add(className);
+        document.documentElement.style.backgroundColor = palette.background;
+        document.documentElement.style.color = palette.text;
+        document.documentElement.style.setProperty("--background", palette.background);
+        document.documentElement.style.setProperty("--text-primary", palette.text);
+        document.addEventListener(
+          "DOMContentLoaded",
+          () => {
+            document.body.classList.remove("theme-light", "theme-dark");
+            document.body.classList.add(className);
+            document.body.style.backgroundColor = palette.background;
+            document.body.style.color = palette.text;
+          },
+          { once: true }
+        );
+      })();
+    </script>
     <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
-  <body class={bodyClasses}>
+  <body class={bodyClasses} data-theme-ready="false">
     <SplashCursor
       client:load
       DYE_RESOLUTION={1024}
@@ -97,7 +131,7 @@ const bodyClasses = ["theme-dark", bodyClass].filter(Boolean).join(" ");
         <header class="island-header">
           <a class="floating-island floating-island--brand" href={brandHref}>Aniloom</a>
           <div class="floating-island floating-island--controls">
-            <button class="switch theme-switch" data-theme-toggle type="button" aria-pressed="false">
+            <button class="switch theme-switch" data-theme-toggle data-state="night" data-ready="false" type="button" aria-pressed="false">
               <span class="switch-track">
                 <span class="switch-label" data-value="night" aria-hidden="true">
                   <img class="theme-icon" src="/assets/images/moon_icon.png" alt="" />
@@ -119,7 +153,7 @@ const bodyClasses = ["theme-dark", bodyClass].filter(Boolean).join(" ");
             ))}
           </nav>
           <div class="header-controls">
-            <button class="switch theme-switch" data-theme-toggle type="button" aria-pressed="false">
+            <button class="switch theme-switch" data-theme-toggle data-state="night" data-ready="false" type="button" aria-pressed="false">
               <span class="switch-track">
                 <span class="switch-label" data-value="night" aria-hidden="true">
                   <img class="theme-icon" src="/assets/images/moon_icon.png" alt="" />
@@ -139,7 +173,7 @@ const bodyClasses = ["theme-dark", bodyClass].filter(Boolean).join(" ");
       <slot />
     </div>
 
-    <div class="contact-modal" data-contact-modal hidden>
+    <div class="contact-modal" data-contact-modal aria-hidden="true">
       <div class="contact-modal__backdrop" data-contact-close></div>
       <div
         class="contact-modal__content"

@@ -32,10 +32,23 @@ const resolveDateFormatter = (timeZone) => {
 };
 
 const toggleBodyScroll = (locked) => {
-  document.body.classList.toggle("overlay-open", locked);
+  const body = document.body;
+
+  if (locked) {
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    body.style.setProperty("--scrollbar-compensation", `${Math.max(scrollbarWidth, 0)}px`);
+    body.style.paddingRight = `${Math.max(scrollbarWidth, 0)}px`;
+    body.classList.add("overlay-open");
+    return;
+  }
+
+  body.classList.remove("overlay-open");
+  body.style.removeProperty("--scrollbar-compensation");
+  body.style.paddingRight = "";
 };
 
 const initWorldClock = () => {
+  const CLOSE_DURATION_MS = 500;
   const overlay = document.querySelector("[data-clock-overlay]");
   const overlayLabel = overlay?.querySelector("[data-overlay-label]");
   const overlayMeta = overlay?.querySelector("[data-overlay-meta]");
@@ -96,6 +109,7 @@ const initWorldClock = () => {
 
   let overlayState = null;
   let lastTrigger = null;
+  let closeTimer = null;
 
   const applyOverlayContent = (clock, now) => {
     if (!overlay) return;
@@ -107,9 +121,13 @@ const initWorldClock = () => {
 
   const openOverlay = (clock) => {
     if (!overlay) return;
+    if (closeTimer) {
+      window.clearTimeout(closeTimer);
+      closeTimer = null;
+    }
     overlayState = clock;
     lastTrigger = clock.triggerEl || null;
-    overlay.hidden = false;
+    overlay.setAttribute("aria-hidden", "false");
     overlay.classList.add("is-open");
     toggleBodyScroll(true);
     applyOverlayContent(clock, new Date());
@@ -124,8 +142,11 @@ const initWorldClock = () => {
     if (!overlay) return;
     overlayState = null;
     overlay.classList.remove("is-open");
-    overlay.hidden = true;
+    overlay.setAttribute("aria-hidden", "true");
     toggleBodyScroll(false);
+    closeTimer = window.setTimeout(() => {
+      closeTimer = null;
+    }, CLOSE_DURATION_MS);
     if (lastTrigger instanceof HTMLElement) {
       lastTrigger.focus();
     }

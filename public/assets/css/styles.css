@@ -14,6 +14,11 @@
   --button-gradient-start: #6fd3ff;
   --button-gradient-mid: #7f7bff;
   --button-gradient-end: #4ff5c2;
+  --title-gradient-start: #ffffff;
+  --title-gradient-second: #c8e7ff;
+  --title-gradient-third: #91d4ff;
+  --title-gradient-fourth: #cbb8ff;
+  --title-gradient-end: #ffffff;
   --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
 }
 
@@ -33,6 +38,11 @@
   --button-gradient-start: #6bbcff;
   --button-gradient-mid: #ff9f7b;
   --button-gradient-end: #ffd86b;
+  --title-gradient-start: #1a2431;
+  --title-gradient-second: #6ea8f8;
+  --title-gradient-third: #4ec3ff;
+  --title-gradient-fourth: #9f8cff;
+  --title-gradient-end: #1a2431;
   --shadow: 0 18px 55px rgba(80, 62, 40, 0.16);
 }
 
@@ -44,7 +54,7 @@ html, body {
   margin: 0;
   padding: 0;
   min-height: 100%;
-  font-family: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
   background: var(--background);
   color: var(--text-primary);
   scroll-behavior: smooth;
@@ -55,6 +65,10 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  --scrollbar-compensation: 0px;
+}
+
+body[data-theme-ready="true"] {
   transition: background 0.6s ease, color 0.6s ease;
 }
 
@@ -70,9 +84,9 @@ a {
 .site-header {
   position: fixed;
   top: 24px;
-  left: 50%;
+  left: calc(50% - (var(--scrollbar-compensation) / 2));
   transform: translateX(-50%);
-  width: min(1180px, calc(100% - 48px));
+  width: min(1180px, calc(100% - 48px - var(--scrollbar-compensation)));
   z-index: 20;
   display: flex;
   align-items: center;
@@ -96,6 +110,9 @@ a {
   display: flex;
   align-items: center;
   gap: 18px;
+  margin-left: auto;
+  margin-right: 56px;
+  justify-content: flex-end;
 }
 
 .site-nav a {
@@ -210,12 +227,24 @@ a {
   box-shadow:
     inset 0 6px 14px rgba(255, 255, 255, 0.35),
     0 12px 24px rgba(40, 70, 120, 0.35);
+  transition: none;
+}
+
+.switch[data-ready="true"] .switch-thumb {
   transition: transform 0.32s ease, background 0.32s ease, box-shadow 0.32s ease;
 }
 
 .switch[data-state="day"] .switch-thumb,
 .switch[data-state="female"] .switch-thumb {
   transform: translateX(100%);
+}
+
+html[data-initial-theme="light"] .theme-switch[data-ready="false"] .switch-thumb {
+  transform: translateX(100%);
+}
+
+html[data-initial-theme="dark"] .theme-switch[data-ready="false"] .switch-thumb {
+  transform: translateX(0);
 }
 
 .switch[data-state="night"] .switch-label[data-value="night"],
@@ -260,9 +289,9 @@ a {
 .island-header {
   position: fixed;
   top: 24px;
-  left: 50%;
+  left: calc(50% - (var(--scrollbar-compensation) / 2));
   transform: translateX(-50%);
-  width: min(960px, calc(100% - 48px));
+  width: min(960px, calc(100% - 48px - var(--scrollbar-compensation)));
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
@@ -336,6 +365,14 @@ a {
   transition: background-image 0.3s ease, background-color 0.3s ease;
 }
 
+.scene-layer canvas {
+  opacity: 0;
+}
+
+.scene-layer--ready canvas {
+  opacity: 1;
+}
+
 .scene-layer--static {
   background-color: var(--background);
 }
@@ -344,7 +381,7 @@ a {
   width: 100%;
   height: 100%;
   display: block;
-  transition: opacity 0.3s ease;
+  transition: opacity 2s ease;
 }
 
 .scene-layer__canvas--hidden {
@@ -639,12 +676,14 @@ section {
   z-index: 90;
   display: grid;
   place-items: center;
+  visibility: hidden;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.24s ease;
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .contact-modal.is-open {
+  visibility: visible;
   opacity: 1;
   pointer-events: auto;
 }
@@ -652,8 +691,7 @@ section {
 .contact-modal__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(6, 10, 18, 0.34);
-  backdrop-filter: blur(30px) saturate(160%);
+  background: transparent;
 }
 
 .contact-modal__content {
@@ -673,6 +711,16 @@ section {
   display: grid;
   gap: 16px;
   outline: none;
+  transform: translateY(-20%) scale(0.92);
+  opacity: 0;
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
+}
+
+.contact-modal.is-open .contact-modal__content {
+  transform: translateY(-20%) scale(1);
+  opacity: 1;
 }
 
 .contact-modal__content h2 {
@@ -829,18 +877,18 @@ section {
   box-sizing: border-box;
 }
 
-.world-clock-page h2 {
+.world-clock-page .clock-panel h2 {
   font-size: clamp(2.8rem, 5vw, 4.8rem);
   margin: 0;
 }
 
-.world-clock-page p {
+.world-clock-page .clock-panel > p {
   font-size: 1.2rem;
   color: var(--text-secondary);
   margin: 0;
 }
 
-.world-clock-page .section-caption {
+.world-clock-page .clock-panel .section-caption {
   font-size: 1rem;
   letter-spacing: 0.32em;
 }
@@ -960,12 +1008,14 @@ section {
   z-index: 60;
   display: grid;
   place-items: center;
+  visibility: hidden;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.35s ease;
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .clock-overlay.is-open {
+  visibility: visible;
   opacity: 1;
   pointer-events: auto;
 }
@@ -973,8 +1023,7 @@ section {
 .clock-overlay__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(4, 10, 19, 0.78);
-  backdrop-filter: blur(28px);
+  background: transparent;
   cursor: pointer;
 }
 
@@ -990,7 +1039,7 @@ section {
     linear-gradient(150deg, transparent 0%, var(--panel-grid) 140%),
     var(--background-alt-strong);
   box-shadow: 0 48px 140px rgba(0, 0, 0, 0.55);
-  transform: translateY(-5vh) scale(0.92);
+  transform: translateY(-20%) scale(0.92);
   transition: transform 0.4s ease;
   outline: none;
   width: min(880px, 92vw);
@@ -1001,10 +1050,15 @@ section {
   -moz-user-select: none;
   box-sizing: border-box;
   overflow: hidden;
+  opacity: 0;
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
 }
 
 .clock-overlay.is-open .clock-overlay__content {
-  transform: translateY(-5vh) scale(1);
+  transform: translateY(-20%) scale(1);
+  opacity: 1;
 }
 
 .clock-overlay__label {
@@ -1176,6 +1230,20 @@ section {
   overflow: hidden;
 }
 
+.page-shell > *,
+.site-header,
+.island-header,
+.site-footer {
+  transition: filter 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.overlay-open .page-shell > :not(.clock-overlay),
+.overlay-open .site-header,
+.overlay-open .island-header,
+.overlay-open .site-footer {
+  filter: blur(18px) saturate(1.05);
+}
+
 @media (max-width: 480px) {
   .life-row {
     grid-template-columns: 64px 1fr;
@@ -1337,6 +1405,10 @@ section {
 
 .life-field--sex .switch {
   justify-self: end;
+}
+
+.life-field--sex .switch-track {
+  min-width: 152px;
 }
 
 .life-apply {
@@ -1501,6 +1573,21 @@ section {
   margin: 0 auto;
 }
 
+.article-shell > h1 {
+  font-size: clamp(0.95rem, 1.5vw, 1.25rem);
+  line-height: 1.06;
+  margin: 0;
+}
+
+.insight-article > h1 {
+  font-size: clamp(0.95rem, 1.5vw, 1.25rem);
+}
+
+.article-shell > p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
 .article-tags {
   display: flex;
   flex-wrap: wrap;
@@ -1519,6 +1606,14 @@ section {
   color: var(--text-primary);
   line-height: 1.2;
   margin: 12px 0 0;
+}
+
+.article-content h2 {
+  font-size: clamp(1.5rem, 1.9vw, 1.8rem);
+}
+
+.article-content h3 {
+  font-size: clamp(1.44rem, 1.7vw, 1.68rem);
 }
 
 .article-content p,
@@ -1750,10 +1845,30 @@ section {
   font-size: clamp(2.5rem, 5vw, 4.1rem);
 }
 
+.panel.article-shell > h1,
+.panel.insight-article > h1 {
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+}
+
+.article-shell .article-content h2 {
+  font-size: clamp(1.5rem, 1.9vw, 1.8rem);
+}
+
+.article-shell .article-content h3 {
+  font-size: clamp(1.44rem, 1.7vw, 1.68rem);
+}
+
 .gradient-text {
   display: inline-block;
   background:
-    linear-gradient(135deg, #ffffff 0%, #c8e7ff 28%, #91d4ff 56%, #cbb8ff 82%, #ffffff 100%);
+    linear-gradient(
+      135deg,
+      var(--title-gradient-start) 0%,
+      var(--title-gradient-second) 28%,
+      var(--title-gradient-third) 56%,
+      var(--title-gradient-fourth) 82%,
+      var(--title-gradient-end) 100%
+    );
   background-size: 220% 220%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -1863,8 +1978,9 @@ section {
   pointer-events: none;
 }
 
-.world-clock-page h2 {
-  max-width: 13ch;
+.world-clock-page .clock-panel h2 {
+  max-width: none;
+  text-wrap: balance;
 }
 
 .primary-clock {

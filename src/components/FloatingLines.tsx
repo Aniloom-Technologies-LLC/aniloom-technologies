@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import {
+  AdditiveBlending,
   Clock,
   Mesh,
   OrthographicCamera,
@@ -193,7 +194,8 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     }
   }
 
-  fragColor = vec4(col, 1.0);
+  float alpha = clamp(max(col.r, max(col.g, col.b)), 0.0, 1.0);
+  fragColor = vec4(col, alpha);
 }
 
 void main() {
@@ -268,7 +270,7 @@ export default function FloatingLines({
   mouseDamping = 0.05,
   parallax = true,
   parallaxStrength = 0.2,
-  mixBlendMode = 'screen'
+  mixBlendMode
 }: FloatingLinesProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const targetMouseRef = useRef<Vector2>(new Vector2(-1000, -1000));
@@ -310,8 +312,9 @@ export default function FloatingLines({
     const camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
     camera.position.z = 1;
 
-    const renderer = new WebGLRenderer({ antialias: true, alpha: false });
+    const renderer = new WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setClearColor(0x000000, 0);
     renderer.domElement.style.width = '100%';
     renderer.domElement.style.height = '100%';
     container.appendChild(renderer.domElement);
@@ -373,7 +376,10 @@ export default function FloatingLines({
     const material = new ShaderMaterial({
       uniforms,
       vertexShader,
-      fragmentShader
+      fragmentShader,
+      transparent: true,
+      depthWrite: false,
+      blending: AdditiveBlending
     });
 
     const geometry = new PlaneGeometry(2, 2);
@@ -430,10 +436,32 @@ export default function FloatingLines({
       targetInfluenceRef.current = 0.0;
     };
 
+    const updateScrollState = () => {
+      const element = containerRef.current;
+      if (!element) return;
+
+      const scrollRange = Math.max(document.documentElement.scrollHeight - window.innerHeight, 0);
+      const isScrollablePage = scrollRange > 4;
+      element.classList.toggle('floating-lines-container--scrollable', isScrollablePage);
+
+      if (!isScrollablePage) {
+        element.style.setProperty('--floating-lines-offset', '0px');
+        return;
+      }
+
+      const progress = scrollRange > 0 ? window.scrollY / scrollRange : 0;
+      const offsetPx = -window.innerHeight * 0.2 * progress;
+      element.style.setProperty('--floating-lines-offset', `${offsetPx.toFixed(2)}px`);
+    };
+
     if (interactive) {
-      renderer.domElement.addEventListener('pointermove', handlePointerMove);
-      renderer.domElement.addEventListener('pointerleave', handlePointerLeave);
+      window.addEventListener('pointermove', handlePointerMove);
+      window.addEventListener('pointerleave', handlePointerLeave);
     }
+
+    updateScrollState();
+    window.addEventListener('scroll', updateScrollState, { passive: true });
+    window.addEventListener('resize', updateScrollState, { passive: true });
 
     let raf = 0;
     const renderLoop = () => {
@@ -466,9 +494,12 @@ export default function FloatingLines({
       if (ro) ro.disconnect();
 
       if (interactive) {
-        renderer.domElement.removeEventListener('pointermove', handlePointerMove);
-        renderer.domElement.removeEventListener('pointerleave', handlePointerLeave);
+        window.removeEventListener('pointermove', handlePointerMove);
+        window.removeEventListener('pointerleave', handlePointerLeave);
       }
+
+      window.removeEventListener('scroll', updateScrollState);
+      window.removeEventListener('resize', updateScrollState);
 
       geometry.dispose();
       material.dispose();
@@ -505,9 +536,7 @@ export default function FloatingLines({
     <div
       ref={containerRef}
       className="floating-lines-container"
-      style={{
-        mixBlendMode: mixBlendMode
-      }}
+      style={mixBlendMode ? { mixBlendMode } : undefined}
     />
   );
 }

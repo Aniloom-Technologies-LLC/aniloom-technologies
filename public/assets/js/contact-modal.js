@@ -6,15 +6,31 @@ const form = modal?.querySelector("[data-contact-form]");
 const openTriggers = document.querySelectorAll("[data-contact-open], a[href='#contact'], a[href='/#contact']");
 
 if (modal && modalContent && form) {
+  const CLOSE_DURATION_MS = 500;
   let lastTrigger = null;
+  let closeTimer = null;
 
   const toggleBodyScroll = (locked) => {
-    body.classList.toggle("overlay-open", locked);
+    if (locked) {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      body.style.setProperty("--scrollbar-compensation", `${Math.max(scrollbarWidth, 0)}px`);
+      body.style.paddingRight = `${Math.max(scrollbarWidth, 0)}px`;
+      body.classList.add("overlay-open");
+      return;
+    }
+
+    body.classList.remove("overlay-open");
+    body.style.removeProperty("--scrollbar-compensation");
+    body.style.paddingRight = "";
   };
 
   const openModal = (trigger = null) => {
+    if (closeTimer) {
+      window.clearTimeout(closeTimer);
+      closeTimer = null;
+    }
     lastTrigger = trigger;
-    modal.hidden = false;
+    modal.setAttribute("aria-hidden", "false");
     modal.classList.add("is-open");
     toggleBodyScroll(true);
     window.requestAnimationFrame(() => {
@@ -24,8 +40,11 @@ if (modal && modalContent && form) {
 
   const closeModal = () => {
     modal.classList.remove("is-open");
-    modal.hidden = true;
+    modal.setAttribute("aria-hidden", "true");
     toggleBodyScroll(false);
+    closeTimer = window.setTimeout(() => {
+      closeTimer = null;
+    }, CLOSE_DURATION_MS);
     if (lastTrigger instanceof HTMLElement) {
       lastTrigger.focus();
     }
@@ -66,7 +85,7 @@ if (modal && modalContent && form) {
       project,
     ].join("\n");
 
-    window.location.href = `mailto:hello@aniloom.tech?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+    window.location.href = `mailto:support@aniloom.tech?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
     closeModal();
   });
 }

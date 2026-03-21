@@ -2,6 +2,14 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.m
 
 const canvas = document.getElementById("scene-canvas");
 if (canvas) {
+  const sceneLayerEl = document.querySelector(".scene-layer");
+  let sceneLayerReady = false;
+  const revealSceneLayer = () => {
+    if (sceneLayerReady || !sceneLayerEl) return;
+    sceneLayerReady = true;
+    sceneLayerEl.classList.add("scene-layer--ready");
+  };
+
   const renderer = new THREE.WebGLRenderer({
     antialias: true,
     alpha: true,
@@ -99,15 +107,22 @@ if (canvas) {
     outerRing.rotation.z = Math.sin(t * 0.2) * 0.4;
     particles.rotation.y = -t * 0.05;
     renderer.render(scene, camera);
+    revealSceneLayer();
   });
 
   const applyTheme = (theme) => {
     if (theme === "dark") {
-      scene.background = new THREE.Color(0x050b18);
+      scene.background = null;
+      if (sceneLayerEl) {
+        sceneLayerEl.style.backgroundColor = "#050b18";
+      }
       ambient.color.set(0xa9c6ff);
       fill.intensity = 0.9;
     } else {
-      scene.background = new THREE.Color(0xf4efe3);
+      scene.background = null;
+      if (sceneLayerEl) {
+        sceneLayerEl.style.backgroundColor = "#f4efe3";
+      }
       ambient.color.set(0xfef6e9);
       fill.intensity = 0.75;
     }

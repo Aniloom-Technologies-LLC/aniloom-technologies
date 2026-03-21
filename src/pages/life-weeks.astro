@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import FloatingLines from "../components/FloatingLines";
 ---
 
 <BaseLayout
@@ -8,7 +9,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   headerVariant="island"
   scripts={[{ src: "/assets/js/life-weeks.js" }]}
 >
-  <main class="content life-weeks-content">
+  <main class="content life-weeks-content page-stage page-stage--lines">
+    <FloatingLines
+      client:load
+      lineCount={[4, 6, 5]}
+      lineDistance={[5, 7, 6]}
+      linesGradient={["#84d9ff", "#9f8cff", "#b7f0ff"]}
+      bendStrength={-0.28}
+    />
     <section>
       <div class="panel life-controls">
         <span class="section-caption">Life calendar</span>
@@ -44,7 +52,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             </button>
             <input type="hidden" name="sex" id="life-sex" value="female" />
           </div>
-          <button class="life-apply" type="submit">Apply</button>
+          <button class="primary-action life-apply" type="submit">Apply</button>
         </form>
         <p class="life-caption">
           Data sources: UN DESA 2022, WHO GHE 2021 — approximated for illustration.

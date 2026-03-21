@@ -14,6 +14,13 @@ const initScene = () => {
   const canvas = document.getElementById("scene-canvas");
   if (!canvas) return;
   const sceneLayerEl = document.querySelector(".scene-layer");
+  let sceneLayerReady = false;
+
+  const revealSceneLayer = () => {
+    if (sceneLayerReady || !sceneLayerEl) return;
+    sceneLayerReady = true;
+    sceneLayerEl.classList.add("scene-layer--ready");
+  };
 
   const renderer = new THREE.WebGLRenderer({
     antialias: true,
@@ -301,8 +308,11 @@ const initScene = () => {
   const applyThemeToScene = (theme) => {
     const isDark = theme === "dark";
     const backgroundColor = new THREE.Color(isDark ? 0x030712 : 0xe8f1ff);
-    scene.background = backgroundColor;
+    scene.background = null;
     scene.fog = new THREE.Fog(backgroundColor, 18, 48);
+    if (sceneLayerEl) {
+      sceneLayerEl.style.backgroundColor = `#${backgroundColor.getHexString()}`;
+    }
 
     ambientLight.intensity = isDark ? 0.65 : 0.85;
     ambientLight.color = new THREE.Color(isDark ? 0x94aaff : 0xcfe2ff);
@@ -329,9 +339,6 @@ const initScene = () => {
   let shouldAnimate = false;
 
   const showCanvas = () => {
-    if (!sceneLayerEl) return;
-    sceneLayerEl.classList.remove("scene-layer--static");
-    sceneLayerEl.style.backgroundImage = "";
     canvas.classList.remove("scene-layer__canvas--hidden");
   };
 
@@ -368,6 +375,7 @@ const initScene = () => {
     });
 
     renderer.render(scene, camera);
+    revealSceneLayer();
     if (shouldAnimate) {
       animationFrameId = requestAnimationFrame(animateFrame);
     }
