@@ -1,7 +1,11 @@
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js";
 
 const canvas = document.getElementById("scene-canvas");
+const sceneLayerEl = document.querySelector(".scene-layer");
 if (canvas) {
+  if (sceneLayerEl) {
+    sceneLayerEl.classList.add("scene-layer--ready");
+  }
   const renderer = new THREE.WebGLRenderer({
     antialias: true,
     alpha: true,
