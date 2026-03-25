@@ -587,18 +587,22 @@ const initScene = () => {
       const panel = section?.querySelector(".panel");
       if (!section || !panel) return null;
       panel.style.willChange = "transform, opacity, filter";
+      panel.style.setProperty("--panel-shift-y", "64px");
+      panel.style.setProperty("--panel-opacity", "0.18");
+      panel.style.setProperty("--panel-scale", "0.95");
+      panel.style.setProperty("--panel-blur", "10px");
       return {
         id: stop.id,
         section,
         panel,
-        targetY: 0,
-        currentY: 0,
-        targetOpacity: 0.22,
-        currentOpacity: 0.22,
-        targetScale: 0.96,
-        currentScale: 0.96,
-        targetBlur: 8,
-        currentBlur: 8,
+        targetY: 64,
+        currentY: 64,
+        targetOpacity: 0.18,
+        currentOpacity: 0.18,
+        targetScale: 0.95,
+        currentScale: 0.95,
+        targetBlur: 10,
+        currentBlur: 10,
       };
     })
     .filter(Boolean);
@@ -629,7 +633,13 @@ const initScene = () => {
       desiredCameraPosition.copy(stopMetrics[0].stop.position);
       desiredLookAt.copy(stopMetrics[0].stop.lookAt);
       panelEntries.forEach((entry) => {
-        setPanelState(entry, 0, entry.id === stopMetrics[0].stop.id ? 1 : 0.18, entry.id === stopMetrics[0].stop.id ? 1 : 0.96, entry.id === stopMetrics[0].stop.id ? 0 : 8);
+        setPanelState(
+          entry,
+          entry.id === stopMetrics[0].stop.id ? 0 : 64,
+          entry.id === stopMetrics[0].stop.id ? 1 : 0.18,
+          entry.id === stopMetrics[0].stop.id ? 1 : 0.95,
+          entry.id === stopMetrics[0].stop.id ? 0 : 10
+        );
       });
       return;
     }
@@ -665,7 +675,7 @@ const initScene = () => {
     );
 
     panelEntries.forEach((entry) => {
-      setPanelState(entry, 56, 0.16, 0.94, 10);
+      setPanelState(entry, 64, 0.14, 0.95, 11);
     });
 
     if (rawSegmentProgress <= threshold || currentMetric === nextMetric) {
@@ -679,7 +689,7 @@ const initScene = () => {
 
       panelEntries.forEach((entry) => {
         if (entry.id === currentMetric.stop.id) {
-          setPanelState(entry, localParallax * 18, 1, 1, 0);
+          setPanelState(entry, localParallax * 14, 1, 1, 0);
         }
       });
       return;
@@ -707,18 +717,18 @@ const initScene = () => {
       if (entry.id === currentMetric.stop.id) {
         setPanelState(
           entry,
-          THREE.MathUtils.lerp(localParallax * 18, -42, transitionProgress),
-          THREE.MathUtils.lerp(1, 0.18, transitionProgress),
-          THREE.MathUtils.lerp(1, 0.95, transitionProgress),
-          THREE.MathUtils.lerp(0, 8, transitionProgress)
+          THREE.MathUtils.lerp(localParallax * 14, -56, transitionProgress),
+          THREE.MathUtils.lerp(1, 0.1, transitionProgress),
+          THREE.MathUtils.lerp(1, 0.94, transitionProgress),
+          THREE.MathUtils.lerp(0, 12, transitionProgress)
         );
       } else if (entry.id === nextMetric.stop.id) {
         setPanelState(
           entry,
-          THREE.MathUtils.lerp(52, 0, transitionProgress),
-          THREE.MathUtils.lerp(0.18, 1, transitionProgress),
-          THREE.MathUtils.lerp(0.95, 1, transitionProgress),
-          THREE.MathUtils.lerp(8, 0, transitionProgress)
+          THREE.MathUtils.lerp(72, 0, transitionProgress),
+          THREE.MathUtils.lerp(0.08, 1, transitionProgress),
+          THREE.MathUtils.lerp(0.93, 1, transitionProgress),
+          THREE.MathUtils.lerp(12, 0, transitionProgress)
         );
       }
     });
@@ -838,9 +848,10 @@ const initScene = () => {
       );
       entry.currentScale = THREE.MathUtils.lerp(entry.currentScale, entry.targetScale, 0.12);
       entry.currentBlur = THREE.MathUtils.lerp(entry.currentBlur, entry.targetBlur, 0.12);
-      entry.panel.style.opacity = `${entry.currentOpacity}`;
-      entry.panel.style.transform = `translate3d(0, ${entry.currentY}px, 0) scale(${entry.currentScale})`;
-      entry.panel.style.filter = `blur(${entry.currentBlur}px)`;
+      entry.panel.style.setProperty("--panel-shift-y", `${entry.currentY}px`);
+      entry.panel.style.setProperty("--panel-opacity", `${entry.currentOpacity}`);
+      entry.panel.style.setProperty("--panel-scale", `${entry.currentScale}`);
+      entry.panel.style.setProperty("--panel-blur", `${entry.currentBlur}px`);
     });
 
     renderer.render(scene, camera);

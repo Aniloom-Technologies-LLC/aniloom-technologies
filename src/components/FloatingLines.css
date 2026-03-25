@@ -8,19 +8,20 @@
   z-index: 1;
   pointer-events: none;
   mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.92) 68%, transparent 96%);
-  transform: translate3d(0, var(--floating-lines-offset, 0px), 0);
-  will-change: transform;
+  will-change: opacity;
   mix-blend-mode: screen;
-  opacity: 0.95;
+  opacity: 0;
+  transition: opacity 1.35s ease;
 }
 
-.floating-lines-container--scrollable {
-  top: -10vh;
-  height: 120vh;
-  min-height: 120vh;
+.floating-lines-container--ready {
+  opacity: 0.95;
 }
 
 .theme-light .floating-lines-container {
   mix-blend-mode: screen;
+}
+
+.theme-light .floating-lines-container--ready {
   opacity: 0.58;
 }

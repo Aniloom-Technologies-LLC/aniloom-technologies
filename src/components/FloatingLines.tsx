@@ -436,34 +436,13 @@ export default function FloatingLines({
       targetInfluenceRef.current = 0.0;
     };
 
-    const updateScrollState = () => {
-      const element = containerRef.current;
-      if (!element) return;
-
-      const scrollRange = Math.max(document.documentElement.scrollHeight - window.innerHeight, 0);
-      const isScrollablePage = scrollRange > 4;
-      element.classList.toggle('floating-lines-container--scrollable', isScrollablePage);
-
-      if (!isScrollablePage) {
-        element.style.setProperty('--floating-lines-offset', '0px');
-        return;
-      }
-
-      const progress = scrollRange > 0 ? window.scrollY / scrollRange : 0;
-      const offsetPx = -window.innerHeight * 0.2 * progress;
-      element.style.setProperty('--floating-lines-offset', `${offsetPx.toFixed(2)}px`);
-    };
-
     if (interactive) {
       window.addEventListener('pointermove', handlePointerMove);
       window.addEventListener('pointerleave', handlePointerLeave);
     }
 
-    updateScrollState();
-    window.addEventListener('scroll', updateScrollState, { passive: true });
-    window.addEventListener('resize', updateScrollState, { passive: true });
-
     let raf = 0;
+    let hasRevealed = false;
     const renderLoop = () => {
       if (!active) return;
 
@@ -483,6 +462,10 @@ export default function FloatingLines({
       }
 
       renderer.render(scene, camera);
+      if (!hasRevealed) {
+        hasRevealed = true;
+        container.classList.add('floating-lines-container--ready');
+      }
       raf = requestAnimationFrame(renderLoop);
     };
     renderLoop();
@@ -497,10 +480,6 @@ export default function FloatingLines({
         window.removeEventListener('pointermove', handlePointerMove);
         window.removeEventListener('pointerleave', handlePointerLeave);
       }
-
-      window.removeEventListener('scroll', updateScrollState);
-      window.removeEventListener('resize', updateScrollState);
-
       geometry.dispose();
       material.dispose();
       renderer.dispose();
