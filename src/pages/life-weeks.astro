@@ -10,14 +10,8 @@ import FloatingLines from "../components/FloatingLines";
   scripts={[{ src: "/assets/js/life-weeks.js" }]}
 >
   <main class="content life-weeks-content page-stage page-stage--lines">
-    <FloatingLines
-      client:load
-      lineCount={[4, 6, 5]}
-      lineDistance={[5, 7, 6]}
-      linesGradient={["#84d9ff", "#9f8cff", "#b7f0ff"]}
-      bendStrength={-0.28}
-    />
-    <section>
+    <FloatingLines client:load linesGradient={["#84d9ff", "#9f8cff", "#b7f0ff"]} />
+    <section class="life-weeks-content__controls">
       <div class="panel life-controls">
         <span class="section-caption">Life calendar</span>
         <h2>Plot your weeks.</h2>
@@ -60,9 +54,13 @@ import FloatingLines from "../components/FloatingLines";
       </div>
     </section>
 
-    <section>
+    <section class="life-weeks-content__visual">
       <div class="panel life-visual">
-        <div class="life-grid" id="life-grid" aria-live="polite"></div>
+        <div class="life-grid-shell">
+          <div class="life-grid-spacer" id="life-grid-spacer-top" aria-hidden="true"></div>
+          <div class="life-grid" id="life-grid" aria-live="polite"></div>
+          <div class="life-grid-spacer" id="life-grid-spacer-bottom" aria-hidden="true"></div>
+        </div>
       </div>
     </section>
   </main>

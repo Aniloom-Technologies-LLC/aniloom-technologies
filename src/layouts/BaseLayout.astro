@@ -21,6 +21,7 @@ interface Props {
   bodyClass?: string;
   headerVariant?: "default" | "island";
   brandHref?: string;
+  showSplashCursor?: boolean;
   navItems?: NavItem[];
   footerGroups?: FooterGroup[];
   scripts?: ScriptItem[];
@@ -31,6 +32,7 @@ const {
   bodyClass = "",
   headerVariant = "default",
   brandHref = "/",
+  showSplashCursor = true,
   navItems = [
     { href: "/insights/", label: "Insights" },
     { href: "/#contact", label: "Contact Us" },
@@ -118,14 +120,16 @@ const bodyClasses = [bodyClass].filter(Boolean).join(" ");
     <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
   <body class={bodyClasses} data-theme-ready="false">
-    <SplashCursor
-      client:load
-      DYE_RESOLUTION={1024}
-      SIM_RESOLUTION={96}
-      SPLAT_RADIUS={0.12}
-      SPLAT_FORCE={4200}
-      COLOR_UPDATE_SPEED={6}
-    />
+    {showSplashCursor && (
+      <SplashCursor
+        client:load
+        DYE_RESOLUTION={1024}
+        SIM_RESOLUTION={96}
+        SPLAT_RADIUS={0.12}
+        SPLAT_FORCE={4200}
+        COLOR_UPDATE_SPEED={6}
+      />
+    )}
     {
       headerVariant === "island" ? (
         <header class="island-header">

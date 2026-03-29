@@ -101,43 +101,33 @@ const clampDate = (value) => {
   return candidate;
 };
 
-const buildWeekElement = (isCompleted, isCurrent) => {
-  const week = document.createElement("span");
-  week.className =
-    "week" +
-    (isCompleted ? " week--complete" : "") +
-    (isCurrent ? " week--current" : "");
-  return week;
+const OVERSCAN_ROWS = 10;
+
+const buildWeeksMarkup = (year, totalCompletedWeeks, currentYear, currentWeekIndex) => {
+  let weeksMarkup = "";
+  for (let week = 0; week < WEEKS_PER_YEAR; week += 1) {
+    const weeksElapsed = year * WEEKS_PER_YEAR + week;
+    const isCompleted = weeksElapsed < totalCompletedWeeks;
+    const isCurrent = year === currentYear && week === currentWeekIndex;
+    weeksMarkup += `<span class="week${isCompleted ? " week--complete" : ""}${isCurrent ? " week--current" : ""}"></span>`;
+  }
+  return weeksMarkup;
 };
 
-const buildLongevityRow = (year, probability) => {
-  const wrapper = document.createElement("div");
-  wrapper.className = "longevity-row";
-  wrapper.setAttribute("role", "presentation");
-  const label = document.createElement("span");
-  label.className = "longevity-label";
-  label.textContent = `Age ${year} survival`;
-  wrapper.appendChild(label);
+const buildYearRowMarkup = (year, totalCompletedWeeks, currentYear, currentWeekIndex) =>
+  `<div class="life-row" data-year="${year}">` +
+  `<span class="life-year">${year}</span>` +
+  `<div class="weeks-wrap">${buildWeeksMarkup(year, totalCompletedWeeks, currentYear, currentWeekIndex)}</div>` +
+  `</div>`;
 
-  const bar = document.createElement("div");
-  bar.className = "longevity-bar";
-  bar.setAttribute("aria-valuemin", "0");
-  bar.setAttribute("aria-valuemax", "100");
-  bar.setAttribute("aria-valuenow", Math.round(probability * 100).toString());
-
-  const fill = document.createElement("div");
-  fill.className = "longevity-fill";
-  fill.style.width = `${(probability * 100).toFixed(0)}%`;
-  bar.appendChild(fill);
-
-  const value = document.createElement("span");
-  value.className = "longevity-value";
-  value.textContent = `${Math.round(probability * 100)}%`;
-
-  wrapper.appendChild(bar);
-  wrapper.appendChild(value);
-  return wrapper;
-};
+const buildLongevityRowMarkup = (year, probability) =>
+  `<div class="longevity-row" role="presentation">` +
+  `<span class="longevity-label">Age ${year} survival</span>` +
+  `<div class="longevity-bar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.round(probability * 100)}">` +
+  `<div class="longevity-fill" style="width:${(probability * 100).toFixed(0)}%"></div>` +
+  `</div>` +
+  `<span class="longevity-value">${Math.round(probability * 100)}%</span>` +
+  `</div>`;
 
 const computeLifeProgress = (birthDate, referenceDate = new Date()) => {
   const msInWeek = 1000 * 60 * 60 * 24 * 7;
@@ -178,12 +168,127 @@ const computeLifeProgress = (birthDate, referenceDate = new Date()) => {
   };
 };
 
+let lifeRenderState = null;
+let scrollRenderFrame = 0;
+
+const buildRenderItems = (stats, progress) => {
+  const items = [];
+  for (let year = 0; year < MAX_YEARS; year += 1) {
+    items.push({ type: "year", year });
+    if (
+      year >= LONGEVITY_START &&
+      (year - LONGEVITY_START) % LONGEVITY_INTERVAL === 0
+    ) {
+      const probability = stats[year];
+      if (probability !== undefined) {
+        items.push({ type: "longevity", year, probability });
+      }
+    }
+  }
+
+  if (stats[100] !== undefined) {
+    items.push({ type: "longevity", year: 100, probability: stats[100] });
+  }
+
+  let currentRowIndex = 0;
+  items.forEach((item, index) => {
+    if (item.type === "year" && item.year === progress.currentYear) {
+      currentRowIndex = index;
+    }
+  });
+
+  return { items, currentRowIndex };
+};
+
+const renderVisibleLifeRows = () => {
+  if (!lifeRenderState) return;
+
+  const {
+    shell,
+    lifeGrid,
+    spacerTop,
+    spacerBottom,
+    items,
+    offsets,
+    totalHeight,
+    rowHeight,
+    longevityHeight,
+    progress,
+  } = lifeRenderState;
+
+  const shellRect = shell.getBoundingClientRect();
+  const shellVisibleTop = Math.max(0, -shellRect.top);
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+  const visibleStart = Math.max(0, shellVisibleTop - rowHeight * OVERSCAN_ROWS);
+  const visibleEnd = Math.min(
+    totalHeight,
+    shellVisibleTop + viewportHeight + rowHeight * OVERSCAN_ROWS
+  );
+
+  let startIndex = 0;
+  while (
+    startIndex < items.length - 1 &&
+    offsets[startIndex + 1] <= visibleStart
+  ) {
+    startIndex += 1;
+  }
+
+  let endIndex = startIndex;
+  while (endIndex < items.length - 1 && offsets[endIndex] < visibleEnd) {
+    endIndex += 1;
+  }
+
+  if (
+    lifeRenderState.visibleStartIndex === startIndex &&
+    lifeRenderState.visibleEndIndex === endIndex
+  ) {
+    return;
+  }
+
+  let markup = "";
+  for (let index = startIndex; index <= endIndex; index += 1) {
+    const item = items[index];
+    if (item.type === "year") {
+      markup += buildYearRowMarkup(
+        item.year,
+        progress.completedWeeks,
+        progress.currentYear,
+        progress.currentWeekIndex
+      );
+    } else {
+      markup += buildLongevityRowMarkup(item.year, item.probability);
+    }
+  }
+
+  spacerTop.style.height = `${offsets[startIndex] || 0}px`;
+  const renderedBottom =
+    offsets[endIndex] +
+    (items[endIndex]?.type === "longevity" ? longevityHeight : rowHeight);
+  spacerBottom.style.height = `${Math.max(0, totalHeight - renderedBottom)}px`;
+  lifeGrid.innerHTML = markup;
+  lifeRenderState.visibleStartIndex = startIndex;
+  lifeRenderState.visibleEndIndex = endIndex;
+};
+
 const renderLifeGrid = ({ scrollToCurrent = false } = {}) => {
   const birthInput = document.getElementById("birth-date");
   const countrySelect = document.getElementById("country");
   const sexInput = document.getElementById("life-sex");
   const lifeGrid = document.getElementById("life-grid");
-  if (!birthInput || !countrySelect || !sexInput || !lifeGrid) return;
+  const shell = document.querySelector(".life-grid-shell");
+  const spacerTop = document.getElementById("life-grid-spacer-top");
+  const spacerBottom = document.getElementById("life-grid-spacer-bottom");
+  if (
+    !birthInput ||
+    !countrySelect ||
+    !sexInput ||
+    !lifeGrid ||
+    !shell ||
+    !spacerTop ||
+    !spacerBottom
+  ) {
+    return;
+  }
 
   const birthDate = clampDate(birthInput.value || DEFAULT_BIRTH);
   const now = new Date();
@@ -196,57 +301,47 @@ const renderLifeGrid = ({ scrollToCurrent = false } = {}) => {
   const stats = statsGroup[sexKey] || statsGroup.female;
 
   const progress = computeLifeProgress(birthDate, now);
-  const totalCompletedWeeks = progress.completedWeeks;
+  const computed = getComputedStyle(document.body);
+  const rowHeight =
+    parseFloat(computed.getPropertyValue("--life-row-height")) || 34;
+  const longevityHeight =
+    parseFloat(computed.getPropertyValue("--life-longevity-height")) || 42;
+  const { items, currentRowIndex } = buildRenderItems(stats, progress);
+  const offsets = [];
+  let totalHeight = 0;
+  items.forEach((item, index) => {
+    offsets[index] = totalHeight;
+    totalHeight += item.type === "longevity" ? longevityHeight : rowHeight;
+  });
 
-  lifeGrid.innerHTML = "";
-
-  for (let year = 0; year < MAX_YEARS; year += 1) {
-    const row = document.createElement("div");
-    row.className = "life-row";
-    row.dataset.year = year.toString();
-
-    const label = document.createElement("span");
-    label.className = "life-year";
-    label.textContent = `${year}`;
-    row.appendChild(label);
-
-    const weeksWrap = document.createElement("div");
-    weeksWrap.className = "weeks-wrap";
-
-    for (let week = 0; week < WEEKS_PER_YEAR; week += 1) {
-      const weeksElapsed = year * WEEKS_PER_YEAR + week;
-      const isCompleted = weeksElapsed < totalCompletedWeeks;
-      const isCurrent =
-        year === progress.currentYear && week === progress.currentWeekIndex;
-      weeksWrap.appendChild(buildWeekElement(isCompleted, isCurrent));
-    }
-
-    row.appendChild(weeksWrap);
-    lifeGrid.appendChild(row);
-
-    if (
-      year >= LONGEVITY_START &&
-      (year - LONGEVITY_START) % LONGEVITY_INTERVAL === 0
-    ) {
-      const probability = stats[year];
-      if (probability !== undefined) {
-        lifeGrid.appendChild(buildLongevityRow(year, probability));
-      }
-    }
-  }
-
-  if (stats[100] !== undefined) {
-    lifeGrid.appendChild(buildLongevityRow(100, stats[100]));
-  }
+  const hasInitialized = lifeRenderState?.hasInitialized ?? false;
+  lifeRenderState = {
+    shell,
+    lifeGrid,
+    spacerTop,
+    spacerBottom,
+    items,
+    offsets,
+    totalHeight,
+    rowHeight,
+    longevityHeight,
+    progress,
+    hasInitialized,
+    visibleStartIndex: -1,
+    visibleEndIndex: -1,
+  };
 
   if (scrollToCurrent) {
-    const targetRow = lifeGrid.querySelector(
-      `.life-row[data-year="${progress.currentYear}"]`
-    );
-    if (targetRow) {
-      targetRow.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
+    const targetOffset = offsets[currentRowIndex] || 0;
+    const shellTop = shell.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({
+      top: Math.max(0, shellTop + targetOffset - window.innerHeight * 0.4),
+      behavior: "smooth",
+    });
   }
+
+  renderVisibleLifeRows();
+  lifeRenderState.hasInitialized = true;
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -299,6 +394,22 @@ document.addEventListener("DOMContentLoaded", () => {
       renderLifeGrid({ scrollToCurrent: true });
     });
   }
+
+  const scheduleVisibleRender = () => {
+    if (scrollRenderFrame) return;
+    scrollRenderFrame = window.requestAnimationFrame(() => {
+      scrollRenderFrame = 0;
+      renderVisibleLifeRows();
+    });
+  };
+
+  window.addEventListener("scroll", scheduleVisibleRender, {
+    passive: true,
+  });
+
+  window.addEventListener("resize", () => {
+    renderLifeGrid();
+  });
 
   renderLifeGrid();
 });

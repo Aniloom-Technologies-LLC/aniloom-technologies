@@ -1150,8 +1150,10 @@ section {
   .world-clock-content {
     padding: 110px 16px 64px;
   }
+  .life-weeks-content {
+    gap: 28px;
+  }
   .life-grid {
-    padding: 12px 0 12px;
     gap: 14px;
   }
   .life-row {
@@ -1440,13 +1442,16 @@ section {
 }
 
 .life-weeks-content {
+  --life-row-height: 40px;
+  --life-longevity-height: 52px;
   padding: 128px 24px 80px;
   display: grid;
   gap: 28px;
   align-content: start;
 }
 
-.life-weeks-content section {
+.life-weeks-content__controls,
+.life-weeks-content__visual {
   min-height: auto;
   padding: 0;
   display: flex;
@@ -1469,15 +1474,26 @@ section {
   margin-top: 16px;
 }
 
+.life-controls {
+  padding: 28px 32px;
+}
+
 .life-visual {
   padding: 36px;
   overflow: visible;
 }
 
+.life-grid-shell {
+  width: 100%;
+}
+
+.life-grid-spacer {
+  width: 100%;
+}
+
 .life-grid {
   display: grid;
-  gap: 12px;
-  padding: 8px 0 8px;
+  gap: 10px;
   width: 100%;
 }
 
@@ -1488,6 +1504,7 @@ section {
   align-items: center;
   gap: 12px;
   padding: 0 28px;
+  min-height: var(--life-row-height);
   box-sizing: border-box;
 }
 
@@ -1531,6 +1548,7 @@ section {
   align-items: center;
   gap: 12px;
   padding: 0 28px;
+  min-height: var(--life-longevity-height);
   box-sizing: border-box;
   margin: -4px 0;
 }
@@ -1693,6 +1711,10 @@ section {
     padding-top: 94px;
   }
 
+  .life-weeks-content {
+    gap: 28px;
+  }
+
   section {
     padding: 72px 16px;
   }
@@ -1741,7 +1763,7 @@ section {
   }
 
   .life-visual {
-    padding: 22px 14px;
+    padding: 14px;
   }
 
   .weeks-wrap {

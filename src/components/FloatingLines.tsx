@@ -228,6 +228,7 @@ type FloatingLinesProps = {
   mouseDamping?: number;
   parallax?: boolean;
   parallaxStrength?: number;
+  maxPixelRatio?: number;
   mixBlendMode?: CSSProperties['mixBlendMode'];
 };
 
@@ -270,6 +271,7 @@ export default function FloatingLines({
   mouseDamping = 0.05,
   parallax = true,
   parallaxStrength = 0.2,
+  maxPixelRatio = 2,
   mixBlendMode
 }: FloatingLinesProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -313,7 +315,7 @@ export default function FloatingLines({
     camera.position.z = 1;
 
     const renderer = new WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, maxPixelRatio));
     renderer.setClearColor(0x000000, 0);
     renderer.domElement.style.width = '100%';
     renderer.domElement.style.height = '100%';
@@ -503,6 +505,7 @@ export default function FloatingLines({
     mouseDamping,
     parallax,
     parallaxStrength,
+    maxPixelRatio,
     topLineCount,
     middleLineCount,
     bottomLineCount,
