@@ -1,9 +1,10 @@
 const footer = document.querySelector(".site-footer");
+const footerStage = document.querySelector("[data-footer-stage]");
 const pull = document.querySelector("[data-footer-pull]");
 const quoteText = document.querySelector("[data-footer-quote-text]");
 const quoteSource = document.querySelector("[data-footer-quote-source]");
 
-if (footer && pull && quoteText && quoteSource) {
+if (footer && footerStage && pull && quoteText && quoteSource) {
   const quotes = [
     {
       text: "Risk comes from not knowing what you're doing.",
@@ -47,7 +48,7 @@ if (footer && pull && quoteText && quoteSource) {
 
   const setPull = (value) => {
     pullAmount = Math.max(0, Math.min(maxPull, value));
-    footer.style.setProperty("--footer-pull", `${pullAmount}px`);
+    footerStage.style.setProperty("--footer-pull", `${pullAmount}px`);
     pull.setAttribute("aria-hidden", pullAmount > 6 ? "false" : "true");
     if (pullAmount < 16) {
       pullActivated = false;
