@@ -1,34 +1,27 @@
 ---
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import GradientText from "../../components/GradientText";
+import GradientText from "../../components/GradientText.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: { post },
-  }));
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
 }
 
 const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BaseLayout title={`${post.data.title} — Aniloom Technologies`}>
-  <main class="content content--lifted">
-    <section>
-      <article class="panel article-shell insight-article">
-        <span class="section-caption">{post.data.category}</span>
-        <h1><GradientText client:load>{post.data.title}</GradientText></h1>
+<BaseLayout title={`${post.data.title} | Aniloom Technologies`} description={post.data.description}>
+  <main id="main-content">
+    <article class="article-shell section-shell">
+      <header class="article-header">
+        <div><span class="eyebrow">{post.data.category}</span><span>{post.data.publishDate.toLocaleDateString("en-US", { dateStyle: "long", timeZone: "UTC" })}</span></div>
+        <h1><GradientText>{post.data.title}</GradientText></h1>
         <p>{post.data.description}</p>
-        <p>
-          {post.data.publishDate.toLocaleDateString("en-US", { dateStyle: "long" })}
-        </p>
-        <div class="article-content">
-          <Content />
-        </div>
-      </article>
-    </section>
+      </header>
+      <div class="article-content"><Content /></div>
+      <footer class="article-footer"><a class="text-link" href="/insights/">← Back to all notes</a><button class="text-link" type="button" data-contact-open>Discuss your project ↗</button></footer>
+    </article>
   </main>
 </BaseLayout>

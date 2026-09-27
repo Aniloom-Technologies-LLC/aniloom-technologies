@@ -2,8 +2,8 @@ const THEME_STORAGE_KEY = "aniloom-theme";
 
 const resolvePalette = (mode) =>
   mode === "light"
-    ? { background: "#f5f1e8", text: "#1a2431" }
-    : { background: "#040a13", text: "#f2f6ff" };
+    ? { background: "#f1f0e9", text: "#101b18" }
+    : { background: "#07100f", text: "#f4f7f3" };
 
 const applyThemeClass = (mode) => {
   const palette = resolvePalette(mode);
@@ -20,6 +20,7 @@ const applyThemeClass = (mode) => {
   document.body.classList.add(mode === "light" ? "theme-light" : "theme-dark");
   document.body.style.backgroundColor = palette.background;
   document.body.style.color = palette.text;
+  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", palette.background);
   window.dispatchEvent(
     new CustomEvent("aniloom:theme-change", { detail: { theme: mode } })
   );

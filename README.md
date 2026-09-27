@@ -1,50 +1,34 @@
-# Aniloom Technologies Web Experience
+# Aniloom Technologies Website
 
-Astro-based multi-page marketing site for Aniloom Technologies featuring a cinematic Three.js
-landing page, supporting sections, and a content-driven Insights section.
+Static marketing website for Aniloom Technologies, built around the positioning and public-claim rules maintained in the separate Aniloom Brand System project.
 
 ## Stack
 
-- Astro for static routing, layouts, and content collections
+- Astro for static routing, layouts, SEO, and content collections
+- React islands for the retained interactive visual effects
+- Three.js for the retained flowing-line effect
 - Markdown content in `src/content/blog`
-- Static assets served from `public/assets`
-- Existing client-side JavaScript for Three.js and interactive utilities
+- GitHub Pages deployment through GitHub Actions
 
-## Pages
+## Site structure
 
-- `src/pages/index.astro` — immersive home experience with scroll-driven camera over AI domes
-- `src/pages/education.astro` — learning resources overview
-- `src/pages/unity-assets.astro` — Unity tooling overview
-- `src/pages/world-clock.astro` — live clocks for key collaboration cities
-- `src/pages/test-scene.astro` — lightweight Three.js diagnostic scene
-- `src/pages/life-weeks.astro` — interactive life calendar
-- `src/pages/insights/index.astro` — Insights index for articles
-- `src/pages/insights/[slug].astro` — article detail route
-
-## Content Workflow
-
-Add a new Insight by creating a Markdown file in `src/content/blog` with this frontmatter:
-
-```md
----
-title: Your article title
-description: One-line summary for the listing page
-publishDate: 2026-03-19
-category: AI Systems
-tags:
-  - example
-  - article
-draft: false
----
-```
+- `/` - company overview
+- `/capabilities/` - four capability groups
+- `/playable-ads/` - playable-ad development and quality direction
+- `/quality-engineering/` - quality-engineering entry points and deliverables
+- `/how-we-work/` - engagement models and delivery approach
+- `/about/` - company principles and confirmed leadership information
+- `/insights/` - content-driven Notes index and article routes
+- `/privacy-policy/` and `/terms-of-use/` - legal pages
 
 ## Commands
 
-- `npm install` — install dependencies
-- `npm run dev` — start Astro locally
-- `npm run build` — generate the production site in `dist/`
-- `ASTRO_TELEMETRY_DISABLED=1 npm run build` — build in restricted environments
+- `npm install` - install dependencies
+- `npm run dev` - start the local development server
+- `npm run check` - validate Astro and TypeScript
+- `npm run build` - generate the production site in `dist/`
+- `npm run preview` - preview the production build
 
-## License
+## Content and claims
 
-This project follows the terms in `LICENSE` (Creative Commons BY-NC-ND 4.0).
+Public positioning, capability claims, people information, and website-copy rules come from the separate `Aniloom Brand System` project. Unknown facts must not be inferred in this repository.

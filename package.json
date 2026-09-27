@@ -5,13 +5,19 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "check": "astro check",
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/react": "^5.0.1",
-    "astro": "^5.4.3",
+    "@astrojs/react": "^7.0.0",
+    "astro": "^7.3.5",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "three": "^0.183.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/three": "^0.186.0",
+    "typescript": "^5.9.3"
   }
 }

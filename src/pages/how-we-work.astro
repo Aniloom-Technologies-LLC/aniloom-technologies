@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import GradientText from "../components/GradientText.astro";
+
+const models = [
+  { number: "01", title: "Managed Project Delivery", text: "For teams that need to build, advance, or recover a game, website, application, or digital product. The engagement is shaped around a defined product state, build, release, or recovery goal." },
+  { number: "02", title: "Monthly Development & Support", text: "For teams that need reliable ongoing progress, testing, maintenance, or access to changing expertise without buying named headcount." },
+  { number: "03", title: "Discovery & Specialist Consulting", text: "For decision-makers who need the right approach defined before larger development begins. Substantial specifications, architecture, prototypes, or plans become a separate paid milestone." },
+  { number: "04", title: "White-label Delivery", text: "For partners who need Aniloom to work as a silent development team under clear ownership, confidentiality, and delivery boundaries." },
+];
+---
+
+<BaseLayout title="How We Work | Aniloom Technologies" description="Learn how Aniloom structures managed project delivery, ongoing development, discovery, and white-label engagements.">
+  <main id="main-content">
+    <section class="page-hero section-shell">
+      <p class="eyebrow" data-reveal>How we work</p>
+      <h1 data-reveal>Development shaped around the goal, <GradientText>not the headcount.</GradientText></h1>
+      <p class="page-hero__lead" data-reveal>You should know what the work is expected to change, how progress becomes visible, and who owns each decision. Internal staffing and tool choices remain our responsibility unless the agreement requires otherwise.</p>
+    </section>
+
+    <section class="model-grid section-shell section-pad">
+      {models.map((model) => (
+        <article class="model-card" data-reveal><span>{model.number}</span><h2>{model.title}</h2><p>{model.text}</p></article>
+      ))}
+    </section>
+
+    <section class="process process--page section-pad">
+      <div class="section-shell">
+        <div class="section-heading" data-reveal><div><p class="eyebrow">A visible delivery rhythm</p><h2>Decide. Build. Check. Learn.</h2></div><p>The exact workflow changes with the engagement. These responsibilities do not.</p></div>
+        <ol class="process-grid process-grid--four">
+          <li data-reveal><span>01</span><h3>Define</h3><p>Agree on the goal, constraints, dependencies, and evidence that will mark useful progress.</p></li>
+          <li data-reveal><span>02</span><h3>Plan</h3><p>Shape the right mix of engineering, testing, design, art, and client decisions.</p></li>
+          <li data-reveal><span>03</span><h3>Deliver</h3><p>Review working states on an agreed cadence rather than hiding progress behind activity.</p></li>
+          <li data-reveal><span>04</span><h3>Release or continue</h3><p>Make quality evidence, remaining risk, ownership, and the next product decision visible.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="callout section-shell section-pad" data-reveal>
+      <p class="eyebrow">AI and accountability</p>
+      <h2>Use better tools.<br />Keep people responsible.</h2>
+      <p>AI can help us explore more options, accelerate production, and improve parts of the workflow. Experienced people still define intent, evaluate the result, and remain responsible for decisions and release.</p>
+      <button class="button" type="button" data-contact-open>Discuss your project</button>
+    </section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import GradientText from "../components/GradientText.astro";
+---
+
+<BaseLayout title="About | Aniloom Technologies" description="Meet the people and principles behind Aniloom Technologies.">
+  <main id="main-content">
+    <section class="page-hero section-shell">
+      <p class="eyebrow" data-reveal>About Aniloom</p>
+      <h1 data-reveal>Technology is the capability.<br /><GradientText>People give it direction.</GradientText></h1>
+      <p class="page-hero__lead" data-reveal>Aniloom Technologies is a software company that brings engineering, testing, design, and art together around the result a client needs.</p>
+    </section>
+
+    <section class="belief-grid section-shell section-pad">
+      <article data-reveal><span>01</span><h2>People stay visible</h2><p>The people funding, building, evaluating, using, and living with a product should not disappear behind a tool or process.</p></article>
+      <article data-reveal><span>02</span><h2>Outcome before activity</h2><p>We organize work around a defined product goal or delivery cadence rather than maximizing hours, headcount, or technical complexity.</p></article>
+      <article data-reveal><span>03</span><h2>Engineering and art belong together</h2><p>Code, interaction, design, language, and visual execution become one experience for the person using the result.</p></article>
+      <article data-reveal><span>04</span><h2>Expertise should be honest</h2><p>We state capabilities clearly, keep important boundaries visible, and do not manufacture proof that does not exist.</p></article>
+    </section>
+
+    <section class="leadership section-shell section-pad">
+      <div class="section-heading" data-reveal><div><p class="eyebrow">Leadership</p><h2>Two connected responsibilities.</h2></div><p>The company is led through technical and product judgment alongside a deliberate quality-engineering practice.</p></div>
+      <div class="leadership-grid">
+        <article class="leadership-card" data-reveal><div class="leadership-card__mark">IA</div><div><p class="eyebrow">Founder & CEO</p><h2>Inokentii “Ino” Anikieiev</h2><p>Ino leads company direction, major client relationships, and solution judgment. He brings more than 10 years of professional experience in game development.</p></div></article>
+        <article class="leadership-card" data-reveal><div class="leadership-card__mark">O</div><div><p class="eyebrow">Co-Founder & COO</p><h2>Olena</h2><p>Olena leads Aniloom’s Quality Engineering practice and designs the systems, standards, and delivery workflows used by the team.</p></div></article>
+      </div>
+    </section>
+
+    <section class="callout section-shell section-pad" data-reveal>
+      <p class="eyebrow">What we are building</p>
+      <h2>A company capable of making strong product decisions with its clients.</h2>
+      <p>Aniloom works with funded studios, startups, and product teams that have an important goal and need expertise they do not have internally.</p>
+      <button class="button" type="button" data-contact-open>Discuss your project</button>
+    </section>
+  </main>
+</BaseLayout>

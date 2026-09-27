@@ -1,263 +1,147 @@
 ---
 import SplashCursor from "../components/SplashCursor";
 
-interface NavItem {
-  href: string;
-  label: string;
-}
-
-interface FooterGroup {
-  title: string;
-  items: NavItem[];
-}
-
-interface ScriptItem {
-  src: string;
-  type?: "module";
-}
-
 interface Props {
   title: string;
+  description?: string;
   bodyClass?: string;
-  headerVariant?: "default" | "island";
-  brandHref?: string;
   showSplashCursor?: boolean;
-  navItems?: NavItem[];
-  footerGroups?: FooterGroup[];
-  scripts?: ScriptItem[];
 }
 
 const {
   title,
+  description = "Aniloom Technologies builds and supports digital products across software engineering, games, playable experiences, quality engineering, design, and art.",
   bodyClass = "",
-  headerVariant = "default",
-  brandHref = "/",
   showSplashCursor = true,
-  navItems = [
-    { href: "/insights/", label: "Insights" },
-    { href: "/#contact", label: "Contact Us" },
-  ],
-  footerGroups = [
-    {
-      title: "Company",
-      items: [
-        { href: "/", label: "Home" },
-        { href: "/insights/", label: "Insights" },
-        { href: "mailto:support@aniloom.tech", label: "support@aniloom.tech" },
-      ],
-    },
-    {
-      title: "Services",
-      items: [
-        { href: "/education/", label: "Education" },
-        { href: "/unity-assets/", label: "Unity Assets" },
-        { href: "/#contact", label: "Start a Project" },
-      ],
-    },
-    {
-      title: "Labs",
-      items: [
-        { href: "/world-clock/", label: "World Clock" },
-        { href: "/life-weeks/", label: "Life Weeks" },
-        { href: "/test-scene/", label: "3D Test" },
-      ],
-    },
-    {
-      title: "Legal",
-      items: [
-        { href: "/privacy-policy/", label: "Privacy Policy" },
-        { href: "/terms-of-use/", label: "Terms of Use" },
-      ],
-    },
-  ],
-  scripts = [],
 } = Astro.props;
 
-const bodyClasses = [bodyClass].filter(Boolean).join(" ");
+const pathname = Astro.url.pathname;
+const canonical = new URL(pathname, "https://aniloom.tech");
+const navItems = [
+  { href: "/capabilities/", label: "Capabilities", match: "/capabilities" },
+  { href: "/how-we-work/", label: "How We Work", match: "/how-we-work" },
+  { href: "/about/", label: "About", match: "/about" },
+  { href: "/insights/", label: "Notes", match: "/insights" },
+];
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en" class="theme-dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#07100f" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Aniloom Technologies" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical.toString()} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%2377e8c6%22/><path d=%22M8 23 14.2 8h3.7L24 23h-3.9l-1.2-3.2h-6l-1.2 3.2H8Zm6-6.4h3.8L15.9 11 14 16.6Z%22 fill=%22%2307100f%22/></svg>" />
     <title>{title}</title>
     <style is:inline>
-      html,
-      body {
-        background: #040a13;
-        color: #f2f6ff;
-      }
+      html, body { background: #07100f; color: #f4f7f3; }
     </style>
     <script is:inline>
       (() => {
-        const storageKey = "aniloom-theme";
-        const saved = localStorage.getItem(storageKey);
-        const theme = saved === "light" || saved === "dark" ? saved : "dark";
-        const className = theme === "light" ? "theme-light" : "theme-dark";
-        const palette =
-          theme === "light"
-            ? { background: "#f5f1e8", text: "#1a2431" }
-            : { background: "#040a13", text: "#f2f6ff" };
-        document.documentElement.dataset.initialTheme = theme;
-        document.documentElement.classList.remove("theme-light", "theme-dark");
-        document.documentElement.classList.add(className);
-        document.documentElement.style.backgroundColor = palette.background;
-        document.documentElement.style.color = palette.text;
-        document.documentElement.style.setProperty("--background", palette.background);
-        document.documentElement.style.setProperty("--text-primary", palette.text);
-        document.addEventListener(
-          "DOMContentLoaded",
-          () => {
-            document.body.classList.remove("theme-light", "theme-dark");
-            document.body.classList.add(className);
-            document.body.style.backgroundColor = palette.background;
-            document.body.style.color = palette.text;
-          },
-          { once: true }
-        );
+        const key = "aniloom-theme";
+        let saved = null;
+        try { saved = localStorage.getItem(key); } catch {}
+        const mode = saved === "light" || saved === "dark" ? saved : "dark";
+        document.documentElement.className = mode === "light" ? "theme-light" : "theme-dark";
+        document.documentElement.dataset.initialTheme = mode;
       })();
     </script>
     <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
-  <body class={bodyClasses} data-theme-ready="false">
+  <body class={bodyClass} data-theme-ready="false">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
     {showSplashCursor && (
       <SplashCursor
         client:load
-        DYE_RESOLUTION={1024}
-        SIM_RESOLUTION={96}
-        SPLAT_RADIUS={0.12}
-        SPLAT_FORCE={4200}
-        COLOR_UPDATE_SPEED={6}
+        DYE_RESOLUTION={768}
+        SIM_RESOLUTION={72}
+        SPLAT_RADIUS={0.1}
+        SPLAT_FORCE={3200}
+        COLOR_UPDATE_SPEED={5}
       />
     )}
-    {
-      headerVariant === "island" ? (
-        <header class="island-header">
-          <a class="floating-island floating-island--brand" href={brandHref}>Aniloom</a>
-          <div class="floating-island floating-island--controls">
-            <button class="switch theme-switch" data-theme-toggle data-state="night" data-ready="false" type="button" aria-pressed="false">
-              <span class="switch-track">
-                <span class="switch-label" data-value="night" aria-hidden="true">
-                  <img class="theme-icon" src="/assets/images/moon_icon.png" alt="" />
-                </span>
-                <span class="switch-label" data-value="day" aria-hidden="true">
-                  <img class="theme-icon" src="/assets/images/sun_icon.png" alt="" />
-                </span>
-                <span class="switch-thumb"></span>
-              </span>
-            </button>
-          </div>
-        </header>
-      ) : (
-        <header class="site-header">
-          <a class="site-brand" href={brandHref}>Aniloom</a>
-          <nav class="site-nav">
-            {navItems.map((item) => (
-              <a href={item.href}>{item.label}</a>
-            ))}
-          </nav>
-          <div class="header-controls">
-            <button class="switch theme-switch" data-theme-toggle data-state="night" data-ready="false" type="button" aria-pressed="false">
-              <span class="switch-track">
-                <span class="switch-label" data-value="night" aria-hidden="true">
-                  <img class="theme-icon" src="/assets/images/moon_icon.png" alt="" />
-                </span>
-                <span class="switch-label" data-value="day" aria-hidden="true">
-                  <img class="theme-icon" src="/assets/images/sun_icon.png" alt="" />
-                </span>
-                <span class="switch-thumb"></span>
-              </span>
-            </button>
-          </div>
-        </header>
-      )
-    }
 
-    <div class="page-shell">
-      <slot />
-    </div>
+    <header class="site-header" data-site-header>
+      <a class="site-brand" href="/" aria-label="Aniloom Technologies home">
+        <span class="site-brand__mark" aria-hidden="true">A</span>
+        <span>Aniloom</span>
+      </a>
+
+      <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-navigation">
+        <span>Menu</span>
+        <span class="menu-toggle__icon" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="site-navigation" data-site-nav aria-label="Primary navigation">
+        {navItems.map((item) => (
+          <a href={item.href} aria-current={pathname.startsWith(item.match) ? "page" : undefined}>{item.label}</a>
+        ))}
+        <button class="theme-toggle" data-theme-toggle data-state="night" type="button" aria-pressed="false">
+          <span class="theme-toggle__label theme-toggle__label--dark">Dark</span>
+          <span class="theme-toggle__label theme-toggle__label--light">Light</span>
+          <span class="theme-toggle__thumb" aria-hidden="true"></span>
+        </button>
+        <button class="button button--small" type="button" data-contact-open>Discuss your project</button>
+      </nav>
+    </header>
+
+    <div class="page-shell"><slot /></div>
 
     <div class="contact-modal" data-contact-modal aria-hidden="true">
       <div class="contact-modal__backdrop" data-contact-close></div>
-      <div
-        class="contact-modal__content"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="contact-modal-title"
-        tabindex="-1"
-      >
-        <button class="contact-modal__close" type="button" aria-label="Close contact form" data-contact-close>
-          <span></span>
-          <span></span>
-        </button>
-        <span class="section-caption">Contact</span>
-        <h2 id="contact-modal-title">Start a Project</h2>
-        <p>
-          Share the essentials and we will reply with the most useful next step.
-        </p>
+      <div class="contact-modal__content" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" tabindex="-1">
+        <button class="contact-modal__close" type="button" aria-label="Close contact form" data-contact-close><span></span><span></span></button>
+        <span class="eyebrow">A practical first conversation</span>
+        <h2 id="contact-modal-title">What does your product need next?</h2>
+        <p>Share the goal, the current state, and the expertise that is missing. We will reply with a useful next step.</p>
         <form class="contact-form" data-contact-form>
-          <label class="contact-field">
-            <span>Name</span>
-            <input type="text" name="name" autocomplete="name" required />
-          </label>
-          <label class="contact-field">
-            <span>Email</span>
-            <input type="email" name="email" autocomplete="email" required />
-          </label>
-          <label class="contact-field contact-field--full">
-            <span>Project outline</span>
-            <textarea
-              name="project"
-              rows="5"
-              placeholder="What are you building, what stage are you at, and what kind of help do you need?"
-              required
-            ></textarea>
-          </label>
-          <button class="primary-action" type="submit">Draft Email</button>
+          <label class="contact-field"><span>Name</span><input type="text" name="name" autocomplete="name" required /></label>
+          <label class="contact-field"><span>Email</span><input type="email" name="email" autocomplete="email" required /></label>
+          <label class="contact-field contact-field--full"><span>Product or project</span><textarea name="project" rows="5" placeholder="What are you building, where is it now, and what needs to change?" required></textarea></label>
+          <button class="button" type="submit">Draft email</button>
         </form>
+        <p class="contact-modal__direct">Or email <a href="mailto:support@aniloom.tech">support@aniloom.tech</a></p>
       </div>
     </div>
 
     <footer class="site-footer">
+      <div class="site-footer__lead">
+        <p class="eyebrow">Aniloom Technologies</p>
+        <h2>Bring the goal.<br />We will shape the work.</h2>
+        <button class="text-link text-link--large" type="button" data-contact-open>Discuss your project <span>↗</span></button>
+      </div>
       <div class="site-footer__grid">
-        <div class="site-footer__brand">
-          <a class="site-brand" href="/">Aniloom</a>
-          <p>
-            Aniloom Technologies LLC builds client-facing software, internal tooling, and
-            interactive digital experiences.
-          </p>
+        <div>
+          <a class="site-brand site-brand--footer" href="/"><span class="site-brand__mark" aria-hidden="true">A</span><span>Aniloom</span></a>
+          <p class="site-footer__summary">Software development, design, and testing for web, mobile, games, and interactive products.</p>
         </div>
-        {
-          footerGroups.map((group) => (
-            <div class="site-footer__group">
-              <h2>{group.title}</h2>
-              <div class="site-footer__links">
-                {group.items.map((item) => (
-                  <a href={item.href}>{item.label}</a>
-                ))}
-              </div>
-            </div>
-          ))
-        }
+        <div class="site-footer__links">
+          <p class="footer-label">Explore</p>
+          <a href="/capabilities/">Capabilities</a><a href="/playable-ads/">Playable Ads</a><a href="/quality-engineering/">Quality Engineering</a><a href="/insights/">Notes</a>
+        </div>
+        <div class="site-footer__links">
+          <p class="footer-label">Company</p>
+          <a href="/how-we-work/">How We Work</a><a href="/about/">About</a><a href="mailto:support@aniloom.tech">Email us</a><a href="/privacy-policy/">Privacy</a><a href="/terms-of-use/">Terms</a>
+        </div>
       </div>
-      <div class="site-footer__bottom">
-        <span>© 2026 Aniloom Technologies LLC</span>
-      </div>
+      <div class="site-footer__bottom"><span>© 2026 Aniloom Technologies LLC</span><span>Built for useful conversations.</span></div>
       <div class="site-footer__pull" data-footer-pull aria-hidden="true">
-        <blockquote class="site-footer__quote" data-footer-quote>
-          <p data-footer-quote-text></p>
-          <cite data-footer-quote-source></cite>
-        </blockquote>
+        <blockquote class="site-footer__quote" data-footer-quote><p data-footer-quote-text></p><cite data-footer-quote-source></cite></blockquote>
       </div>
     </footer>
 
     <script src="/assets/js/theme.js" defer></script>
     <script src="/assets/js/contact-modal.js" defer></script>
     <script src="/assets/js/footer-pull.js" defer></script>
-    {
-      scripts.map((script) => (
-        <script src={script.src} type={script.type} defer={script.type !== "module"}></script>
-      ))
-    }
+    <script src="/assets/js/site.js" defer></script>
   </body>
 </html>

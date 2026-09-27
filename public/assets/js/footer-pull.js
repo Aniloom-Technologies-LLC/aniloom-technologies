@@ -26,8 +26,8 @@ if (footer && pull && quoteText && quoteSource) {
       source: "Warren Buffett",
     },
     {
-      text: "We use AI not for hype, but to create measurable value for our partners.",
-      source: "Inokentii Anikieiev",
+      text: "AI moves the work faster. Experienced people remain responsible for what ships.",
+      source: "Aniloom Technologies",
     },
   ];
 
@@ -37,7 +37,6 @@ if (footer && pull && quoteText && quoteSource) {
   quoteSource.textContent = quotes[quoteIndex].source;
 
   let pullAmount = 0;
-  let animating = false;
   let pullActivated = false;
   let hideTimer = null;
 
@@ -75,7 +74,6 @@ if (footer && pull && quoteText && quoteSource) {
   };
 
   const collapse = () => {
-    animating = false;
     setPull(0);
   };
 
@@ -94,7 +92,6 @@ if (footer && pull && quoteText && quoteSource) {
 
   const revealBy = (amount) => {
     if (!isScrollable()) return;
-    animating = false;
     setPull(pullAmount + amount);
     registerPull();
 

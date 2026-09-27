@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import {
   AdditiveBlending,
-  Clock,
   Mesh,
   OrthographicCamera,
   PlaneGeometry,
@@ -305,6 +304,8 @@ export default function FloatingLines({
   const bottomLineDistance = enabledWaves.includes('bottom') ? getLineDistance('bottom') * 0.01 : 0.01;
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     const container = containerRef.current;
     if (!container) return;
 
@@ -388,7 +389,7 @@ export default function FloatingLines({
     const mesh = new Mesh(geometry, material);
     scene.add(mesh);
 
-    const clock = new Clock();
+    const startedAt = performance.now();
 
     const setSize = () => {
       const element = containerRef.current;
@@ -448,7 +449,7 @@ export default function FloatingLines({
     const renderLoop = () => {
       if (!active) return;
 
-      uniforms.iTime.value = clock.getElapsedTime();
+      uniforms.iTime.value = (performance.now() - startedAt) / 1000;
 
       if (interactive) {
         currentMouseRef.current.lerp(targetMouseRef.current, mouseDamping);

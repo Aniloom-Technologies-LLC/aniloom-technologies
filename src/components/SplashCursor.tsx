@@ -72,8 +72,11 @@ export default function SplashCursor({
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const canvasRefValue = canvasRef.current;
+    if (!canvasRefValue) return;
+    const canvas = canvasRefValue;
 
     let pointers: Pointer[] = [pointerPrototype()];
 
@@ -1299,7 +1302,7 @@ export default function SplashCursor({
         position: 'fixed',
         top: 0,
         left: 0,
-        zIndex: 999,
+        zIndex: 5,
         pointerEvents: 'none',
         width: '100%',
         height: '100%'
