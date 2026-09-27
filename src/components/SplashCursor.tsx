@@ -1302,7 +1302,9 @@ export default function SplashCursor({
         position: 'fixed',
         top: 0,
         left: 0,
-        zIndex: 80,
+        // Keep the fluid response as an ambient background layer. Content,
+        // cards, navigation, and overlays should always render above it.
+        zIndex: 1,
         pointerEvents: 'none',
         width: '100%',
         height: '100%'
