@@ -19,9 +19,10 @@ const pathname = Astro.url.pathname;
 const canonical = new URL(pathname, "https://aniloom.tech");
 const navItems = [
   { href: "/capabilities/", label: "Capabilities", match: "/capabilities" },
+  { href: "/playable-ads/", label: "Playable Ads", match: "/playable-ads" },
+  { href: "/quality-engineering/", label: "Quality Engineering", match: "/quality-engineering" },
   { href: "/how-we-work/", label: "How We Work", match: "/how-we-work" },
   { href: "/about/", label: "About", match: "/about" },
-  { href: "/insights/", label: "Notes", match: "/insights" },
 ];
 ---
 
@@ -85,6 +86,7 @@ const navItems = [
         {navItems.map((item) => (
           <a href={item.href} aria-current={pathname.startsWith(item.match) ? "page" : undefined}>{item.label}</a>
         ))}
+        <a class="site-nav__mobile-only" href="/insights/" aria-current={pathname.startsWith("/insights") ? "page" : undefined}>Notes</a>
         <button class="theme-toggle" data-theme-toggle data-state="night" type="button" aria-pressed="false">
           <span class="theme-toggle__label theme-toggle__label--dark">Dark</span>
           <span class="theme-toggle__label theme-toggle__label--light">Light</span>
@@ -107,7 +109,8 @@ const navItems = [
           <label class="contact-field"><span>Name</span><input type="text" name="name" autocomplete="name" required /></label>
           <label class="contact-field"><span>Email</span><input type="email" name="email" autocomplete="email" required /></label>
           <label class="contact-field contact-field--full"><span>Product or project</span><textarea name="project" rows="5" placeholder="What are you building, where is it now, and what needs to change?" required></textarea></label>
-          <button class="button" type="submit">Draft email</button>
+          <button class="button" type="submit" aria-describedby="contact-draft-note">Draft email</button>
+          <p class="contact-form__note" id="contact-draft-note">This opens a draft in your email app. Nothing is sent from the website.</p>
         </form>
         <p class="contact-modal__direct">Or email <a href="mailto:support@aniloom.tech">support@aniloom.tech</a></p>
       </div>

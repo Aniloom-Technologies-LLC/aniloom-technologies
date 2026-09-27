@@ -9,6 +9,10 @@ if (modal && modalContent && form) {
   const CLOSE_DURATION_MS = 500;
   let lastTrigger = null;
   let closeTimer = null;
+  const getFocusableElements = () =>
+    [...modalContent.querySelectorAll("button, input, textarea, a[href]")].filter(
+      (element) => !element.hasAttribute("disabled")
+    );
 
   const toggleBodyScroll = (locked) => {
     if (locked) {
@@ -33,8 +37,13 @@ if (modal && modalContent && form) {
     modal.setAttribute("aria-hidden", "false");
     modal.classList.add("is-open");
     toggleBodyScroll(true);
+    const focusFirstControl = () => getFocusableElements()[0]?.focus();
     window.requestAnimationFrame(() => {
-      modalContent.focus();
+      focusFirstControl();
+      window.setTimeout(focusFirstControl, 0);
+      window.setTimeout(() => {
+        if (modal.classList.contains("is-open")) focusFirstControl();
+      }, 300);
     });
   };
 
@@ -46,7 +55,12 @@ if (modal && modalContent && form) {
       closeTimer = null;
     }, CLOSE_DURATION_MS);
     if (lastTrigger instanceof HTMLElement) {
-      lastTrigger.focus();
+      const triggerNavigation = lastTrigger.closest("[data-site-nav]");
+      const triggerIsVisible =
+        lastTrigger.getClientRects().length > 0 &&
+        (!triggerNavigation || getComputedStyle(triggerNavigation).visibility === "visible");
+      const returnTarget = triggerIsVisible ? lastTrigger : document.querySelector("[data-menu-toggle]");
+      returnTarget?.focus();
     }
     lastTrigger = null;
   };
@@ -65,6 +79,22 @@ if (modal && modalContent && form) {
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && modal.classList.contains("is-open")) {
       closeModal();
+    }
+    if (event.key === "Tab" && modal.classList.contains("is-open")) {
+      const focusable = getFocusableElements();
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!first || !last) return;
+      if (!modalContent.contains(document.activeElement)) {
+        event.preventDefault();
+        (event.shiftKey ? last : first).focus();
+      } else if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     }
   });
 

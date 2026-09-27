@@ -3,10 +3,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import GradientText from "../components/GradientText.astro";
 
 const groups = [
-  { id: "product-engineering", number: "01", title: "Product Engineering", lead: "Build, continue, or recover a digital product around the state your team needs to reach.", items: ["Websites and web applications", "Mobile applications", "Internal tools", "Product recovery and continuation", "Ongoing development and support"] },
-  { id: "games-playables", number: "02", title: "Games & Playable Experiences", lead: "Interactive products that connect game thinking, technical execution, and the experience of the player or customer.", items: ["Unity game development", "HTML5 / WebGL browser games", "Playable ads and microgames", "Gamification", "Game-supporting digital experiences"] },
-  { id: "quality-engineering", number: "03", title: "Quality Engineering & Testing", lead: "Make product risk, tested areas, open defects, and release readiness visible before consequential decisions.", items: ["Functional and regression testing", "Build and release testing", "Performance and compatibility review", "UX and design-quality review", "Test automation where appropriate"] },
-  { id: "design-art", number: "04", title: "Design & Art", lead: "Connect interface, visual direction, assets, and animation to the way the product is built and used.", items: ["UI/UX", "Visual direction", "2D and 3D production", "Character sculpting and modeling", "Animation for Unity and web"] },
+  { id: "product-engineering", number: "01", title: "Product Engineering", lead: "Build, continue, or recover a digital product around the state your team needs to reach.", fit: "Good fit when a product needs a complete build, a missing engineering capability, or a reliable path out of a stalled state.", items: ["Websites and web applications", "Mobile applications", "Internal tools", "Product recovery and continuation", "Ongoing development and support"] },
+  { id: "games-playables", number: "02", title: "Games & Playable Experiences", lead: "Interactive products that connect game thinking, technical execution, and the experience of the player or customer.", fit: "Good fit when the interaction itself has a clear product or campaign job to do.", href: "/playable-ads/", cta: "Explore Playable Ads", items: ["Unity game development", "HTML5 / WebGL browser games", "Playable ads and microgames", "Gamification", "Game-supporting digital experiences"] },
+  { id: "quality-engineering", number: "03", title: "Quality Engineering & Testing", lead: "Make product risk, tested areas, open defects, and release readiness visible before consequential decisions.", fit: "Good fit when a release, delivery cadence, or reusable QA system needs clearer evidence and risk ownership.", href: "/quality-engineering/", cta: "Explore Quality Engineering", items: ["Functional and regression testing", "Build and release testing", "Performance and compatibility review", "UX and design-quality review", "Test automation where appropriate"] },
+  { id: "design-art", number: "04", title: "Design & Art", lead: "Connect interface, visual direction, assets, and animation to the way the product is built and used.", fit: "Good fit when visual and interaction work must stay connected to implementation instead of arriving as a separate handoff.", items: ["UI/UX", "Visual direction", "2D and 3D production", "Character sculpting and modeling", "Animation for Unity and web"] },
 ];
 ---
 
@@ -22,7 +22,7 @@ const groups = [
       {groups.map((group) => (
         <article class="capability-detail" id={group.id} data-reveal>
           <span class="capability-detail__number">{group.number}</span>
-          <div><h2>{group.title}</h2><p class="capability-detail__lead">{group.lead}</p></div>
+          <div><h2>{group.title}</h2><p class="capability-detail__lead">{group.lead}</p><p class="capability-detail__fit">{group.fit}</p>{group.href && <a class="text-link" href={group.href}>{group.cta} <span>↗</span></a>}</div>
           <ul class="clean-list">{group.items.map((item) => <li>{item}</li>)}</ul>
         </article>
       ))}
