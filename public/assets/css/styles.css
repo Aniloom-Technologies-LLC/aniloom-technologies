@@ -412,11 +412,11 @@ p { color: var(--muted); }
 .legal-page .article-shell > p { margin-bottom: 60px; }
 
 /* Contact modal */
-.contact-modal { position: fixed; z-index: 300; inset: 0; display: grid; place-items: center; padding: 20px; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .35s ease, visibility .35s ease; }
-.contact-modal.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
+.contact-modal { position: fixed; z-index: 300; inset: 0; display: grid; place-items: center; padding: 20px; visibility: hidden; pointer-events: none; transition: visibility 0s linear .35s; }
+.contact-modal.is-open { visibility: visible; pointer-events: auto; transition-delay: 0s; }
 .contact-modal__backdrop { position: absolute; inset: 0; background: rgba(3, 9, 8, .72); backdrop-filter: blur(12px); }
-.contact-modal__content { position: relative; width: min(760px, 100%); max-height: calc(100vh - 40px); overflow: auto; padding: clamp(30px, 5vw, 58px); border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface-solid); box-shadow: var(--shadow); transform: translateY(22px) scale(.98); transition: transform .35s ease; }
-.contact-modal.is-open .contact-modal__content { transform: translateY(0) scale(1); }
+.contact-modal__content { position: relative; width: min(760px, 100%); max-height: calc(100vh - 40px); overflow: auto; padding: clamp(30px, 5vw, 58px); border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface-solid); box-shadow: var(--shadow); opacity: 0; transform: translateY(22px) scale(.98); transition: opacity .35s ease, transform .35s ease; }
+.contact-modal.is-open .contact-modal__content { opacity: 1; transform: translateY(0) scale(1); }
 .contact-modal__content h2 { margin: 24px 50px 20px 0; font-size: clamp(2.4rem, 5vw, 4.5rem); font-weight: 500; }
 .contact-modal__close { position: absolute; top: 24px; right: 24px; width: 42px; aspect-ratio: 1; border: 1px solid var(--line); border-radius: 50%; background: transparent; cursor: pointer; }
 .contact-modal__close span { position: absolute; top: 50%; left: 50%; width: 16px; height: 1px; background: var(--text); transform: translate(-50%, -50%) rotate(45deg); }
