@@ -2,8 +2,8 @@ const THEME_STORAGE_KEY = "aniloom-theme";
 
 const resolvePalette = (mode) =>
   mode === "light"
-    ? { background: "#f1f0e9", text: "#101b18" }
-    : { background: "#07100f", text: "#f4f7f3" };
+    ? { background: "#f5f8fa", text: "#15202a" }
+    : { background: "#07131a", text: "#f5f8fa" };
 
 const applyThemeClass = (mode) => {
   const palette = resolvePalette(mode);
@@ -31,7 +31,7 @@ const resolveInitialTheme = () => {
   if (saved === "light" || saved === "dark") {
     return saved;
   }
-  return "dark";
+  return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
 };
 
 const initHeaderControls = () => {
@@ -62,16 +62,16 @@ const initHeaderControls = () => {
     });
     themeToggles.forEach((button) => {
       button.addEventListener("click", () => {
-      const nextTheme = document.body.classList.contains("theme-dark")
-        ? "light"
-        : "dark";
-      document.body.dataset.themeReady = "true";
-      applyThemeClass(nextTheme);
-      localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
-      themeToggles.forEach((toggle) => {
-        updateThemeSwitch(toggle, nextTheme);
+        const nextTheme = document.body.classList.contains("theme-dark")
+          ? "light"
+          : "dark";
+        document.body.dataset.themeReady = "true";
+        applyThemeClass(nextTheme);
+        localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+        themeToggles.forEach((toggle) => {
+          updateThemeSwitch(toggle, nextTheme);
+        });
       });
-    });
     });
   }
 };

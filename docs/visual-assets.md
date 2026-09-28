@@ -31,6 +31,21 @@ These images explain a concept and do not claim to document an Aniloom project, 
 
 The editorial prompts use `#FFC000` for the primary decision or accountable point, `#56D3FF` for connection and system flow, white highlights, and cool ink structure. They prohibit fake interfaces, metrics, client evidence, glossy 3D, neon science-fiction motifs, and logo-derived decoration.
 
+## Product icons
+
+The favicon and installable app icons are resized exports of the approved square logo source at `/Users/inokentii/My Drive/AniProjects/Ani Logo.png`. The source file is provenance only and is not a runtime dependency of the website.
+
+| Asset | Size | Use |
+| --- | --- | --- |
+| `favicon.ico` | 48 x 48 | Browser fallback icon |
+| `favicon-16x16.png` | 16 x 16 | Small browser icon |
+| `favicon-32x32.png` | 32 x 32 | Standard browser icon |
+| `apple-touch-icon.png` | 180 x 180 | Apple home-screen icon |
+| `icon-192.png` | 192 x 192 | Web app manifest icon |
+| `icon-512.png` | 512 x 512 | Large web app manifest icon |
+
+These exports are the only website use of the supplied logo artwork. The header, navigation, footer, and page content continue to use the live-text Aniloom wordmark and the existing typographic brand mark rather than embedding the source logo.
+
 ## Replacement and review
 
 - Placeholder captions must remain visible while generated people or places are used.

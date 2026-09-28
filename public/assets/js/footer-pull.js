@@ -41,15 +41,20 @@ if (footer && footerStage && pull && quoteText && quoteSource) {
   let pullActivated = false;
   let hideTimer = null;
 
-  const maxPull = 224;
-  const fullRevealPull = 176;
+  const maxPull = 250;
+  const fullRevealPull = 220;
   const isScrollable = () =>
     document.documentElement.scrollHeight > window.innerHeight + 4;
 
-  const setPull = (value) => {
+  const setPull = (value, keepAtBottom = false) => {
     pullAmount = Math.max(0, Math.min(maxPull, value));
     footerStage.style.setProperty("--footer-pull", `${pullAmount}px`);
     pull.setAttribute("aria-hidden", pullAmount > 6 ? "false" : "true");
+    if (keepAtBottom) {
+      window.requestAnimationFrame(() => {
+        window.scrollTo(0, document.documentElement.scrollHeight);
+      });
+    }
     if (pullAmount < 16) {
       pullActivated = false;
     }
@@ -93,11 +98,11 @@ if (footer && footerStage && pull && quoteText && quoteSource) {
 
   const revealBy = (amount) => {
     if (!isScrollable()) return;
-    setPull(pullAmount + amount);
+    setPull(pullAmount + amount, true);
     registerPull();
 
     if (amount > 10 || pullAmount > 52) {
-      setPull(fullRevealPull);
+      setPull(fullRevealPull, true);
     }
 
     scheduleHide();

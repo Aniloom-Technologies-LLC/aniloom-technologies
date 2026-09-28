@@ -12,7 +12,7 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BaseLayout title={`${post.data.title} | Aniloom Technologies`} description={post.data.description}>
+<BaseLayout title={`${post.data.title} | Aniloom Technologies`} description={post.data.description} ogType="article" image={post.data.hero ? `${post.data.hero}.webp` : undefined} imageAlt={post.data.heroAlt} imageWidth={post.data.heroWidth} imageHeight={post.data.heroHeight}>
   <main id="main-content">
     <article class="article-shell section-shell">
       <header class="article-header">

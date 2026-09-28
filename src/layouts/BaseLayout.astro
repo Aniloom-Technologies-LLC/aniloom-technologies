@@ -6,6 +6,11 @@ interface Props {
   description?: string;
   bodyClass?: string;
   showSplashCursor?: boolean;
+  ogType?: "website" | "article";
+  image?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
 }
 
 const {
@@ -13,10 +18,16 @@ const {
   description = "Aniloom Technologies builds and supports digital products across software engineering, games, playable experiences, quality engineering, design, and art.",
   bodyClass = "",
   showSplashCursor = true,
+  ogType = "website",
+  image,
+  imageAlt,
+  imageWidth,
+  imageHeight,
 } = Astro.props;
 
 const pathname = Astro.url.pathname;
 const canonical = new URL(pathname, "https://aniloom.tech");
+const socialImage = image ? new URL(image, canonical) : null;
 const navItems = [
   { href: "/capabilities/", label: "Capabilities", match: "/capabilities" },
   { href: "/playable-ads/", label: "Playable Ads", match: "/playable-ads" },
@@ -32,25 +43,40 @@ const navItems = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#07100f" />
-    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#07131a" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="Aniloom Technologies" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical.toString()} />
-    <meta name="twitter:card" content="summary_large_image" />
+    {socialImage && <meta property="og:image" content={socialImage.toString()} />}
+    {socialImage && <meta property="og:image:type" content="image/webp" />}
+    {socialImage && imageAlt && <meta property="og:image:alt" content={imageAlt} />}
+    {socialImage && imageWidth && <meta property="og:image:width" content={String(imageWidth)} />}
+    {socialImage && imageHeight && <meta property="og:image:height" content={String(imageHeight)} />}
+    <meta name="twitter:card" content={socialImage ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {socialImage && <meta name="twitter:image" content={socialImage.toString()} />}
+    {socialImage && imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%2377e8c6%22/><path d=%22M8 23 14.2 8h3.7L24 23h-3.9l-1.2-3.2h-6l-1.2 3.2H8Zm6-6.4h3.8L15.9 11 14 16.6Z%22 fill=%22%2307100f%22/></svg>" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <title>{title}</title>
     <style is:inline>
-      html, body { background: #07100f; color: #f4f7f3; }
+      html, body { background: #07131a; color: #f5f8fa; }
     </style>
     <script is:inline>
       (() => {
         const key = "aniloom-theme";
         let saved = null;
         try { saved = localStorage.getItem(key); } catch {}
-        const mode = saved === "light" || saved === "dark" ? saved : "dark";
+        const systemLight = window.matchMedia?.("(prefers-color-scheme: light)").matches;
+        const mode = saved === "light" || saved === "dark" ? saved : (systemLight ? "light" : "dark");
         document.documentElement.className = mode === "light" ? "theme-light" : "theme-dark";
         document.documentElement.dataset.initialTheme = mode;
       })();
@@ -138,10 +164,10 @@ const navItems = [
           </div>
         </div>
         <div class="site-footer__bottom"><span>© 2026 Aniloom Technologies LLC</span><span>Built for useful conversations.</span></div>
-        <div class="site-footer__pull" data-footer-pull aria-hidden="true">
-          <blockquote class="site-footer__quote" data-footer-quote><p data-footer-quote-text></p><cite data-footer-quote-source></cite></blockquote>
-        </div>
       </footer>
+      <div class="site-footer__pull" data-footer-pull aria-hidden="true">
+        <blockquote class="site-footer__quote" data-footer-quote><p data-footer-quote-text></p><cite data-footer-quote-source></cite></blockquote>
+      </div>
     </div>
 
     <script src="/assets/js/theme.js" defer></script>

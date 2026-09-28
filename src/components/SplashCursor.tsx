@@ -1152,45 +1152,16 @@ export default function SplashCursor({
     }
 
     function generateColor(): ColorRGB {
-      const color = HSVtoRGB(Math.random(), 1.0, 1.0);
+      const brandPalette: ColorRGB[] = [
+        { r: 1, g: 0.753, b: 0 },
+        { r: 0.337, g: 0.827, b: 1 },
+        { r: 1, g: 1, b: 1 }
+      ];
+      const color = brandPalette[Math.floor(Math.random() * brandPalette.length)];
       color.r *= 0.15;
       color.g *= 0.15;
       color.b *= 0.15;
       return color;
-    }
-
-    function HSVtoRGB(h: number, s: number, v: number): ColorRGB {
-      let r = 0;
-      let g = 0;
-      let b = 0;
-
-      const i = Math.floor(h * 6);
-      const f = h * 6 - i;
-      const p = v * (1 - s);
-      const q = v * (1 - f * s);
-      const t = v * (1 - (1 - f) * s);
-
-      switch (i % 6) {
-        case 0:
-          r = v; g = t; b = p;
-          break;
-        case 1:
-          r = q; g = v; b = p;
-          break;
-        case 2:
-          r = p; g = v; b = t;
-          break;
-        case 3:
-          r = p; g = q; b = v;
-          break;
-        case 4:
-          r = t; g = p; b = v;
-          break;
-        default:
-          r = v; g = p; b = q;
-      }
-
-      return { r, g, b };
     }
 
     function wrap(value: number, min: number, max: number) {
@@ -1297,27 +1268,11 @@ export default function SplashCursor({
   ]);
 
   return (
-    <div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        // Keep the fluid response as an ambient background layer. Content,
-        // cards, navigation, and overlays should always render above it.
-        zIndex: 1,
-        pointerEvents: 'none',
-        width: '100%',
-        height: '100%'
-      }}
-    >
+    <div className="splash-cursor-layer" aria-hidden="true">
       <canvas
         ref={canvasRef}
         id="fluid"
-        style={{
-          width: '100vw',
-          height: '100vh',
-          display: 'block'
-        }}
+        className="splash-cursor-layer__canvas"
       />
     </div>
   );
