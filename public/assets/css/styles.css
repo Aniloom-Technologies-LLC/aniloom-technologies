@@ -175,8 +175,6 @@ p { color: var(--muted); }
 }
 .site-brand { display: inline-flex; align-items: center; gap: 10px; font-size: .9rem; font-weight: 700; letter-spacing: -.02em; }
 .site-brand__mark { display: grid; place-items: center; width: 32px; aspect-ratio: 1; border-radius: 50%; background: var(--accent); color: var(--button-text); font-family: "DM Mono", monospace; font-size: .8rem; }
-.site-brand__mark--logo { overflow: hidden; border-radius: 8px; background: transparent; }
-.site-brand__mark--logo img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .site-nav { display: flex; align-items: center; gap: 5px; }
 .site-nav > a { padding: 10px 13px; border-radius: 999px; color: var(--muted); font-size: .78rem; font-weight: 600; transition: color .2s ease, background .2s ease; }
 .site-nav > a:hover, .site-nav > a:focus-visible { color: var(--text); background: var(--surface-soft); }
