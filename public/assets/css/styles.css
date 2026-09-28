@@ -175,6 +175,8 @@ p { color: var(--muted); }
 }
 .site-brand { display: inline-flex; align-items: center; gap: 10px; font-size: .9rem; font-weight: 700; letter-spacing: -.02em; }
 .site-brand__mark { display: grid; place-items: center; width: 32px; aspect-ratio: 1; border-radius: 50%; background: var(--accent); color: var(--button-text); font-family: "DM Mono", monospace; font-size: .8rem; }
+.site-brand__mark--logo { overflow: hidden; border-radius: 8px; background: transparent; }
+.site-brand__mark--logo img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .site-nav { display: flex; align-items: center; gap: 5px; }
 .site-nav > a { padding: 10px 13px; border-radius: 999px; color: var(--muted); font-size: .78rem; font-weight: 600; transition: color .2s ease, background .2s ease; }
 .site-nav > a:hover, .site-nav > a:focus-visible { color: var(--text); background: var(--surface-soft); }
@@ -189,7 +191,21 @@ p { color: var(--muted); }
 
 /* Hero */
 .hero { min-height: 100svh; display: flex; align-items: center; padding-top: 128px; padding-bottom: 76px; }
-.hero .floating-lines-container { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 0; z-index: 0; border-radius: var(--radius-lg); mask-image: linear-gradient(to bottom, transparent 0, #000 16%, #000 82%, transparent 100%); opacity: .68; }
+.hero .floating-lines-container {
+  position: absolute;
+  z-index: 0;
+  top: -8%;
+  bottom: -8%;
+  left: 50%;
+  width: 100dvw;
+  height: auto;
+  min-height: 0;
+  transform: translateX(-50%);
+  border-radius: 0;
+  -webkit-mask-image: radial-gradient(ellipse 82% 78% at 50% 50%, #000 0%, #000 54%, transparent 100%);
+  mask-image: radial-gradient(ellipse 82% 78% at 50% 50%, #000 0%, #000 54%, transparent 100%);
+  opacity: .68;
+}
 .hero__content { position: relative; z-index: 2; width: 100%; }
 .hero__eyebrow-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: clamp(40px, 8vh, 88px); }
 .availability { display: inline-flex; align-items: center; gap: 9px; color: var(--muted); font-family: "DM Mono", monospace; font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; }
