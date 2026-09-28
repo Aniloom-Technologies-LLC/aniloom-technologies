@@ -175,6 +175,8 @@ p { color: var(--muted); }
 }
 .site-brand { display: inline-flex; align-items: center; gap: 10px; font-size: .9rem; font-weight: 700; letter-spacing: -.02em; }
 .site-brand__mark { display: grid; place-items: center; width: 32px; aspect-ratio: 1; border-radius: 50%; background: var(--accent); color: var(--button-text); font-family: "DM Mono", monospace; font-size: .8rem; }
+.site-brand__mark--monogram { overflow: hidden; font-size: 2rem; font-weight: 300; line-height: 1; }
+.site-brand__mark--monogram > span { display: block; transform: scaleY(1.24); transform-origin: center; }
 .site-nav { display: flex; align-items: center; gap: 5px; }
 .site-nav > a { padding: 10px 13px; border-radius: 999px; color: var(--muted); font-size: .78rem; font-weight: 600; transition: color .2s ease, background .2s ease; }
 .site-nav > a:hover, .site-nav > a:focus-visible { color: var(--text); background: var(--surface-soft); }
@@ -440,8 +442,6 @@ p { color: var(--muted); }
 .site-footer__lead h2 { margin: 22px 0 42px; font-size: clamp(3.5rem, 7.5vw, 8rem); font-weight: 500; }
 .site-footer__grid { display: grid; grid-template-columns: 1.6fr .6fr .6fr; gap: 80px; padding-top: 42px; border-top: 1px solid var(--line); }
 .site-brand--footer { font-size: 1.05rem; }
-.site-brand--footer .site-brand__mark { overflow: hidden; font-size: 2rem; font-weight: 300; line-height: 1; }
-.site-brand--footer .site-brand__mark > span { display: block; transform: scaleY(1.24); transform-origin: center; }
 .site-footer__summary { max-width: 420px; margin: 28px 0 0; }
 .site-footer__links { display: flex; flex-direction: column; gap: 11px; }
 .site-footer__links .footer-label { margin-bottom: 12px; }
