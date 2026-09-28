@@ -304,7 +304,11 @@ export default function FloatingLines({
   const bottomLineDistance = enabledWaves.includes('bottom') ? getLineDistance('bottom') * 0.01 : 0.01;
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    const supportsAmbientMotion = window.matchMedia(
+      '(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)'
+    ).matches;
+    if (!supportsAmbientMotion || connection?.saveData) return;
 
     const container = containerRef.current;
     if (!container) return;
@@ -447,7 +451,10 @@ export default function FloatingLines({
     let raf = 0;
     let hasRevealed = false;
     const renderLoop = () => {
-      if (!active) return;
+      if (!active || document.hidden) {
+        raf = 0;
+        return;
+      }
 
       uniforms.iTime.value = (performance.now() - startedAt) / 1000;
 
@@ -471,11 +478,16 @@ export default function FloatingLines({
       }
       raf = requestAnimationFrame(renderLoop);
     };
+    const handleVisibilityChange = () => {
+      if (!document.hidden && active && raf === 0) renderLoop();
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
     renderLoop();
 
     return () => {
       active = false;
       cancelAnimationFrame(raf);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
 
       if (ro) ro.disconnect();
 

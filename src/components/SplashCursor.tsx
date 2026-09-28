@@ -72,7 +72,11 @@ export default function SplashCursor({
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    const supportsPointerEffect = window.matchMedia(
+      '(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)'
+    ).matches;
+    if (!supportsPointerEffect || connection?.saveData) return;
 
     const canvasRefValue = canvasRef.current;
     if (!canvasRefValue) return;
@@ -873,6 +877,10 @@ export default function SplashCursor({
     let animationFrameId = 0;
 
     function updateFrame() {
+      if (document.hidden) {
+        animationFrameId = 0;
+        return;
+      }
       const dt = calcDeltaTime();
       if (resizeCanvas()) initFramebuffers();
       updateColors(dt);
@@ -881,6 +889,16 @@ export default function SplashCursor({
       render(null);
       animationFrameId = requestAnimationFrame(updateFrame);
     }
+
+    const startAnimation = () => {
+      if (animationFrameId !== 0 || document.hidden) return;
+      lastUpdateTime = Date.now();
+      updateFrame();
+    };
+
+    const handleVisibilityChange = () => {
+      if (!document.hidden && pointers.some((pointer) => pointer.moved)) startAnimation();
+    };
 
     function calcDeltaTime() {
       const now = Date.now();
@@ -1183,8 +1201,8 @@ export default function SplashCursor({
       const posX = scaleByPixelRatio(event.clientX);
       const posY = scaleByPixelRatio(event.clientY);
       const color = generateColor();
-      updateFrame();
       updatePointerMoveData(pointer, posX, posY, color);
+      startAnimation();
       document.body.removeEventListener('mousemove', handleFirstMouseMove);
     };
 
@@ -1201,8 +1219,8 @@ export default function SplashCursor({
       for (let i = 0; i < touches.length; i += 1) {
         const posX = scaleByPixelRatio(touches[i].clientX);
         const posY = scaleByPixelRatio(touches[i].clientY);
-        updateFrame();
         updatePointerDownData(pointer, touches[i].identifier, posX, posY);
+        startAnimation();
       }
       document.body.removeEventListener('touchstart', handleFirstTouchStart);
     };
@@ -1239,6 +1257,7 @@ export default function SplashCursor({
     window.addEventListener('touchstart', handleTouchStart, false);
     window.addEventListener('touchmove', handleTouchMove, false);
     window.addEventListener('touchend', handleTouchEnd);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
       cancelAnimationFrame(animationFrameId);
@@ -1249,6 +1268,7 @@ export default function SplashCursor({
       window.removeEventListener('touchstart', handleTouchStart, false);
       window.removeEventListener('touchmove', handleTouchMove, false);
       window.removeEventListener('touchend', handleTouchEnd);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, [
     SIM_RESOLUTION,

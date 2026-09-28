@@ -34,6 +34,7 @@ const navItems = [
   { href: "/quality-engineering/", label: "Quality Engineering", match: "/quality-engineering" },
   { href: "/how-we-work/", label: "How We Work", match: "/how-we-work" },
   { href: "/about/", label: "About", match: "/about" },
+  { href: "/insights/", label: "Notes", match: "/insights" },
 ];
 ---
 
@@ -88,7 +89,7 @@ const navItems = [
 
     {showSplashCursor && (
       <SplashCursor
-        client:load
+        client:media="(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)"
         DYE_RESOLUTION={768}
         SIM_RESOLUTION={72}
         SPLAT_RADIUS={0.1}
@@ -111,7 +112,6 @@ const navItems = [
         {navItems.map((item) => (
           <a href={item.href} aria-current={pathname.startsWith(item.match) ? "page" : undefined}>{item.label}</a>
         ))}
-        <a class="site-nav__mobile-only" href="/insights/" aria-current={pathname.startsWith("/insights") ? "page" : undefined}>Notes</a>
         <button class="theme-toggle" data-theme-toggle data-state="night" type="button" aria-pressed="false">
           <span class="theme-toggle__label theme-toggle__label--dark" aria-hidden="true">
             <img src="/assets/images/moon_icon.png" alt="" width="20" height="20" />
