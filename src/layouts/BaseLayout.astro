@@ -116,8 +116,12 @@ const navItems = [
         ))}
         <a class="site-nav__mobile-only" href="/insights/" aria-current={pathname.startsWith("/insights") ? "page" : undefined}>Notes</a>
         <button class="theme-toggle" data-theme-toggle data-state="night" type="button" aria-pressed="false">
-          <span class="theme-toggle__label theme-toggle__label--dark">Dark</span>
-          <span class="theme-toggle__label theme-toggle__label--light">Light</span>
+          <span class="theme-toggle__label theme-toggle__label--dark" aria-hidden="true">
+            <img src="/assets/images/moon_icon.png" alt="" width="20" height="20" />
+          </span>
+          <span class="theme-toggle__label theme-toggle__label--light" aria-hidden="true">
+            <img src="/assets/images/sun_icon.png" alt="" width="20" height="20" />
+          </span>
           <span class="theme-toggle__thumb" aria-hidden="true"></span>
         </button>
         <button class="button button--small" type="button" data-contact-open>Discuss your project</button>
