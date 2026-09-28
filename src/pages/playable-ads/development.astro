@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GradientText from "../../components/GradientText.astro";
+import PlayableNav from "../../components/PlayableNav.astro";
+---
+
+<BaseLayout title="Playable Ads Development | Aniloom Technologies" description="Concept, game design, HTML5/WebGL development, creative production, responsive behavior, variants, QA, and release preparation for playable ads.">
+  <main id="main-content">
+    <PlayableNav />
+    <section class="page-hero page-hero--service section-shell">
+      <p class="eyebrow" data-reveal>Playable Ads / Development</p>
+      <h1 data-reveal>A compact experience built around a <GradientText>specific job.</GradientText></h1>
+      <p class="page-hero__lead" data-reveal>We connect concept, interaction, HTML5/WebGL implementation, responsive behavior, creative production, and agreed release preparation around the campaign goal and delivery specification.</p>
+      <div class="page-hero__actions" data-reveal><button class="button" type="button" data-contact-open>Discuss development</button><a class="text-link" href="#scope">See the scope <span>↓</span></a></div>
+    </section>
+
+    <section class="service-intro section-shell section-pad" id="scope">
+      <div class="service-intro__statement" data-reveal><p class="eyebrow">One connected delivery</p><h2>Creative intent, implementation, and release constraints move together.</h2><p>A playable is small in duration, not in decision density. The useful scope is defined before production, then checked through meaningful states rather than treated as a single final screen.</p></div>
+      <div class="service-scope-grid">
+        <article data-reveal><span>01</span><h3>Shape the experience</h3><p>Clarify the campaign role, core interaction, user journey, call to action, end card, acceptance criteria, and known constraints.</p></article>
+        <article data-reveal><span>02</span><h3>Build meaningful states</h3><p>Implement the experience in HTML5/WebGL, including UI, visual assets, animation, responsive rules, and the agreed integration behavior.</p></article>
+        <article data-reveal><span>03</span><h3>Review and prepare</h3><p>Check the journey and responsive states, record corrections, retest changes, prepare variants, and make remaining release risk visible.</p></article>
+      </div>
+    </section>
+
+    <section class="system-band section-pad">
+      <div class="section-shell">
+        <div class="section-heading" data-reveal><div><p class="eyebrow">Development-integrated quality</p><h2>The review loop begins before the final build.</h2></div><p>Inokentii owns engineering implementation. Olena applies risk-based QA, refines acceptance criteria, reviews the experience, coordinates corrections, and retests the changed states.</p></div>
+        <div class="role-grid">
+          <article data-reveal><span>Engineering</span><h3>Implementation and technical decisions</h3><p>Architecture, runtime behavior, rendering, interactions, responsive implementation, integrations, and technical corrections remain engineering responsibilities.</p></article>
+          <article data-reveal><span>Quality Engineering</span><h3>Risk, criteria, review, and retest</h3><p>Layout, scale, fonts, hierarchy, portrait and landscape states, the end-user journey, observed issues, and release evidence remain visible through review.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="deliverable section-shell section-pad">
+      <div class="section-heading" data-reveal><div><p class="eyebrow">Possible scope</p><h2>Defined around the brief.</h2></div><p>The exact production package is agreed from the inputs, target environments, variant needs, and release expectations.</p></div>
+      <div class="deliverable-grid">
+        <div data-reveal><span>Concept and flow</span><p>Interaction concept, game thinking, journey structure, meaningful objects, states, and acceptance criteria.</p></div>
+        <div data-reveal><span>Implementation</span><p>HTML5/WebGL engineering, UI behavior, responsive layout, animation, and technical integration.</p></div>
+        <div data-reveal><span>Creative production</span><p>Agreed visual direction, 2D or 3D assets, motion, UI, and adaptation of provided source material.</p></div>
+        <div data-reveal><span>Release preparation</span><p>Variants, localization, links, end cards, analytics requirements, QA evidence, and handoff materials as scoped.</p></div>
+      </div>
+      <aside class="scope-note" data-reveal><strong>Internal Layout Tool</strong><p>For suitable PixiJS projects, Aniloom may use an internal development-integrated Layout Tool to inspect and adjust responsive states. It is an internal component of delivery, not a public SaaS product, certification, or provider-acceptance guarantee.</p></aside>
+    </section>
+
+    <section class="service-crosslink section-shell" data-reveal><p class="eyebrow">Already have a build?</p><div><h2>Start with QA and release readiness instead.</h2><a class="text-link" href="/playable-ads/qa-release-readiness/">Explore the review path <span>↗</span></a></div></section>
+    <section class="callout section-shell section-pad" data-reveal><p class="eyebrow">Start with the campaign goal</p><h2>What must the playable help a person do?</h2><p>Bring the brief, source assets, target environments, and current constraints. We will shape the useful production boundary.</p><button class="button" type="button" data-contact-open>Discuss development</button></section>
+  </main>
+</BaseLayout>
