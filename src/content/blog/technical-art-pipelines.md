@@ -7,6 +7,10 @@ tags:
   - unity
   - tooling
   - pipelines
+hero: /assets/images/editorial/technical-art-pipelines-header
+heroAlt: An editorial illustration of a game asset moving through visible handoffs, review gates, and a clarified production path.
+heroWidth: 1700
+heroHeight: 850
 ---
 
 When teams talk about technical art tooling, they often focus on capability: a better shader, a

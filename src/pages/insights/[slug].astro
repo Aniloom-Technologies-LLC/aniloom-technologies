@@ -20,6 +20,15 @@ const { Content } = await render(post);
         <h1><GradientText>{post.data.title}</GradientText></h1>
         <p>{post.data.description}</p>
         <p class="article-header__byline">Written by Aniloom Technologies</p>
+        {post.data.hero && (
+          <figure class="article-hero">
+            <picture>
+              <source srcset={`${post.data.hero}.avif`} type="image/avif" />
+              <img src={`${post.data.hero}.webp`} alt={post.data.heroAlt ?? ""} width={post.data.heroWidth} height={post.data.heroHeight} decoding="async" />
+            </picture>
+            <figcaption>Editorial illustration · No client product or result depicted</figcaption>
+          </figure>
+        )}
       </header>
       <div class="article-content"><Content /></div>
       <footer class="article-footer"><a class="text-link" href="/insights/">← Back to all notes</a><button class="text-link" type="button" data-contact-open>Discuss your project ↗</button></footer>

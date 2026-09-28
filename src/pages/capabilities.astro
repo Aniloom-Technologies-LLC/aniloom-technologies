@@ -18,6 +18,14 @@ const groups = [
       <p class="page-hero__lead" data-reveal>We connect technical, quality, and creative disciplines around a defined product goal. Scope can cover a complete build, a missing capability, or a product that needs to move again.</p>
     </section>
 
+    <figure class="visual-story visual-story--detail section-shell" data-reveal>
+      <picture>
+        <source srcset="/assets/images/placeholders/product-review-detail-placeholder.avif" type="image/avif" />
+        <img src="/assets/images/placeholders/product-review-detail-placeholder.webp" alt="Fictional anonymous hands compare a printed product flow with a neutral block-layout study on a tablet." width="1360" height="1020" loading="lazy" decoding="async" />
+      </picture>
+      <figcaption><span>Visual direction placeholder</span><p>A fictional product-review composition with schematic content. It is not a client interface, shipped product, or result.</p></figcaption>
+    </figure>
+
     <section class="capability-list section-shell section-pad">
       {groups.map((group) => (
         <article class="capability-detail" id={group.id} data-reveal>

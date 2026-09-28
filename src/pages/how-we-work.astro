@@ -18,6 +18,14 @@ const models = [
       <p class="page-hero__lead" data-reveal>You should know what the work is expected to change, how progress becomes visible, and who owns each decision. Internal staffing and tool choices remain our responsibility unless the agreement requires otherwise.</p>
     </section>
 
+    <figure class="visual-story section-shell" data-reveal>
+      <picture>
+        <source srcset="/assets/images/placeholders/studio-review-placeholder.avif" type="image/avif" />
+        <img src="/assets/images/placeholders/studio-review-placeholder.webp" alt="Three fictional anonymous adults review printed visual states around a studio table while a dog rests beneath it." width="1440" height="960" loading="lazy" decoding="async" />
+      </picture>
+      <figcaption><span>Visual direction placeholder</span><p>Fictional people in a composition study. The image does not show the Aniloom team, office, client work, or a completed project.</p></figcaption>
+    </figure>
+
     <section class="model-grid section-shell section-pad">
       {models.map((model) => (
         <article class="model-card" data-reveal><span>{model.number}</span><h2>{model.title}</h2><p>{model.text}</p></article>

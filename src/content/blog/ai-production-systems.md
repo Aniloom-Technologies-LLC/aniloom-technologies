@@ -7,6 +7,10 @@ tags:
   - ai systems
   - product engineering
   - workflows
+hero: /assets/images/editorial/ai-production-systems-header
+heroAlt: An editorial workflow illustration showing rough inputs becoming traceable stages, human review, and an accountable release decision.
+heroWidth: 1800
+heroHeight: 750
 ---
 
 Teams often overestimate model choice and underestimate operational design. In early prototypes,
