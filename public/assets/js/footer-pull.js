@@ -43,7 +43,7 @@ if (footer && footerStage && pull && quoteText && quoteSource) {
 
   const maxPull = 250;
   const fullRevealPull = 220;
-  const hideDelayMs = 5000;
+  const hideDelayMs = 3000;
   const isScrollable = () =>
     document.documentElement.scrollHeight > window.innerHeight + 4;
 
