@@ -327,7 +327,7 @@ p { color: var(--muted); }
 .service-artwork picture, .service-artwork img { display: block; width: 100%; height: 100%; }
 .service-artwork img { object-fit: cover; }
 
-/* Generated composition studies remain visibly classified as placeholders. */
+/* Visual story media */
 .visual-story { margin-top: clamp(24px, 4vw, 56px); margin-bottom: 0; }
 .visual-story picture { display: block; overflow: hidden; aspect-ratio: 3 / 2; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--bg-elevated); }
 .visual-story--wide picture { aspect-ratio: 16 / 9; }

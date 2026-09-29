@@ -10,11 +10,11 @@ These generated composition studies must be replaced with authentic, approved ph
 
 | Asset | Use | Classification | Subject boundary |
 | --- | --- | --- | --- |
-| `about-mountain-life-placeholder` | About visual story | `placeholder` | Fictional anonymous adults, fictional dog, unconfirmed location |
-| `studio-review-placeholder` | How We Work visual story | `placeholder` | Fictional anonymous people and dog in an unconfirmed studio |
-| `product-review-detail-placeholder` | Capabilities visual story | `placeholder` | Fictional anonymous hands and schematic product material |
-| `founder-direction-placeholder` | Founder-card composition study | `placeholder` | Fictional anonymous subject, explicitly not Ino |
-| `quality-lead-direction-placeholder` | COO-card composition study | `placeholder` | Fictional anonymous subject, explicitly not Olena |
+| `about-mountain-path` | About visual story | `placeholder` | Fictional anonymous adults, fictional dog, unconfirmed location |
+| `studio-visual-review` | How We Work visual story | `placeholder` | Fictional anonymous people and dog in an unconfirmed studio |
+| `product-flow-review` | Capabilities visual story | `placeholder` | Fictional anonymous hands and schematic product material |
+| `worktable-diagram-review` | Founder-card composition study | `placeholder` | Fictional anonymous subject, explicitly not Ino |
+| `printed-design-state-review` | COO-card composition study | `placeholder` | Fictional anonymous subject, explicitly not Olena |
 
 All five photographs were generated with the built-in ImageGen workflow. Their prompts require hidden faces, natural editorial observation, realistic material texture, warm yellow light, cool cyan daylight, ink shadows, and no logos, client work, confidential screens, or fabricated results.
 
@@ -49,6 +49,6 @@ These exports are the only website use of the supplied logo artwork. The header,
 ## Replacement and review
 
 - Placeholder captions must remain visible while generated people or places are used.
-- Placeholder filenames must retain the `-placeholder` suffix.
+- Public filenames remain short and descriptive; internal classification is maintained in this register instead of the URL.
 - Replacing a placeholder with authentic photography requires recorded subject context, creator/source, consent, ownership, publication permission, privacy and confidentiality review, allowed crops, and any claim boundary.
 - Editorial illustrations may remain public only while their placement cannot reasonably imply documentary or client proof.
