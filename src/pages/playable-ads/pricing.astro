@@ -1,0 +1,102 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PlayableNav from "../../components/PlayableNav.astro";
+import PricingCard from "../../components/PricingCard.astro";
+
+const primaryPackages = [
+  {
+    title: "Playable Ads Development",
+    price: "$5,000 USD",
+    summary: "For teams that need Aniloom to create a compact interactive creative from an approved direction.",
+    inclusions: [
+      "One playable from an approved concept, reference, or product flow",
+      "One core interaction in HTML5 or WebGL",
+      "Portrait and landscape layouts",
+      "Tutorial, gameplay, result, and CTA states",
+      "One language and one behavioral variant",
+      "One provider package with basic click-through or agreed analytics hooks",
+      "Two review rounds and a release-quality review",
+      "Production package and source handoff",
+    ],
+    note: "Client supplies approved assets. A typical planning range is 10–15 business days after complete inputs; the final timeline is confirmed in the proposal.",
+  },
+  {
+    title: "Playable Release Quality and Platform Readiness",
+    price: "$1,500 USD",
+    summary: "For an existing stable playable that needs a bounded review before handoff or launch.",
+    inclusions: [
+      "One stable playable in portrait and landscape",
+      "Up to two behavioral variants",
+      "One provider package",
+      "Intake and risk map",
+      "Visual, responsive, end-user, variant, and package review",
+      "Findings with supporting evidence",
+      "One retest after corrections",
+      "Release summary",
+    ],
+    note: "A typical planning range is 3–5 business days after stable access. Engineering corrections are not included unless added to the scope.",
+  },
+];
+
+const addOns = [
+  {
+    title: "Creative Production",
+    price: "$1,500 USD",
+    summary: "Project-specific UI, 2D or 3D asset work, or substantial animation under an agreed asset list.",
+    inclusions: ["The proposal identifies the approved asset list and production boundary."],
+  },
+  {
+    title: "Variants, Localization & Provider Adaptation",
+    price: "$750 USD",
+    summary: "One additional behavioral variant, a bounded client-supplied localization batch, or one additional provider package, depending on complexity.",
+    inclusions: ["The proposal states which adaptation is included."],
+  },
+  {
+    title: "Correction & Retest Sprint",
+    price: "$1,500 USD",
+    summary: "A bounded engineering correction scope derived from agreed findings, followed by targeted retest.",
+    inclusions: ["This is a defined sprint, not unlimited remediation."],
+  },
+];
+---
+
+<BaseLayout title="Playable Ads Development & QA Pricing | Aniloom Technologies" description="Starting prices and base scopes for Playable Ads development, playable QA and release readiness, and optional production or adaptation add-ons.">
+  <main id="main-content">
+    <PlayableNav />
+    <section class="page-hero page-hero--service pricing-hero section-shell">
+      <p class="eyebrow" data-reveal>Playable Ads packages</p>
+      <h1 data-reveal>Choose the playable boundary before we shape the final scope.</h1>
+      <p class="page-hero__lead" data-reveal>Two primary starting points separate new production from release-quality review. Each package shows the base scope, then the proposal confirms the exact inputs, timeline, and deliverables.</p>
+      <div class="page-hero__actions" data-reveal><a class="button" href="#packages">View packages</a><button class="text-link" type="button" data-contact-open>Discuss a playable <span>↗</span></button></div>
+    </section>
+
+    <section class="pricing-stage surface-light section-pad" id="packages">
+      <div class="section-shell">
+        <div class="pricing-group">
+          <div class="section-heading" data-reveal><div><p class="eyebrow">Primary packages</p><h2>Build it, or review what already exists.</h2></div><p>Both packages use a visible product boundary. Add-ons extend that boundary without making the core engagement ambiguous.</p></div>
+          <div class="pricing-grid pricing-grid--two pricing-grid--primary">
+            {primaryPackages.map((item) => <PricingCard {...item} />)}
+          </div>
+        </div>
+
+        <div class="pricing-group pricing-group--addons">
+          <div class="section-heading" data-reveal><div><p class="eyebrow">Optional add-ons</p><h2>Extend only the part that needs more work.</h2></div><p>Add-ons are scoped separately so additional production, adaptation, or correction work stays visible.</p></div>
+          <div class="pricing-grid pricing-grid--three">
+            {addOns.map((item) => <PricingCard {...item} />)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing-terms section-shell section-pad">
+      <div class="section-heading" data-reveal><div><p class="eyebrow">Commercial terms</p><h2>What “starting at” means.</h2></div><p>The final proposal is the source of truth for the exact scope and commercial agreement.</p></div>
+      <div class="pricing-terms__grid">
+        <p data-reveal><span>Currency</span>Prices are in USD and exclude applicable taxes.</p>
+        <p data-reveal><span>Project payments</span>Project packages are normally 50% to schedule and 50% before final handoff.</p>
+        <p data-reveal><span>Final scope</span>The proposal controls the timeline, amount, assumptions, add-ons, and change control.</p>
+      </div>
+    </section>
+
+    <section class="callout section-shell section-pad" data-reveal><p class="eyebrow">Bring the brief or the build</p><h2>We will identify the useful starting package.</h2><p>Share the current state, target platforms, available assets, variants, and release pressure. We will respond with the next practical step.</p><button class="button" type="button" data-contact-open>Discuss a playable</button></section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string;
+  price: string;
+  summary: string;
+  inclusions: string[];
+  label?: string;
+  note?: string;
+  cadence?: string;
+}
+
+const { title, price, summary, inclusions, label, note, cadence } = Astro.props;
+---
+
+<article class="pricing-card" data-reveal>
+  {label && <p class="pricing-card__label">{label}</p>}
+  <h3>{title}</h3>
+  <p class="pricing-card__price"><span>Starting at</span><strong>{price}</strong>{cadence && <small>{cadence}</small>}</p>
+  <p class="pricing-card__summary">{summary}</p>
+  <ul class="pricing-card__scope">
+    {inclusions.map((item) => <li>{item}</li>)}
+  </ul>
+  {note && <p class="pricing-card__note">{note}</p>}
+  <button class="text-link" type="button" data-contact-open>Discuss this package <span>↗</span></button>
+</article>

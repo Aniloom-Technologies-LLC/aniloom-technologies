@@ -1,0 +1,148 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PricingCard from "../../components/PricingCard.astro";
+
+const releasePackages = [
+  {
+    title: "Release Confidence Check",
+    price: "$2,500 USD",
+    summary: "A bounded release-testing engagement for one major release decision.",
+    inclusions: [
+      "One working application or product surface",
+      "One release candidate or major release decision",
+      "Up to three critical user journeys",
+      "Up to three representative configuration profiles",
+      "Scoped exploratory and functional validation",
+      "Prioritized findings with evidence",
+      "One retest and a release-readiness summary",
+    ],
+    note: "Work can start from three business days after complete access. Duration depends on product size, platforms, stability, and risk.",
+  },
+  {
+    title: "Critical Flow Check",
+    price: "$1,500 USD",
+    summary: "Focused testing for one flow whose failure would materially affect the product or release.",
+    inclusions: [
+      "One named critical flow on one product surface",
+      "Up to two configuration profiles",
+      "Normal, negative, and important edge conditions",
+      "Interruption, integration, and recovery checks where relevant",
+      "Findings with evidence",
+      "One retest and a bounded readiness summary",
+    ],
+  },
+  {
+    title: "Launch & Scale Readiness Test",
+    price: "$7,500 USD",
+    summary: "A controlled workload review after feasibility and safe-environment qualification.",
+    inclusions: [
+      "One approved non-production environment",
+      "One agreed workload model",
+      "Up to two critical transactions or integrations",
+      "One execution cycle",
+      "One rerun after agreed corrections",
+      "Evidence, findings, and readiness recommendations",
+    ],
+    note: "If architecture, observability, access, traffic assumptions, or environment safety cannot be established during qualification, a separate diagnostic starts at $1,500 USD.",
+  },
+];
+
+const ongoingPackages = [
+  {
+    title: "Monthly Product QA Support",
+    price: "$3,000 USD",
+    cadence: "/ month",
+    summary: "A defined quality cadence for one active product and its planned feature or release work.",
+    inclusions: [
+      "Three-month minimum",
+      "Up to two planned feature or release test cycles per month",
+      "Regression of agreed critical paths",
+      "Defect verification",
+      "Up to three configuration profiles",
+      "Weekly asynchronous status and a monthly quality summary",
+    ],
+    note: "This is a defined product scope and cadence, not unlimited requests, permanent named staff, or 24/7 support.",
+  },
+  {
+    title: "Regression Automation Pack",
+    price: "$5,000 USD",
+    summary: "A maintainable starting automation layer for stable, high-value web regression flows.",
+    inclusions: [
+      "One web product and one target browser",
+      "Up to five stable high-value regression flows",
+      "One agreed automation framework",
+      "Test code in the agreed repository with run instructions",
+      "Coverage map and known gaps",
+      "One correction pass and one handoff session",
+    ],
+    note: "CI/CD integration, additional browsers or environments, expanded reporting, and ongoing maintenance are add-ons.",
+  },
+];
+
+const systemPackages = [
+  {
+    title: "QA Setup for Startups",
+    price: "$6,000 USD",
+    summary: "A practical quality system for one product team that needs clearer ownership, coverage, and release gates.",
+    inclusions: [
+      "Current-state review for one product and team",
+      "Risk and ownership map",
+      "Defect workflow and environment or configuration matrix",
+      "Release checklist and quality gates",
+      "Up to ten documented critical regression scenarios",
+      "Two working sessions",
+      "Reusable templates and handoff",
+    ],
+    note: "Tool migration, automation implementation, a live pilot, extra workshops, and follow-up operations are add-ons.",
+  },
+];
+---
+
+<BaseLayout title="Quality Engineering & Release Testing Pricing | Aniloom Technologies" description="Starting prices and base scopes for release testing, ongoing QA support, regression automation, launch readiness, critical-flow review, and QA setup.">
+  <main id="main-content">
+    <section class="page-hero page-hero--service pricing-hero section-shell">
+      <p class="eyebrow" data-reveal>Quality Engineering & Testing packages</p>
+      <h1 data-reveal>Choose the quality decision your product needs next.</h1>
+      <p class="page-hero__lead" data-reveal>Start with a release decision, an ongoing delivery need, or the quality system behind both. Each package has a visible base scope before the proposal adapts it to the product.</p>
+      <div class="page-hero__actions" data-reveal><a class="button" href="#packages">View packages</a><button class="text-link" type="button" data-contact-open>Discuss a quality challenge <span>↗</span></button></div>
+    </section>
+
+    <section class="pricing-stage surface-light section-pad" id="packages">
+      <div class="section-shell">
+        <div class="pricing-group">
+          <div class="section-heading" data-reveal><div><p class="eyebrow">Make a release decision</p><h2>Test the risk that matters now.</h2></div><p>Use release testing to focus evidence on the next decision, from one critical flow to a broader launch and scale question.</p></div>
+          <div class="pricing-grid pricing-grid--three">
+            {releasePackages.map((item) => <PricingCard {...item} />)}
+          </div>
+        </div>
+
+        <div class="pricing-group">
+          <div class="section-heading" data-reveal><div><p class="eyebrow">Support ongoing development</p><h2>Add a repeatable quality rhythm.</h2></div><p>These packages support planned product work without turning the engagement into an undefined staff or request pool.</p></div>
+          <div class="pricing-grid pricing-grid--two">
+            {ongoingPackages.map((item) => <PricingCard {...item} />)}
+          </div>
+        </div>
+
+        <div class="pricing-group">
+          <div class="section-heading" data-reveal><div><p class="eyebrow">Build a QA system</p><h2>Leave the team with reusable controls.</h2></div><p>Establish the minimum useful structure for ownership, coverage, defects, and release decisions.</p></div>
+          <div class="pricing-grid pricing-grid--one">
+            {systemPackages.map((item) => <PricingCard {...item} />)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing-terms section-shell section-pad">
+      <div class="section-heading" data-reveal><div><p class="eyebrow">Commercial terms</p><h2>Clear terms around a defined scope.</h2></div><p>The final proposal is the source of truth for the exact scope and commercial agreement.</p></div>
+      <div class="pricing-terms__grid">
+        <p data-reveal><span>Currency</span>Prices are in USD and exclude applicable taxes.</p>
+        <p data-reveal><span>Project payments</span>Project packages are normally 50% to schedule and 50% before final handoff.</p>
+        <p data-reveal><span>Monthly support</span>Monthly packages are billed in advance.</p>
+        <p data-reveal><span>Diagnostics</span>Paid diagnostics are billed before work starts.</p>
+        <p data-reveal><span>Final scope</span>The proposal controls the timeline, amount, assumptions, add-ons, and change control.</p>
+      </div>
+    </section>
+
+    <section class="callout section-shell section-pad" data-reveal><p class="eyebrow">Bring the current decision</p><h2>We will identify the smallest useful quality boundary.</h2><p>Share the product state, critical journeys, platforms, release pressure, and evidence you already have.</p><button class="button" type="button" data-contact-open>Discuss a quality challenge</button></section>
+  </main>
+</BaseLayout>
