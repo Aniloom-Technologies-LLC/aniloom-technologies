@@ -40,7 +40,7 @@ const navItems = [
 ---
 
 <!doctype html>
-<html lang="en" class="theme-dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,20 +72,9 @@ const navItems = [
     <style is:inline>
       html, body { background: #07131a; color: #f5f8fa; }
     </style>
-    <script is:inline>
-      (() => {
-        const key = "aniloom-theme";
-        let saved = null;
-        try { saved = localStorage.getItem(key); } catch {}
-        const systemLight = window.matchMedia?.("(prefers-color-scheme: light)").matches;
-        const mode = saved === "light" || saved === "dark" ? saved : (systemLight ? "light" : "dark");
-        document.documentElement.className = mode === "light" ? "theme-light" : "theme-dark";
-        document.documentElement.dataset.initialTheme = mode;
-      })();
-    </script>
     <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
-  <body class={bodyClass} data-theme-ready="false">
+  <body class={bodyClass}>
     <a class="skip-link" href="#main-content">Skip to content</a>
 
     {showSplashCursor && (
@@ -111,15 +100,6 @@ const navItems = [
         {navItems.map((item) => (
           <a href={item.href} aria-current={pathname.startsWith(item.match) ? "page" : undefined}>{item.label}</a>
         ))}
-        <button class="theme-toggle" data-theme-toggle data-state="night" type="button" aria-pressed="false">
-          <span class="theme-toggle__label theme-toggle__label--dark" aria-hidden="true">
-            <img src="/assets/images/moon_icon.png" alt="" width="20" height="20" />
-          </span>
-          <span class="theme-toggle__label theme-toggle__label--light" aria-hidden="true">
-            <img src="/assets/images/sun_icon.png" alt="" width="20" height="20" />
-          </span>
-          <span class="theme-toggle__thumb" aria-hidden="true"></span>
-        </button>
         <button class="button button--small" type="button" data-contact-open>Discuss your project</button>
       </nav>
     </header>
@@ -146,33 +126,34 @@ const navItems = [
 
     <div class="site-footer-stage" data-footer-stage>
       <footer class="site-footer">
-        <div class="site-footer__lead">
-          <p class="eyebrow">Aniloom Technologies</p>
-          <h2>Bring the goal.<br />We will shape the work.</h2>
-          <button class="text-link text-link--large" type="button" data-contact-open>Discuss your project <span>↗</span></button>
+        <div class="site-footer__inner">
+          <div class="site-footer__lead">
+            <p class="eyebrow">Aniloom Technologies</p>
+            <h2>Bring the goal.<br />We will shape the work.</h2>
+            <button class="text-link text-link--large" type="button" data-contact-open>Discuss your project <span>↗</span></button>
+          </div>
+          <div class="site-footer__grid">
+            <div>
+              <SiteBrand />
+              <p class="site-footer__summary">Software development, design, and testing for web, mobile, games, and interactive products.</p>
+            </div>
+            <div class="site-footer__links">
+              <p class="footer-label">Explore</p>
+              <a href="/capabilities/">Capabilities</a><a href="/playable-ads/">Playable Ads</a><a href="/playable-ads/development/">Playable Development</a><a href="/playable-ads/qa-release-readiness/">Playable QA</a><a href="/quality-engineering/">Quality Engineering</a><a href="/insights/">Notes</a>
+            </div>
+            <div class="site-footer__links">
+              <p class="footer-label">Company</p>
+              <a href="/how-we-work/">How We Work</a><a href="/about/">About</a><a href="mailto:support@aniloom.tech">Email us</a><a href="/privacy-policy/">Privacy</a><a href="/terms-of-use/">Terms</a>
+            </div>
+          </div>
+          <div class="site-footer__bottom"><span>© 2026 Aniloom Technologies LLC</span><span>Built for useful conversations.</span></div>
         </div>
-        <div class="site-footer__grid">
-          <div>
-            <SiteBrand />
-            <p class="site-footer__summary">Software development, design, and testing for web, mobile, games, and interactive products.</p>
-          </div>
-          <div class="site-footer__links">
-            <p class="footer-label">Explore</p>
-            <a href="/capabilities/">Capabilities</a><a href="/playable-ads/">Playable Ads</a><a href="/playable-ads/development/">Playable Development</a><a href="/playable-ads/qa-release-readiness/">Playable QA</a><a href="/quality-engineering/">Quality Engineering</a><a href="/insights/">Notes</a>
-          </div>
-          <div class="site-footer__links">
-            <p class="footer-label">Company</p>
-            <a href="/how-we-work/">How We Work</a><a href="/about/">About</a><a href="mailto:support@aniloom.tech">Email us</a><a href="/privacy-policy/">Privacy</a><a href="/terms-of-use/">Terms</a>
-          </div>
-        </div>
-        <div class="site-footer__bottom"><span>© 2026 Aniloom Technologies LLC</span><span>Built for useful conversations.</span></div>
       </footer>
       <div class="site-footer__pull" data-footer-pull aria-hidden="true">
         <blockquote class="site-footer__quote" data-footer-quote><p data-footer-quote-text></p><cite data-footer-quote-source></cite></blockquote>
       </div>
     </div>
 
-    <script src="/assets/js/theme.js" defer></script>
     <script src="/assets/js/contact-modal.js" defer></script>
     <script src="/assets/js/footer-pull.js" defer></script>
     <script src="/assets/js/site.js" defer></script>

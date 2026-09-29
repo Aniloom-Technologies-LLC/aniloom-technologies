@@ -17,11 +17,3 @@
 .floating-lines-container--ready {
   opacity: 0.95;
 }
-
-.theme-light .floating-lines-container {
-  mix-blend-mode: screen;
-}
-
-.theme-light .floating-lines-container--ready {
-  opacity: 0.58;
-}
