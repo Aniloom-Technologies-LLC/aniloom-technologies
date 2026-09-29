@@ -450,15 +450,16 @@ p { color: var(--muted); }
 
 /* Notes and legal */
 .notes-index { padding-top: 30px; }
-.note-row { display: grid; grid-template-columns: 70px 1fr 150px; gap: 42px; padding: 58px 0; border-bottom: 1px solid var(--line); transition: padding-left .25s ease; }
-.note-row:hover { padding-left: 14px; }
+.note-row { display: grid; grid-template-columns: 70px 1fr 150px; gap: 42px; padding: 58px 0; border-bottom: 1px solid var(--line); background: transparent; box-shadow: inset 0 0 0 var(--accent); transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease; }
+.note-row:hover, .note-row:focus-visible { border-bottom-color: var(--line-strong); background: var(--surface-soft); box-shadow: inset 3px 0 0 var(--accent); }
 .note-row__number { color: var(--quiet); font-family: "DM Mono", monospace; font-size: .72rem; }
 .note-row h2 { max-width: 850px; margin: 16px 0 20px; font-size: clamp(2.4rem, 4.5vw, 4.8rem); font-weight: 500; }
 .note-row p { max-width: 720px; margin: 0; }
 .note-row__art { display: block; overflow: hidden; aspect-ratio: 2 / 1; margin-bottom: 34px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-elevated); }
 .note-row__art img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .note-row__meta { display: flex; justify-content: space-between; align-items: flex-start; color: var(--quiet); font-family: "DM Mono", monospace; font-size: .72rem; text-transform: uppercase; }
-.note-row__meta span:last-child { color: var(--link); font-size: 1rem; }
+.note-row__meta span:last-child { color: var(--link); font-size: 1rem; transition: color .2s ease; }
+.note-row:hover .note-row__meta span:last-child, .note-row:focus-visible .note-row__meta span:last-child { color: var(--accent-readable); }
 .article-shell { padding-top: clamp(160px, 18vw, 230px); padding-bottom: var(--section-pad); }
 .article-header { max-width: 1120px; margin-bottom: 100px; }
 .article-header > div { display: flex; justify-content: space-between; gap: 20px; color: var(--quiet); font-family: "DM Mono", monospace; font-size: .74rem; text-transform: uppercase; }
