@@ -1,6 +1,6 @@
 # Visual asset register
 
-Updated: 2026-09-27
+Updated: 2026-09-28
 
 This register records the generated imagery currently used by the site. None of these assets is client evidence or proof of a completed product. AVIF is the preferred web source and WebP is the fallback.
 
@@ -26,6 +26,7 @@ These images explain a concept and do not claim to document an Aniloom project, 
 | --- | --- | --- | --- |
 | `ai-production-systems-header` | AI production systems article and note cards | `editorial` | Inspectable workflow, validation, human review, accountable release decision |
 | `technical-art-pipelines-header` | Technical art pipelines article and note cards | `editorial` | Visible production handoffs, review gates, and a clarified asset path |
+| `manual-payment-testing-header` | Manual payment testing article and note cards | `editorial` | Purchase states across web and mobile, entitlement, receipt, recovery, and human review |
 | `playable-ads-v2` | Playable Ads service page and homepage focus card | `editorial` | Intent, interaction, responsive states, review, and release readiness |
 | `quality-engineering-v2` | Quality Engineering service page and homepage focus card | `editorial` | Risk paths, coverage, evidence, unresolved risk, and a release gate |
 
