@@ -26,7 +26,6 @@ const { Content } = await render(post);
               <source srcset={`${post.data.hero}.avif`} type="image/avif" />
               <img src={`${post.data.hero}.webp`} alt={post.data.heroAlt ?? ""} width={post.data.heroWidth} height={post.data.heroHeight} decoding="async" />
             </picture>
-            <figcaption>Editorial illustration · No client product or result depicted</figcaption>
           </figure>
         )}
       </header>
