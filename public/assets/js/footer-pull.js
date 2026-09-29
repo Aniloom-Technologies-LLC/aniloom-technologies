@@ -43,6 +43,7 @@ if (footer && footerStage && pull && quoteText && quoteSource) {
 
   const maxPull = 250;
   const fullRevealPull = 220;
+  const hideDelayMs = 5000;
   const isScrollable = () =>
     document.documentElement.scrollHeight > window.innerHeight + 4;
 
@@ -89,7 +90,7 @@ if (footer && footerStage && pull && quoteText && quoteSource) {
     }
     hideTimer = window.setTimeout(() => {
       collapse();
-    }, 2000);
+    }, hideDelayMs);
   };
 
   const atBottom = () =>
