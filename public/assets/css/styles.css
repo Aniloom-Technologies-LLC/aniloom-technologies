@@ -475,6 +475,13 @@ p { color: var(--muted); }
 .article-content h3 { margin: 54px 0 18px; font-size: 1.6rem; }
 .article-content p, .article-content li { color: var(--muted); }
 .article-content li + li { margin-top: 10px; }
+.article-content a { color: var(--link); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+.article-content a:hover, .article-content a:focus-visible { color: var(--text); }
+.article-content table { display: block; width: 100%; margin: 42px 0; overflow-x: auto; border-collapse: separate; border-spacing: 0; font-size: .84rem; line-height: 1.5; }
+.article-content th, .article-content td { min-width: 165px; padding: 14px 16px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--muted); text-align: left; vertical-align: top; }
+.article-content th { color: var(--text); background: var(--surface-soft); font-weight: 600; }
+.article-content tr > :first-child { border-left: 1px solid var(--line); }
+.article-content thead tr:first-child > * { border-top: 1px solid var(--line); }
 .article-footer { max-width: 760px; display: flex; justify-content: space-between; gap: 24px; margin: 90px auto 0; padding-top: 30px; border-top: 1px solid var(--line); }
 .legal-page { padding-top: 40px; }
 .legal-page .article-shell { padding-top: 140px; }
