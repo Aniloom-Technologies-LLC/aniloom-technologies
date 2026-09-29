@@ -21,7 +21,7 @@ Show how the Aniloom Playable Quality System connects engineering implementation
 - Describe an internal responsive bingo-style playable example.
 - Do not use the Bingo Blitz name, visual assets, screenshots, or any language implying client work without written approval.
 - Do not claim conversion lift, campaign performance, provider acceptance, external adoption, defect-reduction percentages, or commercial outcomes.
-- Keep Inokentii’s contribution to engineering implementation and technical correction.
+- Keep Ino’s contribution to engineering implementation and technical correction.
 - Keep Olena’s contribution to risk mapping, acceptance criteria, layout and visual review, portrait and landscape review, journey review, correction coordination, and retest. Do not imply code authorship.
 
 ## Draft narrative structure
@@ -36,7 +36,7 @@ The review centered on meaningful game objects and states, including board prese
 
 ### Engineering approach
 
-Inokentii owned the PixiJS implementation, responsive rules, runtime behavior, and technical corrections. On suitable states, an internal development-integrated Layout Tool supported inspection and saved layout adjustment. The tool is not a public product, external certification system, or provider-acceptance mechanism.
+Ino owned the PixiJS implementation, responsive rules, runtime behavior, and technical corrections. On suitable states, an internal development-integrated Layout Tool supported inspection and saved layout adjustment. The tool is not a public product, external certification system, or provider-acceptance mechanism.
 
 ### Quality approach
 

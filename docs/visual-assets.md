@@ -13,7 +13,7 @@ These generated composition studies must be replaced with authentic, approved ph
 | `about-mountain-life-placeholder` | About visual story | `placeholder` | Fictional anonymous adults, fictional dog, unconfirmed location |
 | `studio-review-placeholder` | How We Work visual story | `placeholder` | Fictional anonymous people and dog in an unconfirmed studio |
 | `product-review-detail-placeholder` | Capabilities visual story | `placeholder` | Fictional anonymous hands and schematic product material |
-| `founder-direction-placeholder` | Founder-card composition study | `placeholder` | Fictional anonymous subject, explicitly not Inokentii Anikieiev |
+| `founder-direction-placeholder` | Founder-card composition study | `placeholder` | Fictional anonymous subject, explicitly not Ino |
 | `quality-lead-direction-placeholder` | COO-card composition study | `placeholder` | Fictional anonymous subject, explicitly not Olena |
 
 All five photographs were generated with the built-in ImageGen workflow. Their prompts require hidden faces, natural editorial observation, realistic material texture, warm yellow light, cool cyan daylight, ink shadows, and no logos, client work, confidential screens, or fabricated results.
