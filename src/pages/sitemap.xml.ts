@@ -13,6 +13,7 @@ export async function GET() {
     "playable-ads/qa-release-readiness/",
     "playable-ads/pricing/",
     "playable-ads/how-we-work/",
+    "playable-ads/case-studies/magic-thai-playables/",
     "playable-ads/release-quality-platform-readiness/",
     "quality-engineering/",
     "quality-engineering/pricing/",

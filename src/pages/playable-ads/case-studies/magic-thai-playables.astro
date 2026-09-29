@@ -1,0 +1,152 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import GradientText from "../../../components/GradientText.astro";
+import PlayableNav from "../../../components/PlayableNav.astro";
+
+const demonstrations = [
+  {
+    name: "Magic Thai A",
+    pattern: "Build and place",
+    url: "https://magic-thai-ad-a1.aniloom.workers.dev/",
+    image: "/assets/images/proof/magic-thai-a-build-interaction.webp",
+    alt: "Magic Thai A opening state with five selectable mallets arranged above a green Build button in a portrait playable layout.",
+    description: "A build-and-place interaction with selection, progression, result, and call-to-action states.",
+    caption: "Production build, portrait opening state, captured September 29, 2026. Inspect target recognition, resource visibility, and the first action.",
+    questions: [
+      "Is the build instruction clear before the first action?",
+      "Can the user identify the interactive targets and available resources?",
+      "Does selection feedback remain visible at narrow and wide aspect ratios?",
+      "Are progression, result, and call-to-action states complete and understandable?",
+    ],
+  },
+  {
+    name: "Magic Thai B",
+    pattern: "Swipe and collect",
+    url: "https://magic-thai-ad-b1.aniloom.workers.dev/",
+    image: "/assets/images/proof/magic-thai-b-swipe-collection.webp",
+    alt: "Magic Thai B opening state with a runner, swipe hand, collection counter, and lotus path in a portrait playable layout.",
+    description: "A swipe-based collection run with instruction, motion, progress, result, and call-to-action states.",
+    caption: "Production build, portrait instruction state, captured September 29, 2026. Inspect gesture clarity, path hierarchy, and progress context.",
+    questions: [
+      "Does the swipe instruction explain direction and purpose?",
+      "Does the moving character remain legible against the path and roadside art?",
+      "Do progress, collection feedback, obstacles, and result states remain clear during motion?",
+      "Does the experience recover sensibly after missed input or an orientation change?",
+    ],
+  },
+  {
+    name: "Magic Thai C",
+    pattern: "Tap and match",
+    url: "https://magic-thai-ad-c1.aniloom.workers.dev/",
+    image: "/assets/images/proof/magic-thai-c-tap-match-trays.webp",
+    alt: "Magic Thai C opening state with three item trays, apple, avocado, and berry choices, and visible set progress in portrait orientation.",
+    description: "A tap-and-match tray interaction with selection, set completion, progression, result, and call-to-action states.",
+    caption: "Production build, portrait instruction state, captured September 29, 2026. Inspect tray readability, choice feedback, and set progress.",
+    questions: [
+      "Can the user distinguish selectable items, tray contents, set progress, and the next required action?",
+      "Does the interface communicate why a choice was accepted or rejected?",
+      "Do trays, item labels, progress information, and result state remain readable across orientations?",
+      "Does the call to action appear only after the intended journey is complete?",
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Magic Thai Playables: Three Public Demonstrations | Aniloom Technologies"
+  description="Explore three responsive playable demonstrations and the quality questions Aniloom reviews across interaction states, orientations, feedback, and release readiness."
+  image="/assets/images/proof/magic-thai-a-build-interaction.webp"
+  imageAlt="Magic Thai A build-and-place production demonstration in portrait orientation."
+  imageWidth={390}
+  imageHeight={844}
+>
+  <main id="main-content">
+    <PlayableNav />
+
+    <section class="page-hero page-hero--service section-shell">
+      <p class="eyebrow" data-reveal>Playable Ads / Public Demonstrations</p>
+      <h1 data-reveal>Magic Thai Playables: three interaction patterns, one <GradientText>release-quality discipline.</GradientText></h1>
+      <p class="page-hero__lead" data-reveal>Explore three responsive production demonstrations, then see how Aniloom reviews meaningful states, visual hierarchy, orientation changes, and the end-user journey before release.</p>
+      <div class="page-hero__actions" data-reveal><a class="button" href="#demonstrations">Inspect the demonstrations</a><a class="text-link" href="#quality-questions">See the quality questions <span>↓</span></a></div>
+    </section>
+
+    <section class="evidence-boundary section-shell" data-reveal aria-labelledby="evidence-boundary-title">
+      <p class="eyebrow">Evidence boundary</p>
+      <h2 id="evidence-boundary-title">Public Aniloom demonstrations, not client campaigns.</h2>
+      <p>The production builds and screenshots below can be inspected directly. They do not identify a client, publisher, campaign relationship, external adoption, performance result, or advertising-platform acceptance.</p>
+    </section>
+
+    <section class="demonstrations section-shell section-pad" id="demonstrations">
+      <div class="section-heading" data-reveal><div><p class="eyebrow">Three production journeys</p><h2>Different interactions create different review questions.</h2></div><p>A playable may be brief, but the user still needs a clear instruction, useful feedback, readable progression, a complete result, and a trustworthy route to the call to action.</p></div>
+      <div class="demonstration-grid">
+        {demonstrations.map((demo, index) => (
+          <article class="demonstration-card" data-reveal>
+            <figure>
+              <picture><img src={demo.image} alt={demo.alt} width="390" height="844" loading={index === 0 ? "eager" : "lazy"} decoding="async" /></picture>
+              <figcaption>{demo.caption}</figcaption>
+            </figure>
+            <div class="demonstration-card__body">
+              <p class="eyebrow">{demo.pattern}</p>
+              <h3>{demo.name}</h3>
+              <p>{demo.description}</p>
+              <a class="text-link" href={demo.url} target="_blank" rel="noopener noreferrer">Open the {demo.name} production demonstration <span>↗</span></a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="system-band section-pad" id="quality-questions">
+      <div class="section-shell">
+        <div class="section-heading" data-reveal><div><p class="eyebrow">Interaction journeys</p><h2>The state graph changes. The discipline remains.</h2></div><p>The same generic checklist cannot describe all three experiences. Review follows the interaction pattern, the meaningful states it creates, and the failures a person could encounter.</p></div>
+        <div class="demonstration-review-grid">
+          {demonstrations.map((demo, index) => (
+            <article data-reveal>
+              <span>0{index + 1} / {demo.name}</span>
+              <h3>{demo.pattern}</h3>
+              <ul>{demo.questions.map((question) => <li>{question}</li>)}</ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="service-intro section-shell section-pad">
+      <div class="service-intro__statement" data-reveal><p class="eyebrow">Development and QA</p><h2>Production shows the journey. Review tooling stays outside the build.</h2><p>For suitable PixiJS projects, Aniloom can use development-only tooling to inspect meaningful objects, responsive states, hierarchy, position, scale, visibility, alpha, and typography. Accepted adjustments can be preserved as project artifacts while the review interface remains excluded from the production experience.</p></div>
+      <div class="entry-grid entry-grid--two">
+        <article data-reveal><span>Production evidence</span><h2>What the user receives</h2><p>The direct links above show the delivered interaction surface: instruction, input, feedback, progression, result, and call-to-action behavior.</p></article>
+        <article data-reveal><span>Development environment</span><h2>What the team reviews</h2><p>A separate non-confidential development build can expose responsive objects and review controls. The production URLs above do not contain or imply that editor interface.</p></article>
+      </div>
+    </section>
+
+    <section class="demonstration-boundaries section-shell section-pad">
+      <div class="demonstration-boundaries__item" data-reveal>
+        <p class="eyebrow">What this demonstrates</p>
+        <h2>Inspectable work and a concrete review model.</h2>
+        <ul>
+          <li>Three Aniloom-controlled production builds exist and can be opened directly.</li>
+          <li>Each build uses a distinct interaction journey with its own meaningful states.</li>
+          <li>Responsive review can connect instruction, hierarchy, feedback, progression, result, and call-to-action behavior.</li>
+          <li>Engineering and Quality Engineering can coordinate around visible states and explicit acceptance questions.</li>
+        </ul>
+      </div>
+      <div class="demonstration-boundaries__item demonstration-boundaries__item--limit" data-reveal>
+        <p class="eyebrow">What it does not prove</p>
+        <h2>No inferred client or performance claim.</h2>
+        <ul>
+          <li>No client, publisher, or campaign relationship.</li>
+          <li>No external adoption, validation, conversion, or performance result.</li>
+          <li>No guarantee of acceptance by every advertising platform.</li>
+          <li>No claim that every possible state has received a complete retest or release disposition.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="service-crosslink section-shell" data-reveal>
+      <p class="eyebrow">Continue with the relevant path</p>
+      <div><h2>Move from inspectable examples to a defined delivery or review scope.</h2><div class="inline-links"><a class="text-link" href="/playable-ads/development/">Playable Ads Development <span>↗</span></a><a class="text-link" href="/playable-ads/qa-release-readiness/">QA & Release Readiness <span>↗</span></a><a class="text-link" href="/playable-ads/how-we-work/">How the workflow works <span>↗</span></a><a class="text-link" href="/playable-ads/release-quality-platform-readiness/">Readiness package <span>↗</span></a></div></div>
+    </section>
+
+    <section class="callout section-shell section-pad" data-reveal><p class="eyebrow">Bring the brief or build</p><h2>Which interaction and release decision need to become clearer?</h2><p>Share the intended journey, current build, target orientations, variants, package constraints, and deadline. Aniloom will help define the useful delivery or review boundary.</p><button class="button" type="button" data-contact-open>Discuss a playable</button></section>
+  </main>
+</BaseLayout>
