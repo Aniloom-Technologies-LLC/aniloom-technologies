@@ -12,6 +12,7 @@ interface Props {
   imageAlt?: string;
   imageWidth?: number;
   imageHeight?: number;
+  article?: { headline: string; datePublished: string; dateModified?: string };
 }
 
 const {
@@ -24,11 +25,21 @@ const {
   imageAlt,
   imageWidth,
   imageHeight,
+  article,
 } = Astro.props;
 
 const pathname = Astro.url.pathname;
 const canonical = new URL(pathname, "https://aniloom.tech");
 const socialImage = image ? new URL(image, canonical) : null;
+const organizationId = "https://aniloom.tech/#organization";
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", "@id": organizationId, name: "Aniloom Technologies", url: "https://aniloom.tech/", email: "support@aniloom.tech" },
+    { "@type": "WebSite", "@id": "https://aniloom.tech/#website", url: "https://aniloom.tech/", name: "Aniloom Technologies", publisher: { "@id": organizationId } },
+    ...(article ? [{ "@type": "Article", "@id": `${canonical}#article`, mainEntityOfPage: canonical.toString(), headline: article.headline, description, datePublished: article.datePublished, ...(article.dateModified ? { dateModified: article.dateModified } : {}), author: { "@id": organizationId }, publisher: { "@id": organizationId }, ...(socialImage ? { image: socialImage.toString() } : {}) }] : []),
+  ],
+};
 const navItems = [
   { href: "/capabilities/", label: "Capabilities", match: "/capabilities" },
   { href: "/playable-ads/", label: "Playable Ads", match: "/playable-ads" },
@@ -69,6 +80,7 @@ const navItems = [
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData).replace(/</g, "\\u003c")} />
     <style is:inline>
       html, body { background: #07131a; color: #f5f8fa; }
     </style>
@@ -112,8 +124,10 @@ const navItems = [
         <button class="contact-modal__close" type="button" aria-label="Close contact form" data-contact-close><span></span><span></span></button>
         <span class="eyebrow">A practical first conversation</span>
         <h2 id="contact-modal-title">What does your product need next?</h2>
-        <p>Share the goal, the current state, and the expertise that is missing. We will reply with a useful next step.</p>
+        <p>Share your goal, the current build or brief, and your target timeline. We will help define the next step.</p>
+        <p data-contact-topic-label hidden></p>
         <form class="contact-form" data-contact-form>
+          <input type="hidden" name="topic" />
           <label class="contact-field"><span>Name</span><input type="text" name="name" autocomplete="name" required /></label>
           <label class="contact-field"><span>Email</span><input type="email" name="email" autocomplete="email" required /></label>
           <label class="contact-field contact-field--full"><span>Product or project</span><textarea name="project" rows="5" placeholder="What are you building, where is it now, and what needs to change?" required></textarea></label>

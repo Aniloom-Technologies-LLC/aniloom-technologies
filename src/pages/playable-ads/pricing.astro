@@ -7,34 +7,34 @@ const primaryPackages = [
   {
     title: "Playable Ads Development",
     price: "$5,000 USD",
-    summary: "For teams that need Aniloom to create a compact interactive creative from an approved direction.",
+    summary: "Build one playable from your approved concept, reference, or product flow.",
     inclusions: [
       "One playable from an approved concept, reference, or product flow",
       "One core interaction in HTML5 or WebGL",
       "Portrait and landscape layouts",
       "Tutorial, gameplay, result, and CTA states",
       "One language and one behavioral variant",
-      "One provider package with basic click-through or agreed analytics hooks",
+      "One ad-network provider package with basic click-through or agreed analytics hooks",
       "Two review rounds and a release-quality review",
       "Production package and source handoff",
     ],
-    note: "Client supplies approved assets. A typical planning range is 10–15 business days after complete inputs; the final timeline is confirmed in the proposal.",
+    note: "You supply approved assets. Custom art, substantial animation, extra variants, localization, and extra provider packages are add-ons. Plan for 10-15 business days after complete inputs and access; the proposal confirms the timeline.",
   },
   {
     title: "Playable Release Quality and Platform Readiness",
     price: "$1,500 USD",
-    summary: "For an existing stable playable that needs a bounded review before handoff or launch.",
+    summary: "Test one existing playable before delivery or launch, with findings and one retest.",
     inclusions: [
       "One stable playable in portrait and landscape",
       "Up to two behavioral variants",
-      "One provider package",
+      "One ad-network provider package",
       "Intake and risk map",
       "Visual, responsive, end-user, variant, and package review",
       "Findings with supporting evidence",
       "One retest after corrections",
       "Release summary",
     ],
-    note: "A typical planning range is 3–5 business days after stable access. Engineering corrections are not included unless added to the scope.",
+    note: "Plan for 3-5 business days after stable-build access. Engineering fixes are separate scope. The proposal confirms the timeline.",
   },
 ];
 
@@ -48,13 +48,13 @@ const addOns = [
   {
     title: "Variants, Localization & Provider Adaptation",
     price: "$750 USD",
-    summary: "One additional behavioral variant, a bounded client-supplied localization batch, or one additional provider package, depending on complexity.",
+    summary: "One additional behavioral variant, an agreed batch of client-supplied translations, or one additional provider package, depending on complexity.",
     inclusions: ["The proposal states which adaptation is included."],
   },
   {
     title: "Correction & Retest Sprint",
     price: "$1,500 USD",
-    summary: "A bounded engineering correction scope derived from agreed findings, followed by targeted retest.",
+    summary: "Engineering fixes for an agreed list of findings, followed by targeted retesting.",
     inclusions: ["This is a defined sprint, not unlimited remediation."],
   },
 ];
@@ -65,22 +65,22 @@ const addOns = [
     <PlayableNav />
     <section class="page-hero page-hero--service pricing-hero section-shell">
       <p class="eyebrow" data-reveal>Playable Ads packages</p>
-      <h1 data-reveal>Choose the playable boundary before we shape the final scope.</h1>
-      <p class="page-hero__lead" data-reveal>Two primary starting points separate new production from release-quality review. Each package shows the base scope, then the proposal confirms the exact inputs, timeline, and deliverables.</p>
+      <h1 data-reveal>Playable Ads Development & QA Pricing</h1>
+      <p class="page-hero__lead" data-reveal>Compare development for a new playable with QA for an existing build. Each package lists its starting price and base scope, with optional production and adaptation add-ons below.</p>
       <div class="page-hero__actions" data-reveal><a class="button" href="#packages">View packages</a><button class="text-link" type="button" data-contact-open>Discuss a playable <span>↗</span></button></div>
     </section>
 
     <section class="pricing-stage surface-light section-pad" id="packages">
       <div class="section-shell">
         <div class="pricing-group">
-          <div class="section-heading" data-reveal><div><p class="eyebrow">Primary packages</p><h2>Build it, or review what already exists.</h2></div><p>Both packages use a visible product boundary. Add-ons extend that boundary without making the core engagement ambiguous.</p></div>
+          <div class="section-heading" data-reveal><div><p class="eyebrow">Primary packages</p><h2>Build it, or review what already exists.</h2></div><p>Development includes the build and release-quality review. The QA package tests an existing playable; engineering fixes are purchased separately.</p></div>
           <div class="pricing-grid pricing-grid--two pricing-grid--primary">
             {primaryPackages.map((item) => <PricingCard {...item} />)}
           </div>
         </div>
 
         <div class="pricing-group pricing-group--addons">
-          <div class="section-heading" data-reveal><div><p class="eyebrow">Optional add-ons</p><h2>Extend only the part that needs more work.</h2></div><p>Add-ons are scoped separately so additional production, adaptation, or correction work stays visible.</p></div>
+          <div class="section-heading" data-reveal><div><p class="eyebrow">Optional add-ons</p><h2>Add art, adaptations, or engineering fixes.</h2></div><p>Add custom production, another variant or provider package, localization, or a correction sprint when your project needs it.</p></div>
           <div class="pricing-grid pricing-grid--three">
             {addOns.map((item) => <PricingCard {...item} />)}
           </div>
@@ -97,6 +97,6 @@ const addOns = [
       </div>
     </section>
 
-    <section class="callout section-shell section-pad" data-reveal><p class="eyebrow">Bring the brief or the build</p><h2>We will identify the useful starting package.</h2><p>Share the current state, target platforms, available assets, variants, and release pressure. We will respond with the next practical step.</p><button class="button" type="button" data-contact-open>Discuss a playable</button></section>
+    <section class="callout section-shell section-pad" data-reveal><p class="eyebrow">Bring the brief or the build</p><h2>Find the right playable package.</h2><p>Share the brief or build, target provider, available assets, variants, and deadline. We will recommend a package and confirm the scope.</p><button class="button" type="button" data-contact-open>Discuss a playable</button></section>
   </main>
 </BaseLayout>

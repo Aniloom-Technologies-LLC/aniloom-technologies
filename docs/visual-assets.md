@@ -1,20 +1,22 @@
 # Visual asset register
 
-Updated: 2026-09-28
+Updated: 2026-10-02
 
-This register records the generated imagery currently used by the site. None of these assets is client evidence or proof of a completed product. AVIF is the preferred web source and WebP is the fallback.
+This register records generated imagery and archived composition studies. None of these assets is client evidence or proof of a completed product. AVIF is the preferred web source and WebP is the fallback.
 
-## Placeholder photography
+## Archived photography studies
 
 These generated composition studies must be replaced with authentic, approved photography before they are used as documentary material, team photography, company proof, or client proof.
 
 | Asset | Use | Classification | Subject boundary |
 | --- | --- | --- | --- |
-| `about-mountain-path` | About visual story | `placeholder` | Fictional anonymous adults, fictional dog, unconfirmed location |
-| `studio-visual-review` | How We Work visual story | `placeholder` | Fictional anonymous people and dog in an unconfirmed studio |
-| `product-flow-review` | Capabilities visual story | `placeholder` | Fictional anonymous hands and schematic product material |
-| `worktable-diagram-review` | Founder-card composition study | `placeholder` | Fictional anonymous subject, explicitly not Ino |
-| `printed-design-state-review` | COO-card composition study | `placeholder` | Fictional anonymous subject, explicitly not Olena |
+| `about-mountain-path` | Archived, removed from About | `placeholder` | Fictional anonymous adults, fictional dog, unconfirmed location |
+| `studio-visual-review` | Archived, removed from How We Work | `placeholder` | Fictional anonymous people and dog in an unconfirmed studio |
+| `product-flow-review` | Capabilities illustration | `editorial` | Fictional anonymous hands and schematic product material |
+| `worktable-diagram-review` | Archived, removed from founder card | `placeholder` | Fictional anonymous subject, explicitly not Ino |
+| `printed-design-state-review` | Archived, removed from cofounder card | `placeholder` | Fictional anonymous subject, explicitly not Olena |
+
+The four archived people/place studies are stored under `docs/internal/visual-studies/`, outside public website output. The capabilities image is a labeled editorial illustration and does not document company work.
 
 All five photographs were generated with the built-in ImageGen workflow. Their prompts require hidden faces, natural editorial observation, realistic material texture, warm yellow light, cool cyan daylight, ink shadows, and no logos, client work, confidential screens, or fabricated results.
 

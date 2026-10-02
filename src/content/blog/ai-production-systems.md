@@ -1,7 +1,8 @@
 ---
-title: Building AI Features That Survive Production, Not Just Demos
+title: Building AI Features for Production
 description: A practical checklist for turning AI-assisted product ideas into inspectable, governable software.
 publishDate: 2026-03-19
+updatedDate: 2026-10-02
 category: AI Systems
 tags:
   - ai systems
@@ -71,18 +72,6 @@ We prefer workflows where every handoff is explicit:
 This structure also makes analytics possible. You can measure revision rate, policy failures,
 latency, and completion quality instead of arguing from anecdotes.
 
-## Where this matters for company websites and content systems
+## Before expanding the workflow
 
-Even a content section should follow the same discipline. Publishing pipelines benefit from typed
-frontmatter, versioned content, reusable layouts, and deterministic builds. That is why Astro is a
-good fit for a studio site that wants Insights pages without introducing unnecessary CMS overhead.
-
-The system remains simple:
-
-1. Write the article in Markdown.
-2. Review it in the repo.
-3. Build static output.
-4. Publish a fast, indexable page.
-
-That is a small example of the broader principle: production quality comes from clear system
-boundaries, not from wishful autonomy.
+Choose one user journey and define what happens when inputs are missing, a tool fails, or a reviewer rejects the output. Test retries against the same record version and keep approval separate from generation. Expand automation only when the team can inspect the result and recover from failure.

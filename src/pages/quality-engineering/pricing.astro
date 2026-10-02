@@ -6,7 +6,7 @@ const releasePackages = [
   {
     title: "Release Confidence Check",
     price: "$2,500 USD",
-    summary: "A bounded release-testing engagement for one major release decision.",
+    summary: "Test one release candidate and up to three critical user journeys.",
     inclusions: [
       "One working application or product surface",
       "One release candidate or major release decision",
@@ -28,13 +28,13 @@ const releasePackages = [
       "Normal, negative, and important edge conditions",
       "Interruption, integration, and recovery checks where relevant",
       "Findings with evidence",
-      "One retest and a bounded readiness summary",
+      "One retest and a readiness summary for the agreed flow",
     ],
   },
   {
     title: "Launch & Scale Readiness Test",
     price: "$7,500 USD",
-    summary: "A controlled workload review after feasibility and safe-environment qualification.",
+    summary: "Test an agreed workload in a non-production environment, after checking feasibility and safe access.",
     inclusions: [
       "One approved non-production environment",
       "One agreed workload model",
@@ -52,7 +52,7 @@ const ongoingPackages = [
     title: "Monthly Product QA Support",
     price: "$3,000 USD",
     cadence: "/ month",
-    summary: "A defined quality cadence for one active product and its planned feature or release work.",
+    summary: "Regular testing for one product, covering up to two planned feature or release test cycles per month.",
     inclusions: [
       "Three-month minimum",
       "Up to two planned feature or release test cycles per month",
@@ -66,7 +66,7 @@ const ongoingPackages = [
   {
     title: "Regression Automation Pack",
     price: "$5,000 USD",
-    summary: "A maintainable starting automation layer for stable, high-value web regression flows.",
+    summary: "Automate up to five stable web regression flows, with test code and run instructions.",
     inclusions: [
       "One web product and one target browser",
       "Up to five stable high-value regression flows",
@@ -83,7 +83,7 @@ const systemPackages = [
   {
     title: "QA Setup for Startups",
     price: "$6,000 USD",
-    summary: "A practical quality system for one product team that needs clearer ownership, coverage, and release gates.",
+    summary: "Set up a test process, defect workflow, release checklist, and regression scenarios for one product team.",
     inclusions: [
       "Current-state review for one product and team",
       "Risk and ownership map",
@@ -102,29 +102,29 @@ const systemPackages = [
   <main id="main-content">
     <section class="page-hero page-hero--service pricing-hero section-shell">
       <p class="eyebrow" data-reveal>Quality Engineering & Testing packages</p>
-      <h1 data-reveal>Choose the quality decision your product needs next.</h1>
-      <p class="page-hero__lead" data-reveal>Start with a release decision, an ongoing delivery need, or the quality system behind both. Each package has a visible base scope before the proposal adapts it to the product.</p>
-      <div class="page-hero__actions" data-reveal><a class="button" href="#packages">View packages</a><button class="text-link" type="button" data-contact-open>Discuss a quality challenge <span>↗</span></button></div>
+      <h1 data-reveal>Quality Engineering & Testing Packages</h1>
+      <p class="page-hero__lead" data-reveal>Compare release checks, ongoing QA, automation, and QA setup. Each package lists its starting price and base scope; the proposal confirms the final deliverables and timeline. A configuration profile is an agreed combination of platform, browser or device, and environment.</p>
+      <div class="page-hero__actions" data-reveal><a class="button" href="#packages">View packages</a><button class="text-link" type="button" data-contact-open>Discuss testing <span>↗</span></button></div>
     </section>
 
     <section class="pricing-stage surface-light section-pad" id="packages">
       <div class="section-shell">
         <div class="pricing-group">
-          <div class="section-heading" data-reveal><div><p class="eyebrow">Make a release decision</p><h2>Test the risk that matters now.</h2></div><p>Use release testing to focus evidence on the next decision, from one critical flow to a broader launch and scale question.</p></div>
+          <div class="section-heading" data-reveal><div><p class="eyebrow">Make a release decision</p><h2>Check a release or critical user journey.</h2></div><p>Choose a Critical Flow Check for one journey, a Release Confidence Check for a release candidate, or Launch & Scale testing for an agreed workload.</p></div>
           <div class="pricing-grid pricing-grid--three">
             {releasePackages.map((item) => <PricingCard {...item} />)}
           </div>
         </div>
 
         <div class="pricing-group">
-          <div class="section-heading" data-reveal><div><p class="eyebrow">Support ongoing development</p><h2>Add a repeatable quality rhythm.</h2></div><p>These packages support planned product work without turning the engagement into an undefined staff or request pool.</p></div>
+          <div class="section-heading" data-reveal><div><p class="eyebrow">Support ongoing development</p><h2>Regular QA or automated regression checks.</h2></div><p>Choose monthly support for planned test cycles or an automation pack for stable web flows. Ongoing automation maintenance is separate scope.</p></div>
           <div class="pricing-grid pricing-grid--two">
             {ongoingPackages.map((item) => <PricingCard {...item} />)}
           </div>
         </div>
 
         <div class="pricing-group">
-          <div class="section-heading" data-reveal><div><p class="eyebrow">Build a QA system</p><h2>Leave the team with reusable controls.</h2></div><p>Establish the minimum useful structure for ownership, coverage, defects, and release decisions.</p></div>
+          <div class="section-heading" data-reveal><div><p class="eyebrow">Build a QA system</p><h2>Set up the testing process your team needs.</h2></div><p>Receive a risk map, defect workflow, release checklist, and up to ten documented critical regression scenarios.</p></div>
           <div class="pricing-grid pricing-grid--one">
             {systemPackages.map((item) => <PricingCard {...item} />)}
           </div>
@@ -143,6 +143,6 @@ const systemPackages = [
       </div>
     </section>
 
-    <section class="callout section-shell section-pad" data-reveal><p class="eyebrow">Bring the current decision</p><h2>We will identify the smallest useful quality boundary.</h2><p>Share the product state, critical journeys, platforms, release pressure, and evidence you already have.</p><button class="button" type="button" data-contact-open>Discuss a quality challenge</button></section>
+    <section class="callout section-shell section-pad" data-reveal><p class="eyebrow">Bring the current decision</p><h2>Find the right testing package.</h2><p>Share the current build, critical journeys, platforms, known issues, and target release date.</p><button class="button" type="button" data-contact-open>Discuss testing</button></section>
   </main>
 </BaseLayout>

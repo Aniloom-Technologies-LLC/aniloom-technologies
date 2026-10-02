@@ -11,7 +11,7 @@ if (modal && modalContent && form) {
   let closeTimer = null;
   const getFocusableElements = () =>
     [...modalContent.querySelectorAll("button, input, textarea, a[href]")].filter(
-      (element) => !element.hasAttribute("disabled")
+      (element) => !element.hasAttribute("disabled") && element.type !== "hidden"
     );
 
   const toggleBodyScroll = (locked) => {
@@ -34,6 +34,13 @@ if (modal && modalContent && form) {
       closeTimer = null;
     }
     lastTrigger = trigger;
+    const topic = trigger?.dataset.contactTopic || "";
+    form.elements.namedItem("topic").value = topic;
+    const topicLabel = modal.querySelector("[data-contact-topic-label]");
+    if (topicLabel) {
+      topicLabel.textContent = topic ? `Discussing: ${topic}` : "";
+      topicLabel.hidden = !topic;
+    }
     modal.setAttribute("aria-hidden", "false");
     modal.classList.add("is-open");
     toggleBodyScroll(true);
@@ -106,10 +113,12 @@ if (modal && modalContent && form) {
     const email = String(formData.get("email") || "").trim();
     const project = String(formData.get("project") || "").trim();
 
-    const subject = encodeURIComponent(`Project inquiry from ${name}`);
+    const topic = String(formData.get("topic") || "").trim();
+    const subject = encodeURIComponent(topic ? `${topic} inquiry from ${name}` : `Project inquiry from ${name}`);
     const bodyText = [
       `Name: ${name}`,
       `Email: ${email}`,
+      ...(topic ? [`Package: ${topic}`] : []),
       "",
       "Project outline:",
       project,

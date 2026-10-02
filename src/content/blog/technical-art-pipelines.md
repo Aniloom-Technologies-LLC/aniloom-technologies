@@ -1,7 +1,8 @@
 ---
-title: Technical Art Pipelines Fail at the Handoff, Not the Shader
-description: Why most production slowdowns come from ambiguous tooling surfaces, not missing rendering tricks.
+title: "Technical Art Handoffs: Inputs, Ownership, and Review"
+description: How clear inputs, ownership, export checks, and visible review states help Unity teams hand off technical art.
 publishDate: 2026-03-12
+updatedDate: 2026-10-02
 category: Technical Art
 tags:
   - unity
@@ -61,11 +62,6 @@ That can include:
 
 Those signals turn technical art from reactive cleanup into an earlier quality gate.
 
-## The same thinking applies to studio content systems
+## Define the next handoff
 
-The website itself is part of the studio pipeline. If publishing a new technical note requires
-editing duplicate HTML, teams avoid writing. If the publishing flow is structured, versioned, and
-lightweight, the site becomes a real operating surface for thought leadership.
-
-That is why a content collection and static build matter here. The point is not novelty. The point
-is lower publishing friction with stronger consistency.
+Start with one asset type and write down its required inputs, export settings, owner, and review criteria. Put the checks where the next person will use them. A useful handoff lets that person decide whether to accept the asset, request a correction, or investigate a specific risk.
