@@ -284,6 +284,7 @@ p { color: var(--muted); }
 .product-story__message > p { max-width: 580px; margin-bottom: 30px; color: var(--text); font-size: clamp(1rem, 1.55vw, 1.25rem); }
 .product-story__actions { position: relative; z-index: 5; display: flex; gap: 12px; flex-wrap: wrap; pointer-events: auto; }
 .product-story__actions .button { min-width: 142px; }
+.product-story__demo-link { position: relative; z-index: 5; margin-top: 20px; pointer-events: auto; }
 .clean-list { list-style: none; margin: 0; padding: 0; }
 .clean-list li { padding: 12px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .88rem; }
 .clean-list li:last-child { border-bottom: 1px solid var(--line); }
