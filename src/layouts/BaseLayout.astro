@@ -6,6 +6,7 @@ interface Props {
   title: string;
   description?: string;
   bodyClass?: string;
+  appearance?: "light" | "dark";
   showSplashCursor?: boolean;
   ogType?: "website" | "article";
   image?: string;
@@ -19,6 +20,7 @@ const {
   title,
   description = "Aniloom Technologies builds and supports digital products across software engineering, games, playable experiences, quality engineering, design, and art.",
   bodyClass = "",
+  appearance = "light",
   showSplashCursor = true,
   ogType = "website",
   image,
@@ -51,12 +53,12 @@ const navItems = [
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-appearance={appearance}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#07131a" />
+    <meta name="theme-color" content={appearance === "light" ? "#f5f5f7" : "#07131a"} />
     <meta property="og:type" content={ogType} />
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="Aniloom Technologies" />
@@ -83,6 +85,7 @@ const navItems = [
     <script type="application/ld+json" set:html={JSON.stringify(structuredData).replace(/</g, "\\u003c")} />
     <style is:inline>
       html, body { background: #07131a; color: #f5f8fa; }
+      html[data-appearance="light"], html[data-appearance="light"] body { background: #f5f5f7; color: #15202a; }
     </style>
     <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
@@ -118,7 +121,7 @@ const navItems = [
 
     <div class="page-shell"><slot /></div>
 
-    <div class="contact-modal" data-contact-modal aria-hidden="true">
+    <div class="contact-modal surface-dark" data-contact-modal aria-hidden="true">
       <div class="contact-modal__backdrop" data-contact-close></div>
       <div class="contact-modal__content" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" tabindex="-1">
         <button class="contact-modal__close" type="button" aria-label="Close contact form" data-contact-close><span></span><span></span></button>
@@ -138,7 +141,7 @@ const navItems = [
       </div>
     </div>
 
-    <div class="site-footer-stage" data-footer-stage>
+    <div class="site-footer-stage surface-dark" data-footer-stage>
       <footer class="site-footer">
         <div class="site-footer__inner">
           <div class="site-footer__lead">

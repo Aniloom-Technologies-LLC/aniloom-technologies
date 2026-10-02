@@ -1,0 +1,8 @@
+---
+interface Props {
+  appearance: "light" | "dark";
+}
+const { appearance } = Astro.props;
+---
+
+<div class:list={["page-scene", `surface-${appearance}`]}><slot /></div>

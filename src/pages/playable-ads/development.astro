@@ -1,10 +1,11 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Scene from "../../components/Scene.astro";
 import GradientText from "../../components/GradientText.astro";
 import PlayableNav from "../../components/PlayableNav.astro";
 ---
 
-<BaseLayout title="Playable Ads Development | Aniloom Technologies" description="HTML5/WebGL playable ad development with responsive layouts, release-quality review, and production handoff. Custom art and additional variants are scoped separately.">
+<BaseLayout title="Playable Ads Development | Aniloom Technologies" description="HTML5/WebGL playable ad development with responsive layouts, release-quality review, and production handoff. Custom art and additional variants are scoped separately." appearance="dark">
   <main id="main-content">
     <PlayableNav />
     <section class="page-hero page-hero--service section-shell">
@@ -14,6 +15,7 @@ import PlayableNav from "../../components/PlayableNav.astro";
       <div class="page-hero__actions" data-reveal><button class="button" type="button" data-contact-open>Discuss development</button><a class="text-link" href="#scope">See the scope <span>↓</span></a></div>
     </section>
 
+    <Scene appearance="light">
     <section class="service-intro section-shell section-pad" id="scope">
       <div class="service-intro__statement" data-reveal><p class="eyebrow">One connected delivery</p><h2>A playable built to your brief and target specification.</h2><p>Before production, we agree on the interaction, supplied assets, target provider, review rounds, and delivery requirements. Custom art and additional variants are priced separately.</p></div>
       <div class="service-scope-grid">
@@ -23,7 +25,8 @@ import PlayableNav from "../../components/PlayableNav.astro";
       </div>
     </section>
 
-    <section class="system-band section-pad">
+    </Scene>
+    <section class="system-band surface-dark section-pad">
       <div class="section-shell">
         <div class="section-heading" data-reveal><div><p class="eyebrow">Development-integrated quality</p><h2>Testing starts during development.</h2></div><p>Engineering implements the playable. Quality Engineering checks the interaction and layouts, records issues, and retests corrections against the agreed acceptance criteria.</p></div>
         <div class="role-grid">
@@ -33,6 +36,7 @@ import PlayableNav from "../../components/PlayableNav.astro";
       </div>
     </section>
 
+    <Scene appearance="light">
     <section class="deliverable section-shell section-pad">
       <div class="section-heading" data-reveal><div><p class="eyebrow">Possible scope</p><h2>Base package and optional production work.</h2></div><p>The base package uses your approved assets and includes one language, one behavioral variant, and one provider package. See pricing for the full scope and add-ons.</p></div>
       <div class="deliverable-grid">
@@ -46,6 +50,7 @@ import PlayableNav from "../../components/PlayableNav.astro";
 
     <section class="service-crosslink section-shell" data-reveal><p class="eyebrow">Inspect working examples</p><div><h2>Try our playable demonstrations.</h2><a class="text-link" href="/playable-ads/case-studies/magic-thai-playables/">Explore the Magic Thai demonstrations <span>↗</span></a></div></section>
     <section class="service-crosslink section-shell" data-reveal><p class="eyebrow">Already have a build?</p><div><h2>Start with QA and release readiness instead.</h2><a class="text-link" href="/playable-ads/qa-release-readiness/">Explore the review path <span>↗</span></a></div></section>
-    <section class="callout section-shell section-pad" data-reveal><p class="eyebrow">Start with the campaign goal</p><h2>Tell us about your playable ad.</h2><p>Share the approved concept or reference, assets, target provider specification, and deadline. We will confirm the scope and delivery plan.</p><button class="button" type="button" data-contact-open>Discuss development</button></section>
+    </Scene>
+    <section class="callout surface-dark section-shell section-pad"><p class="eyebrow">Start with the campaign goal</p><h2>Tell us about your playable ad.</h2><p>Share the approved concept or reference, assets, target provider specification, and deadline. We will confirm the scope and delivery plan.</p><button class="button" type="button" data-contact-open>Discuss development</button></section>
   </main>
 </BaseLayout>
