@@ -61,19 +61,16 @@ const addOns = [
 ---
 
 <BaseLayout title="Playable Ads Development & QA Pricing | Aniloom Technologies" description="Starting prices and base scopes for Playable Ads development, playable QA and release readiness, and optional production or adaptation add-ons.">
-  <main id="main-content">
+  <main id="main-content" class="pricing-page">
     <PlayableNav />
-    <section class="page-hero page-hero--service pricing-hero section-shell">
-      <p class="eyebrow" data-reveal>Playable Ads packages</p>
-      <h1 data-reveal>Playable Ads Development & QA Pricing</h1>
-      <p class="page-hero__lead" data-reveal>Compare development for a new playable with QA for an existing build. Each package lists its starting price and base scope, with optional production and adaptation add-ons below.</p>
-      <div class="page-hero__actions" data-reveal><a class="button" href="#packages">View packages</a><button class="text-link" type="button" data-contact-open>Discuss a playable <span>↗</span></button></div>
-    </section>
-
-    <section class="pricing-stage surface-light section-pad" id="packages">
+    <section class="pricing-stage pricing-stage--catalog surface-light" id="packages">
       <div class="section-shell">
+        <header class="pricing-intro">
+          <h1>Playable Ads Development & QA Pricing</h1>
+          <p>Choose development for a new playable or QA for an existing build. Engineering fixes are separate scope.</p>
+        </header>
         <div class="pricing-group">
-          <div class="section-heading" data-reveal><div><p class="eyebrow">Primary packages</p><h2>Build it, or review what already exists.</h2></div><p>Development includes the build and release-quality review. The QA package tests an existing playable; engineering fixes are purchased separately.</p></div>
+          <h2 class="visually-hidden">Primary packages</h2>
           <div class="pricing-grid pricing-grid--two pricing-grid--primary">
             {primaryPackages.map((item) => <PricingCard {...item} />)}
           </div>

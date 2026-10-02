@@ -12,7 +12,7 @@ interface Props {
 const { title, price, summary, inclusions, label, note, cadence } = Astro.props;
 ---
 
-<article class="pricing-card" data-reveal>
+<article class="pricing-card">
   {label && <p class="pricing-card__label">{label}</p>}
   <h3>{title}</h3>
   <p class="pricing-card__price"><span>Starting at</span><strong>{price}</strong>{cadence && <small>{cadence}</small>}</p>

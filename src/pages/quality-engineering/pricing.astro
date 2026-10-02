@@ -99,18 +99,15 @@ const systemPackages = [
 ---
 
 <BaseLayout title="Quality Engineering & Release Testing Pricing | Aniloom Technologies" description="Starting prices and base scopes for release testing, ongoing QA support, regression automation, launch readiness, critical-flow review, and QA setup.">
-  <main id="main-content">
-    <section class="page-hero page-hero--service pricing-hero section-shell">
-      <p class="eyebrow" data-reveal>Quality Engineering & Testing packages</p>
-      <h1 data-reveal>Quality Engineering & Testing Packages</h1>
-      <p class="page-hero__lead" data-reveal>Compare release checks, ongoing QA, automation, and QA setup. Each package lists its starting price and base scope; the proposal confirms the final deliverables and timeline. A configuration profile is an agreed combination of platform, browser or device, and environment.</p>
-      <div class="page-hero__actions" data-reveal><a class="button" href="#packages">View packages</a><button class="text-link" type="button" data-contact-open>Discuss testing <span>↗</span></button></div>
-    </section>
-
-    <section class="pricing-stage surface-light section-pad" id="packages">
+  <main id="main-content" class="pricing-page">
+    <section class="pricing-stage pricing-stage--catalog surface-light" id="packages">
       <div class="section-shell">
+        <header class="pricing-intro">
+          <h1>Quality Engineering & Testing Packages</h1>
+          <p>Compare release checks, ongoing QA, automation, and QA setup. The proposal confirms the final scope and timeline.</p>
+        </header>
         <div class="pricing-group">
-          <div class="section-heading" data-reveal><div><p class="eyebrow">Make a release decision</p><h2>Check a release or critical user journey.</h2></div><p>Choose a Critical Flow Check for one journey, a Release Confidence Check for a release candidate, or Launch & Scale testing for an agreed workload.</p></div>
+          <h2 class="pricing-group__label">Make a release decision</h2>
           <div class="pricing-grid pricing-grid--three">
             {releasePackages.map((item) => <PricingCard {...item} />)}
           </div>
@@ -133,7 +130,7 @@ const systemPackages = [
     </section>
 
     <section class="pricing-terms section-shell section-pad">
-      <div class="section-heading" data-reveal><div><p class="eyebrow">Commercial terms</p><h2>Clear terms around a defined scope.</h2></div><p>The final proposal is the source of truth for the exact scope and commercial agreement.</p></div>
+      <div class="section-heading" data-reveal><div><p class="eyebrow">Commercial terms</p><h2>Clear terms around a defined scope.</h2></div><p>The final proposal is the source of truth for the exact scope and commercial agreement. A configuration profile is an agreed combination of platform, browser or device, and environment.</p></div>
       <div class="pricing-terms__grid">
         <p data-reveal><span>Currency</span>Prices are in USD and exclude applicable taxes.</p>
         <p data-reveal><span>Project payments</span>Project packages are normally 50% to schedule and 50% before final handoff.</p>
