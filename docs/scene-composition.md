@@ -11,7 +11,7 @@ Light is the reading and evaluation canvas: understand the offer, compare prices
 | Page or family | Entry and reading canvas | Dark passages |
 | --- | --- | --- |
 | Home | Dark Playable Ads, light Release Testing; light statement/capabilities and people/notes | Playable Ads, company presentation, delivery process, footer |
-| Playable Ads overview | Dark product introduction/artwork; light path selection and deliverables/demonstration link | Introduction, method, closing contact/footer |
+| Playable Ads overview | Dark product introduction; light interaction explanation, path selection, and deliverables/demonstration link | Introduction, method, closing contact/footer |
 | Playable Ads development | Dark introduction; light scope and handoff/example links | Introduction, delivery method, closing contact/footer |
 | Quality Engineering | Light introduction, choices, deliverables | Practice standards, closing contact/footer |
 | Playable QA and release readiness | Light introduction, review scope, links | Review method and practice standards, closing contact/footer |
@@ -36,6 +36,14 @@ Light is the reading and evaluation canvas: understand the offer, compare prices
 - The fixed global header matches the page entry canvas and stays stable across section transitions. The footer and contact dialog always use the dark scope. A dark dialog is an intentional action surface, not a new theme.
 - Closing callouts are full-width passages with shell-aligned content, not rounded container cards. Cards remain useful for bounded selectable packages or actual embedded products, not for every text block.
 - Preserve the two centered homepage product actions, and preserve package cards in the initial pricing viewport. Color composition must not reintroduce an introductory pricing screen.
+
+## Playable product illustration
+
+- The homepage presents one phone with a visible playable interaction on a plain dark canvas. Keep the centered HTML product title, description, and two actions. Do not turn the first screen into a numbered process diagram or place artwork behind the copy.
+- The Playable Ads overview explains the player's journey on the light reading canvas: play, choose the CTA, open the configured destination. This is separate from Aniloom's delivery and QA workflow.
+- Use three independent text-free phone assets. Stage headings, numbers, descriptions, and connections belong to HTML/CSS/SVG, not the raster images. Keep the sequence borderless rather than wrapping each stage in a rounded card.
+- Wide layouts show the sequence horizontally. Narrow portrait layouts stack it vertically with readable captions and downward connections. Compact landscape may place the homepage phone beside the centered message to keep both actions and the next product visible.
+- Treat these assets as schematic editorial explanation, not product screenshots or evidence. Future GIF/video can replace the media slot without removing the HTML explanation; preserve a static fallback and reduced-motion support.
 
 ## Review checklist
 

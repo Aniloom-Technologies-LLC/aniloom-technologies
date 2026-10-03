@@ -1,0 +1,14 @@
+---
+interface Props {
+  state: "play" | "redirect" | "destination";
+  eager?: boolean;
+}
+
+const { state, eager = false } = Astro.props;
+const asset = `/assets/images/editorial/playable-${state}`;
+---
+
+<picture class="playable-phone" aria-hidden="true">
+  <source srcset={`${asset}.avif`} type="image/avif" />
+  <img src={`${asset}.webp`} alt="" width="600" height="900" loading={eager ? "eager" : "lazy"} fetchpriority={eager ? "high" : "auto"} decoding="async" />
+</picture>

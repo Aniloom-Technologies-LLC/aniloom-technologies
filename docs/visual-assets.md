@@ -29,10 +29,15 @@ These images explain a concept and do not claim to document an Aniloom project, 
 | `ai-production-systems-header` | AI production systems article and note cards | `editorial` | Inspectable workflow, validation, human review, accountable release decision |
 | `technical-art-pipelines-header` | Technical art pipelines article and note cards | `editorial` | Visible production handoffs, review gates, and a clarified asset path |
 | `manual-payment-testing-header` | Manual payment testing article and note cards | `editorial` | Purchase states across web and mobile, entitlement, receipt, recovery, and human review |
-| `playable-ads-v2` | Playable Ads service page and homepage focus card | `editorial` | Intent, interaction, responsive states, review, and release readiness |
+| `playable-ads-v2` | Retained Playable Ads social-preview image | `editorial` | Intent, interaction, responsive states, review, and release readiness |
+| `playable-play` | Homepage product scene and first overview journey step | `editorial` | One schematic phone with a draggable puzzle tile and finger cursor |
+| `playable-redirect` | Second overview journey step | `editorial` | The same phone with an end-card CTA and finger cursor |
+| `playable-destination` | Third overview journey step | `editorial` | The same phone with a schematic browser destination |
 | `quality-engineering-v2` | Quality Engineering service page and homepage focus card | `editorial` | Risk paths, coverage, evidence, unresolved risk, and a release gate |
 
 The editorial prompts use `#FFC000` for the primary decision or accountable point, `#56D3FF` for connection and system flow, white highlights, and cool ink structure. They prohibit fake interfaces, metrics, client evidence, glossy 3D, neon science-fiction motifs, and logo-derived decoration.
+
+The three phone assets were created with built-in ImageGen on 2026-10-02. They are intentionally schematic and text-free, with transparent outer backgrounds and opaque dark screens. All explanatory stage labels and connecting arrows are live website elements. They do not depict a shipped product, client campaign, installation, purchase, or measured result. Generation prompts and provenance are recorded in `docs/internal/playable-ads/interaction-illustrations.md`. Publication exports are 600 x 900 AVIF and WebP with alpha preserved.
 
 ## Product icons
 

@@ -3,6 +3,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Scene from "../components/Scene.astro";
 import GradientText from "../components/GradientText.astro";
 import PlayableNav from "../components/PlayableNav.astro";
+import PlayablePhone from "../components/PlayablePhone.astro";
+
+const interactionSteps = [
+  { state: "play", title: "Play", text: "Try a short interaction inside the ad." },
+  { state: "redirect", title: "Click to redirect", text: "Tap the call to action to follow the advertised link." },
+  { state: "destination", title: "Open Ad link", text: "The ad opens the configured store or landing page." },
+] as const;
 ---
 
 <BaseLayout title="Playable Ads | Development, QA, and Release Readiness | Aniloom Technologies" description="HTML5 playable ad development and QA for existing builds. Explore production packages, release-readiness reviews, pricing, and working demonstrations." image="/assets/images/editorial/playable-ads-v2.webp" imageAlt="Editorial illustration of playable-ad interaction states and release readiness." imageWidth={1400} imageHeight={1050} appearance="dark">
@@ -15,14 +22,24 @@ import PlayableNav from "../components/PlayableNav.astro";
       <div class="page-hero__actions" data-reveal><button class="button" type="button" data-contact-open>Discuss a playable</button><a class="text-link" href="/playable-ads/pricing/">View packages & pricing <span>↗</span></a></div>
     </section>
 
-    <figure class="service-artwork section-shell" data-reveal>
-      <picture>
-        <source srcset="/assets/images/editorial/playable-ads-v2.avif" type="image/avif" />
-        <img src="/assets/images/editorial/playable-ads-v2.webp" alt="An editorial sequence of interactive states connected by a cyan path, with a yellow decision point marking the intended action before review and release." width="1400" height="1050" loading="lazy" decoding="async" />
-      </picture>
-    </figure>
-
     <Scene appearance="light">
+    <section class="playable-journey section-shell section-pad" aria-labelledby="playable-journey-title">
+      <div class="section-heading" data-reveal><div><p class="eyebrow">How a playable ad works</p><h2 id="playable-journey-title">From interaction to destination.</h2></div><p>A playable ad lets people try a short interaction before choosing to open the advertised link.</p></div>
+      <ol class="playable-journey__steps" role="list">
+        {interactionSteps.map((step, index) => (
+          <li class="playable-journey__step">
+            <PlayablePhone state={step.state} />
+            <div class="playable-journey__copy">
+              <h3><span>{index + 1}.</span> {step.title}</h3>
+              <p>{step.text}</p>
+            </div>
+            {index < interactionSteps.length - 1 && <svg class="playable-journey__arrow" aria-hidden="true" viewBox="0 0 48 24" fill="none"><path d="M2 12h42M34 2l10 10-10 10" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /></svg>}
+          </li>
+        ))}
+      </ol>
+      <p class="playable-journey__note">Illustrated user journey. The creative, call to action, and destination are agreed in the brief.</p>
+    </section>
+
     <section class="entry-points section-shell section-pad" id="choose-path">
       <div class="section-heading" data-reveal><div><p class="eyebrow">Choose your service</p><h2>Build a new playable or test an existing one.</h2></div><p>Development includes implementation and release-quality review. The QA package covers testing and one retest; engineering fixes are scoped separately.</p></div>
       <div class="path-grid">
