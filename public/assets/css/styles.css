@@ -182,7 +182,6 @@ p { color: var(--muted); }
 }
 .site-brand { display: inline-flex; align-items: center; gap: 10px; font-size: 1rem; font-weight: 700; letter-spacing: -.035em; }
 .site-brand__mark { display: block; width: 38px; height: 38px; flex: 0 0 38px; object-fit: contain; }
-.theme-light .site-brand__mark { content: url("/assets/images/brand/aniloom-liquid-mark-light.webp"); }
 .site-nav { display: flex; align-items: center; gap: 5px; }
 .site-nav > a { padding: 10px 13px; border-radius: 999px; color: var(--muted); font-size: .78rem; font-weight: 600; transition: color .2s ease, background .2s ease; }
 .site-nav > a:hover, .site-nav > a:focus-visible { color: var(--text); background: var(--surface-soft); }
