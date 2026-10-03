@@ -37,12 +37,13 @@ Light is the reading and evaluation canvas: understand the offer, compare prices
 - Closing callouts are full-width passages with shell-aligned content, not rounded container cards. Cards remain useful for bounded selectable packages or actual embedded products, not for every text block.
 - Preserve the two centered homepage product actions, and preserve package cards in the initial pricing viewport. Color composition must not reintroduce an introductory pricing screen.
 
-## Playable product illustration
+## Product illustration sequences
 
-- The homepage presents one phone with a visible playable interaction on a plain dark canvas. Keep the centered HTML product title, description, and two actions. Do not turn the first screen into a numbered process diagram or place artwork behind the copy.
+- Updated 2026-10-03: the homepage presents three text-free illustrations with two SVG arrows above each centered product title, description, and two actions. Playable Ads stays on plain dark ink; Release Testing stays on plain light `#F5F5F7`. Do not place artwork behind the copy or add numbered captions to the homepage.
 - The Playable Ads overview explains the player's journey on the light reading canvas: play, choose the CTA, open the configured destination. This is separate from Aniloom's delivery and QA workflow.
 - Use three independent text-free phone assets. Stage headings, numbers, descriptions, and connections belong to HTML/CSS/SVG, not the raster images. Keep the sequence borderless rather than wrapping each stage in a rounded card.
-- Wide layouts show the sequence horizontally. Narrow portrait layouts stack it vertically with readable captions and downward connections. Compact landscape may place the homepage phone beside the centered message to keep both actions and the next product visible.
+- Homepage sequences stay horizontal in portrait and landscape, with a compact media height in short landscape to keep both actions and the next product visible. Detailed service sequences show three columns on wide layouts and stack vertically with readable captions and downward connections in narrow portrait layouts.
+- Release Testing uses the same schematic product across three assets: partly hidden bugs, a magnifying glass revealing a bug, and the product with sparkle stars. The last state is a metaphor for corrected and retested changes, not a defect-free guarantee. Homepage copy identifies the client's team as correction owner. Detailed captions explicitly cover intake, findings with evidence and coverage gaps, development-team fixes, Aniloom retest, and remaining risks. Engineering corrections are outside testing scope.
 - Treat these assets as schematic editorial explanation, not product screenshots or evidence. Future GIF/video can replace the media slot without removing the HTML explanation; preserve a static fallback and reduced-motion support.
 
 ## Review checklist

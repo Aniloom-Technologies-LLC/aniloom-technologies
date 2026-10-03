@@ -1,6 +1,6 @@
 # Visual asset register
 
-Updated: 2026-10-02
+Updated: 2026-10-03
 
 This register records generated imagery and archived composition studies. None of these assets is client evidence or proof of a completed product. AVIF is the preferred web source and WebP is the fallback.
 
@@ -31,13 +31,18 @@ These images explain a concept and do not claim to document an Aniloom project, 
 | `manual-payment-testing-header` | Manual payment testing article and note cards | `editorial` | Purchase states across web and mobile, entitlement, receipt, recovery, and human review |
 | `playable-ads-v2` | Retained Playable Ads social-preview image | `editorial` | Intent, interaction, responsive states, review, and release readiness |
 | `playable-play` | Homepage product scene and first overview journey step | `editorial` | One schematic phone with a draggable puzzle tile and finger cursor |
-| `playable-redirect` | Second overview journey step | `editorial` | The same phone with an end-card CTA and finger cursor |
-| `playable-destination` | Third overview journey step | `editorial` | The same phone with a schematic browser destination |
-| `quality-engineering-v2` | Quality Engineering service page and homepage focus card | `editorial` | Risk paths, coverage, evidence, unresolved risk, and a release gate |
+| `playable-redirect` | Homepage product sequence and second overview journey step | `editorial` | The same phone with an end-card CTA and finger cursor |
+| `playable-destination` | Homepage product sequence and third overview journey step | `editorial` | The same phone with a schematic browser destination |
+| `quality-engineering-v2` | Retained Quality Engineering social-preview image | `editorial` | Risk paths, coverage, evidence, unresolved risk, and a release gate |
+| `release-hidden-bugs` | Homepage and Quality Engineering first sequence stage | `editorial` | Schematic product window with partly concealed beetles |
+| `release-bug-found` | Homepage and Quality Engineering second sequence stage | `editorial` | The same product with a magnifying glass revealing a beetle |
+| `release-retested` | Homepage and Quality Engineering third sequence stage | `editorial` | The same product with sparkle stars, representing retested changes after development-team corrections |
 
 The editorial prompts use `#FFC000` for the primary decision or accountable point, `#56D3FF` for connection and system flow, white highlights, and cool ink structure. They prohibit fake interfaces, metrics, client evidence, glossy 3D, neon science-fiction motifs, and logo-derived decoration.
 
 The three phone assets were created with built-in ImageGen on 2026-10-02. They are intentionally schematic and text-free, with transparent outer backgrounds and opaque dark screens. All explanatory stage labels and connecting arrows are live website elements. They do not depict a shipped product, client campaign, installation, purchase, or measured result. Generation prompts and provenance are recorded in `docs/internal/playable-ads/interaction-illustrations.md`. Publication exports are 600 x 900 AVIF and WebP with alpha preserved.
+
+The three Release Testing assets were created with built-in ImageGen on 2026-10-03. The sparkling third state is not certification or a claim that QA performs engineering fixes or removes every defect. HTML copy explains development-team correction ownership, scoped retest, and remaining risks. Prompts and provenance are recorded in `docs/internal/release-testing/interaction-illustrations.md`. Publication exports are 600 x 600 AVIF and WebP with alpha preserved.
 
 ## Product icons
 

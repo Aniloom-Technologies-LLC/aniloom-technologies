@@ -1,5 +1,7 @@
 # Playable interaction illustrations
 
+2026-10-03 composition update: the user requested all three phone assets with separate SVG arrows above the homepage product title. This supersedes the original single-phone homepage direction below. The detailed overview keeps its HTML stage headings and descriptions. See `docs/scene-composition.md` for current implementation rules.
+
 Created 2026-10-02 using the built-in ImageGen tool. Classification: editorial. The user approved separate text-free graphics, a single homepage phone, and a three-step explanation on the detailed Playable Ads page. These are schematic illustrations, not project screenshots or client evidence.
 
 ## Composition and output

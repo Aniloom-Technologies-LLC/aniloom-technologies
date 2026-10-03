@@ -278,33 +278,30 @@ p { color: var(--muted); }
 .product-stories { padding-top: 58px; background: var(--bg); }
 .product-story { position: relative; min-height: min(76svh, 820px); overflow: hidden; isolation: isolate; }
 .product-story__canvas-link { position: absolute; z-index: 3; inset: 0; }
-.product-story__media { position: absolute; z-index: 0; inset: 0; }
-.product-story__media img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .8s cubic-bezier(.22, 1, .36, 1); }
-.product-story:hover .product-story__media img { transform: scale(1.015); }
-.product-story__veil { position: absolute; z-index: 1; inset: 0; background: linear-gradient(180deg, rgba(7, 19, 26, .34), rgba(7, 19, 26, .76) 45%, rgba(7, 19, 26, .88)); }
-.product-story--quality .product-story__veil { background: linear-gradient(180deg, rgba(245, 245, 247, .48), rgba(245, 245, 247, .9) 45%, rgba(245, 245, 247, .96)); }
-.product-story__content { position: relative; z-index: 4; min-height: inherit; display: grid; grid-template-rows: auto 1fr; padding-block: clamp(32px, 5vw, 62px); pointer-events: none; }
+.product-story__content { position: relative; z-index: 4; min-height: inherit; display: grid; grid-template-rows: auto 1fr; padding-block: clamp(24px, 3vw, 38px); pointer-events: none; }
 .product-story__heading { display: flex; align-items: center; justify-content: space-between; }
 .product-story__heading > span { color: var(--quiet); font-family: "DM Mono", monospace; font-size: .72rem; }
-.product-story__message { width: min(920px, 100%); justify-self: center; align-self: center; text-align: center; }
-.product-story__message h2 { margin: 0 0 20px; font-size: clamp(3.8rem, 7.5vw, 8rem); font-weight: 500; }
-.product-story__message > p { max-width: 620px; margin: 0 auto 30px; color: var(--text); font-size: clamp(1rem, 1.55vw, 1.25rem); }
+.product-story__message { width: min(920px, 100%); justify-self: center; align-self: center; padding-top: 16px; text-align: center; }
+.product-story__message h2 { margin: 0 0 14px; font-size: clamp(3.8rem, 7.5vw, 8rem); font-weight: 500; }
+.product-story__message > p { max-width: 620px; margin: 0 auto 24px; color: var(--text); font-size: clamp(1rem, 1.55vw, 1.25rem); }
 .product-story__actions { position: relative; z-index: 5; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; pointer-events: auto; }
 .product-story__actions .button { min-width: 142px; }
-.playable-phone { display: block; aspect-ratio: 2 / 3; }
-.playable-phone img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.playable-phone, .release-illustration { display: block; }
+.playable-phone { aspect-ratio: 2 / 3; }
+.release-illustration { aspect-ratio: 1; }
+.playable-phone img, .release-illustration img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .product-story--playable { background: var(--bg); }
-.product-story--playable .product-story__content { padding-block: clamp(24px, 3vw, 38px); }
-.product-story--playable .product-story__message { padding-top: 16px; }
-.product-story--playable .playable-phone { height: clamp(160px, 26svh, 250px); margin: 0 auto 18px; }
-.product-story--playable .product-story__message h2 { margin-bottom: 14px; }
-.product-story--playable .product-story__message > p { margin-bottom: 24px; }
+.product-visual-sequence { --visual-height: clamp(144px, 24svh, 216px); display: grid; grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr) 32px minmax(0, 1fr); align-items: center; gap: 16px; width: min(640px, 100%); margin: 0 auto 18px; }
+.product-visual-sequence > picture { width: 100%; height: var(--visual-height); }
+.product-visual-sequence__arrow { display: block; width: 100%; height: 24px; color: var(--link); }
 .playable-journey { --journey-gap: clamp(36px, 6vw, 96px); --journey-arrow-width: clamp(26px, 4vw, 48px); padding-block: clamp(64px, 6vw, 96px); }
 .playable-journey .section-heading { margin-bottom: 40px; }
 .playable-journey .section-heading h2 { font-size: clamp(2.4rem, 4.5vw, 4rem); scroll-margin-top: 100px; }
 .playable-journey__steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--journey-gap); margin: 0; padding: 0; list-style: none; }
 .playable-journey__step { position: relative; min-width: 0; text-align: center; }
 .playable-journey .playable-phone { width: min(100%, 260px); margin: 0 auto 28px; }
+.release-journey .release-illustration { width: min(100%, 300px); margin: 0 auto 28px; }
+.release-journey .playable-journey__arrow { top: clamp(84px, 10vw, 138px); }
 .playable-journey__copy h3 { margin: 0 0 12px; font-size: clamp(1.25rem, 2vw, 1.65rem); font-weight: 500; letter-spacing: -.025em; }
 .playable-journey__copy h3 > span { color: var(--quiet); }
 .playable-journey__copy p { max-width: 280px; margin: 0 auto; }
@@ -697,20 +694,18 @@ p { color: var(--muted); }
   .product-stories { padding-top: 56px; }
   .product-story { min-height: min(76svh, 660px); }
   .product-story__content { padding-block: 26px 32px; }
-  .product-story__message { width: 100%; align-self: end; text-align: center; }
+  .product-story__message { width: 100%; align-self: center; text-align: center; }
   .product-story__message h2 { margin-bottom: 12px; font-size: clamp(3rem, 13vw, 4.4rem); }
   .product-story__message > p { max-width: 520px; margin: 0 auto 22px; font-size: .98rem; }
   .product-story__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 380px; margin-inline: auto; }
   .product-story__actions .button { min-width: 0; min-height: 52px; padding-inline: 12px; font-size: .8rem; line-height: 1.25; text-align: center; }
-  .product-story__veil { background: linear-gradient(180deg, rgba(7, 19, 26, .24), rgba(7, 19, 26, .52) 46%, rgba(7, 19, 26, .96) 88%); }
-  .product-story--quality .product-story__media { top: 21%; }
-  .product-story--quality .product-story__veil { background: linear-gradient(180deg, rgba(245, 245, 247, .38), rgba(245, 245, 247, .72) 42%, rgba(245, 245, 247, .98) 84%); }
-  .product-story--playable .product-story__message { align-self: center; }
-  .product-story--playable .playable-phone { height: clamp(160px, 30svh, 260px); }
+  .product-visual-sequence { --visual-height: clamp(120px, 21svh, 176px); grid-template-columns: minmax(0, 1fr) 20px minmax(0, 1fr) 20px minmax(0, 1fr); gap: 6px; margin-bottom: 14px; }
   .playable-journey__steps { grid-template-columns: 1fr; gap: 64px; }
   .playable-journey .playable-phone { width: min(62vw, 220px); margin-bottom: 20px; }
+  .release-journey .release-illustration { width: min(76vw, 280px); margin-bottom: 20px; }
   .playable-journey__copy h3 { font-size: 1.5rem; }
   .playable-journey__arrow { top: auto; bottom: -44px; left: calc(50% - 24px); width: 48px; transform: rotate(90deg); }
+  .release-journey .playable-journey__arrow { top: auto; }
   .clean-list li { padding: 9px 0; }
   .process-grid, .process-grid--four { grid-template-columns: 1fr; }
   .process-grid li, .process-grid li + li, .process-grid--four li:nth-child(3) { min-height: 0; display: grid; grid-template-columns: 42px 1fr; gap: 10px 16px; padding: 24px 0; border-left: 0; }
@@ -806,17 +801,12 @@ p { color: var(--muted); }
   .hero__signal { display: none; }
   .product-stories { padding-top: 52px; }
   .product-story { min-height: 78svh; }
-  .product-story__content { padding-block: 18px; }
-  .product-story__message { width: min(680px, 100%); }
+  .product-story__content { padding-block: 12px; }
+  .product-story__message { width: min(680px, 100%); padding-top: 6px; }
   .product-story__message h2 { margin-bottom: 8px; font-size: clamp(2.8rem, 6vw, 4rem); }
   .product-story__message > p { max-width: 500px; margin-bottom: 14px; font-size: .88rem; line-height: 1.38; }
   .product-story__actions .button { min-height: 44px; }
-  .product-story--playable .product-story__content { padding-block: 16px; }
-  .product-story--playable .product-story__message { display: grid; grid-template-columns: 130px minmax(0, 1fr); column-gap: 24px; width: min(680px, 100%); padding-top: 10px; }
-  .product-story--playable .playable-phone { grid-row: 1 / 4; width: 130px; height: 195px; margin: 0; align-self: center; }
-  .product-story--playable .product-story__message h2 { margin-bottom: 8px; }
-  .product-story--playable .product-story__message > p { margin-bottom: 14px; }
-  .product-story--playable .product-story__actions { grid-column: 2; }
+  .product-visual-sequence { --visual-height: clamp(60px, 18svh, 88px); width: min(310px, 100%); grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1fr) 24px minmax(0, 1fr); gap: 8px; margin-bottom: 6px; }
   .pricing-stage--catalog { padding-top: 72px; }
   .pricing-page > .playable-nav { padding-top: 64px; }
   .pricing-page > .playable-nav + .pricing-stage--catalog { padding-top: 20px; }
@@ -827,6 +817,13 @@ p { color: var(--muted); }
   .pricing-card h3 { font-size: 1.5rem; line-height: 1.06; }
   .pricing-card__price { margin-top: 16px; line-height: 1.2; }
   .pricing-card__price strong { font-size: 2rem; }
+}
+
+@media (orientation: landscape) and (max-height: 350px) {
+  .product-story__content { padding-block: 8px; }
+  .product-story__message h2 { font-size: 2.4rem; }
+  .product-story__message > p { margin-bottom: 10px; font-size: .82rem; }
+  .product-visual-sequence { --visual-height: 52px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

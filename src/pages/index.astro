@@ -4,7 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Scene from "../components/Scene.astro";
 import FloatingLines from "../components/FloatingLines";
 import GradientText from "../components/GradientText.astro";
-import PlayablePhone from "../components/PlayablePhone.astro";
+import ProductVisualSequence from "../components/ProductVisualSequence.astro";
 
 const posts = (await getCollection("blog", ({ data }) => !data.draft))
   .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
@@ -27,7 +27,7 @@ const capabilities = [
         <div class="product-story__content section-shell">
           <div class="product-story__heading"><p class="eyebrow">Focused product</p><span>01</span></div>
           <div class="product-story__message">
-            <PlayablePhone state="play" eager />
+            <ProductVisualSequence product="playable" />
             <h2>Playable Ads</h2>
             <p>We build HTML5 playable ads and test existing builds before campaign launch.</p>
             <div class="product-story__actions"><a class="button" href="/playable-ads/">Explore playable ads</a><a class="button button--secondary" href="/playable-ads/pricing/">View pricing</a></div>
@@ -37,16 +37,12 @@ const capabilities = [
 
       <article class="product-story product-story--quality surface-light">
         <a class="product-story__canvas-link" href="/quality-engineering/" tabindex="-1" aria-hidden="true"></a>
-        <picture class="product-story__media" aria-hidden="true">
-          <source srcset="/assets/images/editorial/quality-engineering-v2.avif" type="image/avif" />
-          <img src="/assets/images/editorial/quality-engineering-v2.webp" alt="" width="1400" height="1050" loading="lazy" decoding="async" />
-        </picture>
-        <div class="product-story__veil" aria-hidden="true"></div>
         <div class="product-story__content section-shell">
           <div class="product-story__heading"><p class="eyebrow">Focused product</p><span>02</span></div>
           <div class="product-story__message">
+            <ProductVisualSequence product="release" />
             <h2>Release Testing</h2>
-            <p>We test critical user journeys and report defects, untested areas, and remaining release risks.</p>
+            <p>We test critical user journeys, report defects and remaining risks, and retest after your team’s fixes.</p>
             <div class="product-story__actions"><a class="button" href="/quality-engineering/">Explore release testing</a><a class="button button--secondary" href="/quality-engineering/pricing/">View pricing</a></div>
           </div>
         </div>

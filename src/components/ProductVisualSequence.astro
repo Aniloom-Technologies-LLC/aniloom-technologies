@@ -1,0 +1,15 @@
+---
+import PlayablePhone from "./PlayablePhone.astro";
+import ReleaseIllustration from "./ReleaseIllustration.astro";
+import JourneyArrow from "./JourneyArrow.astro";
+interface Props { product: "playable" | "release"; }
+const { product } = Astro.props;
+---
+
+<div class={`product-visual-sequence product-visual-sequence--${product}`} aria-hidden="true">
+  {product === "playable" ? <PlayablePhone state="play" eager /> : <ReleaseIllustration state="hidden-bugs" />}
+  <JourneyArrow class="product-visual-sequence__arrow" />
+  {product === "playable" ? <PlayablePhone state="redirect" eager /> : <ReleaseIllustration state="bug-found" />}
+  <JourneyArrow class="product-visual-sequence__arrow" />
+  {product === "playable" ? <PlayablePhone state="destination" eager /> : <ReleaseIllustration state="retested" />}
+</div>

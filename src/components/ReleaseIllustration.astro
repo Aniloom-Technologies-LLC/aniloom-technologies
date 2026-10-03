@@ -1,0 +1,12 @@
+---
+interface Props {
+  state: "hidden-bugs" | "bug-found" | "retested";
+}
+const { state } = Astro.props;
+const asset = `/assets/images/editorial/release-${state}`;
+---
+
+<picture class="release-illustration" aria-hidden="true">
+  <source srcset={`${asset}.avif`} type="image/avif" />
+  <img src={`${asset}.webp`} alt="" width="600" height="600" loading="lazy" decoding="async" />
+</picture>
