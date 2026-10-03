@@ -4,6 +4,7 @@ import Scene from "../components/Scene.astro";
 import GradientText from "../components/GradientText.astro";
 import PlayableNav from "../components/PlayableNav.astro";
 import PlayablePhone from "../components/PlayablePhone.astro";
+import PlayablePlatforms from "../components/PlayablePlatforms.astro";
 
 const interactionSteps = [
   { state: "play", title: "Play", text: "Try a short interaction inside the ad." },
@@ -23,6 +24,7 @@ const interactionSteps = [
     </section>
 
     <Scene appearance="light">
+    <PlayablePlatforms />
     <section class="playable-journey section-shell section-pad" aria-labelledby="playable-journey-title">
       <div class="section-heading" data-reveal><div><p class="eyebrow">How a playable ad works</p><h2 id="playable-journey-title">From interaction to destination.</h2></div><p>A playable ad lets people try a short interaction before choosing to open the advertised link.</p></div>
       <ol class="playable-journey__steps" role="list">
