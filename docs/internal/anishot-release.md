@@ -6,7 +6,7 @@ App release authority: companion AniShot `docs/distribution.md` and
 `docs/publishing/release-checklist.md`.
 
 The `/anishot/` page and footer link are publishable. Homepage content and primary
-navigation are unchanged. The headline is “Under 100 ms on average on two displays.”
+navigation are unchanged. The headline is “86 ms average on two displays.”
 Its asterisk is the sole link to `/anishot/capture-timing/`. All 30 existing samples
 are included: mean 85.55 ms, median 82.05 ms. No new measurement was run.
 No screenshots were available for public use, so none were
