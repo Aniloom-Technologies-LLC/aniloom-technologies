@@ -23,6 +23,7 @@ Light is the reading and evaluation canvas: understand the offer, compare prices
 | Playable demonstrations | Light context, actual demos, scope and links | Quality questions, closing contact/footer |
 | Notes index and articles | Continuous light reading canvas | Footer only |
 | Privacy and terms | Continuous light reading canvas | Footer only |
+| AniShot | Light product introduction, features, availability, FAQ, and readable benchmark conditions | Closing product summary/footer |
 
 ## Implementation invariants
 

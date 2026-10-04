@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="AniShot Capture Timing Methodology | Aniloom Technologies" description="How AniShot capture timing was measured across 30 requests, including initial captures, on a two-display Mac configuration.">
+  <main id="main-content" class="section-shell timing">
+    <a class="text-link" href="/anishot/">← AniShot Screen Capture</a>
+    <p class="eyebrow">Measurement methodology</p>
+    <h1>AniShot capture timing methodology</h1>
+    <section aria-labelledby="results-title">
+      <h2 id="results-title">Results</h2>
+      <p>We measured 30 captures in two fresh benchmark processes: a sequence of 20 and a sequence of 10. Both first captures and all 28 subsequent captures are included. All 30 requests succeeded.</p>
+      <p>The arithmetic mean was 85.55 ms and the median was 82.05 ms. These results support the product-page wording “Under 100 ms on average on two displays.” The average describes this test series, not a maximum time for every screenshot.</p>
+    </section>
+    <section aria-labelledby="configuration-title">
+      <h2 id="configuration-title">Test configuration</h2>
+      <p>Measured October 3, 2026 using AniShot Screen Capture 0.8.6 build 52, a development build, on an Apple M1 Max / MacBookPro18,4 running macOS 27.0.1. The Mac used AC power with Low Power Mode off.</p>
+      <p>Two displays were captured: an external display at 2560 × 1440 pixels, 1x scale and 60 Hz, and the built-in display at 3024 × 1964 pixels, 2x scale and 120 Hz. Desktop load was not controlled. Results vary with hardware, display configuration, and system activity.</p>
+    </section>
+    <section aria-labelledby="boundary-title">
+      <h2 id="boundary-title">What the timing measures</h2>
+      <p>Timing starts at a terminal benchmark request and ends after overlay drawing, event-loop resumption, and confirmed application, key-window, and canvas focus. The average is the sum of all 30 complete-report durations divided by 30. The median is the midpoint of the two central observations after sorting all 30 durations.</p>
+      <p>The benchmark uses AniShot's screenshot service and overlay but bypasses the real hotkey handler and shortcut validation. It does not measure physical keypress-to-visible-pixel latency, the exact image-exposure timestamp, or display scanout. Annotation input and Copy/Save timing are separate from this measurement.</p>
+      <p>This series is not pooled with the separate single-display benchmark, whose pixel dimensions differ. No comparison with other screenshot tools was performed.</p>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .timing { max-width: 900px; padding-block: 140px 100px; }
+  .timing > .eyebrow { margin-top: 48px; }
+  .timing h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); margin-block: 20px 48px; }
+  .timing h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); margin-block: 40px 20px; }
+  .timing p:not(.eyebrow) { font-size: 1.1rem; line-height: 1.75; }
+</style>

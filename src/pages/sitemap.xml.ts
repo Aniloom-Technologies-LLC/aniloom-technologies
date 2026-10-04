@@ -5,6 +5,8 @@ export async function GET() {
   const routes = [
     "",
     "about/",
+    "anishot/",
+    "anishot/capture-timing/",
     "capabilities/",
     "how-we-work/",
     "insights/",
