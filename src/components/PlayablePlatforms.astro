@@ -1,13 +1,27 @@
 ---
 interface Props { compact?: boolean }
 const { compact = false } = Astro.props;
-const platforms = ["AppLovin", "Google Ads", "Unity Ads", "Meta", "TikTok", "Pangle", "Mintegral", "Liftoff", "Moloco", "ironSource Exchange"];
+const platforms = [
+  { name: "AppLovin", icon: "applovin.png" },
+  { name: "Google Ads", icon: "google-ads.png" },
+  { name: "Unity Ads", icon: "unity.png" },
+  { name: "Meta", icon: "meta.png" },
+  { name: "TikTok", icon: "tiktok.png" },
+  { name: "Pangle", icon: "pangle.ico" },
+  { name: "Mintegral", icon: "mintegral.png" },
+  { name: "Liftoff", icon: "liftoff.png" },
+  { name: "Moloco", icon: "moloco.png" },
+  { name: "ironSource Exchange", icon: "ironsource.png" },
+];
 ---
 
 {compact ? (
   <div class="platform-preview">
     <span>Playable packages for</span>
-    <a href="/playable-ads/#platforms">{platforms.slice(0, 5).join(" · ")} <span aria-hidden="true">↗</span></a>
+    <a href="/playable-ads/#platforms">
+      {platforms.slice(0, 5).map((platform) => <span class="platform-preview__item"><span class="platform-icon"><img src={`/assets/images/platforms/${platform.icon}`} width="96" height="96" alt="" /></span>{platform.name}</span>)}
+      <span aria-hidden="true">↗</span>
+    </a>
   </div>
 ) : (
   <section class="platforms section-shell" id="platforms" aria-labelledby="platforms-title" data-platform-carousel>
@@ -20,7 +34,7 @@ const platforms = ["AppLovin", "Google Ads", "Unity Ads", "Meta", "TikTok", "Pan
     </div>
     <p class="platforms__intro">We prepare platform-specific playable packages, adapting the format, click-through integration, and responsive layout to your target networks.</p>
     <ul class="platforms__track" role="list" tabindex="0" aria-label="Playable ad platforms" data-platform-track>
-      {platforms.map((name) => <li>{name}</li>)}
+      {platforms.map((platform) => <li><span class="platform-icon"><img src={`/assets/images/platforms/${platform.icon}`} width="96" height="96" alt="" loading="lazy" /></span><span>{platform.name}</span></li>)}
     </ul>
     <p class="platforms__scope">Target platforms and package requirements are agreed in your project scope.</p>
   </section>
@@ -29,7 +43,11 @@ const platforms = ["AppLovin", "Google Ads", "Unity Ads", "Meta", "TikTok", "Pan
 <style>
   .platform-preview { position: relative; z-index: 5; margin-top: 22px; font-size: .78rem; line-height: 1.6; pointer-events: auto; }
   .platform-preview > span { display: block; color: var(--quiet); }
-  .platform-preview a { color: var(--muted); text-decoration: none; }
+  .platform-preview a { display: flex; justify-content: center; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: 6px; color: var(--muted); text-decoration: none; }
+  .platform-preview__item { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .platform-icon { display: inline-grid; place-items: center; flex-shrink: 0; width: 48px; height: 48px; padding: 7px; border-radius: 10px; background: #fff; }
+  .platform-icon img { display: block; width: 100%; height: 100%; object-fit: contain; }
+  .platform-preview .platform-icon { width: 24px; height: 24px; padding: 4px; border-radius: 5px; }
   .platform-preview a:hover { color: var(--text); }
   .platforms { padding-block: clamp(40px, 5vw, 64px); scroll-margin-top: 100px; }
   .platforms__heading { display: flex; justify-content: space-between; align-items: end; gap: 20px; }
@@ -41,17 +59,19 @@ const platforms = ["AppLovin", "Google Ads", "Unity Ads", "Meta", "TikTok", "Pan
   .platforms__controls button:not(:disabled):hover { background: var(--surface-solid); }
   .platforms__controls svg { width: 22px; fill: none; stroke: currentColor; stroke-width: 1.5; }
   .platforms__track { display: flex; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; gap: 0; margin: 0; padding: 0 0 12px; list-style: none; scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
-  .platforms__track li { flex: 0 0 auto; display: grid; place-items: center; min-width: 180px; min-height: 88px; padding: 18px 30px; border-block: 1px solid var(--line); scroll-snap-align: start; font-size: 1.25rem; font-weight: 500; white-space: nowrap; }
+  .platforms__track li { flex: 0 0 auto; display: flex; align-items: center; justify-content: center; gap: 12px; min-width: 210px; min-height: 96px; padding: 18px 26px; border-block: 1px solid var(--line); scroll-snap-align: start; font-size: 1.25rem; font-weight: 500; white-space: nowrap; }
   .platforms__track li + li { border-left: 1px solid var(--line); }
   .platforms__scope { margin: 16px 0 0; color: var(--quiet); font-size: .82rem; }
   @media (max-width: 600px) {
     .platforms__heading { align-items: center; }
-    .platforms__track li { min-width: 155px; min-height: 76px; padding-inline: 22px; font-size: 1.1rem; }
+    .platforms__track li { min-width: 180px; min-height: 84px; padding-inline: 18px; font-size: 1.1rem; }
+    .platforms__track .platform-icon { width: 40px; height: 40px; }
     .platform-preview { margin-top: 16px; font-size: .7rem; }
   }
   @media (orientation: landscape) and (max-height: 500px) {
     .platform-preview { margin-top: 10px; font-size: .7rem; }
-    .platform-preview > span { display: inline; margin-right: 6px; }
+    .platform-preview > span { display: none; }
+    .platform-preview a { margin-top: 0; }
   }
 </style>
 
