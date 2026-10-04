@@ -6,7 +6,6 @@ export async function GET() {
     "",
     "about/",
     "anishot/",
-    "anishot/capture-timing/",
     "capabilities/",
     "how-we-work/",
     "insights/",

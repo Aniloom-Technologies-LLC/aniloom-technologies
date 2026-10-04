@@ -25,7 +25,7 @@ const questions = [
       <h1 id="anishot-title">AniShot<br />Screen Capture</h1>
       <div class="anishot-hero__lower">
         <div>
-          <h2 class="anishot-benchmark" id="capture-benchmark">86 ms <span>average on two displays.<a href="/anishot/capture-timing/" aria-label="Capture timing methodology">*</a></span></h2>
+          <h2 class="anishot-benchmark" id="capture-benchmark">86 ms <span>average on two displays.<a href="#capture-methodology" aria-label="Capture timing methodology" data-capture-methodology-link>*</a></span></h2>
         </div>
         <div class="anishot-hero__copy">
           <p>Freeze your screen before selecting an area. Draw an arrow, highlight a detail, or add a note directly on the frozen image.</p>
@@ -92,9 +92,22 @@ const questions = [
       <aside class="anishot-release" aria-labelledby="release-status-title"><h3 id="release-status-title">Public release verification is pending.</h3><p>The current 0.8.6 build 52 disk image is Apple Development signed, not Developer ID signed or notarized. Its recorded Gatekeeper execution assessment was rejected. It is not offered here as a verified public download.</p></aside>
     </section>
 
+    <div class="section-shell anishot-footnote">
+      <details id="capture-methodology">
+        <summary aria-label="Capture timing methodology">*</summary>
+        <p>October 3, 2026: AniShot 0.8.6 build 52 on M1 Max, macOS 27.0.1, two displays (2560 × 1440 and 3024 × 1964). All 30 captures across two series (20 + 10), including initial captures: mean 85.55 ms, median 82.05 ms. Timing covers the terminal request through overlay drawing and confirmed focus, not physical hotkey latency or display scanout. Results vary; 86 ms is the rounded average, not a maximum.</p>
+      </details>
+    </div>
   </main>
   <section class="surface-dark anishot-closing"><div class="section-shell section-pad"><p class="eyebrow">AniShot Screen Capture</p><h2>Make the detail clear.</h2><p>Freeze the screen, annotate the part that matters, and choose whether to copy, save, or simply close it.</p><p class="anishot-availability">In development. A free Mac App Store release is planned.</p></div></section>
 </BaseLayout>
+
+<script>
+  const methodology = document.querySelector<HTMLDetailsElement>("#capture-methodology");
+  document.querySelector("[data-capture-methodology-link]")?.addEventListener("click", () => {
+    if (methodology) methodology.open = true;
+  });
+</script>
 
 <style>
   .anishot-hero { padding-block: clamp(130px, 12vw, 180px) 64px; border-bottom: 1px solid var(--line); }
@@ -126,7 +139,10 @@ const questions = [
   .anishot-faq p { max-width: 820px; margin: 20px 0 0; }
   .anishot-release { margin-top: 40px; max-width: 840px; padding: 0 0 0 22px; border-left: 2px solid var(--line-strong); }
   .anishot-release h3 { margin-top: 0; }
-  #workflow, #capture-benchmark { scroll-margin-top: 90px; }
+  #workflow, #capture-benchmark, #capture-methodology { scroll-margin-top: 90px; }
+  .anishot-footnote { padding-block: 0 48px; }
+  .anishot-footnote summary { width: fit-content; cursor: pointer; color: var(--link); font-size: 1.25rem; }
+  .anishot-footnote p { max-width: 840px; font-size: .9rem; line-height: 1.65; margin-block: 16px 0; }
   .anishot-closing h2 { font-size: clamp(2.8rem, 6vw, 6rem); font-weight: 500; margin-block: 18px 28px; }
   .anishot-closing p { max-width: 720px; }
   @media (max-width: 700px) {

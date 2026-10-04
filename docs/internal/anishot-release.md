@@ -7,7 +7,9 @@ App release authority: companion AniShot `docs/distribution.md` and
 
 The `/anishot/` page and footer link are publishable. Homepage content and primary
 navigation are unchanged. The headline is “86 ms average on two displays.”
-Its asterisk is the sole link to `/anishot/capture-timing/`. All 30 existing samples
+Its asterisk opens a compact native disclosure at `#capture-methodology` near the
+bottom of the product page. The separate methodology route was removed at the
+user's request. All 30 existing samples
 are included: mean 85.55 ms, median 82.05 ms. No new measurement was run.
 No screenshots were available for public use, so none were
 invented. Tool icons are authentic AniShot resources copied from
