@@ -94,7 +94,7 @@ img { max-width: 100%; }
 h1, h2, h3, p { margin-top: 0; }
 h1, h2, h3 { letter-spacing: -.045em; line-height: .98; }
 p { color: var(--muted); }
-:where(a, button, input, textarea):focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
+:where(a, button, input, textarea, summary):focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
 
 ::selection { background: var(--accent); color: var(--button-text); }
 .page-shell { position: relative; z-index: 10; }

@@ -4,7 +4,7 @@ import Scene from "../components/Scene.astro";
 
 // Product facts and release authority: companion AniShot docs/product.md.
 const downloadUrl = "/downloads/AniShot-Screen-Capture-0.8.6-arm64-development.dmg";
-const downloadWarning = "Development build 0.8.6 for Apple silicon. Not notarized; macOS may block opening. A free Mac App Store release is planned.";
+const downloadWarning = "Development build 0.8.6 for Apple silicon. Not notarized; macOS may block opening.";
 
 const tools = [
   { name: "Pen & Marker", icon: "pen", text: "Sketch a thought or highlight the detail you want someone to notice." },
@@ -143,6 +143,7 @@ const questions = [
   .anishot h3 { font-size: 1.45rem; font-weight: 500; margin-block: 20px 12px; }
   .anishot-reading { border-top: 1px solid var(--line); }
   .anishot-reading h2, .anishot-faq + aside h3 { max-width: 840px; }
+  .anishot-reading h2 { margin-block: 18px 28px; font-size: clamp(2rem, 4.5vw, 4rem); font-weight: 500; }
   .anishot-reading > p:not(.eyebrow) { max-width: 840px; }
   .anishot-note { padding-left: 22px; border-left: 2px solid var(--line-strong); margin-top: 28px; }
   .anishot-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
@@ -172,5 +173,26 @@ const questions = [
     .anishot-steps, .anishot-exports, .anishot-tools { grid-template-columns: 1fr; }
     .anishot-steps, .anishot-exports { gap: 18px; }
     .anishot-hero__copy > p:first-child { font-size: 1.1rem; }
+  }
+  @media (max-width: 960px) and (max-height: 500px) and (orientation: landscape) {
+    .anishot-hero { display: grid; grid-template-columns: 1fr 1fr; column-gap: 28px; row-gap: 12px; align-items: start; padding-block: 80px 32px; }
+    .anishot-hero > .eyebrow { grid-column: 1; margin: 0; }
+    .anishot-hero h1 { grid-column: 1; margin: 0; font-size: clamp(2rem, 4.5vw, 3rem); }
+    .anishot-hero__lower { display: contents; }
+    .anishot-hero__lower > div:first-child { grid-column: 1; }
+    .anishot-hero__copy { grid-column: 2; grid-row: 1 / span 3; }
+    .anishot-hero__copy > p:first-child { margin-top: 0; font-size: .95rem; }
+    .anishot-hero__copy > p { margin-block: 8px; font-size: .85rem; }
+    .anishot-benchmark { font-size: 2.5rem; }
+    .anishot-benchmark > span { margin-top: 6px; font-size: 1rem; }
+    .anishot-download { padding-block: 6px; }
+    .anishot-download-warning { font-size: .8rem; }
+    .anishot-hero__copy > .text-link { font-size: .85rem; }
+  }
+  @media (max-width: 360px) and (max-height: 650px) and (orientation: portrait) {
+    .anishot-hero { padding-top: 88px; }
+    .anishot-hero h1 { margin-block: 16px 20px; font-size: 2.5rem; }
+    .anishot-hero__copy > p:first-child { font-size: 1rem; }
+    .anishot-hero__copy > p { margin-bottom: 12px; }
   }
 </style>
