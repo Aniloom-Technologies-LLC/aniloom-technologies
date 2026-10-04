@@ -42,7 +42,7 @@ if (footer && footerStage && pull && quoteText && quoteSource) {
   let hideTimer = null;
 
   const revealHeight = () => Math.ceil(quoteText.parentElement.scrollHeight + 24);
-  const hideDelayMs = 2000;
+  const hideDelayMs = 3000;
   const isScrollable = () =>
     document.documentElement.scrollHeight > window.innerHeight + 4;
 
