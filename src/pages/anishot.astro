@@ -1,5 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Scene from "../components/Scene.astro";
+
+// Product facts and release authority: companion AniShot docs/product.md.
+const downloadUrl = "/downloads/AniShot-Screen-Capture-0.8.6-arm64-development.dmg";
+const downloadWarning = "Development build 0.8.6 for Apple silicon. Not notarized; macOS may block opening. A free Mac App Store release is planned.";
 
 const tools = [
   { name: "Pen & Marker", icon: "pen", text: "Sketch a thought or highlight the detail you want someone to notice." },
@@ -10,7 +15,7 @@ const tools = [
   { name: "Select", icon: "select", text: "Move, resize, or edit an individual annotation object." },
 ];
 const questions = [
-  { question: "Is AniShot available to download?", answer: "A verified public download is not available yet. A free Mac App Store release is planned. AniShot is currently in development." },
+  { question: "Is AniShot available to download?", answer: "You can download the development build for testing. It is Apple Development signed, not notarized, and its recorded Gatekeeper assessment was rejected. macOS may block opening it. A free Mac App Store release is planned, not live." },
   { question: "Can I annotate during a call without saving?", answer: "You can draw on a frozen screen and dismiss the overlay without exporting. Check that participants can see AniShot in the selected sharing mode. Meeting compatibility is still being verified." },
   { question: "Does AniShot upload screenshots?", answer: "The current app processes screenshots and annotations locally and has no screenshot-upload service or account requirement. Clipboard syncing, saved-file syncing, and meeting sharing depend on other software and your settings." },
   { question: "Can AniShot record my screen?", answer: "Screen recording is not implemented. AniShot currently exports PNG screenshots." },
@@ -30,7 +35,8 @@ const questions = [
         <div class="anishot-hero__copy">
           <p>Freeze your screen before selecting an area. Draw an arrow, highlight a detail, or add a note directly on the frozen image.</p>
           <p>Copy a PNG, save it, or dismiss the overlay when your explanation is done.</p>
-          <p class="anishot-availability">In development. A free Mac App Store release is planned.</p>
+          <a class="button button--primary anishot-download" href={downloadUrl} download aria-describedby="hero-download-warning"><img src="/assets/images/anishot/app-icon.png" width="40" height="40" alt="" />Download</a>
+          <p class="anishot-download-warning" id="hero-download-warning">{downloadWarning}</p>
           <a class="text-link" href="#workflow">Explore the capture workflow <span aria-hidden="true">↓</span></a>
         </div>
       </div>
@@ -45,12 +51,14 @@ const questions = [
       </ol>
     </section>
 
+    <Scene appearance="dark">
     <section class="section-shell section-pad anishot-reading" aria-labelledby="explain-title">
       <p class="eyebrow">A clear explanation</p>
       <h2 id="explain-title">Draw the point while you explain it.</h2>
       <p>Circle the problem, point to a control, or sketch the next step on the frozen image. You can close the overlay after the explanation without copying or saving a screenshot.</p>
       <p class="anishot-note">During a call, check that your sharing mode includes the AniShot overlay and that participants can see it. AniShot draws on a frozen image; your meeting application handles screen sharing.</p>
     </section>
+    </Scene>
 
     <section class="section-shell section-pad" aria-labelledby="tools-title">
       <div class="section-heading"><div><p class="eyebrow">Drawing tools</p><h2 id="tools-title">Choose the mark<br />the detail needs.</h2></div><p>Change size and color where the tool supports them. Blur and pixelation use size controls. Separate Tools and Layers panels adapt to the space beside your selection.</p></div>
@@ -89,7 +97,7 @@ const questions = [
     <section class="section-shell section-pad" aria-labelledby="faq-title">
       <p class="eyebrow">Availability and compatibility</p><h2 id="faq-title">Questions before using AniShot.</h2>
       <div class="anishot-faq">{questions.map((item) => <details><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div>
-      <aside class="anishot-release" aria-labelledby="release-status-title"><h3 id="release-status-title">Public release verification is pending.</h3><p>The current 0.8.6 build 52 disk image is Apple Development signed, not Developer ID signed or notarized. Its recorded Gatekeeper execution assessment was rejected. It is not offered here as a verified public download.</p></aside>
+      <aside class="anishot-release" aria-labelledby="release-status-title"><h3 id="release-status-title">This download is for development testing.</h3><p>The 0.8.6 build 52 disk image is Apple Development signed, not Developer ID signed or notarized. Its recorded Gatekeeper execution assessment was rejected. Downloading it does not establish that macOS will allow it to run. Minimum-OS and public-release verification remain pending.</p></aside>
     </section>
 
     <div class="section-shell anishot-footnote">
@@ -99,13 +107,21 @@ const questions = [
       </details>
     </div>
   </main>
-  <section class="surface-dark anishot-closing"><div class="section-shell section-pad"><p class="eyebrow">AniShot Screen Capture</p><h2>Make the detail clear.</h2><p>Freeze the screen, annotate the part that matters, and choose whether to copy, save, or simply close it.</p><p class="anishot-availability">In development. A free Mac App Store release is planned.</p></div></section>
+  <Scene appearance="dark">
+  <section class="anishot-closing"><div class="section-shell section-pad"><p class="eyebrow">AniShot Screen Capture</p><h2>Make the detail clear.</h2><p>Freeze the screen, annotate the part that matters, and choose whether to copy, save, or simply close it.</p><a class="button button--primary anishot-download" href={downloadUrl} download aria-describedby="closing-download-warning"><img src="/assets/images/anishot/app-icon.png" width="40" height="40" alt="" />Download</a><p class="anishot-download-warning" id="closing-download-warning">{downloadWarning}</p></div></section>
+  </Scene>
 </BaseLayout>
 
 <script>
   const methodology = document.querySelector<HTMLDetailsElement>("#capture-methodology");
-  document.querySelector("[data-capture-methodology-link]")?.addEventListener("click", () => {
-    if (methodology) methodology.open = true;
+  document.querySelector("[data-capture-methodology-link]")?.addEventListener("click", (event) => {
+    if (methodology) {
+      event.preventDefault();
+      methodology.open = true;
+      methodology.scrollIntoView({ block: "start", behavior: "instant" });
+      methodology.querySelector("summary")?.focus({ preventScroll: true });
+      history.replaceState(null, "", "#capture-methodology");
+    }
   });
 </script>
 
@@ -115,9 +131,12 @@ const questions = [
   .anishot-hero__lower { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
   .anishot-benchmark { margin: 0; color: var(--link); font-size: clamp(3rem, 5.5vw, 5.5rem); font-weight: 500; }
   .anishot-benchmark > span { display: block; margin-top: 12px; color: var(--text); font-size: clamp(1.2rem, 2vw, 1.7rem); line-height: 1.35; letter-spacing: -.02em; }
-  .anishot-benchmark a { color: var(--link); text-decoration: underline; text-underline-offset: .15em; }
+  .anishot-benchmark a { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; min-height: 24px; color: var(--link); text-decoration: underline; text-underline-offset: .15em; }
   .anishot-hero__copy > p:first-child { color: var(--text); font-size: 1.25rem; }
   .anishot-availability { color: var(--text); font-weight: 500; }
+  .anishot-download { gap: 12px; padding: 10px 24px 10px 12px; }
+  .anishot-download img { width: 40px; height: 40px; object-fit: contain; }
+  .anishot-download-warning { font-size: .9rem; max-width: 560px; line-height: 1.6; }
   .anishot-steps, .anishot-exports { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; padding: 0; list-style: none; }
   .anishot-steps li, .anishot-exports article { padding-top: 24px; border-top: 1px solid var(--line); }
   .anishot-steps li > span { color: var(--link); font-family: "DM Mono", monospace; }
@@ -141,13 +160,15 @@ const questions = [
   .anishot-release h3 { margin-top: 0; }
   #workflow, #capture-benchmark, #capture-methodology { scroll-margin-top: 90px; }
   .anishot-footnote { padding-block: 0 48px; }
-  .anishot-footnote summary { width: fit-content; cursor: pointer; color: var(--link); font-size: 1.25rem; }
+  .anishot-footnote summary { width: fit-content; min-width: 44px; min-height: 44px; cursor: pointer; color: var(--link); font-size: 1.25rem; }
   .anishot-footnote p { max-width: 840px; font-size: .9rem; line-height: 1.65; margin-block: 16px 0; }
   .anishot-closing h2 { font-size: clamp(2.8rem, 6vw, 6rem); font-weight: 500; margin-block: 18px 28px; }
   .anishot-closing p { max-width: 720px; }
   @media (max-width: 700px) {
-    .anishot-hero h1 { margin-bottom: 38px; }
+    .anishot-hero { padding-top: 104px; }
+    .anishot-hero h1 { margin-bottom: 24px; }
     .anishot-hero__lower { grid-template-columns: 1fr; gap: 28px; }
+    .anishot-hero__copy { grid-row: 1; }
     .anishot-steps, .anishot-exports, .anishot-tools { grid-template-columns: 1fr; }
     .anishot-steps, .anishot-exports { gap: 18px; }
     .anishot-hero__copy > p:first-child { font-size: 1.1rem; }

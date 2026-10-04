@@ -2,6 +2,8 @@
 
 The Astro repository is the implementation source of truth. The companion `../../Aniloom Brand System` folder is the source for approved facts, offers, voice, and website guidance. Do not duplicate its brand book here.
 
+AniShot is an exception for product facts: read `../../Aniloom Projects/AniShot/docs/product.md`, `docs/content/website-copy.md`, and `docs/distribution.md` in that project. AniShot owns product documentation, evidence, copy inputs, and release status. Keep only implemented pages/assets and source pointers here, not a second product brief. The owner authorized the labelled development download for testing; this is not notarized release acceptance.
+
 Before writing or reviewing public copy, read the companion project's `AGENTS.md` and `.agents/skills/aniloom-brand-writing/SKILL.md`. For website copy use `.agents/skills/copywriting/SKILL.md` for drafting, then `.agents/skills/copy-editing/SKILL.md` for review. Paths in this paragraph are relative to the companion Brand System folder. Brand facts and explicit user instructions take precedence over generic marketing advice.
 
 Keep prices, package inclusions, timelines, and exclusions aligned with the canonical offers and proof library. Preserve user-approved wording. Never imply that QA includes engineering corrections or that delivery guarantees campaign performance. Generated people must not represent real founders or staff. Keep internal studies outside `public/`.
