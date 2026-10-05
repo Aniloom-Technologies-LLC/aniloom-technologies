@@ -32,7 +32,7 @@ const questions = [
       <h1 id="anishot-title">AniShot<br />Screen Capture</h1>
       <div class="anishot-hero__lower">
         <div>
-          <h2 class="anishot-benchmark" id="capture-benchmark">86 ms <span>average on two displays.<a href="#capture-methodology" aria-label="Capture timing methodology" data-capture-methodology-link>*</a></span></h2>
+          <h2 class="anishot-benchmark" id="capture-benchmark"><span class="anishot-benchmark__intro">Capture screenshots in</span> 86 ms <span>on average across two displays.<a href="#capture-methodology" aria-label="Capture timing methodology" data-capture-methodology-link>*</a></span></h2>
         </div>
         <div class="anishot-hero__copy">
           <p>Freeze your screen before selecting an area. Draw an arrow, highlight a detail, or add a note directly on the frozen image.</p>
@@ -133,6 +133,7 @@ const questions = [
   .anishot-hero__lower { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
   .anishot-benchmark { margin: 0; color: var(--link); font-size: clamp(3rem, 5.5vw, 5.5rem); font-weight: 500; }
   .anishot-benchmark > span { display: block; margin-top: 12px; color: var(--text); font-size: clamp(1.2rem, 2vw, 1.7rem); line-height: 1.35; letter-spacing: -.02em; }
+  .anishot-benchmark > .anishot-benchmark__intro { margin: 0 0 12px; }
   .anishot-benchmark a { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; min-height: 24px; color: var(--link); text-decoration: underline; text-underline-offset: .15em; }
   .anishot-hero__copy > p:first-child { color: var(--text); font-size: 1.25rem; }
   .anishot-availability { color: var(--text); font-weight: 500; }
