@@ -3,8 +3,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Scene from "../components/Scene.astro";
 
 // Product facts and release authority: companion AniShot docs/product.md.
-const downloadUrl = "/downloads/AniShot-Screen-Capture-0.8.6-arm64-development.dmg";
-const downloadWarning = "Development build 0.8.6 for Apple silicon. Not notarized; macOS may block opening.";
+import latestRelease from "../../public/downloads/anishot/latest.json";
+const downloadUrl = latestRelease.url;
+const downloadWarning = `Development version ${latestRelease.version} for Apple silicon. Not notarized; macOS may block opening.`;
 
 const tools = [
   { name: "Pen & Marker", icon: "pen", text: "Sketch a thought or highlight the detail you want someone to notice." },
@@ -18,7 +19,8 @@ const questions = [
   { question: "Is AniShot available to download?", answer: "You can download the development build for testing. It is Apple Development signed, not notarized, and its recorded Gatekeeper assessment was rejected. macOS may block opening it. A free Mac App Store release is planned, not live." },
   { question: "Can I annotate during a call without saving?", answer: "You can draw on a frozen screen and dismiss the overlay without exporting. Check that participants can see AniShot in the selected sharing mode. Meeting compatibility is still being verified." },
   { question: "Does AniShot upload screenshots?", answer: "The current app processes screenshots and annotations locally and has no screenshot-upload service or account requirement. Clipboard syncing, saved-file syncing, and meeting sharing depend on other software and your settings." },
-  { question: "Can AniShot record my screen?", answer: "Screen recording is not implemented. AniShot currently exports PNG screenshots." },
+  { question: "How do updates work?", answer: "From version 0.11.0, AniShot checks for updates daily by default. You can disable automatic checks or check manually in Settings → Updates. Installation asks for confirmation. Update requests never include screenshots or drawings." },
+  { question: "Can AniShot record my screen?", answer: "Screen recording is not implemented. AniShot copies PNG screenshots and saves PNG or JPEG images." },
   { question: "Which Macs can use AniShot?", answer: "Public release requirements are not finalized. The current development build is for Apple silicon. It declares macOS 14 as its minimum, but minimum-OS acceptance and distribution checks remain pending. Intel support has not been established." },
 ];
 ---
@@ -97,7 +99,7 @@ const questions = [
     <section class="section-shell section-pad" aria-labelledby="faq-title">
       <p class="eyebrow">Availability and compatibility</p><h2 id="faq-title">Questions before using AniShot.</h2>
       <div class="anishot-faq">{questions.map((item) => <details><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div>
-      <aside class="anishot-release" aria-labelledby="release-status-title"><h3 id="release-status-title">This download is for development testing.</h3><p>The 0.8.6 build 52 disk image is Apple Development signed, not Developer ID signed or notarized. Its recorded Gatekeeper execution assessment was rejected. Downloading it does not establish that macOS will allow it to run. Minimum-OS and public-release verification remain pending.</p></aside>
+      <aside class="anishot-release" aria-labelledby="release-status-title"><h3 id="release-status-title">This download is for development testing.</h3><p>Version {latestRelease.version} is Apple Development signed, not Developer ID signed or notarized. Its recorded Gatekeeper execution assessment was rejected. Downloading it does not establish that macOS will allow it to run. Minimum-OS and public-release verification remain pending.</p></aside>
     </section>
 
     <div class="section-shell anishot-footnote">

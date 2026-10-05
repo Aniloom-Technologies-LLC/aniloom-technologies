@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+  <channel>
+    <title>AniShot Screen Capture updates</title>
+    <link>https://aniloom.tech/anishot/</link>
+    <item>
+      <title>AniShot 0.11.0</title>
+      <description>Adds signed update checks, an Updates settings tab, and manual Check for Updates. Screenshots and drawings stay out of update requests. This Apple silicon development version is not notarized.</description>
+      <sparkle:version>59</sparkle:version>
+      <sparkle:shortVersionString>0.11.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0.0</sparkle:minimumSystemVersion>
+      <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+      <enclosure sparkle:edSignature="MXSU58WOPhuZMsPcuRWfq9Mr6gxd18lDmmTEAWib3STcODo6F0P1n59lsFMYVUepcFKzAnGYZLMOIcUcddNXCQ==" url="https://aniloom.tech/downloads/anishot/AniShot-Screen-Capture-0.11.0-arm64-development.dmg" length="1735168" type="application/octet-stream" />
+    </item>
+  </channel>
+</rss>

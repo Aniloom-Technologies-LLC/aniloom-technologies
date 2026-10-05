@@ -1,0 +1,11 @@
+[
+  {
+    "file": "AniShot-Screen-Capture-0.11.0-arm64-development.dmg",
+    "version": "0.11.0",
+    "internalVersion": "59",
+    "signature": "MXSU58WOPhuZMsPcuRWfq9Mr6gxd18lDmmTEAWib3STcODo6F0P1n59lsFMYVUepcFKzAnGYZLMOIcUcddNXCQ==",
+    "length": 1735168,
+    "sha256": "b2ee7b880cdde8f322958dc15d49d940322d374bff9f597ed46875152b53b20e",
+    "notes": "Adds signed update checks, an Updates settings tab, and manual Check for Updates. Screenshots and drawings stay out of update requests. This Apple silicon development version is not notarized."
+  }
+]
