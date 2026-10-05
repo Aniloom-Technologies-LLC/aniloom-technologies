@@ -17,6 +17,7 @@ const tools = [
 ];
 const questions = [
   { question: "Is AniShot available to download?", answer: "You can download the development build for testing. It is Apple Development signed, not notarized, and its recorded Gatekeeper assessment was rejected. macOS may block opening it. A free Mac App Store release is planned, not live." },
+  { question: "Is AniShot free?", answer: "AniShot is completely free to use. All features are included, and we currently plan to keep it free." },
   { question: "Does AniShot need Rosetta?", answer: "No. AniShot runs natively on Apple silicon, and its bundled update components also support Apple silicon. It does not need Rosetta to translate an Intel app. Native architecture does not guarantee compatibility with every future macOS release." },
   { question: "Why does a screenshot app ask for Screen Recording permission?", answer: "macOS uses this permission for screen capture, including still screenshots. AniShot captures only when you request a screenshot; it does not record video or audio. Setup guides you to the screen-access setting. If access is missing, allow AniShot in Privacy & Security under Screen Recording or Screen & System Audio Recording, then reopen if macOS asks." },
   { question: "Does AniShot change my macOS screenshot shortcuts?", answer: "No. Use Shift+Command+9 or choose one custom shortcut. AniShot leaves system shortcut settings unchanged. If a custom combination is already reserved, free it in macOS or the app that owns it, then record it again in AniShot." },
@@ -28,10 +29,10 @@ const questions = [
 ];
 ---
 
-<BaseLayout title="AniShot Screen Capture for Mac | Aniloom Technologies" description="Native screenshots for Apple silicon without Rosetta. Freeze before selection, annotate, then copy, save, or share. Development download available.">
+<BaseLayout title="AniShot Screen Capture for Mac | Aniloom Technologies" description="Free screenshots for Apple silicon without Rosetta. Freeze before selection, annotate, then copy, save, or share. Development download available.">
   <main id="main-content" class="anishot">
     <section class="anishot-hero section-shell" aria-labelledby="anishot-title">
-      <p class="eyebrow">Screenshots and annotation for Mac</p>
+      <p class="eyebrow">Free screenshots and annotation for Mac</p>
       <h1 id="anishot-title">AniShot<br />Screen Capture</h1>
       <div class="anishot-hero__lower">
         <div>
@@ -40,6 +41,7 @@ const questions = [
         <div class="anishot-hero__copy">
           <p>Freeze your screen before selecting an area. Draw an arrow, highlight a detail, or add a note directly on the frozen image.</p>
           <p>Copy a PNG, save PNG or JPEG, share through macOS, or dismiss the overlay when your explanation is done.</p>
+          <p class="anishot-availability">Free to use. All features included.</p>
           <p class="anishot-availability">Runs natively on Apple silicon. No Rosetta required.</p>
           <a class="button button--primary anishot-download" href={downloadUrl} download aria-describedby="hero-download-warning"><img src="/assets/images/anishot/app-icon.png" width="40" height="40" alt="" />Download</a>
           <p class="anishot-download-warning" id="hero-download-warning">{downloadWarning}</p>
@@ -114,7 +116,7 @@ const questions = [
     </div>
   </main>
   <Scene appearance="dark">
-  <section class="anishot-closing"><div class="section-shell section-pad"><p class="eyebrow">AniShot Screen Capture</p><h2>Make the detail clear.</h2><p>Freeze the screen, annotate the part that matters, and choose whether to copy, save, or simply close it.</p><a class="button button--primary anishot-download" href={downloadUrl} download aria-describedby="closing-download-warning"><img src="/assets/images/anishot/app-icon.png" width="40" height="40" alt="" />Download</a><p class="anishot-download-warning" id="closing-download-warning">{downloadWarning}</p></div></section>
+  <section class="anishot-closing"><div class="section-shell section-pad"><p class="eyebrow">AniShot Screen Capture</p><h2>Make the detail clear.</h2><p>Freeze the screen, annotate the part that matters, and choose whether to copy, save, or simply close it.</p><p class="anishot-availability">Free to use. All features included.</p><a class="button button--primary anishot-download" href={downloadUrl} download aria-describedby="closing-download-warning"><img src="/assets/images/anishot/app-icon.png" width="40" height="40" alt="" />Download</a><p class="anishot-download-warning" id="closing-download-warning">{downloadWarning}</p></div></section>
   </Scene>
 </BaseLayout>
 
