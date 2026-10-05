@@ -1,11 +1,11 @@
 [
   {
-    "file": "AniShot-Screen-Capture-0.11.0-arm64-development.dmg",
-    "version": "0.11.0",
-    "internalVersion": "59",
-    "signature": "MXSU58WOPhuZMsPcuRWfq9Mr6gxd18lDmmTEAWib3STcODo6F0P1n59lsFMYVUepcFKzAnGYZLMOIcUcddNXCQ==",
-    "length": 1735168,
-    "sha256": "b2ee7b880cdde8f322958dc15d49d940322d374bff9f597ed46875152b53b20e",
-    "notes": "Adds signed update checks, an Updates settings tab, and manual Check for Updates. Screenshots and drawings stay out of update requests. This Apple silicon development version is not notarized."
+    "file": "AniShot-Screen-Capture-0.11.1-arm64-development.dmg",
+    "version": "0.11.1",
+    "internalVersion": "60",
+    "signature": "7UZj1Txp910Mg9o2oM+PIfckLZHqnZBp23cjcLQnI4SSYbI3ICr36AMqcl2lkc5QSJ9GS7T5mIRC+Pv6163gCg==",
+    "length": 1737728,
+    "sha256": "5d020b08799c27b4fe761c2d117af149d60bafa18c4c9fe4e4ac46c5f83e1971",
+    "notes": "Fixes size controls for Text and Pixelate at small panel sizes and rapid clicks. The former 80% panel size is now 100%. Adds a full-width centered size field, wider bold minus/plus buttons, larger action labels and larger hints. Apple silicon development version; not notarized."
   }
 ]

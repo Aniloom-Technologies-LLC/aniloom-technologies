@@ -4,13 +4,13 @@
     <title>AniShot Screen Capture updates</title>
     <link>https://aniloom.tech/anishot/</link>
     <item>
-      <title>AniShot 0.11.0</title>
-      <description>Adds signed update checks, an Updates settings tab, and manual Check for Updates. Screenshots and drawings stay out of update requests. This Apple silicon development version is not notarized.</description>
-      <sparkle:version>59</sparkle:version>
-      <sparkle:shortVersionString>0.11.0</sparkle:shortVersionString>
+      <title>AniShot 0.11.1</title>
+      <description>Fixes size controls for Text and Pixelate at small panel sizes and rapid clicks. The former 80% panel size is now 100%. Adds a full-width centered size field, wider bold minus/plus buttons, larger action labels and larger hints. Apple silicon development version; not notarized.</description>
+      <sparkle:version>60</sparkle:version>
+      <sparkle:shortVersionString>0.11.1</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0.0</sparkle:minimumSystemVersion>
       <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-      <enclosure sparkle:edSignature="MXSU58WOPhuZMsPcuRWfq9Mr6gxd18lDmmTEAWib3STcODo6F0P1n59lsFMYVUepcFKzAnGYZLMOIcUcddNXCQ==" url="https://aniloom.tech/downloads/anishot/AniShot-Screen-Capture-0.11.0-arm64-development.dmg" length="1735168" type="application/octet-stream" />
+      <enclosure sparkle:edSignature="7UZj1Txp910Mg9o2oM+PIfckLZHqnZBp23cjcLQnI4SSYbI3ICr36AMqcl2lkc5QSJ9GS7T5mIRC+Pv6163gCg==" url="https://aniloom.tech/downloads/anishot/AniShot-Screen-Capture-0.11.1-arm64-development.dmg" length="1737728" type="application/octet-stream" />
     </item>
   </channel>
 </rss>
