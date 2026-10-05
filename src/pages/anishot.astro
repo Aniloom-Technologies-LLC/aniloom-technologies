@@ -8,15 +8,18 @@ const downloadUrl = latestRelease.url;
 const downloadWarning = `Development version ${latestRelease.version} for Apple silicon. Not notarized; macOS may block opening.`;
 
 const tools = [
-  { name: "Pen & Marker", icon: "pen", text: "Sketch a thought or highlight the detail you want someone to notice." },
+  { name: "Pen & Marker", icon: "pen", text: "Sketch a thought or highlight several important rows and controls across a page." },
   { name: "Line & Arrow", icon: "arrow", text: "Point to a control or connect the parts of your explanation." },
   { name: "Rectangle & Ellipse", icon: "ellipse", text: "Frame an area or circle the problem." },
   { name: "Text", icon: "text", text: "Add a note directly on the screenshot with a transparent background." },
-  { name: "Blur Marker & Pixelate", icon: "pixelate", text: "Visually obscure an area. These effects are not a secure-redaction guarantee." },
+  { name: "Blur Marker & Pixelate", icon: "pixelate", text: "Visually obscure a face or private field before sharing. These effects are not a secure-redaction guarantee." },
   { name: "Select", icon: "select", text: "Move, resize, or edit an individual annotation object." },
 ];
 const questions = [
   { question: "Is AniShot available to download?", answer: "You can download the development build for testing. It is Apple Development signed, not notarized, and its recorded Gatekeeper assessment was rejected. macOS may block opening it. A free Mac App Store release is planned, not live." },
+  { question: "Does AniShot need Rosetta?", answer: "No. AniShot runs natively on Apple silicon, and its bundled update components also support Apple silicon. It does not need Rosetta to translate an Intel app. Native architecture does not guarantee compatibility with every future macOS release." },
+  { question: "Why does a screenshot app ask for Screen Recording permission?", answer: "macOS uses this permission for screen capture, including still screenshots. AniShot captures only when you request a screenshot; it does not record video or audio. Setup guides you to the screen-access setting. If access is missing, allow AniShot in Privacy & Security under Screen Recording or Screen & System Audio Recording, then reopen if macOS asks." },
+  { question: "Does AniShot change my macOS screenshot shortcuts?", answer: "No. Use Shift+Command+9 or choose one custom shortcut. AniShot leaves system shortcut settings unchanged. If a custom combination is already reserved, free it in macOS or the app that owns it, then record it again in AniShot." },
   { question: "Can I annotate during a call without saving?", answer: "You can draw on a frozen screen and dismiss the overlay without exporting. Check that participants can see AniShot in the selected sharing mode. Meeting compatibility is still being verified." },
   { question: "Does AniShot upload screenshots?", answer: "The current app processes screenshots and annotations locally and has no screenshot-upload service or account requirement. Clipboard syncing, saved-file syncing, and meeting sharing depend on other software and your settings." },
   { question: "How do updates work?", answer: "From version 0.11.0, AniShot checks for updates daily by default. You can disable automatic checks or check manually in Settings → Updates. Installation asks for confirmation. Update requests never include screenshots or drawings." },
@@ -25,7 +28,7 @@ const questions = [
 ];
 ---
 
-<BaseLayout title="AniShot Screen Capture for Mac | Aniloom Technologies" description="Freeze your screen before selecting an area. Annotate with drawing tools, then copy, save, or share through macOS. AniShot is in development; a free Mac App Store release is planned.">
+<BaseLayout title="AniShot Screen Capture for Mac | Aniloom Technologies" description="Native screenshots for Apple silicon without Rosetta. Freeze before selection, annotate, then copy, save, or share. Development download available.">
   <main id="main-content" class="anishot">
     <section class="anishot-hero section-shell" aria-labelledby="anishot-title">
       <p class="eyebrow">Screenshots and annotation for Mac</p>
@@ -37,6 +40,7 @@ const questions = [
         <div class="anishot-hero__copy">
           <p>Freeze your screen before selecting an area. Draw an arrow, highlight a detail, or add a note directly on the frozen image.</p>
           <p>Copy a PNG, save PNG or JPEG, share through macOS, or dismiss the overlay when your explanation is done.</p>
+          <p class="anishot-availability">Runs natively on Apple silicon. No Rosetta required.</p>
           <a class="button button--primary anishot-download" href={downloadUrl} download aria-describedby="hero-download-warning"><img src="/assets/images/anishot/app-icon.png" width="40" height="40" alt="" />Download</a>
           <p class="anishot-download-warning" id="hero-download-warning">{downloadWarning}</p>
           <a class="text-link" href="#workflow">Explore the capture workflow <span aria-hidden="true">↓</span></a>
@@ -71,7 +75,7 @@ const questions = [
 
     <section class="section-shell section-pad anishot-reading" aria-labelledby="layers-title">
       <p class="eyebrow">Editable annotations</p><h2 id="layers-title">Revise your explanation as you go.</h2>
-      <p>Select an annotation on the image or in Layers. Move it, resize it, change its style, or remove it. Drag its tool icon in Layers to change the order. Undo and Redo let you revise earlier edits.</p>
+      <p>Notice that an earlier arrow needs another color, or a text note belongs elsewhere? Select it on the image or in Layers and change it, even after adding other marks. Move, resize, restyle, or remove individual annotations. Drag a tool icon in Layers to change the order. Undo and Redo let you revise your edits.</p>
     </section>
 
     <section class="section-shell section-pad" aria-labelledby="export-title">
