@@ -1,5 +1,14 @@
 [
   {
+    "file": "AniShot-Screen-Capture-0.14.0-arm64-development.dmg",
+    "version": "0.14.0",
+    "internalVersion": "64",
+    "signature": "QVXDyqm3MgifSIimxvQV1ENy9H7jvda6WMyHd7YWePRimKVTkKNgFD8VY94Ci66WUNh5L9cJj0ORZyyd/eluDw==",
+    "length": 1696768,
+    "sha256": "28b3be84ffa8b886becb3c0aeee46ef35230987f19f83fa87961d48ac81b6569",
+    "notes": "Adds native macOS Share and standalone Print Screen/F13 custom shortcuts. Capture setup now offers Command-Shift-9 or one custom shortcut; reserved shortcuts must be freed manually. Keeps launch at login. Includes compact tool hints. Apple silicon development version; not notarized."
+  },
+  {
     "file": "AniShot-Screen-Capture-0.11.1-arm64-development.dmg",
     "version": "0.11.1",
     "internalVersion": "60",

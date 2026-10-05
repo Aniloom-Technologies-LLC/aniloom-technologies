@@ -25,7 +25,7 @@ const questions = [
 ];
 ---
 
-<BaseLayout title="AniShot Screen Capture for Mac | Aniloom Technologies" description="Freeze your screen before selecting an area. Annotate with drawing tools, then copy or save a PNG. AniShot is in development; a free Mac App Store release is planned.">
+<BaseLayout title="AniShot Screen Capture for Mac | Aniloom Technologies" description="Freeze your screen before selecting an area. Annotate with drawing tools, then copy, save, or share through macOS. AniShot is in development; a free Mac App Store release is planned.">
   <main id="main-content" class="anishot">
     <section class="anishot-hero section-shell" aria-labelledby="anishot-title">
       <p class="eyebrow">Screenshots and annotation for Mac</p>
@@ -36,7 +36,7 @@ const questions = [
         </div>
         <div class="anishot-hero__copy">
           <p>Freeze your screen before selecting an area. Draw an arrow, highlight a detail, or add a note directly on the frozen image.</p>
-          <p>Copy a PNG, save it, or dismiss the overlay when your explanation is done.</p>
+          <p>Copy a PNG, save PNG or JPEG, share through macOS, or dismiss the overlay when your explanation is done.</p>
           <a class="button button--primary anishot-download" href={downloadUrl} download aria-describedby="hero-download-warning"><img src="/assets/images/anishot/app-icon.png" width="40" height="40" alt="" />Download</a>
           <p class="anishot-download-warning" id="hero-download-warning">{downloadWarning}</p>
           <a class="text-link" href="#workflow">Explore the capture workflow <span aria-hidden="true">↓</span></a>
@@ -75,7 +75,7 @@ const questions = [
     </section>
 
     <section class="section-shell section-pad" aria-labelledby="export-title">
-      <div class="section-heading"><div><p class="eyebrow">PNG export</p><h2 id="export-title">Finish the way<br />you need.</h2></div><p>Copy an annotated PNG into a message or document, save it to a folder, or dismiss the overlay without exporting.</p></div>
+      <div class="section-heading"><div><p class="eyebrow">Copy, save, or share</p><h2 id="export-title">Finish the way<br />you need.</h2></div><p>Copy an annotated PNG into a message or document, save PNG or JPEG to a folder, or share through macOS. You can also dismiss the overlay without exporting.</p></div>
       <div class="anishot-exports">
         <article><kbd>⌘ C</kbd><h3>Copy</h3><p>Copy a PNG to the macOS clipboard and close the overlay.</p></article>
         <article><kbd>⌘ S</kbd><h3>Save</h3><p>Choose a destination in the native Save dialog. Cancelling or failing to save keeps your session open.</p></article>
@@ -86,14 +86,14 @@ const questions = [
     <section class="section-shell section-pad anishot-reading" aria-labelledby="local-title">
       <p class="eyebrow">Local processing</p><h2 id="local-title">Processed on your Mac.</h2>
       <p>AniShot processes screenshots and annotations on your Mac. It captures when you request it and releases the session image when you close the overlay. The current app has no screenshot-upload service or account requirement.</p>
-      <p class="anishot-note">Copy puts a PNG on the macOS clipboard. Save writes to the destination you choose. Clipboard syncing, cloud-synced folders, and meeting software follow their own settings.</p>
+      <p class="anishot-note">Copy puts a PNG on the macOS clipboard. Save writes to the destination you choose. Share passes the annotated image to your selected macOS service, which may send it off your Mac. Clipboard syncing, cloud-synced folders, and sharing services follow their own settings.</p>
     </section>
 
     <section class="section-shell section-pad anishot-reading" aria-labelledby="settings-title">
       <p class="eyebrow">Your setup</p><h2 id="settings-title">Set the shortcut and panel size you prefer.</h2>
-      <p>Use Shift+Command+9, Shift+Command+4, both, or a custom capture shortcut. Appearance scales Tools, Layers, and the action panel from 50% to 150% without changing drawing widths or exported pixels.</p>
-      <p>You can also enable launch at login and choose whether an outside double-click dismisses the overlay.</p>
-      <p class="anishot-note">First setup asks for macOS screen access, then your shortcut. System-shortcut takeover requires your confirmation. Another app's reserved shortcut may need to be released in that app's settings.</p>
+      <p>Use Shift+Command+9 or one custom capture shortcut. Print Screen can be used alone, including its F13 mapping on macOS; physical keyboard compatibility is still being verified. Appearance scales Tools, Layers, and the action panel from 50% to 150% without changing drawing widths or exported pixels.</p>
+      <p>Launch at login is enabled by default; you can turn it off in the menu bar menu. You can also choose whether an outside double-click dismisses the overlay.</p>
+      <p class="anishot-note">First setup asks for macOS screen access, then your shortcut. AniShot does not change system shortcuts. Free a reserved custom binding in macOS Keyboard Shortcuts or the app that owns it, then record it again.</p>
     </section>
 
     <section class="section-shell section-pad" aria-labelledby="faq-title">

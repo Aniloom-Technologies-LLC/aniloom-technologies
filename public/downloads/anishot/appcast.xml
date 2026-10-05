@@ -4,6 +4,15 @@
     <title>AniShot Screen Capture updates</title>
     <link>https://aniloom.tech/anishot/</link>
     <item>
+      <title>AniShot 0.14.0</title>
+      <description>Adds native macOS Share and standalone Print Screen/F13 custom shortcuts. Capture setup now offers Command-Shift-9 or one custom shortcut; reserved shortcuts must be freed manually. Keeps launch at login. Includes compact tool hints. Apple silicon development version; not notarized.</description>
+      <sparkle:version>64</sparkle:version>
+      <sparkle:shortVersionString>0.14.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0.0</sparkle:minimumSystemVersion>
+      <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+      <enclosure sparkle:edSignature="QVXDyqm3MgifSIimxvQV1ENy9H7jvda6WMyHd7YWePRimKVTkKNgFD8VY94Ci66WUNh5L9cJj0ORZyyd/eluDw==" url="https://aniloom.tech/downloads/anishot/AniShot-Screen-Capture-0.14.0-arm64-development.dmg" length="1696768" type="application/octet-stream" />
+    </item>
+    <item>
       <title>AniShot 0.11.1</title>
       <description>Fixes size controls for Text and Pixelate at small panel sizes and rapid clicks. The former 80% panel size is now 100%. Adds a full-width centered size field, wider bold minus/plus buttons, larger action labels and larger hints. Apple silicon development version; not notarized.</description>
       <sparkle:version>60</sparkle:version>
