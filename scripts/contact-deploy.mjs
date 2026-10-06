@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { resolve } from "node:path";
 import { randomBytes } from "node:crypto";
+import { waitForContactReady } from "./contact-readiness.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const local = resolve(root, ".env.contact.local");
@@ -30,7 +31,6 @@ if (dryRun) { run(["deploy", "--dry-run"]); } else {
   const hasHash = Array.isArray(listing.result) && listing.result.some(s => s.name === "HASH_SECRET");
   run(["deploy"]);
   for (const [key, value] of Object.entries({ CONTACT_SITE_KEY: env.PUBLIC_TURNSTILE_SITE_KEY, TURNSTILE_SECRET_KEY: env.TURNSTILE_SECRET_KEY, RESEND_API_KEY: env.RESEND_API_KEY, CONTACT_FROM_EMAIL: env.CONTACT_FROM_EMAIL, ...(!hasHash ? { HASH_SECRET: env.HASH_SECRET || randomBytes(32).toString("hex") } : {}) })) run(["secret", "put", key], value);
-  const ready = await fetch("https://aniloom-contact.aniloom.workers.dev/config", { headers: { Origin: "https://aniloom.tech" } });
-  if (!(await ready.json()).ready) throw new Error("Worker deployed but not ready. Do not publish the website yet.");
+  if (!await waitForContactReady("https://aniloom-contact.aniloom.workers.dev/config", env.PUBLIC_TURNSTILE_SITE_KEY)) throw new Error("Worker deployed but not ready. Do not publish the website yet.");
   console.log("Contact Worker ready. Complete an end-to-end inbox check before publishing the website.");
 }

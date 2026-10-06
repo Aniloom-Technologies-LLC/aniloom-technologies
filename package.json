@@ -7,7 +7,7 @@
     "build": "astro build",
     "check": "astro check",
     "preview": "astro preview",
-    "test:contact": "node --test workers/contact/app.test.mjs",
+    "test:contact": "node --test workers/contact/app.test.mjs scripts/contact-readiness.test.mjs",
     "contact:deploy": "node scripts/contact-deploy.mjs"
   },
   "dependencies": {
