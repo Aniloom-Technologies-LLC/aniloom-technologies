@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "check": "astro check",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test:contact": "node --test workers/contact/app.test.mjs",
+    "contact:deploy": "node scripts/contact-deploy.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^7.0.0",

@@ -575,26 +575,34 @@ p { color: var(--muted); }
 .legal-page .article-shell > h1 { margin: 24px 0; font-size: clamp(3.2rem, 7vw, 7rem); font-weight: 500; }
 .legal-page .article-shell > p { margin-bottom: 60px; }
 
-/* Contact modal */
-.contact-modal { position: fixed; z-index: 300; inset: 0; display: grid; place-items: center; padding: 20px; visibility: hidden; pointer-events: none; transition: visibility 0s linear .35s; }
-.contact-modal.is-open { visibility: visible; pointer-events: auto; transition-delay: 0s; }
-.contact-modal__backdrop { position: absolute; inset: 0; background: rgba(3, 9, 8, .72); backdrop-filter: blur(12px); }
-.contact-modal__content { position: relative; width: min(760px, 100%); max-height: calc(100vh - 40px); overflow: auto; padding: clamp(30px, 5vw, 58px); border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface-solid); box-shadow: var(--shadow); opacity: 0; transform: translateY(22px) scale(.98); transition: opacity .35s ease, transform .35s ease; }
-.contact-modal.is-open .contact-modal__content { opacity: 1; transform: translateY(0) scale(1); }
-.contact-modal__content h2 { margin: 24px 50px 20px 0; font-size: clamp(2.4rem, 5vw, 4.5rem); font-weight: 500; }
-.contact-modal__close { position: absolute; top: 24px; right: 24px; width: 42px; aspect-ratio: 1; border: 1px solid var(--line); border-radius: 50%; background: transparent; cursor: pointer; }
-.contact-modal__close span { position: absolute; top: 50%; left: 50%; width: 16px; height: 1px; background: var(--text); transform: translate(-50%, -50%) rotate(45deg); }
-.contact-modal__close span + span { transform: translate(-50%, -50%) rotate(-45deg); }
-.contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 36px; }
-.contact-field { display: grid; gap: 8px; color: var(--muted); font-family: "DM Mono", monospace; font-size: .72rem; text-transform: uppercase; }
-.contact-field--full { grid-column: 1 / -1; }
-.contact-field input, .contact-field textarea { width: 100%; border: 1px solid var(--line); border-radius: 14px; background: var(--surface-soft); color: var(--text); padding: 16px; outline: none; text-transform: none; resize: vertical; }
-.contact-field input:focus, .contact-field textarea:focus { border-color: var(--focus); }
-.contact-field input:focus-visible, .contact-field textarea:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-.contact-form .button { justify-self: start; margin-top: 6px; }
-.contact-form__note { align-self: center; margin: 6px 0 0; font-size: .78rem; }
-.contact-modal__direct { margin: 25px 0 0; font-size: .82rem; }
-.contact-modal__direct a { color: var(--text); border-bottom: 1px solid var(--line-strong); }
+/* Contact page: focused action, then readable direct contact. */
+.contact-page { display: grid; grid-template-columns: .9fr 1fr; gap: clamp(36px, 7vw, 100px); padding-block: clamp(112px, 10vw, 152px) 64px; }
+.contact-page h1 { margin: 22px 0 28px; font-size: clamp(3rem, 6vw, 6rem); font-weight: 500; }
+.contact-page__intro > p:last-child { max-width: 440px; font-size: 1.1rem; }
+.contact-form { display: grid; grid-template-columns: 1fr; gap: 12px; min-width: 0; scroll-margin-top: 100px; }
+.contact-field { display: grid; gap: 4px; color: var(--text); font-size: .95rem; font-weight: 600; }
+.contact-field__hint { color: var(--muted); font-size: .82rem; font-weight: 400; }
+.contact-form input:not([type="hidden"]), .contact-form textarea { width: 100%; border: 1px solid color-mix(in srgb, var(--text) 40%, var(--surface-solid)); border-radius: 10px; background: var(--surface-solid); color: var(--text); padding: 14px 16px; resize: vertical; }
+.contact-form textarea { min-height: 156px; }
+.contact-form textarea::placeholder { color: var(--muted); opacity: 1; }
+.contact-form > input { margin-bottom: 8px; }
+.contact-form .button { justify-self: center; min-width: 180px; }
+.contact-form .button:disabled { opacity: .65; cursor: not-allowed; transform: none; box-shadow: none; }
+.contact-form__note { margin: 0; font-size: .82rem; }
+.contact-form__note a, .contact-status a, .contact-form noscript a { color: var(--link); text-decoration: underline; text-underline-offset: .2em; }
+.contact-topic { margin: 0 0 8px; color: var(--text); overflow-wrap: anywhere; }
+.contact-status { margin: 4px 0 0; font-size: .85rem; min-height: 2.7em; overflow-wrap: anywhere; }
+.contact-status[data-error="true"] { color: #ffb4ab; }
+.contact-honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); pointer-events: none; }
+.contact-form [data-contact-verification] { display: flex; justify-content: center; width: 100%; max-width: 400px; justify-self: center; }
+.contact-direct { padding-block: 56px 64px; }
+.contact-direct h2 { margin: 18px 0 26px; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 500; }
+.contact-direct__actions { display: flex; align-items: center; flex-wrap: wrap; gap: 18px 28px; }
+.contact-email { color: var(--link); font-size: clamp(1.15rem, 3vw, 1.6rem); text-decoration: underline; text-underline-offset: .2em; overflow-wrap: anywhere; }
+.contact-direct [data-copy-status] { min-height: 1.55em; margin: 12px 0 0; font-size: .85rem; }
+.contact-page [hidden], .contact-direct [hidden] { display: none; }
+@media (max-width: 850px) { .contact-page { grid-template-columns: 1fr; gap: 24px; padding-top: 104px; } .contact-page h1 { margin-bottom: 18px; } .contact-page__intro > p:last-child { max-width: 620px; margin-bottom: 0; } }
+@media (max-height: 500px) and (min-width: 701px) { .contact-page { grid-template-columns: .8fr 1fr; padding-top: 88px; gap: 32px; } .contact-page h1 { font-size: 3rem; } }
 
 /* Footer */
 .site-footer-stage { position: relative; z-index: 20; padding-bottom: 24px; background: var(--bg); overflow: clip; }
@@ -775,7 +783,6 @@ p { color: var(--muted); }
   .article-hero picture { border-radius: var(--radius); }
   .article-header > div, .article-footer { align-items: flex-start; flex-direction: column; }
   .contact-form { grid-template-columns: 1fr; }
-  .contact-field--full { grid-column: auto; }
   .site-footer-stage { padding-bottom: 10px; }
   .site-footer__inner { width: calc(100% - 28px); padding-block: 48px 28px; }
   .site-footer__lead { padding-bottom: 64px; }

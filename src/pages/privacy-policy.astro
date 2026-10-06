@@ -8,7 +8,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <article class="article-shell">
         <span class="eyebrow">Legal</span>
         <h1>Privacy Policy</h1>
-        <p>Effective date: October 2, 2026</p>
+        <p>Effective date: October 5, 2026</p>
         <div class="article-content">
           <p>
             Aniloom Technologies LLC respects your privacy. This site is a marketing website and
@@ -16,16 +16,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </p>
           <h2>Information We Collect</h2>
           <p>
-            If you contact us by email, we receive the information you choose to send, such as your
-            name, email address, company details, and project information.
+            If you use our contact form, we process your email address and project description,
+            together with a selected package when applicable. If you email us directly, we receive
+            the information you choose to include in your message.
           </p>
           <h2>Automatic Data</h2>
           <p>
-            The contact form prepares an email draft in your email application. Form entries are
-            not submitted to a website server. We receive them when you send the email.
+            Contact form requests are processed through Cloudflare Workers and sent to our inbox
+            through Resend. Cloudflare Turnstile checks submissions for automated abuse. These
+            providers process the request information needed to deliver messages and protect the form.
+            The form checks email format but does not verify that you own the mailbox.
             The website is hosted on GitHub Pages and loads fonts from Google Fonts. Your browser
             connects to these providers, which may process technical request information such as
             your IP address and browser details under their own policies.
+          </p>
+          <p>
+            Spam protection uses your connecting IP address. Our application stores keyed hashes
+            and short-lived submission records for rate limits and duplicate prevention, normally
+            removed within about 24 hours. These records do not contain your message or plain-text
+            email address. Provider infrastructure and our inbox have their own retention practices.
           </p>
           <h2>How We Use Information</h2>
           <p>

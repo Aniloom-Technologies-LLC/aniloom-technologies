@@ -24,17 +24,18 @@ Light is the reading and evaluation canvas: understand the offer, compare prices
 | Notes index and articles | Continuous light reading canvas | Footer only |
 | Privacy and terms | Continuous light reading canvas | Footer only |
 | AniShot | Light product introduction, workflow, tools, availability, FAQ, and compact benchmark disclosure | Frozen-screen explanation, closing product action/footer |
+| Contact | Dark focused form; light direct-email reading and copying section below | Form entry and footer |
 
 ## Implementation invariants
 
-- `BaseLayout` defaults to `appearance="light"`; only home, Playable Ads overview, and Playable Ads development explicitly enter dark.
+- `BaseLayout` defaults to `appearance="light"`; home, Playable Ads overview, Playable Ads development, and Contact explicitly enter dark.
 - The appearance prop controls initial canvas, navigation, and browser theme color. It is page art direction, not a preference, toggle, saved setting, or OS-theme response.
 - `Scene.astro` groups related content into a full-width canvas; `section-shell` constrains only the inner content. Keep consecutive reading sections together.
-- Explicit `surface-dark` scopes are required on method bands, closing callouts, footer, and contact dialog, even when the current ancestor is dark. This prevents future inherited token mismatches.
+- Explicit dark scopes are required on method bands, closing callouts, footer, and the Contact form scene, even when the current ancestor is dark. This prevents future inherited token mismatches.
 - Swap background, raised surfaces, text tiers, lines, links, focus, gradients, and interaction roles together. Yellow decisions retain dark ink in either scene.
 - Light canvas is `#F5F5F7`, not white. White belongs to raised package/input surfaces. Dark base is `#07131A`, with `#0E1D25` emphasis bands and `#1B303A` raised surfaces.
 - Images and embedded playables keep their own grading. Their palette does not decide the surrounding reading canvas.
-- The fixed global header matches the page entry canvas and stays stable across section transitions. The footer and contact dialog always use the dark scope. A dark dialog is an intentional action surface, not a new theme.
+- The fixed global header matches the page entry canvas and stays stable across section transitions. The footer and Contact form use the dark scope. Contact is an intentional focused-action page, not a new theme; its direct-email section returns to the light reading canvas.
 - Closing callouts are full-width passages with shell-aligned content, not rounded container cards. Cards remain useful for bounded selectable packages or actual embedded products, not for every text block.
 - Preserve the two centered homepage product actions, and preserve package cards in the initial pricing viewport. Color composition must not reintroduce an introductory pricing screen.
 
@@ -49,4 +50,4 @@ Light is the reading and evaluation canvas: understand the offer, compare prices
 
 ## Review checklist
 
-Inspect desktop, mobile portrait, and mobile landscape. Review each page family at entry, a light/dark boundary, and the closing action. Check text/link/focus roles, mobile menus, contact opening/closing, content width, and first-view pricing. Articles and legal reading must not acquire decorative scene interruptions. Run Astro validation and production build for layout changes.
+Inspect desktop, mobile portrait, and mobile landscape. Review each page family at entry, a light/dark boundary, and the closing action. Check text/link/focus roles, mobile menus, contact navigation and submission states, content width, and first-view pricing. Articles and legal reading must not acquire decorative scene interruptions. Run Astro validation and production build for layout changes.
