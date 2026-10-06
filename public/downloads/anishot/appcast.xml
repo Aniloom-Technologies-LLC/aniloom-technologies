@@ -4,13 +4,13 @@
     <title>AniShot Screen Capture updates</title>
     <link>https://aniloom.tech/anishot/</link>
     <item>
-      <title>AniShot 0.14.0</title>
-      <description>Adds native macOS Share and standalone Print Screen/F13 custom shortcuts. Capture setup now offers Command-Shift-9 or one custom shortcut; reserved shortcuts must be freed manually. Keeps launch at login. Includes compact tool hints. Apple silicon development version; not notarized.</description>
-      <sparkle:version>64</sparkle:version>
-      <sparkle:shortVersionString>0.14.0</sparkle:shortVersionString>
+      <title>AniShot 0.14.1</title>
+      <description>Fixes Edit Extensions opening sharing settings while preserving the capture. Simplifies Share to a native menu without the preview header. Compatible installed sharing extensions remain available. Apple silicon development version; not notarized.</description>
+      <sparkle:version>65</sparkle:version>
+      <sparkle:shortVersionString>0.14.1</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0.0</sparkle:minimumSystemVersion>
       <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-      <enclosure sparkle:edSignature="QVXDyqm3MgifSIimxvQV1ENy9H7jvda6WMyHd7YWePRimKVTkKNgFD8VY94Ci66WUNh5L9cJj0ORZyyd/eluDw==" url="https://aniloom.tech/downloads/anishot/AniShot-Screen-Capture-0.14.0-arm64-development.dmg" length="1696768" type="application/octet-stream" />
+      <enclosure sparkle:edSignature="ukN+DVDNbBuWgNfRCa+uULO9GmPcQ7x/xxY7c0kdiBfdV0tb8FvOokai/CXJt9Bn0xwER8GaSGepkipQ9LHmBw==" url="https://aniloom.tech/downloads/anishot/AniShot-Screen-Capture-0.14.1-arm64-development.dmg" length="1704448" type="application/octet-stream" />
     </item>
     <item>
       <title>AniShot 0.11.1</title>

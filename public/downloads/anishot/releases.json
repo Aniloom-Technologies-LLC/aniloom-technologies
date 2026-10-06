@@ -1,12 +1,12 @@
 [
   {
-    "file": "AniShot-Screen-Capture-0.14.0-arm64-development.dmg",
-    "version": "0.14.0",
-    "internalVersion": "64",
-    "signature": "QVXDyqm3MgifSIimxvQV1ENy9H7jvda6WMyHd7YWePRimKVTkKNgFD8VY94Ci66WUNh5L9cJj0ORZyyd/eluDw==",
-    "length": 1696768,
-    "sha256": "28b3be84ffa8b886becb3c0aeee46ef35230987f19f83fa87961d48ac81b6569",
-    "notes": "Adds native macOS Share and standalone Print Screen/F13 custom shortcuts. Capture setup now offers Command-Shift-9 or one custom shortcut; reserved shortcuts must be freed manually. Keeps launch at login. Includes compact tool hints. Apple silicon development version; not notarized."
+    "file": "AniShot-Screen-Capture-0.14.1-arm64-development.dmg",
+    "version": "0.14.1",
+    "internalVersion": "65",
+    "signature": "ukN+DVDNbBuWgNfRCa+uULO9GmPcQ7x/xxY7c0kdiBfdV0tb8FvOokai/CXJt9Bn0xwER8GaSGepkipQ9LHmBw==",
+    "length": 1704448,
+    "sha256": "fca1ecde548afb108ec062ea17a8c7c3d23e1c29e285d7bb9e621bcbe1050252",
+    "notes": "Fixes Edit Extensions opening sharing settings while preserving the capture. Simplifies Share to a native menu without the preview header. Compatible installed sharing extensions remain available. Apple silicon development version; not notarized."
   },
   {
     "file": "AniShot-Screen-Capture-0.11.1-arm64-development.dmg",
