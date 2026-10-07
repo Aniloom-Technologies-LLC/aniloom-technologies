@@ -28,8 +28,9 @@ const platforms = [
     <div class="platforms__heading">
       <div><p class="eyebrow">Target ad platforms</p><h2 id="platforms-title">Your playable. Your ad network.</h2></div>
       <div class="platforms__controls" hidden>
-        <button type="button" aria-label="Previous platforms" data-platform-prev disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6" /></svg></button>
+        <button type="button" aria-label="Previous platforms" data-platform-prev><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6" /></svg></button>
         <button type="button" aria-label="Next platforms" data-platform-next><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6" /></svg></button>
+        <button type="button" aria-label="Pause automatic scrolling" aria-pressed="false" data-platform-pause><svg viewBox="0 0 24 24" aria-hidden="true"><path data-pause-icon d="M9 6v12M15 6v12" /></svg></button>
       </div>
     </div>
     <p class="platforms__intro">We prepare platform-specific playable packages, adapting the format, click-through integration, and responsive layout to your target networks.</p>
@@ -82,20 +83,83 @@ const platforms = [
     const next = carousel.querySelector<HTMLButtonElement>("[data-platform-next]");
     const controls = carousel.querySelector<HTMLElement>(".platforms__controls");
     if (!track || !previous || !next || !controls) return;
-    const update = () => {
-      previous.disabled = track.scrollLeft < 2;
-      next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
-      controls.hidden = track.scrollWidth <= track.clientWidth + 2;
-    };
-    const move = (direction: number) => track.scrollBy({
-      left: direction * track.clientWidth * .75,
-      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+    const pause = carousel.querySelector<HTMLButtonElement>("[data-platform-pause]");
+    const pauseIcon = pause?.querySelector<SVGPathElement>("[data-pause-icon]");
+    const originals = Array.from(track.children) as HTMLElement[];
+    const motion = matchMedia("(prefers-reduced-motion: reduce)");
+    // Extra copies allow both directions to wrap without a visible rewind.
+    const copy = () => originals.map((item) => {
+      const clone = item.cloneNode(true) as HTMLElement;
+      clone.setAttribute("aria-hidden", "true");
+      return clone;
     });
+    track.prepend(...copy());
+    track.append(...copy());
+    track.style.scrollSnapType = "none";
+    let cycleWidth = 0;
+    let settleTimer: ReturnType<typeof setTimeout>;
+    let timer: ReturnType<typeof setInterval> | undefined;
+    let hovered = false;
+    let focused = false;
+    let visible = false;
+    let paused = false;
+    const normalize = () => {
+      if (!cycleWidth) return;
+      if (track.scrollLeft < cycleWidth) track.scrollLeft += cycleWidth;
+      else if (track.scrollLeft >= cycleWidth * 2) track.scrollLeft -= cycleWidth;
+    };
+    const move = (direction: number) => {
+      const items = Array.from(track.children) as HTMLElement[];
+      const start = items[0].offsetLeft;
+      const closest = items.reduce((best, item, index) =>
+        Math.abs(item.offsetLeft - start - track.scrollLeft) < Math.abs(items[best].offsetLeft - start - track.scrollLeft) ? index : best, 0);
+      const destination = items[closest + direction];
+      if (destination) track.scrollTo({ left: destination.offsetLeft - start, behavior: motion.matches ? "instant" : "smooth" });
+    };
+    const updateTimer = () => {
+      if (timer !== undefined) clearInterval(timer);
+      timer = undefined;
+      if (!paused && !hovered && !focused && visible && !document.hidden && !motion.matches) {
+        timer = setInterval(() => move(1), 4000);
+      }
+    };
+    const resize = () => {
+      const first = track.children[0] as HTMLElement;
+      cycleWidth = originals[0].offsetLeft - first.offsetLeft;
+      track.scrollLeft = cycleWidth;
+      controls.hidden = false;
+    };
     previous.addEventListener("click", () => move(-1));
     next.addEventListener("click", () => move(1));
-    track.addEventListener("scroll", update, { passive: true });
-    new ResizeObserver(update).observe(track);
-    document.fonts.ready.then(update);
-    update();
+    pause?.addEventListener("click", () => {
+      paused = !paused;
+      pause.setAttribute("aria-pressed", String(paused));
+      pause.setAttribute("aria-label", paused ? "Resume automatic scrolling" : "Pause automatic scrolling");
+      pauseIcon?.setAttribute("d", paused ? "m9 6 9 6-9 6Z" : "M9 6v12M15 6v12");
+      updateTimer();
+    });
+    carousel.addEventListener("mouseenter", () => { hovered = true; updateTimer(); });
+    carousel.addEventListener("mouseleave", () => { hovered = false; updateTimer(); });
+    carousel.addEventListener("focusin", () => { focused = true; updateTimer(); });
+    carousel.addEventListener("focusout", (event) => {
+      focused = event.relatedTarget instanceof Node && carousel.contains(event.relatedTarget);
+      updateTimer();
+    });
+    track.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.preventDefault();
+        move(event.key === "ArrowLeft" ? -1 : 1);
+      }
+    });
+    track.addEventListener("scroll", () => {
+      clearTimeout(settleTimer);
+      settleTimer = setTimeout(normalize, 150);
+    }, { passive: true });
+    document.addEventListener("visibilitychange", updateTimer);
+    motion.addEventListener("change", updateTimer);
+    new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; updateTimer(); }, { threshold: .2 }).observe(track);
+    new ResizeObserver(resize).observe(track);
+    document.fonts.ready.then(resize);
+    resize();
   });
 </script>
