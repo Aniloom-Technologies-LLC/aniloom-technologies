@@ -2,7 +2,7 @@
 
 ## UX contract
 
-Use `Contact` for navigation and `Contact us.` for the page heading. `Contacts` implies an address book or list, not the intended conversation. All project actions are normal `/contact/` links. Package actions preserve the selected package through a bounded `topic` query; personal information never belongs in a URL.
+Use the standard `Contact Us` label for the header action, `Contact` for the footer link, and `Contact us.` for the page heading. `Contacts` implies an address book or list, not the intended conversation. All project actions are normal `/contact/` links. Package actions preserve the selected package through a bounded `topic` query; personal information never belongs in a URL. Header actions retain the shared primary-button styles in every state; ordinary navigation-link styles must exclude `.button` so text remains dark on yellow.
 
 The form is at the top, on a dark focused-action scene. It has only two visible required fields: email and project description. The separate light section below presents selectable `support@aniloom.tech`, a mailto link, and a copy button where supported. No LinkedIn links are approved yet. The page remains reachable without JavaScript; online submission needs JavaScript for spam verification, with direct email as the fallback.
 
