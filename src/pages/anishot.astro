@@ -33,7 +33,7 @@ const questions = [
   <main id="main-content" class="anishot">
     <section class="anishot-hero section-shell" aria-labelledby="anishot-title">
       <p class="eyebrow">Free screenshots and annotation for Mac</p>
-      <h1 id="anishot-title">AniShot <span class="anishot-hero__descriptor">Screen Capture</span></h1>
+      <h1 id="anishot-title" aria-label="AniShot Screen Capture"><span class="anishot-hero__name" aria-hidden="true">AniShot</span><span class="anishot-hero__descriptor" aria-hidden="true">{Array.from("Screen Capture").map((letter) => <span>{letter === " " ? "\u00a0" : letter}</span>)}</span></h1>
       <div class="anishot-hero__lower">
         <div>
           <h2 class="anishot-benchmark" id="capture-benchmark"><span class="anishot-benchmark__intro">Capture screenshots in</span> 86 ms <span>on average across two displays.<a href="#capture-methodology" aria-label="Capture timing methodology" data-capture-methodology-link>*</a></span></h2>
@@ -144,8 +144,9 @@ const questions = [
 
 <style>
   .anishot-hero { padding-block: clamp(130px, 12vw, 180px) 64px; border-bottom: 1px solid var(--line); }
-  .anishot-hero h1 { margin: 24px 0 64px; font-size: clamp(3.2rem, 8vw, 8rem); font-weight: 500; }
-  .anishot-hero__descriptor { display: block; margin-top: 4px; font-size: clamp(.95rem, 1.8vw, 1.6rem); line-height: 1.2; letter-spacing: -.02em; }
+  .anishot-hero h1 { width: max-content; margin: 24px 0 64px; font-size: clamp(3.2rem, 8vw, 8rem); font-weight: 500; }
+  .anishot-hero__name { display: block; line-height: .9; }
+  .anishot-hero__descriptor { display: flex; justify-content: space-between; margin-top: 0; font-size: clamp(.95rem, 1.8vw, 1.6rem); line-height: 1.2; letter-spacing: 0; }
   .anishot-hero__lower { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
   .anishot-benchmark { margin: 0; color: var(--link); font-size: clamp(3rem, 5.5vw, 5.5rem); font-weight: 500; }
   .anishot-benchmark > span { display: block; margin-top: 12px; color: var(--text); font-size: clamp(1.2rem, 2vw, 1.7rem); line-height: 1.35; letter-spacing: -.02em; }
