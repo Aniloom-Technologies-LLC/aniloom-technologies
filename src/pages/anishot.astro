@@ -52,6 +52,10 @@ const questions = [
 
     <section class="section-shell section-pad" id="workflow" aria-labelledby="workflow-title">
       <div class="section-heading"><div><p class="eyebrow">Capture on request</p><h2 id="workflow-title">Freeze first.<br />Select second.</h2></div><p>Activate AniShot with a shortcut or the menu bar icon. It captures the screen before you select an area. Your applications keep running underneath.</p></div>
+      <figure class="anishot-screenshot">
+        <img src="/assets/images/anishot/anishot-screen-capture-annotation.webp" srcset="/assets/images/anishot/anishot-screen-capture-annotation-960.webp 960w, /assets/images/anishot/anishot-screen-capture-annotation-1920.webp 1920w, /assets/images/anishot/anishot-screen-capture-annotation.webp 2880w" sizes="(max-width: 720px) calc(100vw - 28px), (max-width: 1180px) calc(100vw - 40px), (max-width: 1384px) calc(100vw - 64px), 1320px" width="2880" height="1800" alt="AniShot capture with a marker highlight, an arrow, editable Layers and drawing tools" loading="lazy" decoding="async" />
+        <figcaption><p>Add the explanation where it matters.</p><a href="/assets/images/anishot/anishot-screen-capture-annotation.webp">View full-size annotation screenshot <span aria-hidden="true">↗</span></a></figcaption>
+      </figure>
       <ol class="anishot-steps" role="list">
         <li><span>01</span><h3>Freeze the image.</h3><p>The captured image stays still while you decide what to show. Capture starts when you request it; there is no continuous screen-history buffer.</p></li>
         <li><span>02</span><h3>Select the detail.</h3><p>Frame the relevant area on one display, then annotate directly in the same overlay.</p></li>
@@ -73,6 +77,11 @@ const questions = [
       <div class="anishot-tools">
         {tools.map((tool) => <article><img src={`/assets/images/anishot/${tool.icon}.png`} width="64" height="64" alt="" loading="lazy" /><div><h3>{tool.name}</h3><p>{tool.text}</p></div></article>)}
       </div>
+      <figure class="anishot-screenshot">
+        <img src="/assets/images/anishot/anishot-blur-pixelate.webp" srcset="/assets/images/anishot/anishot-blur-pixelate-960.webp 960w, /assets/images/anishot/anishot-blur-pixelate-1920.webp 1920w, /assets/images/anishot/anishot-blur-pixelate.webp 2880w" sizes="(max-width: 720px) calc(100vw - 28px), (max-width: 1180px) calc(100vw - 40px), (max-width: 1384px) calc(100vw - 64px), 1320px" width="2880" height="1800" alt="AniShot blur and pixelation effects applied to a fictional photograph and text" loading="lazy" decoding="async" />
+        <figcaption><p>Choose what to show. Blur or pixelate faces and details before sharing.</p><a href="/assets/images/anishot/anishot-blur-pixelate.webp">View full-size blur and pixelation screenshot <span aria-hidden="true">↗</span></a></figcaption>
+      </figure>
+      <p class="anishot-note">Blur and pixelation are visual effects, not a guarantee of irreversible anonymization. Inspect the exported image before sharing. The example uses fictional people and scenery.</p>
     </section>
 
     <section class="section-shell section-pad anishot-reading" aria-labelledby="layers-title">
@@ -160,6 +169,11 @@ const questions = [
   .anishot-tools img { width: 48px; height: 48px; flex-shrink: 0; }
   .anishot-tools h3 { margin-top: 0; }
   .anishot-tools p { margin-bottom: 0; }
+  .anishot-screenshot { margin: 40px 0; }
+  .anishot-screenshot > img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 8px; }
+  .anishot-screenshot figcaption { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 24px; margin-top: 12px; }
+  .anishot-screenshot figcaption p { margin: 0; color: var(--text); }
+  .anishot-screenshot figcaption a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: .9rem; }
   kbd { display: inline-block; min-width: 72px; padding: 10px 14px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--surface-solid); color: var(--text); font-family: "DM Mono", monospace; }
   .anishot-faq { margin-top: 36px; }
   .anishot-faq details { border-top: 1px solid var(--line); padding: 22px 0; }
