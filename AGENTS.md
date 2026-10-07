@@ -10,6 +10,12 @@ Keep prices, package inclusions, timelines, and exclusions aligned with the cano
 
 For information-only requests investigate without modifying files. For authorized site changes, run checks appropriate to the change, then commit and push significant changes. Copy or layout edits need Astro validation, a production build, and relevant visual review; contact behavior changes also need focused interaction checks. Do not use long dashes in new copy.
 
+## Playable Ads positioning
+
+The Playable Ads pages sell a finished playable creative. Overview explains the player experience, examples, full production process, responsive checks, and delivery. Keep prices, package limits, timelines, and add-on costs on Pricing. Do not advertise standalone testing of third-party playables on these pages or frame testing as a second playable product. Verification and technical corrections within the agreed production scope support delivery of our own playable.
+
+For provider formats, preview/validation tools, responsive coverage, and hosted demos, verify the companion `../playable-ads/docs/PROVIDERS.md`, `docs/PLAYABLE_WORKFLOW.md`, and `docs/CLOUDFLARE_HOSTING.md`. Distinguish resolution checks from physical-device testing, agreed network packages from every supported network, and platform previews from campaign acceptance. Preserve the approved commercial scope and starting prices unless the owner changes them.
+
 ## Scene composition
 
 Preserve the established website style and approved brand palette in every change. Reuse the scene-scoped semantic tokens in `src/styles/global.css` and existing component patterns for surfaces, borders, typography, spacing, hover, and keyboard focus. A brand color alone does not make a new visual treatment appropriate. Do not introduce new colors, heavy outlines, glows, or selection treatments without an explicit design request. Interactive demo cards should follow the existing neutral-border and restrained hover treatment; returning to a demo anchor may use a brief, subtle surface highlight, never a persistent selection ring. Preserve the established accessible keyboard-focus indicator and reduced-motion behavior.

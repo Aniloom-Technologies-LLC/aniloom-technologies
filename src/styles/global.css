@@ -862,13 +862,6 @@ p { color: var(--muted); }
 .playable-demo__body .eyebrow { margin-bottom: 10px; }
 .playable-demo__body > p:last-child { margin: 0; font-size: .95rem; }
 .playable-demos__note { margin: 24px 0 0; color: var(--quiet); font-size: .85rem; }
-.playable-service-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
-.playable-service { display: flex; flex-direction: column; padding: clamp(26px, 3.4vw, 44px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-elevated); scroll-margin-top: 90px; }
-.playable-service h3 { margin: 18px 0 24px; font-size: clamp(2rem, 3.2vw, 3rem); font-weight: 500; }
-.playable-service .clean-list { margin-block: 10px 24px; font-size: .95rem; }
-.playable-service__price { margin-top: auto; color: var(--text); }
-.playable-service__note { color: var(--quiet); font-size: .85rem; }
-.playable-service .text-link { margin-top: 12px; }
 .playable-workflow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 30px; list-style: none; margin: 0 0 36px; padding: 0; }
 .playable-workflow li { padding-top: 24px; border-top: 1px solid var(--line); }
 .playable-workflow li > span { color: var(--accent-readable); font-family: "DM Mono", monospace; font-size: .75rem; }
@@ -885,7 +878,7 @@ p { color: var(--muted); }
 .pricing-jump-links { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 18px; }
 .pricing-jump-links a { color: var(--link); font-size: .85rem; text-decoration: underline; text-underline-offset: 4px; }
 .pricing-card__details { margin-top: 18px; color: var(--link); font-size: .85rem; text-decoration: underline; text-underline-offset: 4px; }
-.pricing-card[id], #workflow, #demonstrations { scroll-margin-top: 90px; }
+.pricing-card[id], #workflow, #demonstrations, #development, #verification { scroll-margin-top: 90px; }
 @media (max-width: 1000px) {
   .playable-demo-grid { gap: 14px; }
   .playable-demo__body { padding: 18px 16px 22px; }
@@ -893,7 +886,7 @@ p { color: var(--muted); }
   .playable-workflow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 700px) {
-  .playable-demo-grid, .playable-service-grid, .playable-readiness__grid { grid-template-columns: 1fr; }
+  .playable-demo-grid, .playable-readiness__grid { grid-template-columns: 1fr; }
   .playable-demo__preview { height: 320px; }
   .playable-demo__body { padding: 18px 20px 22px; }
   .playable-demo__action { align-items: center; margin-bottom: 14px; }

@@ -6,10 +6,10 @@ export default defineConfig({
   integrations: [react()],
   redirects: {
     "/playable-ads/development/": "/playable-ads/#development",
-    "/playable-ads/qa-release-readiness/": "/playable-ads/#qa-release-readiness",
+    "/playable-ads/qa-release-readiness/": "/playable-ads/#verification",
     "/playable-ads/how-we-work/": "/playable-ads/#workflow",
     "/playable-ads/case-studies/magic-thai-playables/": "/playable-ads/#demonstrations",
-    "/playable-ads/release-quality-platform-readiness/": "/playable-ads/pricing/#readiness-package",
+    "/playable-ads/release-quality-platform-readiness/": "/playable-ads/#verification",
   },
   build: {
     format: "directory",

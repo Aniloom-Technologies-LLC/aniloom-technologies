@@ -8,36 +8,18 @@ const primaryPackages = [
     id: "development-package",
     title: "Playable Ads Development",
     price: "$5,000 USD",
-    summary: "Build one playable from your approved concept, reference, or product flow.",
+    summary: "A finished HTML5/WebGL playable, checked and packaged for one chosen ad network.",
     inclusions: [
       "One playable from an approved concept, reference, or product flow",
       "One core interaction in HTML5 or WebGL",
-      "Portrait and landscape layouts",
+      "Portrait and landscape, including iPhone/iPad resolutions and 9:22 / 22:9 layouts",
       "Tutorial, gameplay, result, and CTA states",
       "One language and one behavioral variant",
       "One ad-network provider package with basic click-through or agreed analytics hooks",
-      "Two review rounds and a release-quality review",
-      "Production package and source handoff",
+      "Two review rounds, interaction checks, and final provider-package validation",
+      "Production package, source handoff, and a Cloudflare Workers live demo link",
     ],
     note: "You supply approved assets. Custom art, substantial animation, extra variants, localization, and extra provider packages are add-ons. Plan for 10-15 business days after complete inputs and access; the proposal confirms the timeline.",
-  },
-  {
-    id: "readiness-package",
-    detailsHref: "#readiness-details",
-    title: "Playable Release Quality and Platform Readiness",
-    price: "$1,500 USD",
-    summary: "Test one existing playable before delivery or launch, with findings and one retest.",
-    inclusions: [
-      "One stable playable in portrait and landscape",
-      "Up to two behavioral variants",
-      "One ad-network provider package",
-      "Intake and risk map",
-      "Visual, responsive, end-user, variant, and package review",
-      "Findings with supporting evidence",
-      "One retest after corrections",
-      "Release summary",
-    ],
-    note: "Plan for 3-5 business days after stable-build access. Engineering fixes are separate scope. The proposal confirms the timeline.",
   },
 ];
 
@@ -54,49 +36,42 @@ const addOns = [
     summary: "One additional behavioral variant, an agreed batch of client-supplied translations, or one additional provider package, depending on complexity.",
     inclusions: ["The proposal states which adaptation is included."],
   },
-  {
-    title: "Correction & Retest Sprint",
-    price: "$1,500 USD",
-    summary: "Engineering fixes for an agreed list of findings, followed by targeted retesting.",
-    inclusions: ["This is a defined sprint, not unlimited remediation."],
-  },
 ];
 ---
 
-<BaseLayout title="Playable Ads Development & QA Pricing | Aniloom Technologies" description="Playable development from $5,000 USD and a release-readiness QA package from $1,500. Compare scope, inputs, timelines, reports, and optional add-ons.">
+<BaseLayout title="Playable Ad Pricing & Production Scope | Aniloom Technologies" description="A finished playable ad from $5,000 USD. See the development package, included checks and delivery, timelines, creative production, and network adaptations.">
   <main id="main-content" class="pricing-page">
     <PlayableNav />
     <section class="pricing-stage pricing-stage--catalog surface-light" id="packages">
       <div class="section-shell">
         <header class="pricing-intro">
-          <h1>Playable Ads Development & QA Pricing</h1>
-          <p>Choose development for a new playable or QA for an existing build. Engineering fixes are separate scope.</p>
-          <nav class="pricing-jump-links" aria-label="Find your playable package"><a href="#development-package">New playable · from $5,000 <span aria-hidden="true">↓</span></a><a href="#readiness-package">Existing build QA · from $1,500 <span aria-hidden="true">↓</span></a></nav>
+          <h1>Playable Ad Pricing</h1>
+          <p>One finished playable, with the production scope, checks, and delivery defined before work starts.</p>
         </header>
         <div class="pricing-group">
-          <h2 class="visually-hidden">Primary packages</h2>
-          <div class="pricing-grid pricing-grid--two pricing-grid--primary">
+          <h2 class="visually-hidden">Playable development package</h2>
+          <div class="pricing-grid pricing-grid--one">
             {primaryPackages.map((item) => <PricingCard {...item} />)}
           </div>
         </div>
 
         <div class="pricing-group pricing-group--addons">
-          <div class="section-heading" data-reveal><div><p class="eyebrow">Optional add-ons</p><h2>Add art, adaptations, or engineering fixes.</h2></div><p>Add custom production, another variant or provider package, localization, or a correction sprint when your project needs it.</p></div>
-          <div class="pricing-grid pricing-grid--three">
+          <div class="section-heading" data-reveal><div><p class="eyebrow">Optional add-ons</p><h2>Add creative production or more versions.</h2></div><p>Extend the base playable with custom assets, another behavioral variant, supplied translations, or an additional provider package.</p></div>
+          <div class="pricing-grid pricing-grid--two">
             {addOns.map((item) => <PricingCard {...item} />)}
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section-shell section-pad playable-readiness" id="readiness-details" aria-labelledby="readiness-title">
-      <div class="section-heading" data-reveal><div><p class="eyebrow">Inside the QA package</p><h2 id="readiness-title">From your stable build to a release summary.</h2></div><p>The $1,500 starting package covers a scoped review and one retest. Plan for 3–5 business days after stable-build access; the proposal confirms the schedule and dependencies.</p></div>
+    <section class="section-shell section-pad playable-readiness" id="delivery-details" aria-labelledby="delivery-title">
+      <div class="section-heading" data-reveal><div><p class="eyebrow">Plan the production</p><h2 id="delivery-title">Agree on inputs, reviews, and the final files.</h2></div><p>The base package uses your approved concept and assets. Plan for 10-15 business days after complete inputs and access; the proposal confirms the schedule.</p></div>
       <div class="playable-readiness__grid">
-        <article data-reveal><h3>What you provide</h3><p>Stable-build access, the target provider specification, up to two behavioral variants, known issues, and a decision-maker. We agree on the configurations and acceptance criteria before testing.</p></article>
-        <article data-reveal><h3>What you receive</h3><p>A risk map and test scope, prioritized findings with reproduction context and visual evidence, one retest record, and a summary of tested areas, open issues, blocked checks, and remaining risks.</p></article>
+        <article data-reveal><h3>What you provide</h3><p>An approved concept or reference, product and brand assets, required copy, one target provider specification, the destination link, analytics requirements, and a decision-maker for the two review rounds.</p></article>
+        <article data-reveal><h3>What you receive</h3><p>One finished playable with tutorial, gameplay, result, and CTA states. Delivery includes the selected network’s production package, source files, and a live demo link, with the agreed interaction, layout, and package checks completed.</p></article>
       </div>
-      <details class="playable-readiness__boundaries"><summary>Corrections, extra coverage, and release responsibility</summary><p>Your developers prepare corrections, or we scope engineering work separately. Extra providers or variants, device-lab expansion, localization, analytics validation, performance testing, and further retest rounds are outside the base QA package.</p><p>Testing supports your release decision. It does not certify the build or guarantee platform acceptance, campaign performance, or a defect-free release.</p></details>
-      <a class="text-link" href="/playable-ads/#demonstrations">Try our playable demos <span>↗</span></a>
+      <details class="playable-readiness__boundaries"><summary>Scope changes and additional production</summary><p>Custom art, substantial animation, extra behavioral variants, localization, extra providers, unusual analytics, and post-handoff iteration are separate scope. Technical corrections within the agreed playable production scope are part of development.</p><p>The proposal defines delivery requirements and acceptance criteria. Network campaign approval and advertising performance remain outside the production commitment.</p></details>
+      <a class="text-link" href="/playable-ads/#workflow">Explore the full production process <span>↗</span></a>
     </section>
 
     <section class="pricing-terms section-shell section-pad">
@@ -108,6 +83,6 @@ const addOns = [
       </div>
     </section>
 
-    <section class="callout surface-dark section-shell section-pad"><p class="eyebrow">Bring the brief or the build</p><h2>Find the right playable package.</h2><p>Share the brief or build, target provider, available assets, variants, and deadline. We will recommend a package and confirm the scope.</p><a class="button" href="/contact/">Discuss a playable</a></section>
+    <section class="callout surface-dark section-shell section-pad"><p class="eyebrow">Bring your playable idea</p><h2>Define your playable’s scope.</h2><p>Share your concept or reference, target networks, available assets, and deadline. We will confirm the production scope and quote.</p><a class="button" href="/contact/">Discuss a playable</a></section>
   </main>
 </BaseLayout>
