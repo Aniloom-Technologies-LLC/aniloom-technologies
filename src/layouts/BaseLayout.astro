@@ -1,5 +1,6 @@
 ---
 import SplashCursor from "../components/SplashCursor";
+import "../styles/global.css";
 import SiteBrand from "../components/SiteBrand.astro";
 
 interface Props {
@@ -88,7 +89,6 @@ const navItems = [
       html, body { background: #07131a; color: #f5f8fa; }
       html[data-appearance="light"], html[data-appearance="light"] body { background: #f5f5f7; color: #15202a; }
     </style>
-    <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
   <body class={bodyClass}>
     <a class="skip-link" href="#main-content">Skip to content</a>
