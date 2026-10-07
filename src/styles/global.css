@@ -83,6 +83,16 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   isolation: isolate;
+  /* Disable ordinary page-text selection without hiding indexable HTML. */
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Keep editing, contact details, and explicitly copyable content usable. */
+input, textarea, [contenteditable="true"], [contenteditable=""], [contenteditable="plaintext-only"],
+a[href^="mailto:"], a[href^="tel:"], pre, code, [data-selectable] {
+  -webkit-user-select: text;
+  user-select: text;
 }
 
 body.overlay-open { overflow: hidden; }
