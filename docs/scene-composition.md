@@ -62,8 +62,17 @@ Publication review found browsers reusing the old unversioned public stylesheet 
 
 ## Finished-playable positioning, October 7, 2026
 
-Overview introduces the finished creative and educates the buyer; it has no package cards, prices, or base-package counts. Checks belong to production and delivery, with no standalone third-party playable QA offer. Pricing retains the approved $5,000 development package and the $1,500 creative-production / $750 adaptation starting prices, without a QA package or correction sprint. Related capability and workflow links describe production. Legacy QA/readiness routes now land on the overview's `#verification` section.
+Overview introduces the finished creative and educates the buyer; it has no package cards, prices, or base-package counts. Checks belong to production and delivery, with no standalone third-party playable QA offer. Pricing now presents owner-approved Adapted Playable from $799 and Custom Playable from $4,499, without standalone QA or separate priced adaptation cards. Related capability and workflow links describe production. Legacy QA/readiness routes now land on the overview's `#verification` section.
 
 Provider evidence and claim boundaries are recorded in `docs/internal/playable-ads/platform-support.md`. Resolution checks cover iPhone/iPad sizes and 9:22 / 22:9 extremes, not an implied physical-device lab. A Cloudflare Workers browser link is a demo delivery artifact, separate from final provider upload files. Selected provider tools check their own requirements and do not establish universal acceptance.
 
 Revision validation: Astro check reports zero errors, warnings, and hints; production build passes. Reviewed overview and pricing on desktop, 390px portrait, and 844px landscape. Overview has zero prices or package cards. All 68 built-site links into playable routes resolve, including anchors; both legacy QA redirects point to verification. Checked the Overview-to-Pricing interaction. Copy reviewed with brand-writing, copywriting, and the seven copy-editing sweeps; retained approved prices and separated complete production capabilities from base-package inclusions.
+
+
+## Playable packages, October 7, 2026
+
+The two-package catalog uses the existing light scene, raised white surfaces, neutral borders, and semantic palette. Custom Playable is wider and taller with a more central position on wide layouts; Adapted Playable is slightly lower and remains readable and actionable. Narrow portrait stacks Adapted then Custom without offsets. Do not color-code the premium tier or add a selection ring.
+
+Both packages include all currently supported public network builds as a bonus. Custom includes three visual skins total of one approved mechanic, bounded art production, Spine 2D and custom animation sequences. Detailed scope, asset/audio sourcing, usage rights, schedules, revisions, and commercial terms belong on Pricing. Overview has no prices/package counts; a short individually scoped advertising/marketing campaign note can appear on both pages. Private volume incentives stay off the public site. Canonical owner-approved commercial facts live in the companion Brand System.
+
+Validation for the two-package revision: Astro check passes with zero diagnostics; production build passes. Pricing reviewed at desktop, 390px and 320px portrait, and 844px landscape without horizontal overflow. Custom is wider/taller on horizontal layouts; portrait preserves the package order. Native Q&A opens by pointer and closes with Enter. The built-site audit checks 418 internal page links with no missing anchors. Copy was drafted and reviewed through the Aniloom brand-writing, copywriting, and copy-editing workflow.

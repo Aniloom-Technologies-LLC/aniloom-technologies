@@ -7,11 +7,12 @@ interface Props {
   inclusions: string[];
   label?: string;
   note?: string;
+  bonus?: string;
   cadence?: string;
   detailsHref?: string;
 }
 
-const { id, title, price, summary, inclusions, label, note, cadence, detailsHref } = Astro.props;
+const { id, title, price, summary, inclusions, label, note, bonus, cadence, detailsHref } = Astro.props;
 ---
 
 <article class="pricing-card" id={id}>
@@ -22,6 +23,7 @@ const { id, title, price, summary, inclusions, label, note, cadence, detailsHref
   <ul class="pricing-card__scope">
     {inclusions.map((item) => <li>{item}</li>)}
   </ul>
+  {bonus && <p class="pricing-card__bonus"><span>Included bonus</span>{bonus}</p>}
   {note && <p class="pricing-card__note">{note}</p>}
   {detailsHref && <a class="pricing-card__details" href={detailsHref}>See QA inputs & reports <span aria-hidden="true">↓</span></a>}
   <a class="text-link" href={`/contact/?topic=${encodeURIComponent(title)}`}>Discuss this package <span>↗</span></a>

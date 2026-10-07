@@ -3,86 +3,137 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import PlayableNav from "../../components/PlayableNav.astro";
 import PricingCard from "../../components/PricingCard.astro";
 
-const primaryPackages = [
+const packages = [
   {
-    id: "development-package",
-    title: "Playable Ads Development",
-    price: "$5,000 USD",
-    summary: "A finished HTML5/WebGL playable, checked and packaged for one chosen ad network.",
+    id: "adapted-playable",
+    label: "A focused creative, ready to build",
+    title: "Adapted Playable",
+    price: "$799 USD",
+    summary: "Turn a ready mechanic into a finished playable for your game or product. A practical starting point for a series of creatives.",
     inclusions: [
-      "One playable from an approved concept, reference, or product flow",
-      "One core interaction in HTML5 or WebGL",
-      "Portrait and landscape, including iPhone/iPad resolutions and 9:22 / 22:9 layouts",
-      "Tutorial, gameplay, result, and CTA states",
-      "One language and one behavioral variant",
-      "One ad-network provider package with basic click-through or agreed analytics hooks",
-      "Two review rounds, interaction checks, and final provider-package validation",
-      "Production package, source handoff, and a Cloudflare Workers live demo link",
+      "One ready mechanic adapted to your product and brand",
+      "Your supplied assets, with UI and copy adapted to the playable",
+      "Existing animation and effects fitted to the experience",
+      "Tutorial, gameplay, result, and destination CTA",
+      "One language and one gameplay version",
+      "One consolidated revision round",
+      "Portrait, landscape, interaction, and final-package checks",
+      "Source files and a Cloudflare Workers live demo link",
     ],
-    note: "You supply approved assets. Custom art, substantial animation, extra variants, localization, and extra provider packages are add-ons. Plan for 10-15 business days after complete inputs and access; the proposal confirms the timeline.",
+    bonus: "Builds for all supported ad networks included.",
+    note: "Plan for 3-5 business days after the mechanic, assets, and brief are approved. New mechanics and original asset production are quoted separately.",
+  },
+  {
+    id: "custom-playable",
+    label: "A complete custom production",
+    title: "Custom Playable",
+    price: "$4,499 USD",
+    summary: "Build a distinctive playable around a custom mechanic, with game-specific art direction and animation. Receive three visual skins for A/B testing.",
+    inclusions: [
+      "Custom mechanic, agreed before full production",
+      "Custom UI and art production under an agreed asset list",
+      "Game-specific animation, including Spine 2D and custom animation sequences",
+      "Tutorial, gameplay, result, and destination CTA",
+      "Three visual skins of the same approved mechanic, ready for A/B testing",
+      "One language and two consolidated revision rounds",
+      "Portrait, landscape, interaction, and final-package checks for all three skins",
+      "Source files and Cloudflare Workers live demo links",
+    ],
+    bonus: "Builds for all supported ad networks included for every skin.",
+    note: "Plan for 10-15 business days after the brief and production inputs are approved. The asset list, animation scope, and final schedule are confirmed in your proposal.",
   },
 ];
 
-const addOns = [
+const questions = [
   {
-    title: "Creative Production",
-    price: "$1,500 USD",
-    summary: "Project-specific UI, 2D or 3D asset work, or substantial animation under an agreed asset list.",
-    inclusions: ["The proposal identifies the approved asset list and production boundary."],
+    question: "What will we receive?",
+    answer: "A finished HTML5/WebGL playable with instructions, gameplay, a result, and a CTA to your agreed store or landing page. Handoff includes the network-specific HTML or ZIP files, project source files, and a live demo hosted on Cloudflare Workers. Custom Playable includes three visual skins and their delivery files.",
   },
   {
-    title: "Variants, Localization & Provider Adaptation",
-    price: "$750 USD",
-    summary: "One additional behavioral variant, an agreed batch of client-supplied translations, or one additional provider package, depending on complexity.",
-    inclusions: ["The proposal states which adaptation is included."],
+    question: "How do we choose between the two packages?",
+    answer: "Choose Adapted Playable when a ready mechanic can communicate your product using existing assets and animation. It suits individual creatives and repeat production. Choose Custom Playable when you need a new mechanic, a distinct visual treatment, and game-specific animation. We agree on the mechanic before full production so the three skins share the same gameplay.",
+  },
+  {
+    question: "What counts as a skin for A/B testing?",
+    answer: "A skin changes the agreed visual presentation, such as artwork, colors, or theme, while keeping the approved mechanic and gameplay structure. Custom Playable includes three skins in total. New mechanics, different gameplay branches, extra languages, or further skins are separately scoped. You can use the supplied versions in your own campaign tests; campaign setup and performance analysis are separate work.",
+  },
+  {
+    question: "Which ad-network builds are included as a bonus?",
+    answer: "Both packages include builds for all our currently supported networks: AppLovin, Google Ads, Unity Ads, Meta, TikTok, Pangle, Mintegral, Liftoff, Moloco, and ironSource Exchange. Custom Playable includes these builds for all three skins. Each network receives its required format, rather than one universal upload file. We confirm current specifications and any account-specific requirements before production.",
+  },
+  {
+    question: "How do you check the finished playable?",
+    answer: "We check the complete interaction, state changes, and the CTA destination. Layout checks cover portrait and landscape, iPhone and iPad resolutions, and long 9:22 and 22:9 screens. We use the Google Ads, AppLovin, Liftoff, and Mintegral preview or validation tools for their delivery formats. We check entry files, HTML or ZIP packaging, and file limits, then correct issues within our agreed production scope before handoff. Network campaign approval remains with the platform.",
+  },
+  {
+    question: "Where do the artwork and visual assets come from?",
+    answer: "We can use your game assets, our reusable assets, free assets with suitable commercial licenses, or paid asset libraries. We can also use AI-assisted artwork under experienced human direction, or commission original work from artists when requested. We agree on the source, visual direction, asset list, and usage requirements before production. Original illustration, detailed 3D work, and multiple approval stages can extend the schedule and quote.",
+  },
+  {
+    question: "Where do music and sound effects come from?",
+    answer: "Options include your supplied audio, our own assets, free commercially licensed music and sounds, paid libraries, and AI-generated sounds reviewed by our team. Custom music and sound design from musicians or sound designers can be commissioned on request. We choose the approach with you and account for license terms and any required attribution. Custom composition and recording need additional production and review time.",
+  },
+  {
+    question: "Can you create custom animations?",
+    answer: "Yes. Adapted Playable uses existing animations and effects. Custom Playable includes an agreed set of game-specific animations, which can use Spine 2D and custom animation sequences. We define the characters, rigs, states, transitions, and sequence count in the proposal. Larger animation sets or additional asset creation change the scope and schedule.",
+  },
+  {
+    question: "What do we need to provide, and how long does it take?",
+    answer: "Share your product or game, reference or concept, available assets, brand guidance, required copy, destination link, analytics needs, and deadline. Nominate one person to consolidate feedback. Plan for 3-5 business days for Adapted Playable or 10-15 for Custom Playable after complete inputs and approvals. Asset sourcing, original art or music, animation complexity, and feedback timing affect delivery. Your proposal confirms the schedule.",
+  },
+  {
+    question: "What is included in a revision round?",
+    answer: "A round is one consolidated set of feedback on the agreed mechanic and production direction: for example, copy, visual tuning, animation timing, or CTA presentation. Adapted Playable includes one round; Custom Playable includes two. Technical corrections within the agreed production scope are included. A new mechanic, changed concept, extra skins, or ongoing post-handoff iteration receives a separate estimate.",
+  },
+  {
+    question: "What rights and source files do we receive?",
+    answer: "The handoff includes the agreed project source files and delivery builds. Your proposal identifies usage rights for commissioned work and the licenses for third-party, reusable, or AI-assisted assets. Those sources have different terms; exclusive rights to library assets or shared tools are not implied. Please supply assets you have permission to use. Paid licenses and specialist commissions are identified in the quote before work starts.",
   },
 ];
 ---
 
-<BaseLayout title="Playable Ad Pricing & Production Scope | Aniloom Technologies" description="A finished playable ad from $5,000 USD. See the development package, included checks and delivery, timelines, creative production, and network adaptations.">
+<BaseLayout title="Playable Ad Pricing & Packages | Aniloom Technologies" description="Finished playable ads from $799 USD. Explore custom production from $4,499 with three visual skins, included network builds, deliverables, art, audio, and timelines.">
   <main id="main-content" class="pricing-page">
     <PlayableNav />
     <section class="pricing-stage pricing-stage--catalog surface-light" id="packages">
       <div class="section-shell">
         <header class="pricing-intro">
           <h1>Playable Ad Pricing</h1>
-          <p>One finished playable, with the production scope, checks, and delivery defined before work starts.</p>
+          <p>Adapt a ready mechanic or build a custom experience. Both paths deliver a finished playable, with source files, a live demo, and ad-network builds.</p>
         </header>
         <div class="pricing-group">
-          <h2 class="visually-hidden">Playable development package</h2>
-          <div class="pricing-grid pricing-grid--one">
-            {primaryPackages.map((item) => <PricingCard {...item} />)}
-          </div>
-        </div>
-
-        <div class="pricing-group pricing-group--addons">
-          <div class="section-heading" data-reveal><div><p class="eyebrow">Optional add-ons</p><h2>Add creative production or more versions.</h2></div><p>Extend the base playable with custom assets, another behavioral variant, supplied translations, or an additional provider package.</p></div>
-          <div class="pricing-grid pricing-grid--two">
-            {addOns.map((item) => <PricingCard {...item} />)}
+          <h2 class="visually-hidden">Choose your playable production package</h2>
+          <div class="pricing-grid pricing-grid--playable">
+            {packages.map((item) => <PricingCard {...item} />)}
           </div>
         </div>
       </div>
     </section>
 
     <section class="section-shell section-pad playable-readiness" id="delivery-details" aria-labelledby="delivery-title">
-      <div class="section-heading" data-reveal><div><p class="eyebrow">Plan the production</p><h2 id="delivery-title">Agree on inputs, reviews, and the final files.</h2></div><p>The base package uses your approved concept and assets. Plan for 10-15 business days after complete inputs and access; the proposal confirms the schedule.</p></div>
+      <div class="section-heading" data-reveal><div><p class="eyebrow">Plan the production</p><h2 id="delivery-title">Agree on the creative before we build.</h2></div><p>We confirm the mechanic, asset sources, review checkpoints, and delivery requirements in one proposal.</p></div>
       <div class="playable-readiness__grid">
-        <article data-reveal><h3>What you provide</h3><p>An approved concept or reference, product and brand assets, required copy, one target provider specification, the destination link, analytics requirements, and a decision-maker for the two review rounds.</p></article>
-        <article data-reveal><h3>What you receive</h3><p>One finished playable with tutorial, gameplay, result, and CTA states. Delivery includes the selected network’s production package, source files, and a live demo link, with the agreed interaction, layout, and package checks completed.</p></article>
+        <article data-reveal><h3>Start with your product</h3><p>Send a game build, product link, or reference alongside your available artwork, copy, and CTA destination. We identify what can be reused and what needs to be created.</p></article>
+        <article data-reveal><h3>Review a working playable</h3><p>Use the browser demo at agreed checkpoints and share consolidated feedback. Final handoff follows the included interaction, layout, and provider-package checks.</p></article>
       </div>
-      <details class="playable-readiness__boundaries"><summary>Scope changes and additional production</summary><p>Custom art, substantial animation, extra behavioral variants, localization, extra providers, unusual analytics, and post-handoff iteration are separate scope. Technical corrections within the agreed playable production scope are part of development.</p><p>The proposal defines delivery requirements and acceptance criteria. Network campaign approval and advertising performance remain outside the production commitment.</p></details>
       <a class="text-link" href="/playable-ads/#workflow">Explore the full production process <span>↗</span></a>
     </section>
 
-    <section class="pricing-terms section-shell section-pad">
-      <div class="section-heading" data-reveal><div><p class="eyebrow">Commercial terms</p><h2>What “starting at” means.</h2></div><p>The final proposal is the source of truth for the exact scope and commercial agreement.</p></div>
-      <div class="pricing-terms__grid">
-        <p data-reveal><span>Currency</span>Prices are in USD and exclude applicable taxes.</p>
-        <p data-reveal><span>Project payments</span>Project packages are normally 50% to schedule and 50% before final handoff.</p>
-        <p data-reveal><span>Final scope</span>The proposal controls the timeline, amount, assumptions, add-ons, and change control.</p>
-      </div>
+    <section class="section-shell section-pad playable-faq" id="questions" aria-labelledby="questions-title">
+      <div class="section-heading" data-reveal><div><p class="eyebrow">Questions & answers</p><h2 id="questions-title">Know what goes into your playable.</h2></div><p>The result, asset choices, reviews, and timing, explained before you commit.</p></div>
+      {questions.map(({ question, answer }) => <details><summary>{question}</summary><p>{answer}</p></details>)}
     </section>
 
-    <section class="callout surface-dark section-shell section-pad"><p class="eyebrow">Bring your playable idea</p><h2>Define your playable’s scope.</h2><p>Share your concept or reference, target networks, available assets, and deadline. We will confirm the production scope and quote.</p><a class="button" href="/contact/">Discuss a playable</a></section>
+    <section class="pricing-terms section-shell section-pad">
+      <div class="section-heading" data-reveal><div><p class="eyebrow">Commercial terms</p><h2>What “starting at” means.</h2></div><p>Each price is a starting point for the scope shown. We confirm a project quote after reviewing your brief.</p></div>
+      <div class="pricing-terms__grid">
+        <p data-reveal><span>Currency & costs</span>Prices are in USD before applicable taxes. Any paid asset licenses or additional production costs are identified in your quote.</p>
+        <p data-reveal><span>Project payments</span>Project packages are normally 50% to schedule and 50% before final handoff.</p>
+        <p data-reveal><span>Final scope</span>Your proposal confirms the asset list, versions, timeline, price, and how scope changes are handled.</p>
+      </div>
+      <p class="playable-campaign-note">Need help beyond the creative? We can manage your advertising campaign or broader marketing campaign, with scope and fees agreed individually.</p>
+    </section>
+
+    <section class="callout surface-dark section-shell section-pad"><p class="eyebrow">Bring your playable idea</p><h2>Choose a starting point.</h2><p>Share your product, available assets, and deadline. We will recommend a production path and confirm the scope and quote.</p><a class="button" href="/contact/">Discuss a playable</a></section>
   </main>
 </BaseLayout>

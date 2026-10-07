@@ -16,7 +16,7 @@ Static marketing website for Aniloom Technologies, built around the positioning 
 - `/` - company overview
 - `/capabilities/` - four capability groups
 - `/playable-ads/` - working demos, full playable production, responsive and provider checks, delivery, and FAQ
-- `/playable-ads/pricing/` - development package, creative/adaptation add-ons, inputs, delivery, and commercial terms; legacy playable pages redirect to the relevant sections
+- `/playable-ads/pricing/` - adapted and custom production packages, inputs, delivery, and commercial terms; legacy playable pages redirect to the relevant sections
 - `/quality-engineering/` - quality-engineering entry points and deliverables
 - `/how-we-work/` - engagement models and delivery approach
 - `/about/` - company principles and confirmed leadership information

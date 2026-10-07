@@ -27,8 +27,10 @@ acceptance for any listed provider. Recheck account requirements and provider
 preview behavior for each project. Provider specifications were reviewed in the
 source project on September 27, 2026.
 
-Platform selection and additional packages must follow the agreed scope and
-canonical offer, not imply that all listed networks are included in base pricing.
+Owner approval on October 7 includes builds for all ten public supported networks
+as a bonus in both playable production packages, and for all three Custom skins.
+Confirm current provider and account requirements per project. This does not
+extend public support to the excluded profiles or guarantee campaign acceptance.
 
 `PlayablePlatforms.astro` owns both the looping carousel and the compact
 homepage introduction. It advances one item every four seconds while visible, with pause/resume, hover/focus pausing, and reduced-motion support. Looping copies are hidden from assistive technology. There are no external logo requests at runtime. Icon sources and repeatable imports are in
@@ -44,7 +46,7 @@ scene without recoloring. Empty alt text avoids repeating the adjacent visible n
 
 ## Production checks and delivery, October 7, 2026
 
-Owner direction positions Playable Ads as the finished creative, with checks embedded in production. Standalone third-party playable testing is omitted from both playable pages. Overview describes capabilities; Pricing defines the commercial base scope. This direction supersedes the earlier public development-versus-QA split while retaining approved development and relevant add-on prices.
+Owner direction positions Playable Ads as the finished creative, with checks embedded in production. Standalone third-party playable testing is omitted from both playable pages. Overview describes capabilities; Pricing defines the commercial base scope. This direction supersedes the earlier public development-versus-QA split with owner-approved $799 Adapted and $4,499 Custom production paths.
 
 Verified against companion `../playable-ads/docs/PROVIDERS.md` (Manual playable validators), `docs/PLAYABLE_WORKFLOW.md` (responsive and final-artifact checks), and `docs/CLOUDFLARE_HOSTING.md`:
 
@@ -55,4 +57,4 @@ Verified against companion `../playable-ads/docs/PROVIDERS.md` (Manual playable 
 - Responsive checks include iPhone/iPad screen resolutions, 9:22 portrait and 22:9 landscape extremes, state transitions, orientation changes, CTA and the agreed destination. Do not imply physical-device evidence from resolution checks.
 - Cloudflare Workers hosts an index.html demo accessible through a shareable browser link. Provider packages remain distinct upload artifacts. Do not claim every browser is compatible.
 
-All four preview/validator URLs were rechecked during this website revision. AppLovin's public tool explicitly distinguishes browser preview from real-device behavior and campaign execution. Claim only checks for agreed target networks, not that all listed packages are included or that the tools guarantee every delivery variant or campaign acceptance.
+All four preview/validator URLs were rechecked during this website revision. AppLovin's public tool explicitly distinguishes browser preview from real-device behavior and campaign execution. Claim provider-specific checks and the owner-approved included supported-network builds, without claiming the tools guarantee every delivery variant or campaign acceptance.
