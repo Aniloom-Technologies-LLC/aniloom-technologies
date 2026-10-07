@@ -1,0 +1,27 @@
+---
+const demos = [
+  { id: "magic-thai-a", name: "Magic Thai A", mechanic: "Build and place", description: "Choose a mallet, build, and follow the interaction through to its result.", url: "https://magic-thai-ad-a1.aniloom.workers.dev/", image: "magic-thai-a-build-interaction.webp", alt: "Magic Thai A with five selectable mallets and a green Build button." },
+  { id: "magic-thai-b", name: "Magic Thai B", mechanic: "Swipe and collect", description: "Guide the runner along the lotus path with swipe controls and collection feedback.", url: "https://magic-thai-ad-b1.aniloom.workers.dev/", image: "magic-thai-b-swipe-collection.webp", alt: "Magic Thai B with a runner, swipe instruction, and lotus collection counter." },
+  { id: "magic-thai-c", name: "Magic Thai C", mechanic: "Tap and match", description: "Pick items to complete matching sets, with visible tray progress and selection feedback.", url: "https://magic-thai-ad-c1.aniloom.workers.dev/", image: "magic-thai-c-tap-match-trays.webp", alt: "Magic Thai C with apple, avocado, and berry trays and tap-to-match choices." },
+];
+---
+
+<section class="playable-demos section-shell section-pad" id="demonstrations" aria-labelledby="demos-title">
+  <div class="section-heading" data-reveal>
+    <div><p class="eyebrow">Play our work</p><h2 id="demos-title">Try three playable ads.</h2></div>
+    <p>Explore three Magic Thai interactions built by Aniloom. Open any card to play in a new tab.</p>
+  </div>
+  <div class="playable-demo-grid">
+    {demos.map((demo) => (
+      <a class="playable-demo" id={demo.id} href={`${demo.url}?returnUrl=${encodeURIComponent(`https://aniloom.tech/playable-ads/#${demo.id}`)}`} target="_blank" rel="noopener noreferrer" data-playable-demo aria-labelledby={`${demo.id}-title ${demo.id}-action`}>
+        <picture class="playable-demo__preview"><img src={`/assets/images/proof/${demo.image}`} alt={demo.alt} width="390" height="844" loading="lazy" decoding="async" /></picture>
+        <div class="playable-demo__body">
+          <div class="playable-demo__action"><h3 id={`${demo.id}-title`}>{demo.name}</h3><span class="button button--small" id={`${demo.id}-action`}>Try it <span aria-hidden="true">↗</span><span class="visually-hidden"> in a new tab</span></span></div>
+          <p class="eyebrow">{demo.mechanic}</p>
+          <p>{demo.description}</p>
+        </div>
+      </a>
+    ))}
+  </div>
+  <p class="playable-demos__note">Public demonstrations, not client campaign results or evidence of advertising-platform acceptance.</p>
+</section>

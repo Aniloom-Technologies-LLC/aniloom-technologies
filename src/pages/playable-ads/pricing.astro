@@ -5,6 +5,7 @@ import PricingCard from "../../components/PricingCard.astro";
 
 const primaryPackages = [
   {
+    id: "development-package",
     title: "Playable Ads Development",
     price: "$5,000 USD",
     summary: "Build one playable from your approved concept, reference, or product flow.",
@@ -21,6 +22,8 @@ const primaryPackages = [
     note: "You supply approved assets. Custom art, substantial animation, extra variants, localization, and extra provider packages are add-ons. Plan for 10-15 business days after complete inputs and access; the proposal confirms the timeline.",
   },
   {
+    id: "readiness-package",
+    detailsHref: "#readiness-details",
     title: "Playable Release Quality and Platform Readiness",
     price: "$1,500 USD",
     summary: "Test one existing playable before delivery or launch, with findings and one retest.",
@@ -60,7 +63,7 @@ const addOns = [
 ];
 ---
 
-<BaseLayout title="Playable Ads Development & QA Pricing | Aniloom Technologies" description="Starting prices and base scopes for Playable Ads development, playable QA and release readiness, and optional production or adaptation add-ons.">
+<BaseLayout title="Playable Ads Development & QA Pricing | Aniloom Technologies" description="Playable development from $5,000 USD and a release-readiness QA package from $1,500. Compare scope, inputs, timelines, reports, and optional add-ons.">
   <main id="main-content" class="pricing-page">
     <PlayableNav />
     <section class="pricing-stage pricing-stage--catalog surface-light" id="packages">
@@ -68,6 +71,7 @@ const addOns = [
         <header class="pricing-intro">
           <h1>Playable Ads Development & QA Pricing</h1>
           <p>Choose development for a new playable or QA for an existing build. Engineering fixes are separate scope.</p>
+          <nav class="pricing-jump-links" aria-label="Find your playable package"><a href="#development-package">New playable · from $5,000 <span aria-hidden="true">↓</span></a><a href="#readiness-package">Existing build QA · from $1,500 <span aria-hidden="true">↓</span></a></nav>
         </header>
         <div class="pricing-group">
           <h2 class="visually-hidden">Primary packages</h2>
@@ -83,6 +87,16 @@ const addOns = [
           </div>
         </div>
       </div>
+    </section>
+
+    <section class="section-shell section-pad playable-readiness" id="readiness-details" aria-labelledby="readiness-title">
+      <div class="section-heading" data-reveal><div><p class="eyebrow">Inside the QA package</p><h2 id="readiness-title">From your stable build to a release summary.</h2></div><p>The $1,500 starting package covers a scoped review and one retest. Plan for 3–5 business days after stable-build access; the proposal confirms the schedule and dependencies.</p></div>
+      <div class="playable-readiness__grid">
+        <article data-reveal><h3>What you provide</h3><p>Stable-build access, the target provider specification, up to two behavioral variants, known issues, and a decision-maker. We agree on the configurations and acceptance criteria before testing.</p></article>
+        <article data-reveal><h3>What you receive</h3><p>A risk map and test scope, prioritized findings with reproduction context and visual evidence, one retest record, and a summary of tested areas, open issues, blocked checks, and remaining risks.</p></article>
+      </div>
+      <details class="playable-readiness__boundaries"><summary>Corrections, extra coverage, and release responsibility</summary><p>Your developers prepare corrections, or we scope engineering work separately. Extra providers or variants, device-lab expansion, localization, analytics validation, performance testing, and further retest rounds are outside the base QA package.</p><p>Testing supports your release decision. It does not certify the build or guarantee platform acceptance, campaign performance, or a defect-free release.</p></details>
+      <a class="text-link" href="/playable-ads/#demonstrations">Try our playable demos <span>↗</span></a>
     </section>
 
     <section class="pricing-terms section-shell section-pad">

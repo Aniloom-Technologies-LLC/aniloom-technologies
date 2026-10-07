@@ -2,14 +2,11 @@
 const pathname = Astro.url.pathname;
 const items = [
   { href: "/playable-ads/", label: "Overview", exact: true },
-  { href: "/playable-ads/development/", label: "Development" },
-  { href: "/playable-ads/qa-release-readiness/", label: "QA & Release" },
+  { href: "/playable-ads/#demonstrations", label: "Try the demos", anchor: true },
   { href: "/playable-ads/pricing/", label: "Pricing" },
-  { href: "/playable-ads/how-we-work/", label: "How We Work" },
-  { href: "/playable-ads/release-quality-platform-readiness/", label: "Readiness Package" },
 ];
 
-const isCurrent = (item: (typeof items)[number]) => item.exact ? pathname === item.href : pathname.startsWith(item.href);
+const isCurrent = (item: (typeof items)[number]) => !item.anchor && (item.exact ? pathname === item.href : pathname.startsWith(item.href));
 ---
 
 <nav class="playable-nav section-shell" aria-label="Playable Ads">

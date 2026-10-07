@@ -842,3 +842,63 @@ p { color: var(--muted); }
 
 .splash-cursor-layer { position: fixed; z-index: 200; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .splash-cursor-layer__canvas { display: block; width: 100vw; height: 100vh; }
+
+/* Consolidated Playable Ads overview and package details */
+.playable-demo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.playable-demo { display: block; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-elevated); color: var(--text); transition: border-color .2s ease, box-shadow .2s ease; scroll-margin-top: 90px; }
+.playable-demo:hover, .playable-demo:focus-visible { border-color: var(--selected-line); box-shadow: 0 0 0 2px var(--selected-line); }
+.playable-demo:target { border-color: var(--selected-line); box-shadow: 0 0 0 3px var(--selected-line); }
+.playable-demo__preview { display: block; height: clamp(260px, 28vw, 360px); padding: 16px; background: var(--surface-soft); }
+.playable-demo__preview img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.playable-demo__body { padding: 20px 22px 24px; border-top: 1px solid var(--line); }
+.playable-demo__action { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+.playable-demo__action h3 { margin: 0; font-size: clamp(1.4rem, 2vw, 1.8rem); font-weight: 500; }
+.playable-demo__action .button { flex-shrink: 0; gap: 8px; }
+.playable-demo__body .eyebrow { margin-bottom: 10px; }
+.playable-demo__body > p:last-child { margin: 0; font-size: .95rem; }
+.playable-demos__note { margin: 24px 0 0; color: var(--quiet); font-size: .85rem; }
+.playable-service-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.playable-service { display: flex; flex-direction: column; padding: clamp(26px, 3.4vw, 44px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-elevated); scroll-margin-top: 90px; }
+.playable-service h3 { margin: 18px 0 24px; font-size: clamp(2rem, 3.2vw, 3rem); font-weight: 500; }
+.playable-service .clean-list { margin-block: 10px 24px; font-size: .95rem; }
+.playable-service__price { margin-top: auto; color: var(--text); }
+.playable-service__note { color: var(--quiet); font-size: .85rem; }
+.playable-service .text-link { margin-top: 12px; }
+.playable-workflow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 30px; list-style: none; margin: 0 0 36px; padding: 0; }
+.playable-workflow li { padding-top: 24px; border-top: 1px solid var(--line); }
+.playable-workflow li > span { color: var(--accent-readable); font-family: "DM Mono", monospace; font-size: .75rem; }
+.playable-workflow h3 { margin: 24px 0 18px; font-size: 1.6rem; font-weight: 500; }
+.playable-workflow p { margin: 0; font-size: .95rem; }
+.playable-faq details, .playable-readiness__boundaries { border-block-end: 1px solid var(--line); padding: 22px 0; }
+.playable-faq details:first-of-type { border-block-start: 1px solid var(--line); }
+.playable-faq summary, .playable-readiness summary { cursor: pointer; color: var(--text); font-size: 1.1rem; font-weight: 500; }
+.playable-faq details p, .playable-readiness details p { max-width: 900px; margin: 20px 0 0; }
+.playable-readiness__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; }
+.playable-readiness__grid h3 { margin: 0 0 18px; font-size: 1.5rem; font-weight: 500; }
+.playable-readiness__grid p { margin-bottom: 0; }
+.playable-readiness > .text-link { margin-top: 28px; }
+.pricing-jump-links { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 18px; }
+.pricing-jump-links a { color: var(--link); font-size: .85rem; text-decoration: underline; text-underline-offset: 4px; }
+.pricing-card__details { margin-top: 18px; color: var(--link); font-size: .85rem; text-decoration: underline; text-underline-offset: 4px; }
+.pricing-card[id], #workflow, #demonstrations { scroll-margin-top: 90px; }
+@media (max-width: 1000px) {
+  .playable-demo-grid { gap: 14px; }
+  .playable-demo__body { padding: 18px 16px 22px; }
+  .playable-demo__action { align-items: flex-start; }
+  .playable-workflow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  .playable-demo-grid, .playable-service-grid, .playable-readiness__grid { grid-template-columns: 1fr; }
+  .playable-demo__preview { height: 320px; }
+  .playable-demo__body { padding: 18px 20px 22px; }
+  .playable-demo__action { align-items: center; margin-bottom: 14px; }
+  .playable-demo__action h3 { font-size: 1.55rem; }
+  .playable-workflow { gap: 28px 22px; }
+  .playable-workflow h3 { font-size: 1.3rem; }
+}
+@media (max-width: 400px) {
+  .playable-workflow { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .playable-demo { transition: none; }
+}

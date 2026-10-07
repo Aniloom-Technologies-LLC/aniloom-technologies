@@ -1,5 +1,6 @@
 ---
 interface Props {
+  id?: string;
   title: string;
   price: string;
   summary: string;
@@ -7,12 +8,13 @@ interface Props {
   label?: string;
   note?: string;
   cadence?: string;
+  detailsHref?: string;
 }
 
-const { title, price, summary, inclusions, label, note, cadence } = Astro.props;
+const { id, title, price, summary, inclusions, label, note, cadence, detailsHref } = Astro.props;
 ---
 
-<article class="pricing-card">
+<article class="pricing-card" id={id}>
   {label && <p class="pricing-card__label">{label}</p>}
   <h3>{title}</h3>
   <p class="pricing-card__price"><span>Starting at</span><strong>{price}</strong>{cadence && <small>{cadence}</small>}</p>
@@ -21,5 +23,6 @@ const { title, price, summary, inclusions, label, note, cadence } = Astro.props;
     {inclusions.map((item) => <li>{item}</li>)}
   </ul>
   {note && <p class="pricing-card__note">{note}</p>}
+  {detailsHref && <a class="pricing-card__details" href={detailsHref}>See QA inputs & reports <span aria-hidden="true">↓</span></a>}
   <a class="text-link" href={`/contact/?topic=${encodeURIComponent(title)}`}>Discuss this package <span>↗</span></a>
 </article>

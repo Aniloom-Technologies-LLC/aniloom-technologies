@@ -11,16 +11,11 @@ Light is the reading and evaluation canvas: understand the offer, compare prices
 | Page or family | Entry and reading canvas | Dark passages |
 | --- | --- | --- |
 | Home | Dark Playable Ads, light Release Testing; light statement/capabilities and people/notes | Playable Ads, company presentation, delivery process, footer |
-| Playable Ads overview | Dark product introduction; light interaction explanation, path selection, and deliverables/demonstration link | Introduction, method, closing contact/footer |
-| Playable Ads development | Dark introduction; light scope and handoff/example links | Introduction, delivery method, closing contact/footer |
+| Playable Ads overview | Dark product introduction; light playable demos, platforms, development/QA scopes, interaction explanation, and FAQ | Introduction, four-step delivery workflow, closing contact/footer |
 | Quality Engineering | Light introduction, choices, deliverables | Practice standards, closing contact/footer |
-| Playable QA and release readiness | Light introduction, review scope, links | Review method and practice standards, closing contact/footer |
-| Playable readiness package | Light introduction, package, deliverables, exclusions | Review method, closing contact/footer |
-| Both pricing catalogs | Light local navigation, immediately visible packages, add-ons, commercial terms | Closing contact/footer |
+| Both pricing catalogs | Light local navigation, immediately visible packages, add-ons, commercial terms; playable pricing also contains readiness inputs, reports, and exclusions | Closing contact/footer |
 | Capabilities and About | Light introduction, expertise, people | Closing contact/footer |
 | How We Work | Light introduction, engagement models and entry points | Delivery process, closing contact/footer |
-| Playable workflow | Light introduction and workflow steps | Review checkpoint, closing contact/footer |
-| Playable demonstrations | Light context, actual demos, scope and links | Quality questions, closing contact/footer |
 | Notes index and articles | Continuous light reading canvas | Footer only |
 | Privacy and terms | Continuous light reading canvas | Footer only |
 | AniShot | Light product introduction, workflow, tools, availability, FAQ, and compact benchmark disclosure | Frozen-screen explanation, closing product action/footer |
@@ -28,7 +23,7 @@ Light is the reading and evaluation canvas: understand the offer, compare prices
 
 ## Implementation invariants
 
-- `BaseLayout` defaults to `appearance="light"`; home, Playable Ads overview, Playable Ads development, and Contact explicitly enter dark.
+- `BaseLayout` defaults to `appearance="light"`; home, Playable Ads overview, and Contact explicitly enter dark.
 - The appearance prop controls initial canvas, navigation, and browser theme color. It is page art direction, not a preference, toggle, saved setting, or OS-theme response.
 - `Scene.astro` groups related content into a full-width canvas; `section-shell` constrains only the inner content. Keep consecutive reading sections together.
 - Explicit dark scopes are required on method bands, closing callouts, footer, and the Contact form scene, even when the current ancestor is dark. This prevents future inherited token mismatches.
@@ -51,3 +46,13 @@ Light is the reading and evaluation canvas: understand the offer, compare prices
 ## Review checklist
 
 Inspect desktop, mobile portrait, and mobile landscape. Review each page family at entry, a light/dark boundary, and the closing action. Check text/link/focus roles, mobile menus, contact navigation and submission states, content width, and first-view pricing. Articles and legal reading must not acquire decorative scene interruptions. Run Astro validation and production build for layout changes.
+
+## Playable consolidation, October 6, 2026
+
+- The playable section has two content pages: `/playable-ads/` and `/playable-ads/pricing/`. Overview includes the Magic Thai demos, both service scopes, four delivery steps, and practical FAQ. Pricing includes the full readiness-package context.
+- Legacy development, QA, workflow, demonstration, and readiness routes use Astro static redirects to the corresponding page anchors. GitHub Pages serves the generated HTML redirects, not server-side HTTP 301 responses. Keep these legacy destinations out of the sitemap and internal navigation.
+- Each demo is a single accessible anchor: the screenshot, title, description, and visible `Try it` action all open the same game in a new tab. Keep the action immediately below the screenshot.
+- Stable card anchors are `#magic-thai-a`, `#magic-thai-b`, and `#magic-thai-c`. The game URL receives an encoded `returnUrl` pointing to its card. Use the canonical HTTPS overview URL so public games accept the destination even when opened from a local website preview. The final in-game CTA implementation belongs to the companion playable-ads project.
+- Returned demo cards use `:target` highlighting and header-safe scroll spacing. Inspect desktop, portrait, and landscape, including keyboard card activation and both package shortcuts.
+
+Validation: Astro check reports zero errors, warnings, and hints; the production build passes. Reviewed the overview and package navigation at desktop, 390px and 320px portrait, and 844px landscape without horizontal overflow. Screenshot and keyboard activation open the same demo URL in a new tab; return links use each game's canonical anchor. The built-site audit resolves internal links and anchors across all HTML pages and checks the five redirect documents. The companion playable-ads chat reports public Magic Thai A/B/C updates at commit `b7d1f14`, with allowlisted return URLs and provider exports excluding the demonstration redirect.

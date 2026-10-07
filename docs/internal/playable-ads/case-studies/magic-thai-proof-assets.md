@@ -1,6 +1,6 @@
 # Magic Thai public proof assets
 
-Status: approved production evidence for the public Magic Thai demonstration page.
+Status: approved production evidence for the Magic Thai demonstration section in `/playable-ads/#demonstrations`.
 
 ## Permission and claim boundary
 
