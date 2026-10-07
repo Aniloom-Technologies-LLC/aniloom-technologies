@@ -125,15 +125,14 @@ const navItems = [
     <div class="site-footer-stage surface-dark" data-footer-stage>
       <footer class="site-footer">
         <div class="site-footer__inner">
-          {pathname !== "/contact/" && <div class="site-footer__lead">
-            <p class="eyebrow">Aniloom Technologies</p>
-            <h2>Bring the goal.<br />We will shape the work.</h2>
-            <a class="text-link text-link--large" href="/contact/">Discuss your project <span>↗</span></a>
-          </div>}
           <div class="site-footer__grid">
             <div>
               <SiteBrand />
               <p class="site-footer__summary">Software development, design, and testing for web, mobile, games, and interactive products.</p>
+              {pathname !== "/contact/" && <div class="site-footer__contact">
+                <p>Bring the goal. We will shape the work.</p>
+                <a class="text-link" href="/contact/">Discuss your project <span aria-hidden="true">↗</span></a>
+              </div>}
             </div>
             <div class="site-footer__links">
               <p class="footer-label">Explore</p>

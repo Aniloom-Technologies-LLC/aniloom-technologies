@@ -608,9 +608,10 @@ p { color: var(--muted); }
 .site-footer-stage { position: relative; z-index: 20; padding-bottom: 24px; background: var(--bg); overflow: clip; }
 .site-footer { position: relative; width: 100%; margin: 0; border: 0; border-top: 1px solid var(--line); border-radius: 0; background: var(--bg-elevated); overflow: hidden; }
 .site-footer__inner { width: var(--shell); margin-inline: auto; padding-block: clamp(48px, 7vw, 92px); }
-.site-footer__lead { padding-bottom: clamp(80px, 12vw, 150px); }
-.site-footer__lead h2 { margin: 22px 0 42px; font-size: clamp(3.5rem, 7.5vw, 8rem); font-weight: 500; }
-.site-footer__grid { display: grid; grid-template-columns: 1.6fr .6fr .6fr; gap: 80px; padding-top: 42px; border-top: 1px solid var(--line); }
+  .site-footer__contact { margin-top: 24px; }
+  .site-footer__contact p { margin: 0; color: var(--text); font-size: 1rem; }
+  .site-footer__contact .text-link { min-height: 44px; font-size: .9rem; }
+  .site-footer__grid { display: grid; grid-template-columns: 1.6fr .6fr .6fr; gap: 80px; }
 .site-footer__summary { max-width: 420px; margin: 28px 0 0; }
 .site-footer__links { display: flex; flex-direction: column; gap: 11px; }
 .site-footer__links .footer-label { margin-bottom: 12px; }
@@ -785,7 +786,6 @@ p { color: var(--muted); }
   .contact-form { grid-template-columns: 1fr; }
   .site-footer-stage { padding-bottom: 10px; }
   .site-footer__inner { width: calc(100% - 28px); padding-block: 48px 28px; }
-  .site-footer__lead { padding-bottom: 64px; }
   .site-footer__grid { grid-template-columns: 1fr 1fr; gap: 46px 30px; }
   .site-footer__grid > div:first-child { grid-column: 1 / -1; }
   .site-footer__bottom { flex-direction: column; }
