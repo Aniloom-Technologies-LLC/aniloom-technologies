@@ -845,9 +845,14 @@ p { color: var(--muted); }
 
 /* Consolidated Playable Ads overview and package details */
 .playable-demo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
-.playable-demo { display: block; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-elevated); color: var(--text); transition: border-color .2s ease, box-shadow .2s ease; scroll-margin-top: 90px; }
-.playable-demo:hover, .playable-demo:focus-visible { border-color: var(--selected-line); box-shadow: 0 0 0 2px var(--selected-line); }
-.playable-demo:target { border-color: var(--selected-line); box-shadow: 0 0 0 3px var(--selected-line); }
+.playable-demo { display: block; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-elevated); color: var(--text); transition: transform .25s ease, border-color .25s ease; scroll-margin-top: 90px; }
+.playable-demo:hover { transform: translateY(-5px); border-color: var(--line-strong); }
+.playable-demo:focus-visible { border-color: var(--line-strong); }
+.playable-demo:target { animation: playable-return-highlight 1.6s ease-out; }
+@keyframes playable-return-highlight {
+  0%, 25% { background: var(--surface-soft); }
+  100% { background: var(--bg-elevated); }
+}
 .playable-demo__preview { display: block; height: clamp(260px, 28vw, 360px); padding: 16px; background: var(--surface-soft); }
 .playable-demo__preview img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .playable-demo__body { padding: 20px 22px 24px; border-top: 1px solid var(--line); }
@@ -901,4 +906,6 @@ p { color: var(--muted); }
 }
 @media (prefers-reduced-motion: reduce) {
   .playable-demo { transition: none; }
+  .playable-demo:hover { transform: none; }
+  .playable-demo:target { animation: none; }
 }
