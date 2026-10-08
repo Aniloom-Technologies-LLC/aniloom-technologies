@@ -133,3 +133,25 @@ Adapted's eight and remains wider and taller in the desktop layout. All three
 inquiry links carry their package topic; the Micro link opens the contact page.
 The Micro FAQ opens using Enter. Copy review checks scope, buyer fit, asset
 licensing, starting prices, and conditional timelines without performance claims.
+
+
+## Individual cooperation terms, October 7, 2026
+
+The owner confirms that payment schedules are agreed individually; advance
+payment and 50/50 are possible arrangements, not universal requirements. Brand
+System offers, proof, voice, website guidance, and maintained pricing drafts carry
+this direction. Public cooperation copy begins with the client's goal and value.
+
+Playable Pricing removes the large Commercial terms scene. A compact note below
+the cards explains starting prices, USD/tax treatment, and individual scope,
+quote, and payment agreement. The art/audio cost questions remain in the FAQ.
+Campaign management stays visible in the closing dark contact scene, using its
+scoped readable tokens. Quality Engineering's existing terms grid uses one
+individual payment-schedule explanation rather than fixed advance-payment rules.
+
+Validation: Astro check reports zero diagnostics and the production build passes.
+Reviewed the compact note, FAQ-to-contact transition, and campaign text on
+desktop and 390px portrait; the closing scene also fits 844px landscape without
+horizontal overflow. Quality Engineering's revised grid is readable on desktop
+and portrait. Built Playable Pricing has no Commercial terms section or fixed
+advance-payment rule; both pricing pages reflect individually agreed schedules.

@@ -547,7 +547,8 @@ p { color: var(--muted); }
 .pricing-card__fit + .text-link { margin-top: 0; padding-top: 22px; }
 .pricing-card__bonus { margin: 24px 0 0; padding-top: 20px; border-top: 1px solid var(--line); color: var(--text); font-size: .86rem; line-height: 1.5; }
 .pricing-card__bonus > span { display: block; margin-bottom: 8px; color: var(--accent-readable); font-family: "DM Mono", monospace; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
-.playable-campaign-note { max-width: 820px; margin: 32px 0 0; color: var(--quiet); font-size: .88rem; }
+.pricing-quote-note { max-width: 820px; margin: 32px 0 0; color: var(--quiet); font-size: .88rem; }
+.callout > .playable-campaign-note { max-width: 680px; margin: 24px 0 0; color: var(--muted); font-size: .88rem; }
 @media (min-width: 721px) and (max-height: 520px) {
   .pricing-page > .playable-nav { padding-top: 62px; }
   .pricing-page > .playable-nav + .pricing-stage--catalog { padding-top: 18px; }

@@ -137,6 +137,7 @@ const questions = [
             {packages.map((item) => <PricingCard {...item} />)}
           </div>
         </div>
+        <p class="pricing-quote-note">Prices are in USD before applicable taxes and start at the scope shown. We agree on the final scope, quote, and payment schedule individually before production.</p>
       </div>
     </section>
 
@@ -154,16 +155,6 @@ const questions = [
       {questions.map(({ question, answer }) => <details><summary>{question}</summary><p>{answer}</p></details>)}
     </section>
 
-    <section class="pricing-terms section-shell section-pad">
-      <div class="section-heading" data-reveal><div><p class="eyebrow">Commercial terms</p><h2>What “starting at” means.</h2></div><p>Each price is a starting point for the scope shown. We confirm a project quote after reviewing your brief.</p></div>
-      <div class="pricing-terms__grid">
-        <p data-reveal><span>Currency & costs</span>Prices are in USD before applicable taxes. Any paid asset licenses or additional production costs are identified in your quote.</p>
-        <p data-reveal><span>Project payments</span>Project packages are normally 50% to schedule and 50% before final handoff.</p>
-        <p data-reveal><span>Final scope</span>Your proposal confirms the asset list, versions, timeline, price, and how scope changes are handled.</p>
-      </div>
-      <p class="playable-campaign-note">Need help beyond the creative? We can manage your advertising campaign or broader marketing campaign, with scope and fees agreed individually.</p>
-    </section>
-
-    <section class="callout surface-dark section-shell section-pad"><p class="eyebrow">Bring your playable idea</p><h2>Choose a starting point.</h2><p>Share your product, available assets, and deadline. We will recommend a production path and confirm the scope and quote.</p><a class="button" href="/contact/">Discuss a playable</a></section>
+    <section class="callout surface-dark section-shell section-pad"><p class="eyebrow">Bring your playable idea</p><h2>Choose a starting point.</h2><p>Share your product, available assets, and deadline. We will recommend a production path and confirm the scope and quote.</p><p class="playable-campaign-note">Need help beyond the creative? We can also manage your advertising or broader marketing campaign, with scope and fees agreed individually.</p><a class="button" href="/contact/">Discuss a playable</a></section>
   </main>
 </BaseLayout>
