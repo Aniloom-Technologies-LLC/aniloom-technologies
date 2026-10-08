@@ -523,6 +523,7 @@ p { color: var(--muted); }
 .pricing-card__scope li::before { content: ""; position: absolute; top: 18px; left: 1px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent-readable); }
 .pricing-card__note { margin: 24px 0 0; color: var(--quiet); font-size: .78rem; line-height: 1.55; }
 .pricing-card > .text-link { margin-top: auto; padding-top: 30px; }
+.pricing-context { margin: 24px 0 0; font-size: .9rem; }
 .pricing-terms__grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
 .pricing-terms__grid p { min-height: 180px; margin: 0; padding: 28px 32px 24px 0; border-bottom: 1px solid var(--line); }
 .pricing-terms__grid p + p { padding-left: 32px; border-left: 1px solid var(--line); }
