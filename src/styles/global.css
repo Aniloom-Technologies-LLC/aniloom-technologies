@@ -633,6 +633,7 @@ p { color: var(--muted); }
 .contact-direct { padding-block: 56px 64px; }
 .contact-direct h2 { margin: 18px 0 26px; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 500; }
 .contact-direct__actions { display: flex; align-items: center; flex-wrap: wrap; gap: 18px 28px; }
+.contact-direct__location { margin: 18px 0 0; font-size: .9rem; }
 .contact-email { color: var(--link); font-size: clamp(1.15rem, 3vw, 1.6rem); text-decoration: underline; text-underline-offset: .2em; overflow-wrap: anywhere; }
 .contact-direct [data-copy-status] { min-height: 1.55em; margin: 12px 0 0; font-size: .85rem; }
 .contact-page [hidden], .contact-direct [hidden] { display: none; }
@@ -653,6 +654,8 @@ p { color: var(--muted); }
 .site-footer__links a { color: var(--muted); font-size: .88rem; }
 .site-footer__links a:hover { color: var(--text); }
 .site-footer__bottom { display: flex; justify-content: space-between; gap: 30px; margin-top: 70px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--quiet); font-family: "DM Mono", monospace; font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; }
+.site-footer__identity { display: flex; flex-wrap: wrap; gap: 6px 8px; }
+.site-footer__location { white-space: nowrap; }
 .site-footer__pull { width: var(--shell); height: var(--footer-pull, 0px); display: grid; place-items: start center; margin: 0 auto; overflow: hidden; opacity: clamp(0, calc(var(--footer-pull, 0px) / 100), 1); transition: height .22s ease-out, opacity .22s ease-out; }
 .site-footer__quote { max-width: 850px; margin: 0; padding: 26px 24px 0; text-align: center; }
 .site-footer__quote p { margin-bottom: 18px; color: var(--text); font-size: clamp(.95rem, 1.6vw, 1.5rem); line-height: 1.24; letter-spacing: -.025em; }
@@ -824,6 +827,8 @@ p { color: var(--muted); }
   .site-footer__grid { grid-template-columns: 1fr 1fr; gap: 46px 30px; }
   .site-footer__grid > div:first-child { grid-column: 1 / -1; }
   .site-footer__bottom { flex-direction: column; }
+  .site-footer__identity { flex-direction: column; }
+  .site-footer__separator { display: none; }
 }
 
 @media (max-width: 720px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {

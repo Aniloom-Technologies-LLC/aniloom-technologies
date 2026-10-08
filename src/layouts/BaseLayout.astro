@@ -38,7 +38,20 @@ const organizationId = "https://aniloom.tech/#organization";
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
-    { "@type": "Organization", "@id": organizationId, name: "Aniloom Technologies", url: "https://aniloom.tech/", email: "support@aniloom.tech" },
+    {
+      "@type": "Organization",
+      "@id": organizationId,
+      name: "Aniloom Technologies",
+      legalName: "Aniloom Technologies LLC",
+      url: "https://aniloom.tech/",
+      email: "support@aniloom.tech",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Sacramento",
+        addressRegion: "California",
+        addressCountry: "US",
+      },
+    },
     { "@type": "WebSite", "@id": "https://aniloom.tech/#website", url: "https://aniloom.tech/", name: "Aniloom Technologies", publisher: { "@id": organizationId } },
     ...(article ? [{ "@type": "Article", "@id": `${canonical}#article`, mainEntityOfPage: canonical.toString(), headline: article.headline, description, datePublished: article.datePublished, ...(article.dateModified ? { dateModified: article.dateModified } : {}), author: { "@id": organizationId }, publisher: { "@id": organizationId }, ...(socialImage ? { image: socialImage.toString() } : {}) }] : []),
   ],
@@ -143,7 +156,14 @@ const navItems = [
               <a href="/how-we-work/">How We Work</a><a href="/about/">About</a><a href="/anishot/">AniShot</a><a href="/contact/">Contact</a><a href="/privacy-policy/">Privacy</a><a href="/terms-of-use/">Terms</a>
             </div>
           </div>
-          <div class="site-footer__bottom"><span>© 2026 Aniloom Technologies LLC</span><span>Built for useful conversations.</span></div>
+          <div class="site-footer__bottom">
+            <span class="site-footer__identity">
+              <span>© 2026 Aniloom Technologies LLC</span>
+              <span class="site-footer__separator" aria-hidden="true">·</span>
+              <span class="site-footer__location">Sacramento, California, USA</span>
+            </span>
+            <span>Built for useful conversations.</span>
+          </div>
         </div>
       </footer>
       <div class="site-footer__pull" data-footer-pull aria-hidden="true">
