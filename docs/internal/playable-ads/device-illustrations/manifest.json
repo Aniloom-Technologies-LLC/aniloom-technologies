@@ -1,0 +1,54 @@
+{
+  "canvas": {
+    "width": 1024,
+    "height": 1024,
+    "background": "transparent"
+  },
+  "formats": [
+    "png",
+    "webp"
+  ],
+  "generation": "Built-in ImageGen, matched to editorial/playable-play.webp; alpha-preserving resize and padding only.",
+  "promptSummary": "One flat orthographic dark device, cyan tile playable and white gesture, large exact ratio inside the screen, transparent background; matching portrait and landscape hardware.",
+  "limitations": "Generated screen geometry is approximate, not mathematically exact. Visual screen-bounding-box estimates differ from labels by roughly 1-6 percent. Hardware details and rim thickness vary slightly between orientations. Do not treat these as exact technical ratio diagrams or real device-model specifications.",
+  "assets": [
+    {
+      "name": "phone-portrait",
+      "label": "9:16",
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "name": "phone-landscape",
+      "label": "16:9",
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "name": "tablet-portrait",
+      "label": "3:4",
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "name": "tablet-landscape",
+      "label": "4:3",
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "name": "long-phone-portrait",
+      "label": "9:22",
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "name": "long-phone-landscape",
+      "label": "22:9",
+      "width": 1024,
+      "height": 1024
+    }
+  ],
+  "productionWebPDirectory": "public/assets/images/playable-devices",
+  "masterPngDirectory": "docs/internal/playable-ads/device-illustrations"
+}

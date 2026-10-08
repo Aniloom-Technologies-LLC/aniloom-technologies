@@ -1,0 +1,34 @@
+---
+const layouts = [
+  { asset: "phone-portrait", label: "Phone portrait", ratio: "9:16" },
+  { asset: "phone-landscape", label: "Phone landscape", ratio: "16:9" },
+  { asset: "tablet-portrait", label: "iPad portrait", ratio: "3:4" },
+  { asset: "tablet-landscape", label: "iPad landscape", ratio: "4:3" },
+  { asset: "long-phone-portrait", label: "Long phone portrait", ratio: "9:22" },
+  { asset: "long-phone-landscape", label: "Long phone landscape", ratio: "22:9" },
+];
+---
+
+<div class="playable-screen-coverage">
+  <div class="playable-screen-coverage__layouts">
+    {layouts.map(({ asset, label, ratio }) => (
+      <figure>
+        <img src={`/assets/images/playable-devices/${asset}.webp`} alt={`${label}, illustrated with a ${ratio} screen.`} width="600" height="600" loading="lazy" decoding="async" />
+        <figcaption>{label}<small>{ratio}</small></figcaption>
+      </figure>
+    ))}
+  </div>
+  <p class="playable-screen-coverage__note">Illustrative screen proportions. Final resolution coverage is agreed in your brief.</p>
+</div>
+
+<style>
+  .playable-screen-coverage { margin-top: 32px; }
+  .playable-screen-coverage__layouts { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 18px; align-items: end; }
+  figure { margin: 0; min-width: 0; }
+  img { display: block; width: 100%; height: 190px; object-fit: contain; }
+  figcaption { margin-top: 14px; color: var(--muted); font-size: .78rem; line-height: 1.45; text-align: center; }
+  figcaption small { display: block; margin-top: 4px; color: var(--text); font-family: "DM Mono", monospace; font-size: .75rem; line-height: 1.5; }
+  .playable-screen-coverage .playable-screen-coverage__note { max-width: 900px; margin: 24px 0 0; color: var(--quiet); font-size: .8rem; line-height: 1.55; }
+  @media (max-width: 1000px) { .playable-screen-coverage__layouts { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px 18px; } }
+  @media (max-width: 600px) { .playable-screen-coverage__layouts { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 14px; } img { height: 160px; } }
+</style>

@@ -6,6 +6,7 @@ import PlayableNav from "../components/PlayableNav.astro";
 import PlayablePhone from "../components/PlayablePhone.astro";
 import PlayablePlatforms from "../components/PlayablePlatforms.astro";
 import PlayableDemos from "../components/PlayableDemos.astro";
+import PlayableScreenCoverage from "../components/PlayableScreenCoverage.astro";
 
 const interactionSteps = [
   { state: "play", title: "Play", text: "Try a short interaction inside the ad." },
@@ -69,11 +70,11 @@ const workflow = [
     <Scene appearance="light">
       <section class="section-shell section-pad" id="verification" aria-labelledby="verification-title">
         <div class="section-heading" data-reveal><div><p class="eyebrow">Before handoff</p><h2 id="verification-title">Check the playable where it needs to work.</h2></div><p>We check the play experience, screen layouts, and final delivery files as part of building your playable. Issues found in our agreed production scope are corrected before handoff.</p></div>
-        <div class="deliverable-grid">
-          <div data-reveal><span>Portrait, landscape, and long screens</span><p>We check iPhone and iPad screen resolutions, orientation changes, and the 9:22 portrait and 22:9 landscape extremes. Instructions, artwork, and the CTA must remain visible and usable.</p></div>
+        <div class="deliverable-grid playable-delivery-grid">
+          <div data-reveal><span>Portrait, landscape, and long screens</span><p>We check iPhone and iPad screen resolutions, orientation changes, and the 9:22 portrait and 22:9 landscape extremes. Instructions, artwork, and the CTA must remain visible and usable.</p><PlayableScreenCoverage /></div>
           <div data-reveal><span>The full interaction and destination</span><p>We follow the tutorial, controls, feedback, result, and replay where present. The final CTA must use the correct network integration and open the agreed store or landing page.</p></div>
-          <div data-reveal><span>Ad-network preview and validation</span><p>For agreed target networks, we use preview and validation tools from Google Ads, AppLovin, Liftoff, and Mintegral/Mindworks. We check single HTML files and ZIP archives, file limits, required entry files such as index.html, and click-through behavior.</p></div>
-          <div data-reveal><span>Final files and a shareable demo</span><p>We deliver the HTML or ZIP packages required by each supported network, together with the agreed source files. A live demo hosted on Cloudflare Workers gives your team a browser link to open and share.</p></div>
+          <div data-reveal><span>Ad-network preview and validation</span><p>For agreed target networks, we use preview and validation tools from Google Ads, AppLovin, Liftoff, and Mintegral/Mindworks. We check single HTML files and ZIP archives, file limits, required entry files such as index.html, and click-through behavior.</p><a class="text-link playable-delivery__platform-link" href="#platforms">View supported ad networks <span aria-hidden="true">↑</span></a></div>
+          <div data-reveal><span>Final files and a shareable demo</span><img class="playable-delivery__brand" src="/assets/images/platforms/cloudflare.png" alt="Cloudflare" width="512" height="173" loading="lazy" decoding="async" /><p>We deliver the HTML or ZIP packages required by each supported network, together with the agreed source files. A live demo hosted on Cloudflare Workers gives your team a browser link to open and share.</p></div>
         </div>
         <p class="playable-demos__note">Preview tools check their own platform requirements. Final campaign approval belongs to the network; the package and browser coverage are agreed for your project.</p>
       </section>

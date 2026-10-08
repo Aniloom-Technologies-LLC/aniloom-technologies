@@ -76,3 +76,35 @@ The two-package catalog uses the existing light scene, raised white surfaces, ne
 Both packages include all currently supported public network builds as a bonus. Custom includes three visual skins total of one approved mechanic, bounded art production, Spine 2D and custom animation sequences. Detailed scope, asset/audio sourcing, usage rights, schedules, revisions, and commercial terms belong on Pricing. Overview has no prices/package counts; a short individually scoped advertising/marketing campaign note can appear on both pages. Private volume incentives stay off the public site. Canonical owner-approved commercial facts live in the companion Brand System.
 
 Validation for the two-package revision: Astro check passes with zero diagnostics; production build passes. Pricing reviewed at desktop, 390px and 320px portrait, and 844px landscape without horizontal overflow. Custom is wider/taller on horizontal layouts; portrait preserves the package order. Native Q&A opens by pointer and closes with Enter. The built-site audit checks 418 internal page links with no missing anchors. Copy was drafted and reviewed through the Aniloom brand-writing, copywriting, and copy-editing workflow.
+
+
+## Playable delivery illustrations, October 7, 2026
+
+The orientation explanation spans the delivery grid above six schematic device
+illustrations: phone 9:16 / 16:9, tablet 3:4 / 4:3, and long phone 9:22 / 22:9.
+These are representative screen proportions, not exact specifications of every
+iPhone/iPad or evidence of physical-device testing. Match the established dark
+schematic device, blue-grey rim, cyan tiles, and light reading canvas. Keep the
+strip borderless; stack its figures to preserve readable labels on small screens.
+The owner explicitly requests ratio labels inside these six images, an exception
+to the normal text-free illustration rule. Keep device/orientation captions and
+accessible explanations in HTML as well.
+
+The remaining delivery blocks retain scene tokens and neutral grid borders.
+Provider validation links to the existing `#platforms` carousel. Demo delivery
+uses the locally hosted official Cloudflare logo, without implying endorsement.
+
+
+The six final assets were generated in the owner-selected graphics chat
+`01a0e4f8-d8ed-7833-87a3-bbd8efbe3bb8`. Production uses transparent 1024px
+square WebP assets. PNG masters and the generation/limitations manifest remain
+in `docs/internal/playable-ads/device-illustrations/`, outside the public build.
+These are editorial illustrations; ratio labels are exact text while generated
+screen geometry is approximate.
+
+Validation: Astro check passes with zero errors, warnings, or hints; production
+build passes. Reviewed desktop, 390px and 320px portrait, and 844px landscape
+without horizontal overflow. All six device images load; ratios also appear in
+HTML captions. Platform navigation reaches `#platforms` by pointer and Enter.
+The built overview has no missing image files or broken local anchors. Source
+PNGs and the internal generation manifest are excluded from the public build.

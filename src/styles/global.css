@@ -928,3 +928,14 @@ p { color: var(--muted); }
   .playable-demo:hover { transform: none; }
   .playable-demo:target { animation: none; }
 }
+
+/* Editorial provider identification within the playable delivery scene. */
+.playable-delivery__brand { display: block; width: 144px; height: auto; margin-top: 28px; }
+.deliverable-grid .playable-delivery__brand + p { margin-top: 24px; }
+.playable-delivery__platform-link { margin-top: 24px; font-size: .9rem; }
+
+.playable-delivery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.playable-delivery-grid > div:first-child { grid-column: 1 / -1; }
+.playable-delivery-grid > div:first-child > p { max-width: 900px; margin-top: 24px; }
+@media (max-width: 1000px) { .playable-delivery-grid { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .playable-delivery-grid > div { padding: 26px 20px; } }

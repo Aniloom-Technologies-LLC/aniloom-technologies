@@ -58,3 +58,14 @@ Verified against companion `../playable-ads/docs/PROVIDERS.md` (Manual playable 
 - Cloudflare Workers hosts an index.html demo accessible through a shareable browser link. Provider packages remain distinct upload artifacts. Do not claim every browser is compatible.
 
 All four preview/validator URLs were rechecked during this website revision. AppLovin's public tool explicitly distinguishes browser preview from real-device behavior and campaign execution. Claim provider-specific checks and the owner-approved included supported-network builds, without claiming the tools guarantee every delivery variant or campaign acceptance.
+
+
+## Demo hosting mark, October 7, 2026
+
+`public/assets/images/platforms/cloudflare.png` is the unmodified transparent
+512 x 173 company logo from Cloudflare's official press kit:
+https://www.cloudflare.com/press/press-kit/ . Download archive:
+https://cf-assets.www.cloudflare.com/dzlvafdwdttg/2Twekn3xyYyd94qDYAl0ed/9ab649caa40958f195166e0d9f5d9a04/Logos.zip?download=true .
+The mark identifies Workers-hosted browser demo delivery, not endorsement or a
+partnership. Keep source colors and geometry; load the image locally. The
+provider-validation block links to the same page's `#platforms` carousel.
