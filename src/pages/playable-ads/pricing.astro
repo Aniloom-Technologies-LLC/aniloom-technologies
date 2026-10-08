@@ -13,13 +13,14 @@ const packages = [
     inclusions: [
       "One ready mechanic adapted to your product and brand",
       "Your supplied assets, with UI and copy adapted to the playable",
-      "Existing animation and effects fitted to the experience",
+      "Existing animation, effects, and supplied audio fitted to the experience",
       "Tutorial, gameplay, result, and destination CTA",
       "One language and one gameplay version",
       "One consolidated revision round",
       "Portrait, landscape, interaction, and final-package checks",
       "Source files and a Cloudflare Workers live demo link",
     ],
+    bestFor: "Teams producing a steady series of playable creatives from ready mechanics.",
     bonus: "Builds for all supported ad networks included.",
     note: "Plan for 3-5 business days after the mechanic, assets, and brief are approved. New mechanics and original asset production are quoted separately.",
   },
@@ -28,30 +29,59 @@ const packages = [
     label: "A complete custom production",
     title: "Custom Playable",
     price: "$4,499 USD",
-    summary: "Build a distinctive playable around a custom mechanic, with game-specific art direction and animation. Receive three visual skins for A/B testing.",
+    summary: "Everything in Adapted Playable, expanded around your approved mechanic and creative direction. Custom art, game-specific animation, and three visual skins for A/B testing.",
     inclusions: [
-      "Custom mechanic, agreed before full production",
-      "Custom UI and art production under an agreed asset list",
-      "Game-specific animation, including Spine 2D and custom animation sequences",
-      "Tutorial, gameplay, result, and destination CTA",
-      "Three visual skins of the same approved mechanic, ready for A/B testing",
-      "One language and two consolidated revision rounds",
-      "Portrait, landscape, interaction, and final-package checks for all three skins",
-      "Source files and Cloudflare Workers live demo links",
+      "An approved ready or custom mechanic tailored to your product",
+      "Custom UI, branded copy, and tutorial guidance",
+      "Original 2D or 3D asset production under an agreed asset list",
+      "Game-specific animation, effects, and interaction feedback",
+      "Spine 2D rigs and character animation where included in the brief",
+      "Custom animation sequences, transitions, and result presentation",
+      "Music and sound integration from agreed asset sources",
+      "A destination CTA connected to your agreed store or landing page",
+      "Three visual skins in total of the same approved mechanic",
+      "One language, with two consolidated revision rounds",
+      "Portrait, landscape, long-screen, and interaction checks for every skin",
+      "Provider-specific file-limit, entry-file, and package validation",
+      "Project source files and live demo links for all three skins",
     ],
+    bestFor: "Teams with a clear product hook and a defined creative vision to bring to life.",
     bonus: "Builds for all supported ad networks included for every skin.",
     note: "Plan for 10-15 business days after the brief and production inputs are approved. The asset list, animation scope, and final schedule are confirmed in your proposal.",
+  },
+  {
+    id: "micro-playable",
+    label: "One tap on your artwork",
+    title: "Micro Playable",
+    price: "$299 USD",
+    summary: "Add one interactive moment to a static ad. A tap changes one element, then reveals the button to your store or landing page.",
+    inclusions: [
+      "One supplied static scene, adapted to your brand",
+      "One tap target and one simple visual response",
+      "A CTA shown after the interaction",
+      "One language and one creative version",
+      "One consolidated round of copy and visual adjustments",
+      "Portrait, landscape, interaction, and final-package checks",
+      "Source files and a Cloudflare Workers live demo link",
+    ],
+    bestFor: "Teams testing artwork and a simple interaction hook before investing in gameplay.",
+    bonus: "Builds for all supported ad networks included.",
+    note: "Plan for 1-2 business days after complete artwork and copy are approved. Scope covers one action on existing art; gameplay loops and original asset production are separate work.",
   },
 ];
 
 const questions = [
   {
     question: "What will we receive?",
-    answer: "A finished HTML5/WebGL playable with instructions, gameplay, a result, and a CTA to your agreed store or landing page. Handoff includes the network-specific HTML or ZIP files, project source files, and a live demo hosted on Cloudflare Workers. Custom Playable includes three visual skins and their delivery files.",
+    answer: "A finished HTML5/WebGL creative with on-screen instructions, an interaction, a result, and a CTA to your agreed store or landing page. Micro has one tap on static artwork; Adapted and Custom include a gameplay experience. Handoff includes the network-specific HTML or ZIP files, project source files, and a live demo hosted on Cloudflare Workers. Custom Playable includes three visual skins and their delivery files.",
   },
   {
-    question: "How do we choose between the two packages?",
-    answer: "Choose Adapted Playable when a ready mechanic can communicate your product using existing assets and animation. It suits individual creatives and repeat production. Choose Custom Playable when you need a new mechanic, a distinct visual treatment, and game-specific animation. We agree on the mechanic before full production so the three skins share the same gameplay.",
+    question: "How do we choose a package?",
+    answer: "Choose Micro Playable for one tap on existing artwork, such as removing an icon and revealing a CTA. Choose Adapted Playable when a ready mechanic can communicate your product using existing assets and animation. It suits individual creatives and repeat production. Choose Custom Playable when you have a clear product hook and need a tailored mechanic, original visual production, or game-specific animation. It includes the Adapted essentials with a larger agreed production scope. We agree on the mechanic before full production so the three skins share the same gameplay.",
+  },
+  {
+    question: "How does a Micro Playable work?",
+    answer: "The viewer takes one action on a supplied static scene before the CTA appears. For example, they tap an icon, it disappears, and a button opens your product link. The scope covers that single interaction and its visual response. A gameplay loop, score progression, or further player actions belong in Adapted or Custom scope. Your team can use Micro in campaign tests of artwork or a simple interaction hook.",
   },
   {
     question: "What counts as a skin for A/B testing?",
@@ -59,7 +89,7 @@ const questions = [
   },
   {
     question: "Which ad-network builds are included as a bonus?",
-    answer: "Both packages include builds for all our currently supported networks: AppLovin, Google Ads, Unity Ads, Meta, TikTok, Pangle, Mintegral, Liftoff, Moloco, and ironSource Exchange. Custom Playable includes these builds for all three skins. Each network receives its required format, rather than one universal upload file. We confirm current specifications and any account-specific requirements before production.",
+    answer: "All three packages include builds for all our currently supported networks: AppLovin, Google Ads, Unity Ads, Meta, TikTok, Pangle, Mintegral, Liftoff, Moloco, and ironSource Exchange. Custom Playable includes these builds for all three skins. Each network receives its required format, rather than one universal upload file. We confirm current specifications and any account-specific requirements before production.",
   },
   {
     question: "How do you check the finished playable?",
@@ -75,15 +105,15 @@ const questions = [
   },
   {
     question: "Can you create custom animations?",
-    answer: "Yes. Adapted Playable uses existing animations and effects. Custom Playable includes an agreed set of game-specific animations, which can use Spine 2D and custom animation sequences. We define the characters, rigs, states, transitions, and sequence count in the proposal. Larger animation sets or additional asset creation change the scope and schedule.",
+    answer: "Yes. Micro uses one simple change to static art. Adapted Playable uses existing animations and effects. Custom Playable includes an agreed set of game-specific animations, which can use Spine 2D and custom animation sequences. We define the characters, rigs, states, transitions, and sequence count in the proposal. Larger animation sets or additional asset creation change the scope and schedule.",
   },
   {
     question: "What do we need to provide, and how long does it take?",
-    answer: "Share your product or game, reference or concept, available assets, brand guidance, required copy, destination link, analytics needs, and deadline. Nominate one person to consolidate feedback. Plan for 3-5 business days for Adapted Playable or 10-15 for Custom Playable after complete inputs and approvals. Asset sourcing, original art or music, animation complexity, and feedback timing affect delivery. Your proposal confirms the schedule.",
+    answer: "Share your product or game, reference or concept, available assets, brand guidance, required copy, destination link, analytics needs, and deadline. Nominate one person to consolidate feedback. Plan for 1-2 business days for Micro Playable, 3-5 for Adapted Playable, or 10-15 for Custom Playable after complete inputs and approvals. Asset sourcing, original art or music, animation complexity, and feedback timing affect delivery. Your proposal confirms the schedule.",
   },
   {
     question: "What is included in a revision round?",
-    answer: "A round is one consolidated set of feedback on the agreed mechanic and production direction: for example, copy, visual tuning, animation timing, or CTA presentation. Adapted Playable includes one round; Custom Playable includes two. Technical corrections within the agreed production scope are included. A new mechanic, changed concept, extra skins, or ongoing post-handoff iteration receives a separate estimate.",
+    answer: "A round is one consolidated set of feedback on the agreed mechanic and production direction: for example, copy, visual tuning, animation timing, or CTA presentation. Micro includes one round of copy and visual adjustments. Adapted Playable includes one round; Custom Playable includes two. Technical corrections within the agreed production scope are included. A new mechanic, changed concept, extra skins, or ongoing post-handoff iteration receives a separate estimate.",
   },
   {
     question: "What rights and source files do we receive?",
@@ -92,14 +122,14 @@ const questions = [
 ];
 ---
 
-<BaseLayout title="Playable Ad Pricing & Packages | Aniloom Technologies" description="Finished playable ads from $799 USD. Explore custom production from $4,499 with three visual skins, included network builds, deliverables, art, audio, and timelines.">
+<BaseLayout title="Playable Ad Pricing & Packages | Aniloom Technologies" description="Micro playable ads from $299, adapted gameplay from $799, and custom production from $4,499. Compare scope, visual skins, included network builds, and delivery.">
   <main id="main-content" class="pricing-page">
     <PlayableNav />
     <section class="pricing-stage pricing-stage--catalog surface-light" id="packages">
       <div class="section-shell">
         <header class="pricing-intro">
           <h1>Playable Ad Pricing</h1>
-          <p>Adapt a ready mechanic or build a custom experience. Both paths deliver a finished playable, with source files, a live demo, and ad-network builds.</p>
+          <p>Choose a single tap, a ready gameplay mechanic, or a custom experience. Every package includes source files, a live demo, and ad-network builds.</p>
         </header>
         <div class="pricing-group">
           <h2 class="visually-hidden">Choose your playable production package</h2>

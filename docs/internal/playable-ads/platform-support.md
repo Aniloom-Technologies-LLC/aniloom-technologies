@@ -28,7 +28,7 @@ preview behavior for each project. Provider specifications were reviewed in the
 source project on September 27, 2026.
 
 Owner approval on October 7 includes builds for all ten public supported networks
-as a bonus in both playable production packages, and for all three Custom skins.
+as a bonus in all three playable production packages, and for all three Custom skins.
 Confirm current provider and account requirements per project. This does not
 extend public support to the excluded profiles or guarantee campaign acceptance.
 
@@ -46,7 +46,7 @@ scene without recoloring. Empty alt text avoids repeating the adjacent visible n
 
 ## Production checks and delivery, October 7, 2026
 
-Owner direction positions Playable Ads as the finished creative, with checks embedded in production. Standalone third-party playable testing is omitted from both playable pages. Overview describes capabilities; Pricing defines the commercial base scope. This direction supersedes the earlier public development-versus-QA split with owner-approved $799 Adapted and $4,499 Custom production paths.
+Owner direction positions Playable Ads as the finished creative, with checks embedded in production. Standalone third-party playable testing is omitted from both playable pages. Overview describes capabilities; Pricing defines the commercial base scope. This direction supersedes the earlier public development-versus-QA split with $799 Adapted, $4,499 Custom, and the owner-requested Micro production path from $299.
 
 Verified against companion `../playable-ads/docs/PROVIDERS.md` (Manual playable validators), `docs/PLAYABLE_WORKFLOW.md` (responsive and final-artifact checks), and `docs/CLOUDFLARE_HOSTING.md`:
 

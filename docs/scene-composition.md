@@ -108,3 +108,28 @@ without horizontal overflow. All six device images load; ratios also appear in
 HTML captions. Platform navigation reaches `#platforms` by pointer and Enter.
 The built overview has no missing image files or broken local anchors. Source
 PNGs and the internal generation manifest are excluded from the public build.
+
+
+## Three playable packages, October 7, 2026
+
+Current owner direction adds Micro Playable for a single action on supplied
+static art. The delegated price choice is implemented as Starting at $299.
+Adapted remains $799; Custom remains $4,499 and visibly lists more production
+scope than Adapted, including its essentials and bounded custom extensions.
+
+Wide layout keeps Adapted first, the largest Custom card in the center, and the
+smaller Micro card last. Reading and keyboard order match the visual order.
+Tablet layouts retain the two main cards and put Micro below; portrait stacks
+all cards without offsets. Keep all three light, with the established semantic
+palette and neutral borders. Every card ends with a concise Best for statement
+and inquiry link. All three include the supported-network build bonus. Update
+FAQ, metadata, and canonical Brand System facts with the Micro boundary. Keep
+private volume incentives off the site.
+
+Validation: Astro check reports zero diagnostics and the production build passes.
+Reviewed the three cards at the desktop viewport, 390px and 320px portrait, and
+844px landscape with no horizontal overflow. Custom has 13 scope points against
+Adapted's eight and remains wider and taller in the desktop layout. All three
+inquiry links carry their package topic; the Micro link opens the contact page.
+The Micro FAQ opens using Enter. Copy review checks scope, buyer fit, asset
+licensing, starting prices, and conditional timelines without performance claims.
