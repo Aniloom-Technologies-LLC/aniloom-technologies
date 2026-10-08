@@ -537,7 +537,7 @@ p { color: var(--muted); }
 .callout__actions { display: flex; justify-content: space-between; align-items: center; gap: 30px; margin-top: 38px; }
 
 /* Playable packages share the light pricing scene and its existing tokens. */
-.pricing-grid--playable { grid-template-columns: minmax(0, 1fr) minmax(0, 1.42fr) minmax(0, .9fr); align-items: stretch; gap: 18px; }
+.pricing-grid--playable { grid-template-columns: minmax(0, 1fr) minmax(0, 1.42fr) minmax(0, 1fr); align-items: stretch; gap: 18px; }
 .pricing-grid--playable #adapted-playable, .pricing-grid--playable #micro-playable { align-self: start; margin-top: 36px; padding: 28px; }
 .pricing-grid--playable #custom-playable { min-height: 0; padding: clamp(28px, 2.8vw, 38px); }
 .pricing-grid--playable .pricing-card h3 { font-size: clamp(1.85rem, 2.6vw, 2.65rem); }
@@ -563,7 +563,7 @@ p { color: var(--muted); }
 }
 @media (min-width: 721px) and (max-width: 1000px) {
   .pricing-grid--playable { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
-  .pricing-grid--playable #micro-playable { grid-column: 1 / -1; width: min(100%, 580px); margin-top: 6px; }
+  .pricing-grid--playable #micro-playable { grid-column: 1; margin-top: 6px; }
 }
 @media (max-width: 720px) {
   .pricing-grid--playable { grid-template-columns: 1fr; padding-right: 0; gap: 24px; }

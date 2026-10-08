@@ -155,3 +155,13 @@ desktop and 390px portrait; the closing scene also fits 844px landscape without
 horizontal overflow. Quality Engineering's revised grid is readable on desktop
 and portrait. Built Playable Pricing has no Commercial terms section or fixed
 advance-payment rule; both pricing pages reflect individually agreed schedules.
+
+
+## Equal entry-package widths, October 7, 2026
+
+Owner direction: Micro and Adapted use equal widths. On wide screens they flank
+the wider central Custom card; on tablets Micro uses the same first-column
+width as Adapted, below the main pair. Portrait retains full-width stacked cards.
+Astro validation and production build pass. Visual review at 1280px desktop,
+844px landscape, and 390px portrait confirms equal widths without horizontal
+overflow.
