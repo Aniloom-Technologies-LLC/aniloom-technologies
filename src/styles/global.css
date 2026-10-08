@@ -254,8 +254,7 @@ p { color: var(--muted); }
 .statement { border-top: 0; }
 .statement__copy { max-width: 1120px; margin: 32px 0 70px; color: var(--text); font-size: clamp(2.2rem, 5vw, 5.4rem); line-height: 1.04; letter-spacing: -.06em; }
 .principle-line { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; padding-top: 24px; border-top: 1px solid var(--line); font-size: clamp(1rem, 1.5vw, 1.2rem); }
-.principle-line span:first-child { color: var(--accent-readable); }
-.principle-line span:last-child { color: var(--muted); }
+.principle-line span { color: var(--muted); }
 .section-heading { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(280px, .55fr); gap: 80px; align-items: end; margin-bottom: clamp(54px, 8vw, 96px); }
 .section-heading h2 { max-width: 800px; margin: 18px 0 0; font-size: clamp(2.8rem, 6vw, 6rem); font-weight: 500; }
 .section-heading > p, .section-heading > a { margin-bottom: 5px; font-size: 1.04rem; }
@@ -323,12 +322,7 @@ p { color: var(--muted); }
 .process-grid--four h3 { margin-top: 68px; }
 .process--page { margin-top: var(--section-pad); }
 
-.people-editorial, .leadership-grid { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 42px; border-top: 1px solid var(--line); }
-.people-editorial article { min-height: 360px; display: grid; grid-template-columns: 48px 1fr; gap: 28px; align-items: end; padding: 34px 42px 34px 0; border-bottom: 1px solid var(--line); }
-.people-editorial article + article { padding-left: 42px; border-left: 1px solid var(--line); }
-.people-editorial__index { align-self: start; color: var(--quiet); font-family: "DM Mono", monospace; font-size: .72rem; }
-.people-editorial h3 { margin: 14px 0 20px; font-size: clamp(3rem, 5vw, 5.2rem); font-weight: 500; }
-.people-editorial p:last-child { max-width: 520px; margin-bottom: 0; }
+.leadership-grid { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 42px; border-top: 1px solid var(--line); }
 .leadership-grid { gap: 22px; border-top: 0; }
 .leadership-card { display: grid; grid-template-columns: 180px 1fr; gap: 42px; min-height: 350px; padding: 34px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface-soft); align-items: end; }
 .leadership-card__mark { display: grid; place-items: center; width: 100%; aspect-ratio: .78; border-radius: calc(var(--radius) - 8px); background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 24%, var(--surface-solid)), color-mix(in srgb, var(--accent-2) 18%, var(--surface-solid))); color: var(--text); font-size: 2rem; font-weight: 500; }
@@ -759,9 +753,6 @@ p { color: var(--muted); }
   .process-grid li, .process-grid li + li, .process-grid--four li:nth-child(3) { min-height: 0; display: grid; grid-template-columns: 42px 1fr; gap: 10px 16px; padding: 24px 0; border-left: 0; }
   .process-grid h3, .process-grid--four h3 { grid-column: 2; margin: 0; }
   .process-grid p, .process-grid--four p { grid-column: 2; }
-  .people-editorial { grid-template-columns: 1fr; }
-  .people-editorial article, .people-editorial article + article { min-height: 0; grid-template-columns: 34px 1fr; gap: 12px; padding: 28px 0; border-left: 0; }
-  .people-editorial h3 { margin: 8px 0 14px; font-size: 2.7rem; }
   .leadership-card { grid-template-columns: 72px 1fr; gap: 18px; min-height: 0; padding: 22px; align-items: start; }
   .leadership-card__mark { width: 72px; height: 72px; aspect-ratio: 1; border-radius: 18px; font-size: 1.25rem; }
   .leadership-card h2 { margin: 10px 0 14px; font-size: 1.9rem; }
