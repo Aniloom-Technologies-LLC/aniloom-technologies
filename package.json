@@ -8,7 +8,9 @@
     "check": "astro check",
     "preview": "astro preview",
     "test:contact": "node --test workers/contact/app.test.mjs scripts/contact-readiness.test.mjs",
-    "contact:deploy": "node scripts/contact-deploy.mjs"
+    "contact:deploy": "node scripts/contact-deploy.mjs",
+    "test:anishot-reports": "node --test workers/anishot-reports/app.test.mjs",
+    "anishot-reports:deploy": "node scripts/anishot-reports-deploy.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^7.0.0",

@@ -1,0 +1,9 @@
+{
+  "name": "anishot-reports",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-10-09",
+  "workers_dev": true,
+  "durable_objects": { "bindings": [{ "name": "REPORT_INBOX", "class_name": "ReportInbox" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["ReportInbox"] }],
+  "observability": { "enabled": false }
+}
