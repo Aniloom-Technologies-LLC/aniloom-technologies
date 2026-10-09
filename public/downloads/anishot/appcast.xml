@@ -4,6 +4,14 @@
     <title>AniShot Screen Capture updates</title>
     <link>https://aniloom.tech/anishot/</link>
     <item>
+      <title>AniShot 0.17.1</title>
+      <description>Adds voluntary diagnostic reports with a visible optional comment. Confirmed sending shows a thank-you screen; OK closes Settings. Screenshots are excluded from diagnostics. Development testing download; not notarized.</description>
+      <sparkle:version>72</sparkle:version>
+      <sparkle:shortVersionString>0.17.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0.0</sparkle:minimumSystemVersion>
+      <enclosure sparkle:edSignature="hJOJ42d9A+9Rv2tBveclyjwpe+7WKzS6q0G0jtHpH+sfQj5+vy60CXP7eFpdzFFimiUFS2fmdrJtRTqNE0eJAg==" url="https://aniloom.tech/downloads/anishot/AniShot-Screen-Capture-0.17.1-universal-development.dmg" length="2737615" type="application/octet-stream" />
+    </item>
+    <item>
       <title>AniShot 0.15.0</title>
       <description>One Universal download with native Intel and Apple silicon code. Redesigned drag-to-Applications installer with large icons and a directional arrow. Requires macOS Sonoma 14 or newer. Real Intel hardware testing remains pending; this development version is not notarized.</description>
       <sparkle:version>66</sparkle:version>
