@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import GradientText from "../components/GradientText.astro";
 ---
 
-<BaseLayout title="About Aniloom | Company and Leadership | Aniloom Technologies" description="Meet Ino and Olena, the founders leading Aniloom's company direction, technical decisions, Quality Engineering, and delivery workflows.">
+<BaseLayout title="About Aniloom | Company and Leadership | Aniloom Technologies" description="Meet Ino, Olena, and Oleksandr, the people leading Aniloom's company direction, technology, Quality Engineering, and delivery workflows.">
   <main id="main-content">
     <section class="page-hero section-shell">
       <p class="eyebrow" data-reveal>About Aniloom</p>
@@ -12,13 +12,19 @@ import GradientText from "../components/GradientText.astro";
     </section>
 
     <section class="leadership section-shell section-pad">
-      <div class="section-heading" data-reveal><div><p class="eyebrow">Leadership</p><h2>Technical direction and quality leadership.</h2></div><p>Ino leads company direction and solution decisions. Olena leads the Quality Engineering practice and the workflows used by the team.</p></div>
+      <div class="section-heading" data-reveal><div><p class="eyebrow">Leadership</p><h2>Technical direction and quality leadership.</h2></div><p>Ino leads company direction and solution decisions. Olena leads Quality Engineering and delivery workflows. Oleksandr leads technology direction and key technical decisions.</p></div>
       <div class="leadership-grid">
         <article class="leadership-card leadership-card--text" data-reveal>
           <div><p class="eyebrow">Founder & CEO</p><h2>Ino</h2><p>Ino leads company direction, major client relationships, and solution judgment. He brings more than 10 years of professional experience in game development.</p></div>
         </article>
         <article class="leadership-card leadership-card--text" data-reveal>
           <div><p class="eyebrow">Co-Founder & COO</p><h2>Olena</h2><p>Olena leads Aniloom’s Quality Engineering practice and designs the systems, standards, and delivery workflows used by the team.</p></div>
+        </article>
+        <article class="leadership-card leadership-card--cto" data-reveal>
+          <figure class="leadership-card__media">
+            <picture><img src="/assets/team/oleksandr-mushnykov-studio-portrait.webp" alt="Oleksandr Mushnykov" width="800" height="800" loading="lazy" decoding="async" /></picture>
+          </figure>
+          <div><p class="eyebrow">CTO</p><h2>Oleksandr Mushnykov</h2><p>Oleksandr leads Aniloom's technology direction, overseeing architecture, infrastructure, and key technical decisions. He brings experience in game development, server systems, custom CMS development, and DevOps to help the team solve complex engineering challenges.</p></div>
         </article>
       </div>
     </section>
@@ -31,3 +37,13 @@ import GradientText from "../components/GradientText.astro";
     </section>
   </main>
 </BaseLayout>
+
+<style>
+  .leadership-card--cto { grid-column: 1 / -1; grid-template-columns: minmax(180px, 240px) minmax(0, 1fr); min-height: 0; align-items: center; }
+  .leadership-card--cto .leadership-card__media picture { flex: initial; min-height: 0; aspect-ratio: 1; }
+  .leadership-card--cto h2 { overflow-wrap: anywhere; }
+  @media (max-width: 600px) {
+    .leadership-card--cto { grid-template-columns: minmax(0, 1fr); }
+    .leadership-card--cto .leadership-card__media { width: 100%; max-width: 280px; }
+  }
+</style>
