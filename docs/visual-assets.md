@@ -1,8 +1,20 @@
 # Visual asset register
 
-Updated: 2026-10-03
+Updated: 2026-10-08
 
 This register records generated imagery and archived composition studies. None of these assets is client evidence or proof of a completed product. AVIF is the preferred web source and WebP is the fallback.
+
+## Owner-approved homepage atmosphere, October 8
+
+The owner explicitly approves the existing anonymous worktable/dog and mountain/dog scenes as decorative website atmosphere, without captions, visible faces, names, or assertions that they show Aniloom's team, office, working process, founders, or travel. This narrow decision supersedes the previous archive-only handling for these two scenes. It does not authorize generated founder portraits or documentary/proof claims. The original studies remain private; only approved publication exports are public.
+
+| Public asset | Placement | Classification |
+| --- | --- | --- |
+| `editorial/worktable-and-dog` | Homepage capabilities, no caption | `editorial`, decorative |
+| `editorial/mountain-horizon` | Full-bleed homepage closing panorama | `editorial`, decorative, laterally expanded from the mountain study |
+| `editorial/mountain-walk` | Narrow-screen closing crop using the original composition | `editorial`, decorative |
+
+These assets have empty alt text and are hidden from assistive technology because they add atmosphere, not factual information. They do not supply organization, person, location, or case-study metadata. Provenance, the panoramic edit prompt, and replacement boundaries are recorded in `docs/internal/visual-studies/homepage-atmosphere.md`. This decision does not set a deadline or commitment for authentic replacement photography.
 
 ## Archived photography studies
 
@@ -10,8 +22,8 @@ These generated composition studies must be replaced with authentic, approved ph
 
 | Asset | Use | Classification | Subject boundary |
 | --- | --- | --- | --- |
-| `about-mountain-path` | Archived, removed from About | `placeholder` | Fictional anonymous adults, fictional dog, unconfirmed location |
-| `studio-visual-review` | Archived, removed from How We Work | `placeholder` | Fictional anonymous people and dog in an unconfirmed studio |
+| `about-mountain-path` | Original kept privately; approved decorative homepage exports above | Internal study; public exports `editorial` | Fictional anonymous adults, fictional dog, unconfirmed location |
+| `studio-visual-review` | Original kept privately; approved decorative homepage export above | Internal study; public export `editorial` | Fictional anonymous people and dog in an unconfirmed studio |
 | `product-flow-review` | Capabilities illustration | `editorial` | Fictional anonymous hands and schematic product material |
 | `worktable-diagram-review` | Archived, removed from founder card | `placeholder` | Fictional anonymous subject, explicitly not Ino |
 | `printed-design-state-review` | Archived, removed from cofounder card | `placeholder` | Fictional anonymous subject, explicitly not Olena |
@@ -61,7 +73,7 @@ These exports are the only website use of the supplied logo artwork. The header,
 
 ## Replacement and review
 
-- Placeholder captions must remain visible while generated people or places are used.
+- Internal placeholder material remains private. The owner-approved decorative homepage exports above carry no public captions and must never be repurposed as team, documentary, or client proof.
 - Public filenames remain short and descriptive; internal classification is maintained in this register instead of the URL.
 - Replacing a placeholder with authentic photography requires recorded subject context, creator/source, consent, ownership, publication permission, privacy and confidentiality review, allowed crops, and any claim boundary.
 - Editorial illustrations may remain public only while their placement cannot reasonably imply documentary or client proof.

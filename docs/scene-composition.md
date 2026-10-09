@@ -10,7 +10,7 @@ Light is the reading and evaluation canvas: understand the offer, compare prices
 
 | Page or family | Entry and reading canvas | Dark passages |
 | --- | --- | --- |
-| Home | Dark Playable Ads, light Release Testing; light statement/capabilities and notes | Playable Ads, company presentation, delivery process, footer |
+| Home | Dark Playable Ads, light Release Testing; light capabilities with decorative worktable/dog image and Notes; full-bleed mountain closing image | Playable Ads, compact company presentation, AI/delivery process, footer |
 | Playable Ads overview | Dark product introduction; light playable demos, platforms, creative production, interaction explanation, responsive/provider checks, and FAQ | Introduction, four-step delivery workflow, closing contact/footer |
 | Quality Engineering | Light introduction, choices, deliverables | Practice standards, closing contact/footer |
 | Both pricing catalogs | Light local navigation, immediately visible packages, add-ons, commercial terms; playable pricing contains development inputs, delivery, and production boundaries | Closing contact/footer |
@@ -23,7 +23,7 @@ Light is the reading and evaluation canvas: understand the offer, compare prices
 
 ## Implementation invariants
 
-- Owner-approved October 7 cleanup: founder biographies remain on About, not in a duplicate homepage section. Homepage delivery process leads directly into the light Notes scene. Both AI/accountability phrases use the normal muted text role, without highlighting the first phrase in gold. Preserve other existing accent uses.
+- Owner-approved October 8 revision: the first two product scenes remain unchanged. The company presentation contains the approved managed-delivery statement instead of a second standalone statement scene. Capabilities use the approved decorative worktable/dog image without captions or team claims. The dark delivery band introduces AI as a conditional efficiency tool, with human responsibility and no invented examples or speed metrics. Notes lead into a thin full-bleed mountain image and the existing dark footer/contact invitation. Founder biographies remain on About. AI text uses ordinary semantic text roles, not a gold accent.
 - `BaseLayout` defaults to `appearance="light"`; home, Playable Ads overview, and Contact explicitly enter dark.
 - The appearance prop controls initial canvas, navigation, and browser theme color. It is page art direction, not a preference, toggle, saved setting, or OS-theme response.
 - `Scene.astro` groups related content into a full-width canvas; `section-shell` constrains only the inner content. Keep consecutive reading sections together.

@@ -274,6 +274,42 @@ p { color: var(--muted); }
 .capability-navigator__visual img { width: 100%; height: 100%; display: block; object-fit: cover; }
 .capability-navigator__visual figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; padding: 18px 0 0; color: var(--quiet); font-family: "DM Mono", monospace; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; }
 
+/* Homepage editorial moments stay decorative, with no team or place claims. */
+.home-page .hero--home-intro { min-height: 0; padding-block: clamp(80px, 8vw, 128px); }
+.home-page .hero--home-intro .hero__eyebrow-row { margin-bottom: 40px; }
+.home-page .hero--home-intro .hero__title { margin-bottom: 42px; font-size: clamp(3.6rem, 7vw, 7.2rem); }
+.home-page .hero--home-intro .hero__lead { font-size: clamp(1.2rem, 1.8vw, 1.6rem); line-height: 1.45; }
+.capability-navigator__visual--atmosphere { grid-template-rows: 1fr; background: transparent; }
+.capability-navigator__visual--atmosphere picture { position: relative; display: block; }
+.capability-navigator__visual--atmosphere img { position: absolute; inset: 0; object-position: 55% 70%; }
+.process__principle-copy p { margin: 0; }
+.process__principle-copy p + p { margin-top: 24px; }
+.process__delivery-intro { display: grid; grid-template-columns: 1.2fr .55fr; gap: 80px; align-items: end; margin-bottom: 32px; }
+.process__delivery-intro h3 { margin: 0; font-size: clamp(1.6rem, 2.5vw, 2.5rem); font-weight: 500; }
+.process__delivery-intro p { margin: 0; }
+.process--home .process-grid li { min-height: 240px; }
+.process--home .process-grid h3 { margin-top: 54px; }
+.home-landscape { width: 100%; height: clamp(220px, 25vw, 480px); overflow: hidden; }
+.home-landscape picture, .home-landscape img { display: block; width: 100%; height: 100%; }
+.home-landscape img { object-fit: cover; object-position: 50% 64%; }
+
+@media (max-width: 1100px) {
+  .process__delivery-intro { grid-template-columns: 1fr; gap: 20px; }
+  .home-page .hero--home-intro .hero__lower { gap: 28px; }
+  .home-page .capability-navigator__visual--atmosphere { min-height: 0; }
+  .home-page .capability-navigator__visual--atmosphere picture { min-height: 0; aspect-ratio: 3 / 2; }
+}
+@media (max-width: 700px) {
+  .home-page .hero--home-intro { padding-block: 64px; }
+  .home-page .hero--home-intro .hero__title { font-size: clamp(3rem, 12vw, 4.5rem); }
+  .home-page .hero--home-intro .hero__lower { grid-template-columns: 1fr; }
+  .home-page .capability-navigator__visual--atmosphere picture { aspect-ratio: 4 / 3; }
+  .process--home .process-grid li { min-height: 0; }
+  .process--home .process-grid h3 { margin-top: 0; }
+  .home-landscape { height: clamp(220px, 65vw, 360px); }
+  .home-landscape img { object-position: 40% 65%; }
+}
+
 .product-stories { padding-top: 58px; background: var(--bg); }
 .product-story { position: relative; min-height: min(76svh, 820px); overflow: hidden; isolation: isolate; }
 .product-story__canvas-link { position: absolute; z-index: 3; inset: 0; }

@@ -50,7 +50,7 @@ const capabilities = [
     </section>
 
     <Scene appearance="dark">
-    <section class="hero section-shell">
+    <section class="hero hero--home-intro section-shell">
       <FloatingLines client:media="(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)" enabledWaves={["middle", "bottom"]} lineCount={[5, 4]} lineDistance={[8, 10]} linesGradient={["#FFC000", "#56D3FF", "#FFFFFF"]} bendStrength={-0.25} maxPixelRatio={1.5} />
       <div class="hero__content">
         <div class="hero__eyebrow-row" data-reveal>
@@ -59,7 +59,7 @@ const capabilities = [
         </div>
         <h2 class="hero__title" data-reveal>Build your next product with <GradientText>Aniloom.</GradientText></h2>
         <div class="hero__lower" data-reveal>
-          <p class="hero__lead">Software development, design, and testing for web, mobile, games, and interactive products.</p>
+          <p class="hero__lead">You bring the goal. We manage development to deliver the result within the agreed timeline.</p>
           <div class="hero__actions"><a class="button" href="/contact/">Discuss your project</a><a class="text-link" href="/capabilities/">Explore capabilities <span>↗</span></a></div>
         </div>
       </div>
@@ -68,16 +68,10 @@ const capabilities = [
 
     </Scene>
     <Scene appearance="light">
-    <section class="statement section-shell section-pad" data-reveal>
-      <p class="eyebrow">A managed development partner</p>
-      <p class="statement__copy">You bring the goal. We manage development to deliver the result within the agreed timeline.</p>
-      <div class="principle-line"><span>AI moves the work faster.</span><span>Experienced people remain responsible for what ships.</span></div>
-    </section>
-
     <section class="capability-index section-shell section-pad" id="capabilities">
       <div class="section-heading" data-reveal>
-        <div><p class="eyebrow">Capabilities</p><h2>One product.<br />Connected expertise.</h2></div>
-        <p>Start with a new product, a project already in development, or a release that needs testing. We bring together the expertise the work requires.</p>
+        <div><p class="eyebrow">Capabilities</p><h2>Engineering, testing,<br />design, and art.</h2></div>
+        <p>Build a new product, continue development, or prepare a release. Start with the expertise your project needs.</p>
       </div>
       <div class="capability-navigator">
         <nav class="capability-list" aria-label="Aniloom capabilities">
@@ -89,21 +83,27 @@ const capabilities = [
             </a>
           ))}
         </nav>
-        <figure class="capability-navigator__visual" data-reveal>
+        <div class="capability-navigator__visual capability-navigator__visual--atmosphere" aria-hidden="true" data-reveal>
           <picture>
-            <source srcset="/assets/images/editorial/product-flow-review.avif" type="image/avif" />
-            <img src="/assets/images/editorial/product-flow-review.webp" alt="An editorial product-flow review showing connected states and decisions." width="1440" height="960" loading="lazy" decoding="async" />
+            <source srcset="/assets/images/editorial/worktable-and-dog.avif" type="image/avif" />
+            <img src="/assets/images/editorial/worktable-and-dog.webp" alt="" width="1440" height="960" loading="lazy" decoding="async" />
           </picture>
-          <figcaption><span>Engineering</span><span>Quality</span><span>Design</span><span>Art</span></figcaption>
-        </figure>
+        </div>
       </div>
     </section>
 
     </Scene>
 
-    <section class="process surface-dark section-pad">
+    <section class="process process--home surface-dark section-pad">
       <div class="section-shell">
-        <div class="section-heading" data-reveal><div><p class="eyebrow">How we work</p><h2>From project brief to delivery.</h2></div><p>We agree on the scope, schedule, and what you will receive before work begins.</p></div>
+        <div class="section-heading process__principle" data-reveal>
+          <div><p class="eyebrow">How we work</p><h2>AI moves the work faster.</h2></div>
+          <div class="process__principle-copy">
+            <p>We use AI when it can speed up part of the work without compromising quality. The goal is to make the most of your budget and time.</p>
+            <p>Experienced people remain responsible for what ships.</p>
+          </div>
+        </div>
+        <div class="process__delivery-intro" data-reveal><h3>From brief to delivery.</h3><p>We agree on the scope, schedule, and what you will receive before work begins.</p></div>
         <ol class="process-grid">
           <li data-reveal><span>01</span><h3>Share the brief</h3><p>Tell us what you want to build or improve, what already exists, and your target timeline.</p></li>
           <li data-reveal><span>02</span><h3>Agree on the plan</h3><p>We define deliverables and review points, then manage the specialists and tools needed for the work.</p></li>
@@ -123,5 +123,14 @@ const capabilities = [
       </div>
     </section>
     </Scene>
+
+    <div class="home-landscape" aria-hidden="true">
+      <picture>
+        <source media="(max-width: 700px)" srcset="/assets/images/editorial/mountain-walk.avif" type="image/avif" />
+        <source media="(max-width: 700px)" srcset="/assets/images/editorial/mountain-walk.webp" type="image/webp" />
+        <source srcset="/assets/images/editorial/mountain-horizon.avif" type="image/avif" />
+        <img src="/assets/images/editorial/mountain-horizon.webp" alt="" width="2172" height="724" loading="lazy" decoding="async" />
+      </picture>
+    </div>
   </main>
 </BaseLayout>
