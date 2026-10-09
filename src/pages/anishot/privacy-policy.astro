@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+// Policy source: AniShot/docs/publishing/privacy-policy.md in the companion product repository.
+---
+
+<BaseLayout title="AniShot Privacy Policy | Aniloom Technologies" description="How AniShot handles screenshots, annotations, local diagnostics and voluntary support reports." showSplashCursor={false}>
+  <main id="main-content">
+    <section class="section-shell legal-page">
+      <article class="article-shell">
+        <span class="eyebrow">AniShot</span>
+        <h1>AniShot Privacy Policy</h1>
+        <p>Effective date: October 9, 2026</p>
+        <div class="article-content">
+          <p>AniShot is provided by Aniloom Technologies LLC. This policy explains how the AniShot macOS app handles screen images, annotations, settings, and information you choose to send for support.</p>
+          <h2>Screenshot processing stays on your Mac</h2>
+          <p>AniShot processes screen images and annotations on your computer. The app does not upload screenshots or annotations to us or operate a cloud screenshot service. It does not contain advertising or analytics tools, track you across other apps or websites, or require an AniShot account.</p>
+          <h2>Screen capture permission and session images</h2>
+          <p>AniShot needs macOS screen capture permission to take a screenshot, show a frozen screen image, and let you select and annotate an area. Screen content can include anything visible on your connected displays, including personal or confidential information.</p>
+          <p>AniShot takes screen images only when you activate a screenshot from its shortcut or menu action. Launching the app, granting permission, leaving it idle, or closing an overlay does not start background capture. The current app does not maintain rolling screen history or record your screen continuously.</p>
+          <p>Frozen images and drawings are held in memory for the capture session and released when that session closes. They are not automatically saved as files. AniShot does not capture microphone or system audio.</p>
+          <h2>Copying, saving, and sharing</h2>
+          <p>AniShot saves an image file only when you choose Save and confirm a destination. Saved PNG or JPEG files remain in the location you choose until you delete or move them.</p>
+          <p>Choosing Copy places the selected image on the macOS clipboard. Other apps may read clipboard content, and macOS features such as Universal Clipboard can transfer copied content according to your system settings. Similarly, saving to an iCloud Drive or other synced folder may cause another service to upload that file. These transfers are controlled by macOS, the destination, or other software, rather than an AniShot upload feature.</p>
+          <p>Choosing Share opens the native macOS Share menu with your annotated selection. Opening the menu alone sends nothing. When you select a service, AniShot gives that image to the chosen service. Services such as Mail or AirDrop may transfer it off your Mac under their own settings and policies. AniShot does not send it to an Aniloom screenshot server. Cancelling the menu or service returns to your selection.</p>
+          <p>Dismissing a session with Escape or enabled outside double-click cancellation does not copy or save its image. While editing text, Escape first cancels that edit. Dismissal does not remove files or clipboard images you previously exported.</p>
+          <h2>Settings and local diagnostics</h2>
+          <p>AniShot stores shortcut bindings, appearance preferences, setup progress, and login-registration preferences locally on your Mac. The default app does not modify native shortcuts. A local backup created by an earlier takeover-enabled version may remain in preferences; the minimal app leaves it untouched. You can control Launch at Login in the menu bar menu; the current development app attempts one-time registration on its first bundled launch. Launching at login does not begin screen capture.</p>
+          <p>The app keeps a diagnostic action history locally by default, with capture/focus phases, durations, tool sizes, editing actions and error codes. The journal excludes screenshot pixels, typed annotation text, clipboard contents and file paths. It rotates within roughly 1 MiB and prunes data older than 7 days when the app is used or a report is prepared. Settings → Appearance → Diagnostics lets you disable and clear history. Counts describe the retained history only.</p>
+          <p>The app stores its latest capture timing report locally in AniShot&#x27;s Application Support folder. The report contains durations, capture/focus phases, display identifiers/dimensions, and any diagnostic error; it contains no screenshot pixels. A subsequent report overwrites it. Developer-requested benchmark reports can persist in the location requested by the developer. These diagnostics are not automatically sent to us.</p>
+          <p>Display metadata, filters, and empty interface resources may be cached to prepare the next request. They do not constitute captured screen history; closing a session releases its image and drawing content.</p>
+          <p>Capture errors are presented locally. Diagnostic code may write local system-log messages about errors; it does not send these logs to us automatically, and screenshot pixels are not intentionally included in those messages. macOS and Apple services may handle their own diagnostics under Apple&#x27;s policies and your settings.</p>
+          <h2>Update checks</h2>
+          <p>The website distribution uses Sparkle to check aniloom.tech for signed updates. Automatic checking is enabled by default and can be disabled in Settings → Updates. Manual checks remain available. Installing an update asks for confirmation. Hosting services receive ordinary request metadata, including your IP address and the app/Sparkle versions. Screenshots, drawings, local capture diagnostics, and clipboard contents are not included. Sparkle system profiling is disabled. The Store package excludes Sparkle and receives updates through the App Store.</p>
+          <h2>Support information you choose to send</h2>
+          <p>The app shows a visible Comment (optional) field and one Send Report button in Settings → Support. Pressing it sends recent diagnostic actions and error codes, app/Mac details and a random installation ID to our private Cloudflare reporting service. A separate UUID identifies each report. An email address or account is not required, and reports are not sent automatically. The installation ID is generated locally on the first send attempt and persists in preferences; it does not use your hardware serial number or computer name.</p>
+          <p>Review any personal or confidential information you choose to put in the comment before sending. Diagnostic fields exclude screenshots, annotation text, clipboard contents, file paths and raw error/crash messages. The current form does not import macOS crash files. Cloudflare processes the connecting IP to deliver and protect the request; our service stores a keyed IP hash for a ten-minute rate limit rather than a raw address. Provider infrastructure has its own operational processing.</p>
+          <p>Active reports are retained for at most 30 days, within the latest 100 reports. Cloudflare recovery states can retain deleted data for up to another 30 days. Owner retrieval and deletion require private credentials; submitted reports have no public download URL. Contact us with the report ID shown after successful sending if you need deletion. Turning local history off or clearing it does not delete previously submitted reports.</p>
+          <p>If you contact us at <a href="mailto:support@aniloom.tech">support@aniloom.tech</a>, we receive your email address, message, and any attachments or diagnostics you choose to provide. We use that information to respond and investigate your request. You do not need to send a screenshot to receive help. Remove personal or confidential content from anything you share.</p>
+          <p>Support messages are handled through the email service used for that correspondence. We retain inquiry emails and related communications for as long as reasonably necessary for operations, legal compliance or recordkeeping. Contact us to ask about access to or deletion of support information you have sent.</p>
+          <h2>Your controls</h2>
+          <p>You can close a capture session with Escape, quit AniShot, or revoke its screen capture permission in System Settings under Privacy &amp; Security. Permission names vary by macOS version. You can delete saved images in Finder and replace clipboard contents by copying something else. Copies retained by clipboard managers, backups, synced folders, or people you shared with are controlled separately.</p>
+          <p>There is no AniShot cloud account or cloud screenshot library to delete. Uninstalling the app does not automatically delete exported images or all local preferences.</p>
+          <h2>Scope and changes</h2>
+          <p>This policy covers the AniShot app and voluntary support correspondence. The separate <a href="/privacy-policy/">Aniloom website privacy policy</a> covers its contact form, hosting, fonts and communications providers.</p>
+          <p>We will update this policy if AniShot&#x27;s practices change and revise the effective date. Material changes to data handling will be reflected in the app&#x27;s relevant disclosures.</p>
+          <h2>Contact</h2>
+          <p>Provider: Aniloom Technologies LLC</p>
+          <p>Email: <a href="mailto:support@aniloom.tech">support@aniloom.tech</a></p>
+          <p>Public contact details: Sacramento, California, USA. App support is available by email.</p>
+        </div>
+      </article>
+    </section>
+  </main>
+</BaseLayout>
