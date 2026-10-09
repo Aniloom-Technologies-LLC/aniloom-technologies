@@ -4,6 +4,14 @@
     <title>AniShot Screen Capture updates</title>
     <link>https://aniloom.tech/anishot/</link>
     <item>
+      <title>AniShot 0.15.0</title>
+      <description>One Universal download with native Intel and Apple silicon code. Redesigned drag-to-Applications installer with large icons and a directional arrow. Requires macOS Sonoma 14 or newer. Real Intel hardware testing remains pending; this development version is not notarized.</description>
+      <sparkle:version>66</sparkle:version>
+      <sparkle:shortVersionString>0.15.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0.0</sparkle:minimumSystemVersion>
+      <enclosure sparkle:edSignature="R0EdEI71QyOO0riPKSYjypJ48NQH38Bh2S/5Fif4MkN6W3nuwHlDDVMquMglcSVt4nL90iVdeqygyNVVCq4NBQ==" url="https://aniloom.tech/downloads/anishot/AniShot-Screen-Capture-0.15.0-universal-development.dmg" length="2454422" type="application/octet-stream" />
+    </item>
+    <item>
       <title>AniShot 0.14.1</title>
       <description>Fixes Edit Extensions opening sharing settings while preserving the capture. Simplifies Share to a native menu without the preview header. Compatible installed sharing extensions remain available. Apple silicon development version; not notarized.</description>
       <sparkle:version>65</sparkle:version>

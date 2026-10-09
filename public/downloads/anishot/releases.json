@@ -1,5 +1,18 @@
 [
   {
+    "file": "AniShot-Screen-Capture-0.15.0-universal-development.dmg",
+    "version": "0.15.0",
+    "internalVersion": "66",
+    "signature": "R0EdEI71QyOO0riPKSYjypJ48NQH38Bh2S/5Fif4MkN6W3nuwHlDDVMquMglcSVt4nL90iVdeqygyNVVCq4NBQ==",
+    "length": 2454422,
+    "sha256": "9174ea0ffeeb0965d506130db7997a15e1cee233082dddf63a4dd549c4ade32b",
+    "notes": "One Universal download with native Intel and Apple silicon code. Redesigned drag-to-Applications installer with large icons and a directional arrow. Requires macOS Sonoma 14 or newer. Real Intel hardware testing remains pending; this development version is not notarized.",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ]
+  },
+  {
     "file": "AniShot-Screen-Capture-0.14.1-arm64-development.dmg",
     "version": "0.14.1",
     "internalVersion": "65",

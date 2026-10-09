@@ -5,7 +5,7 @@ import Scene from "../components/Scene.astro";
 // Product facts and release authority: companion AniShot docs/product.md.
 import latestRelease from "../../public/downloads/anishot/latest.json";
 const downloadUrl = latestRelease.url;
-const downloadWarning = `Development version ${latestRelease.version} for Apple silicon. Not notarized; macOS may block opening.`;
+const downloadWarning = `Development version ${latestRelease.version} for Intel and Apple silicon. Intel testing pending. Not notarized; macOS may block opening.`;
 
 const tools = [
   { name: "Pen & Marker", icon: "pen", text: "Sketch a thought or highlight several important rows and controls across a page." },
@@ -18,18 +18,18 @@ const tools = [
 const questions = [
   { question: "Is AniShot available to download?", answer: "You can download the development build for testing. It is Apple Development signed, not notarized, and its recorded Gatekeeper assessment was rejected. macOS may block opening it. A free Mac App Store release is planned, not live." },
   { question: "Is AniShot free?", answer: "AniShot is completely free to use. All features are included, and we currently plan to keep it free." },
-  { question: "Does AniShot need Rosetta?", answer: "No. AniShot runs natively on Apple silicon, and its bundled update components also support Apple silicon. It does not need Rosetta to translate an Intel app. Native architecture does not guarantee compatibility with every future macOS release." },
+  { question: "Does AniShot need Rosetta?", answer: "The Universal application and its bundled update components contain native Intel and Apple silicon code. Apple silicon runs without Rosetta. Real Intel hardware testing remains pending. Native architecture does not guarantee compatibility with every future macOS release." },
   { question: "Why does a screenshot app ask for Screen Recording permission?", answer: "macOS uses this permission for screen capture, including still screenshots. AniShot captures only when you request a screenshot; it does not record video or audio. Setup guides you to the screen-access setting. If access is missing, allow AniShot in Privacy & Security under Screen Recording or Screen & System Audio Recording, then reopen if macOS asks." },
   { question: "Does AniShot change my macOS screenshot shortcuts?", answer: "No. Use Shift+Command+9 or choose one custom shortcut. AniShot leaves system shortcut settings unchanged. If a custom combination is already reserved, free it in macOS or the app that owns it, then record it again in AniShot." },
   { question: "Can I annotate during a call without saving?", answer: "You can draw on a frozen screen and dismiss the overlay without exporting. Check that participants can see AniShot in the selected sharing mode. Meeting compatibility is still being verified." },
   { question: "Does AniShot upload screenshots?", answer: "The current app processes screenshots and annotations locally and has no screenshot-upload service or account requirement. Clipboard syncing, saved-file syncing, and meeting sharing depend on other software and your settings." },
   { question: "How do updates work?", answer: "From version 0.11.0, AniShot checks for updates daily by default. You can disable automatic checks or check manually in Settings → Updates. Installation asks for confirmation. Update requests never include screenshots or drawings." },
   { question: "Can AniShot record my screen?", answer: "Screen recording is not implemented. AniShot copies PNG screenshots and saves PNG or JPEG images." },
-  { question: "Which Macs can use AniShot?", answer: "Public release requirements are not finalized. The current development build is for Apple silicon. It declares macOS 14 as its minimum, but minimum-OS acceptance and distribution checks remain pending. Intel support has not been established." },
+  { question: "Which Macs can use AniShot?", answer: "The Universal development download contains native Intel and Apple silicon code and requires macOS Sonoma 14 or newer. The hardware target includes MacBook Air and Pro from 2018 onward. Real Intel hardware and minimum-OS testing remain pending." },
 ];
 ---
 
-<BaseLayout title="AniShot Screen Capture for Mac | Aniloom Technologies" description="Free screenshots for Apple silicon without Rosetta. Freeze before selection, annotate, then copy, save, or share. Development download available.">
+<BaseLayout title="AniShot Screen Capture for Mac | Aniloom Technologies" description="Free screenshots for Intel and Apple silicon Macs. Freeze before selection, annotate, then copy, save, or share. Universal development download available.">
   <main id="main-content" class="anishot">
     <section class="anishot-hero section-shell" aria-labelledby="anishot-title">
       <p class="eyebrow">Free screenshots and annotation for Mac</p>
@@ -42,7 +42,7 @@ const questions = [
           <p>Freeze your screen before selecting an area. Draw an arrow, highlight a detail, or add a note directly on the frozen image.</p>
           <p>Copy a PNG, save PNG or JPEG, share through macOS, or dismiss the overlay when your explanation is done.</p>
           <p class="anishot-availability">Free to use. All features included.</p>
-          <p class="anishot-availability">Runs natively on Apple silicon. No Rosetta required.</p>
+          <p class="anishot-availability">One download for Intel and Apple silicon. No Rosetta required.</p>
           <a class="button button--primary anishot-download" href={downloadUrl} download aria-describedby="hero-download-warning"><img src="/assets/images/anishot/app-icon.png" width="40" height="40" alt="" />Download</a>
           <p class="anishot-download-warning" id="hero-download-warning">{downloadWarning}</p>
           <a class="text-link" href="#workflow">Explore the capture workflow <span aria-hidden="true">↓</span></a>
