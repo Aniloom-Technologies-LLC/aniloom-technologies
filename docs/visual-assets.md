@@ -24,7 +24,8 @@ These generated composition studies must be replaced with authentic, approved ph
 | --- | --- | --- | --- |
 | `about-mountain-path` | Original kept privately; approved decorative homepage exports above | Internal study; public exports `editorial` | Fictional anonymous adults, fictional dog, unconfirmed location |
 | `studio-visual-review` | Original kept privately; approved decorative homepage export above | Internal study; public export `editorial` | Fictional anonymous people and dog in an unconfirmed studio |
-| `product-flow-review` | Capabilities and About illustration | `editorial` | Fictional anonymous hands and schematic product material; About reuse authorized October 9, 2026, with an illustrative caption and alt text |
+| `product-flow-review` | Capabilities illustration | `editorial` | Fictional anonymous hands and schematic product material; temporary About reuse replaced October 9, 2026 |
+| `collaborative-prototype-review` | About panoramic illustration | `editorial` | Fictional anonymous cropped adults reviewing paper interface prototypes, not identified as Aniloom staff; owner-requested unique scene October 9, 2026, with illustrative caption and alt text |
 | `worktable-diagram-review` | Archived, removed from founder card | `placeholder` | Fictional anonymous subject, explicitly not Ino |
 | `printed-design-state-review` | Archived, removed from cofounder card | `placeholder` | Fictional anonymous subject, explicitly not Olena |
 

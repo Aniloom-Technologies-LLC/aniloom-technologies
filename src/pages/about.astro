@@ -13,8 +13,8 @@ import GradientText from "../components/GradientText.astro";
 
     <figure class="visual-story about-collaboration section-shell" data-reveal>
       <picture>
-        <source srcset="/assets/images/editorial/product-flow-review.avif" type="image/avif" />
-        <img src="/assets/images/editorial/product-flow-review.webp" alt="Illustration of hands reviewing a product flow on paper beside a wireframe on a tablet." width="1360" height="1020" loading="lazy" decoding="async" />
+        <source srcset="/assets/images/editorial/collaborative-prototype-review.avif" type="image/avif" />
+        <img src="/assets/images/editorial/collaborative-prototype-review.webp" alt="Illustration of collaborators discussing paper interface prototypes and making notes around a table." width="2172" height="724" loading="lazy" decoding="async" />
       </picture>
       <figcaption><span>Shared product review</span><p>An illustration of product decisions taking shape through discussion.</p></figcaption>
     </figure>
@@ -47,12 +47,12 @@ import GradientText from "../components/GradientText.astro";
 </BaseLayout>
 
 <style>
-  .about-collaboration picture { aspect-ratio: 16 / 9; }
+  .about-collaboration picture { aspect-ratio: 3 / 1; }
   .leadership-card--cto { grid-column: 1 / -1; grid-template-columns: minmax(180px, 240px) minmax(0, 1fr); min-height: 0; align-items: center; }
   .leadership-card--cto .leadership-card__media picture { flex: initial; min-height: 0; aspect-ratio: 1; }
   .leadership-card--cto h2 { overflow-wrap: anywhere; }
   @media (max-width: 600px) {
-    .about-collaboration picture { aspect-ratio: 4 / 3; }
+    .about-collaboration picture { aspect-ratio: 2 / 1; }
     .leadership-card--cto { grid-template-columns: minmax(0, 1fr); }
     .leadership-card--cto .leadership-card__media { width: 100%; max-width: 280px; }
   }
