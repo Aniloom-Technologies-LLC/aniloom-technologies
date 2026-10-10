@@ -25,7 +25,7 @@ const endpoint = import.meta.env.PUBLIC_CONTACT_ENDPOINT || "https://aniloom-con
           <p class="contact-form__note" id="contact-privacy">We use your details to respond to your inquiry. <a href="/privacy-policy/">Privacy policy</a></p>
           <button class="button" type="submit" data-contact-submit disabled>Send message</button>
           <p class="contact-status" data-contact-status role="status" aria-live="polite" aria-atomic="true" hidden>Checking message availability…</p>
-          <noscript><p>To use this form, enable JavaScript for spam protection. You can also email <a href="mailto:support@aniloom.tech">support@aniloom.tech</a>.</p></noscript>
+          <noscript><p>To use this form, enable JavaScript for spam protection. You can also email <span style="user-select: all">support@aniloom.tech</span>.</p></noscript>
         </form>
       </section>
     </Scene>
@@ -33,11 +33,12 @@ const endpoint = import.meta.env.PUBLIC_CONTACT_ENDPOINT || "https://aniloom-con
       <section class="contact-direct section-shell" aria-labelledby="contact-direct-title">
         <p class="eyebrow">Prefer email?</p>
         <h2 id="contact-direct-title">Write to us directly.</h2>
-        <div class="contact-direct__actions"><a class="contact-email" href="mailto:support@aniloom.tech">support@aniloom.tech</a><button type="button" class="button button--secondary" data-copy-email hidden>Copy email</button></div>
+        <div class="contact-direct__actions"><span class="contact-email" style="user-select: all">support@aniloom.tech</span><button type="button" class="button button--secondary" data-copy-email hidden>Copy email</button></div>
         <p class="contact-direct__location">Based in California, USA.</p>
         <p data-copy-status role="status" aria-live="polite" aria-atomic="true"></p>
       </section>
     </Scene>
   </main>
+  <script src="/assets/js/email-copy.js" defer></script>
   <script src="/assets/js/contact-form.js" defer></script>
 </BaseLayout>

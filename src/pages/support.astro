@@ -13,11 +13,20 @@ import "../styles/global.css";
     <link rel="icon" href="/favicon.ico" sizes="any" />
   </head>
   <body>
-    <main><a href="mailto:support@aniloom.tech">support@aniloom.tech</a></main>
+    <main>
+      <div class="support-contact">
+        <span class="support-email">support@aniloom.tech</span>
+        <button type="button" class="button button--secondary" data-copy-email hidden>Copy email</button>
+        <p data-copy-status role="status" aria-live="polite" aria-atomic="true"></p>
+      </div>
+    </main>
+    <script src="/assets/js/email-copy.js" defer></script>
   </body>
 </html>
 
 <style>
   main { min-height: 100svh; display: grid; place-items: center; padding: 1.5rem; }
-  a { font-size: clamp(1.125rem, 4vw, 1.75rem); }
+  .support-contact { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; text-align: center; max-width: 100%; }
+  .support-email { font-size: clamp(1.125rem, 4vw, 1.75rem); color: var(--text); user-select: all; overflow-wrap: anywhere; }
+  [data-copy-status] { min-height: 1.55em; margin: 0; font-size: .875rem; }
 </style>

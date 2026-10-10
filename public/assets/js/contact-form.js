@@ -1,19 +1,4 @@
 const form = document.querySelector("[data-contact-form]");
-const copyButton = document.querySelector("[data-copy-email]");
-
-if (copyButton && navigator.clipboard) {
-  copyButton.hidden = false;
-  copyButton.addEventListener("click", async () => {
-    const status = document.querySelector("[data-copy-status]");
-    try {
-      await navigator.clipboard.writeText("support@aniloom.tech");
-      status.textContent = "Email copied.";
-    } catch {
-      status.textContent = "Select the email address to copy it.";
-    }
-  });
-}
-
 if (form) {
   const submit = form.querySelector("[data-contact-submit]");
   const status = form.querySelector("[data-contact-status]");
