@@ -36,7 +36,10 @@ import GradientText from "../components/GradientText.astro";
         <article class="leadership-card leadership-card--text" data-reveal>
           <div><p class="eyebrow">Founder & CEO</p><h2>Ino</h2><p>Ino leads company direction, major client relationships, and decisions about how Aniloom approaches a project. He brings more than 10 years of professional experience in game development.</p></div>
         </article>
-        <article class="leadership-card leadership-card--text" data-reveal>
+        <article class="leadership-card leadership-card--portrait" data-reveal>
+          <figure class="leadership-card__media">
+            <picture><img src="/assets/team/olena-portrait.webp" alt="Olena" width="800" height="800" loading="lazy" decoding="async" /></picture>
+          </figure>
           <div><p class="eyebrow">Co-Founder & COO</p><h2>Olena</h2><p>Olena leads Aniloom’s Quality Engineering practice and designs the systems, standards, and delivery workflows used by the team.</p></div>
         </article>
         <article class="leadership-card leadership-card--cto" data-reveal>
@@ -63,6 +66,8 @@ import GradientText from "../components/GradientText.astro";
   .about-story__copy { max-width: 62ch; }
   .about-story__copy p { margin: 0 0 24px; }
   .about-story__copy p:last-child { margin-bottom: 0; }
+  .leadership-card--portrait { grid-template-columns: minmax(160px, 200px) minmax(0, 1fr); gap: 28px; min-height: 0; align-items: center; }
+  .leadership-card--portrait .leadership-card__media picture { flex: initial; min-height: 0; aspect-ratio: 1; }
   .leadership-card--cto { grid-column: 1 / -1; grid-template-columns: minmax(180px, 240px) minmax(0, 1fr); min-height: 0; align-items: center; }
   .leadership-card--cto .leadership-card__media picture { flex: initial; min-height: 0; aspect-ratio: 1; }
   .leadership-card--cto h2 { overflow-wrap: anywhere; }
@@ -71,6 +76,8 @@ import GradientText from "../components/GradientText.astro";
   }
   @media (max-width: 600px) {
     .about-collaboration picture { aspect-ratio: 2 / 1; }
+    .leadership-card--portrait { grid-template-columns: minmax(0, 1fr); }
+    .leadership-card--portrait .leadership-card__media { width: 100%; max-width: 280px; }
     .leadership-card--cto { grid-template-columns: minmax(0, 1fr); }
     .leadership-card--cto .leadership-card__media { width: 100%; max-width: 280px; }
   }

@@ -78,3 +78,7 @@ These exports are the only website use of the supplied logo artwork. The header,
 - Public filenames remain short and descriptive; internal classification is maintained in this register instead of the URL.
 - Replacing a placeholder with authentic photography requires recorded subject context, creator/source, consent, ownership, publication permission, privacy and confidentiality review, allowed crops, and any claim boundary.
 - Editorial illustrations may remain public only while their placement cannot reasonably imply documentary or client proof.
+
+## Olena About portrait, October 9, 2026
+
+`public/assets/team/olena-portrait.webp`: owner-supplied portrait identified as Olena, 800x800 square crop, sRGB, metadata stripped. Documentary identity use, not office or client evidence. Source and crop provenance stay in the companion Brand System under `assets/team/olena/`; the original document-inbox file is unchanged.
