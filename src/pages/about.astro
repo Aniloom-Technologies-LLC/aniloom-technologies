@@ -1,34 +1,33 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import GradientText from "../components/GradientText.astro";
+import Scene from "../components/Scene.astro";
 ---
 
-<BaseLayout title="About Aniloom | Our Story and Leadership | Aniloom Technologies" description="Learn why Ino and Olena built Aniloom, how we work as product partners, and who leads our technology, Quality Engineering, and delivery.">
+<BaseLayout appearance="dark" title="About Aniloom | Our Story and Leadership | Aniloom Technologies" description="Learn why Ino and Olena built Aniloom, how we work as product partners, and who leads our technology, Quality Engineering, and delivery.">
   <main id="main-content">
-    <section class="page-hero section-shell">
-      <p class="eyebrow" data-reveal>About Aniloom</p>
-      <h1 data-reveal>The people behind <GradientText>Aniloom.</GradientText></h1>
-      <p class="page-hero__lead" data-reveal>Aniloom Technologies brings software development, design, and testing together for studios, startups, and product teams that need specialist expertise.</p>
-    </section>
-
-    <figure class="visual-story about-collaboration section-shell" data-reveal>
-      <picture>
-        <source srcset="/assets/images/editorial/collaborative-prototype-review.avif" type="image/avif" />
-        <img src="/assets/images/editorial/collaborative-prototype-review.webp" alt="Illustration of collaborators discussing paper interface prototypes and making notes around a table." width="2172" height="724" loading="lazy" decoding="async" />
-      </picture>
-      <figcaption><span>Shared product review</span><p>An illustration of product decisions taking shape through discussion.</p></figcaption>
-    </figure>
-
-    <section class="about-story section-shell section-pad" aria-labelledby="our-story-title">
-      <div class="section-heading" data-reveal>
-        <div><p class="eyebrow">Our story</p><h2 id="our-story-title">Why we built Aniloom.</h2></div>
-        <div class="about-story__copy">
-          <p>Ino had long wanted to build a company of his own. Ino and Olena each bring more than ten years in tech. They created Aniloom to turn that experience into a service they could shape together.</p>
-          <p>We want to work as partners with our clients, with a shared interest in the product's success. We invest time in research and conversation to understand what the client actually needs before planning the work.</p>
-          <p>AI gives experienced teams more ways to accelerate the work. We use it where it can save time without compromising quality. People remain responsible for the decisions, review, and result we deliver.</p>
+    <Scene appearance="dark">
+      <section class="about-intro section-shell">
+        <p class="eyebrow" data-reveal>About Aniloom</p>
+        <div class="about-intro__grid">
+          <h1 data-reveal>The people behind <GradientText>Aniloom.</GradientText></h1>
+          <div class="about-intro__copy" data-reveal>
+            <p>Ino had long wanted to build a company of his own. He and Olena each bring more than ten years in tech. They founded Aniloom Technologies to shape a service around their experience and the client's goal.</p>
+            <p>We work as partners with a shared interest in the product's success. We invest time in research and conversation to understand what you actually need before planning the work.</p>
+            <p>We use AI where it can save time without compromising quality. People remain responsible for the decisions, review, and result we deliver.</p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </Scene>
+
+    <Scene appearance="light">
+      <figure class="about-collaboration">
+        <picture>
+          <source srcset="/assets/images/editorial/collaborative-prototype-review.avif" type="image/avif" />
+          <img src="/assets/images/editorial/collaborative-prototype-review.webp" alt="Illustration of collaborators discussing paper interface prototypes and making notes around a table." width="2172" height="724" loading="lazy" decoding="async" />
+        </picture>
+        <figcaption class="section-shell">An illustration of product decisions taking shape through discussion.</figcaption>
+      </figure>
 
     <section class="leadership section-shell section-pad">
       <div class="section-heading" data-reveal><div><p class="eyebrow">Leadership</p><h2>Who leads the work.</h2></div><p>Company direction, technical decisions, and release quality each have a clear owner. Meet the people responsible for them.</p></div>
@@ -51,6 +50,8 @@ import GradientText from "../components/GradientText.astro";
       </div>
     </section>
 
+    </Scene>
+
     <section class="callout surface-dark section-shell section-pad">
       <p class="eyebrow">Working with Aniloom</p>
       <h2>Tell us what you want to build or improve.</h2>
@@ -61,20 +62,30 @@ import GradientText from "../components/GradientText.astro";
 </BaseLayout>
 
 <style>
-  .about-collaboration picture { aspect-ratio: 3 / 1; }
-  .about-story .section-heading { align-items: start; margin-bottom: 0; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  .about-story__copy { max-width: 62ch; }
-  .about-story__copy p { margin: 0 0 24px; }
-  .about-story__copy p:last-child { margin-bottom: 0; }
+  .about-intro { padding-block: clamp(120px, 10vw, 160px) clamp(56px, 6vw, 88px); }
+  .about-intro > .eyebrow { margin-bottom: 24px; }
+  .about-intro__grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 88px); align-items: start; }
+  .about-intro h1 { margin: 0; font-size: clamp(3.2rem, 6.3vw, 6.6rem); font-weight: 500; }
+  .about-intro__copy { max-width: 62ch; }
+  .about-intro__copy p { margin: 0 0 20px; }
+  .about-intro__copy p:last-child { margin-bottom: 0; }
+  .about-collaboration { margin: 0; }
+  .about-collaboration picture { display: block; width: 100%; aspect-ratio: 3 / 1; overflow: hidden; }
+  .about-collaboration img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .about-collaboration figcaption { padding-block: 14px 0; color: var(--quiet); font-size: .75rem; }
+  .leadership { padding-block: clamp(56px, 6vw, 88px); }
+  .leadership .section-heading { margin-bottom: clamp(32px, 4vw, 56px); }
   .leadership-card--portrait { grid-template-columns: minmax(160px, 200px) minmax(0, 1fr); gap: 28px; min-height: 0; align-items: center; }
   .leadership-card--portrait .leadership-card__media picture { flex: initial; min-height: 0; aspect-ratio: 1; }
   .leadership-card--cto { grid-column: 1 / -1; grid-template-columns: minmax(180px, 240px) minmax(0, 1fr); min-height: 0; align-items: center; }
   .leadership-card--cto .leadership-card__media picture { flex: initial; min-height: 0; aspect-ratio: 1; }
   .leadership-card--cto h2 { overflow-wrap: anywhere; }
   @media (max-width: 900px) {
-    .about-story .section-heading { grid-template-columns: minmax(0, 1fr); }
+    .about-intro__grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   }
   @media (max-width: 600px) {
+    .about-intro { padding-block: 112px 48px; }
+    .about-intro h1 { font-size: clamp(2.7rem, 11vw, 4rem); }
     .about-collaboration picture { aspect-ratio: 2 / 1; }
     .leadership-card--portrait { grid-template-columns: minmax(0, 1fr); }
     .leadership-card--portrait .leadership-card__media { width: 100%; max-width: 280px; }

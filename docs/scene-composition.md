@@ -15,7 +15,8 @@ Light is the reading and evaluation canvas: understand the offer, compare prices
 | Quality Engineering | Light introduction, choices, deliverables | Practice standards, closing contact/footer |
 | Playable Ads pricing | Light local navigation, immediately visible packages, compact commercial note, FAQ | Compact production-planning method after the catalog, closing contact/footer |
 | Quality Engineering pricing | Continuous light package comparison, scope, exclusions, and commercial terms | Closing contact/footer |
-| Capabilities and About | Light introduction, expertise, people | Closing contact/footer |
+| Capabilities | Light introduction, expertise | Closing contact/footer |
+| About | Dark compact founder introduction; full-width editorial panorama followed by light leadership | Founder introduction, closing contact/footer |
 | How We Work | Light introduction, engagement models and entry points | Delivery process, closing contact/footer |
 | Notes index and articles | Continuous light reading canvas | Footer only |
 | Privacy and terms | Continuous light reading canvas | Footer only |
@@ -199,3 +200,7 @@ width as Adapted, below the main pair. Portrait retains full-width stacked cards
 Astro validation and production build pass. Visual review at 1280px desktop,
 844px landscape, and 390px portrait confirms equal widths without horizontal
 overflow.
+
+## About composition, October 9, 2026
+
+Owner-approved: combine the introduction and founding story into one compact dark entry. Follow with an edge-to-edge collaboration panorama without border or rounded corners, immediately before the light leadership chapter. Keep its editorial caption below the image, never text over the image or a documentary team claim. Retain the dark closing invitation. About explicitly enters dark so header, browser theme color, and semantic roles agree. This supersedes the earlier light About entry in the site-wide scene audit.
