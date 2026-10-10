@@ -27,7 +27,7 @@ Light is the reading and evaluation canvas: understand the offer, compare prices
 ## Implementation invariants
 
 - Owner-approved October 8 revision: the first two product scenes remain unchanged. The company presentation contains the approved managed-delivery statement instead of a second standalone statement scene. Capabilities use the approved decorative worktable/dog image without captions or team claims. The dark delivery band introduces AI as a conditional efficiency tool, with human responsibility and no invented examples or speed metrics. Notes lead into a thin full-bleed mountain image and the existing dark footer/contact invitation. Founder biographies remain on About. AI text uses ordinary semantic text roles, not a gold accent.
-- `BaseLayout` defaults to `appearance="light"`; home, Playable Ads overview, and Contact explicitly enter dark.
+- `BaseLayout` defaults to `appearance="light"`; home, About, Playable Ads overview, and Contact explicitly enter dark.
 - The appearance prop controls initial canvas, navigation, and browser theme color. It is page art direction, not a preference, toggle, saved setting, or OS-theme response.
 - `Scene.astro` groups related content into a full-width canvas; `section-shell` constrains only the inner content. Keep consecutive reading sections together.
 - A scene is a semantic chapter, not one section per heading. Keep package comparisons, detailed scope, FAQ, people, and long reading light. A compact delivery method or product-responsibility passage may form a dark chapter between light chapters; do not split the package catalog or turn the privacy policy dark.
@@ -58,7 +58,9 @@ Audited all 18 current content pages and the five legacy redirect documents.
 The route map above is the current assignment; dated records below describe
 earlier revisions, not alternative templates.
 
-- Home and About retain their approved composition. The first homepage product
+- Home retains its approved composition. About's separate owner-approved
+  October 9 revision now uses a compact dark introduction and light leadership;
+  see the About composition record below. The first homepage product
   now has an explicit dark token scope, matching the explicit light scope of
   Release Testing without changing its appearance.
 - Playable Pricing keeps all three packages and the commercial note together
@@ -78,9 +80,21 @@ Public wording, package scope, prices, assets, and interactions are unchanged.
 Astro check reports zero errors, warnings, and hints; production build passes.
 A built-HTML audit verifies entry canvases, explicit dark footers, uninterrupted
 article/legal reading, new scene boundaries, light package catalogs, and 438
-internal page links/anchors. Browser review in desktop, portrait, and landscape
-is pending: the Mac is locked and browser control is unavailable. This revision
-must complete visual review before publication; build success is not visual QA.
+internal page links/anchors. Browser review was initially blocked by the locked
+Mac and is now complete for all 18 pages at 1440x900 desktop, 390x844 portrait,
+and 844x390 landscape. Inspected full-page composition after scrolling through
+every reveal section, plus detailed views of the changed chapters. No horizontal
+overflow or broken loaded images was found. Pricing stays visible at entry,
+the mobile menu opens/closes, and FAQ toggles with Enter while retaining the
+2px semantic focus indicator. No contact message or CAPTCHA was submitted.
+
+The scene commit `60ea21c` reached `main` with the separate About portrait and
+composition updates `28e9b5a` and `4de88a0`. GitHub Pages deployment for `4de88a0`
+completed successfully. Live browser inspection confirms dark production
+planning on Playable Pricing, light reading/FAQ, and dark local-processing
+responsibility on AniShot. Canonical scene roles and the current page map are
+aligned in the companion Brand System. Review captures are local ignored
+artifacts, not public site assets.
 
 ## Playable consolidation, October 6, 2026
 
