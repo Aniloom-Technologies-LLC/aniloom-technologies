@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import GradientText from "../components/GradientText.astro";
 ---
 
-<BaseLayout title="About Aniloom | Company and Leadership | Aniloom Technologies" description="Meet Ino, Olena, and Oleksandr, the people leading Aniloom's company direction, technology, Quality Engineering, and delivery workflows.">
+<BaseLayout title="About Aniloom | Our Story and Leadership | Aniloom Technologies" description="Learn why Ino and Olena built Aniloom, how we work as product partners, and who leads our technology, Quality Engineering, and delivery.">
   <main id="main-content">
     <section class="page-hero section-shell">
       <p class="eyebrow" data-reveal>About Aniloom</p>
@@ -18,6 +18,17 @@ import GradientText from "../components/GradientText.astro";
       </picture>
       <figcaption><span>Shared product review</span><p>An illustration of product decisions taking shape through discussion.</p></figcaption>
     </figure>
+
+    <section class="about-story section-shell section-pad" aria-labelledby="our-story-title">
+      <div class="section-heading" data-reveal>
+        <div><p class="eyebrow">Our story</p><h2 id="our-story-title">Why we built Aniloom.</h2></div>
+        <div class="about-story__copy">
+          <p>Ino had long wanted to build a company of his own. Ino and Olena each bring more than ten years in tech. They created Aniloom to turn that experience into a service they could shape together.</p>
+          <p>We want to work as partners with our clients, with a shared interest in the product's success. We invest time in research and conversation to understand what the client actually needs before planning the work.</p>
+          <p>AI gives experienced teams more ways to accelerate the work. We use it where it can save time without compromising quality. People remain responsible for the decisions, review, and result we deliver.</p>
+        </div>
+      </div>
+    </section>
 
     <section class="leadership section-shell section-pad">
       <div class="section-heading" data-reveal><div><p class="eyebrow">Leadership</p><h2>Who leads the work.</h2></div><p>Company direction, technical decisions, and release quality each have a clear owner. Meet the people responsible for them.</p></div>
@@ -48,9 +59,16 @@ import GradientText from "../components/GradientText.astro";
 
 <style>
   .about-collaboration picture { aspect-ratio: 3 / 1; }
+  .about-story .section-heading { align-items: start; margin-bottom: 0; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .about-story__copy { max-width: 62ch; }
+  .about-story__copy p { margin: 0 0 24px; }
+  .about-story__copy p:last-child { margin-bottom: 0; }
   .leadership-card--cto { grid-column: 1 / -1; grid-template-columns: minmax(180px, 240px) minmax(0, 1fr); min-height: 0; align-items: center; }
   .leadership-card--cto .leadership-card__media picture { flex: initial; min-height: 0; aspect-ratio: 1; }
   .leadership-card--cto h2 { overflow-wrap: anywhere; }
+  @media (max-width: 900px) {
+    .about-story .section-heading { grid-template-columns: minmax(0, 1fr); }
+  }
   @media (max-width: 600px) {
     .about-collaboration picture { aspect-ratio: 2 / 1; }
     .leadership-card--cto { grid-template-columns: minmax(0, 1fr); }
