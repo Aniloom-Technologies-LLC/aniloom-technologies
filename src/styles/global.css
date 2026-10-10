@@ -665,7 +665,7 @@ p { color: var(--muted); }
 .contact-direct h2 { margin: 18px 0 26px; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 500; }
 .contact-direct__actions { display: flex; align-items: center; flex-wrap: wrap; gap: 18px 28px; }
 .contact-direct__location { margin: 18px 0 0; font-size: .9rem; }
-.contact-email { color: var(--link); font-size: clamp(1.15rem, 3vw, 1.6rem); text-decoration: underline; text-underline-offset: .2em; overflow-wrap: anywhere; }
+.contact-email { color: var(--link); font-size: clamp(1.15rem, 3vw, 1.6rem); text-decoration: none; user-select: all; overflow-wrap: anywhere; }
 .contact-direct [data-copy-status] { min-height: 1.55em; margin: 12px 0 0; font-size: .85rem; }
 .contact-page [hidden], .contact-direct [hidden] { display: none; }
 @media (max-width: 850px) { .contact-page { grid-template-columns: 1fr; gap: 24px; padding-top: 104px; } .contact-page h1 { margin-bottom: 18px; } .contact-page__intro > p:last-child { max-width: 620px; margin-bottom: 0; } }
