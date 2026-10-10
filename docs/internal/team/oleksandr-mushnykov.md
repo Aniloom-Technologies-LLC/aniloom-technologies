@@ -7,3 +7,5 @@ Canonical role, experience, and copy: `../../Aniloom Brand System/website/drafts
 Public asset: `/assets/team/oleksandr-mushnykov-studio-portrait.webp`, 800 by 800 pixels. Exported from the owner's requested AI-assisted studio likeness portrait. Editorial likeness, not documentary evidence of a real photo session, office, or employment status. Owner authorized this specific use based on real supplied face references; the general ban on fictional team imagery remains.
 
 Master and exact generation prompts: `../../Aniloom Brand System/assets/team/oleksandr-mushnykov/provenance.md` relative to the repository root. Reference photos and the CV remain private. The public export contains no internal prompt or source metadata.
+
+Owner update, October 9, 2026: use Alex as the visible About name, including the biography and portrait alt text. Oleksandr Mushnykov remains the formal identity in internal records. Keep personal LinkedIn links off About; retain the verified URLs in the Brand System.
