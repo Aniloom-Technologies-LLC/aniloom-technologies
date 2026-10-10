@@ -1,8 +1,23 @@
 # GitHub Pages direct delivery
 
-The website already deploys to GitHub Pages through `.github/workflows/deploy.yml`. This transition removes Cloudflare's HTTP proxy for `aniloom.tech` and `www.aniloom.tech`, while retaining Cloudflare DNS, the domain, URLs, deployment workflow, and separate Workers. It does not restore blocked contact submissions or playable demos by itself.
+The website deploys to GitHub Pages through `.github/workflows/deploy.yml`. Direct delivery was activated on 10 October 2026: `aniloom.tech` and `www.aniloom.tech` no longer use Cloudflare's HTTP proxy. Cloudflare DNS, the domain, URLs, deployment workflow, and separate Workers remain unchanged. This transition does not restore blocked contact submissions or playable demos by itself.
 
-## Readiness on 10 October 2026
+## Active delivery and HTTPS
+
+- The owner changed all four apex A records and four AAAA records to DNS only, and changed the DNS-only `www` CNAME to `aniloom-technologies-llc.github.io`. Public resolution confirms the GitHub Pages addresses for both names.
+- GitHub's DNS health check reports both names eligible for HTTPS. The operator re-saved the existing `aniloom.tech` custom domain through the API without removing it. GitHub then approved a replacement certificate covering `aniloom.tech` and `www.aniloom.tech`, expiring on **8 January 2027**.
+- Re-saving the custom domain temporarily cleared `https_enforced`. After certificate approval, the operator explicitly restored it to `true` through the API and confirmed the final setting. Always recheck HTTPS enforcement after domain updates.
+- At 21:33 UTC, the live hosting-readiness gate passed. All 32 direct origin page/asset checks returned HTTP 200; all four IPv4 endpoints served valid `www` HTTPS and permanent redirects preserving the path and query string.
+- HTTP on the apex redirects to HTTPS. HTTP on `www` redirects through the HTTP apex and then to HTTPS, preserving the path and query string. HTTPS on `www` redirects directly to the HTTPS apex.
+- All eight Spanish consumer-network probes returned HTTP 200 with valid TLS and the replacement certificate: Telefónica in Barcelona and Alicante, Orange in Barcelona and Madrid, Vodafone in Sevilla and Castello de la Plana, and DIGI in Madrid and Barcelona. An initial post-cutover check still encountered a cached Cloudflare address in Alicante; the repeat resolved GitHub and succeeded.
+- Additional HTTPS probes in the United States, Germany, and Japan returned HTTP 200 with valid TLS. IPv6 probes in Germany and the United States also succeeded. These are point-in-time network checks, not a guarantee for every visitor or future availability.
+- The eight focused hosting tests passed. The contact service and playable demos were not redeployed or moved. No live inquiry was submitted.
+
+Regional evidence is available in the Globalping measurements for [Spain](https://api.globalping.io/v1/measurements/2wsZiNGlvb9A09FZn00021IFB), [other regions](https://api.globalping.io/v1/measurements/2a8TwceIljfKdA1yn00021IFB), and [IPv6](https://api.globalping.io/v1/measurements/2UuhuIAdpolbv1v9f00021IFB).
+
+## Preparation checks on 10 October 2026
+
+The findings below describe the pre-cutover state. The certificate blockers were resolved as recorded above.
 
 - GitHub Pages API: custom domain `aniloom.tech`, workflow builds, HTTPS enforcement enabled. Deployment `38018346534` completed successfully for `39c5980` on `main`.
 - GitHub repository API access includes administrator permissions. Authenticated Pages reads succeed through the existing local Git credential. A request to preserve the already-enabled HTTPS enforcement was rejected with HTTP 404, "The certificate has not finished being issued"; the follow-up read confirmed that the existing settings were unchanged. Certificate provisioning must be resolved before retrying that setting.
@@ -14,7 +29,7 @@ The website already deploys to GitHub Pages through `.github/workflows/deploy.ym
 - No DNS, Pages settings, Workers, or production website files were changed during preparation. No inquiry was submitted.
 - The public Cloudflare connection returned HTTP 200 with a certificate expiring on 1 January 2027. The contact `/config` request with the approved Origin returned `ready: true`, and all three demo HEAD requests returned HTTP 200 from this machine. These local responses do not override the earlier Spanish blocking results.
 
-## Current public DNS baseline
+## Public DNS before the transition
 
 Nameservers remain `grant.ns.cloudflare.com` and `venus.ns.cloudflare.com`.
 
@@ -28,6 +43,8 @@ Nameservers remain `grant.ns.cloudflare.com` and `venus.ns.cloudflare.com`.
 These are proxy answers, not the origin values stored in Cloudflare. Do not copy these addresses into origin records for rollback. `www` redirects to `https://aniloom.tech/` through Cloudflare; plain HTTP also redirects to HTTPS.
 
 ## Owner steps in Cloudflare
+
+The owner completed these DNS changes on 10 October 2026. Keep the procedure and target values for future recovery.
 
 Open the `aniloom.tech` zone in Cloudflare, then **DNS > Records**.
 
@@ -53,10 +70,10 @@ IPv6 can be omitted intentionally, but must not retain old or incorrect website 
 
 ## GitHub steps after DNS changes
 
-The operator has authenticated Pages reads and an administrator repository role. GitHub currently rejects the HTTPS-setting request because issuance is unfinished, rather than reporting a permission error. The corresponding panel is [repository Settings > Pages](https://github.com/Aniloom-Technologies-LLC/aniloom-technologies/settings/pages).
+The operator has authenticated Pages API access and an administrator repository role. The approved certificate now allows HTTPS-setting updates; the earlier issuance error no longer blocks them. The corresponding panel is [repository Settings > Pages](https://github.com/Aniloom-Technologies-LLC/aniloom-technologies/settings/pages).
 
 1. Keep Custom domain `aniloom.tech`, Source **GitHub Actions**, and **Enforce HTTPS** enabled. No `public/CNAME` file is required for this workflow deployment.
-2. Recheck the Pages DNS health API after public DNS exposes GitHub addresses. Check certificate provisioning and the actual certificate served by each GitHub IPv4 endpoint, not only the browser connection through Cloudflare.
+2. Recheck the Pages DNS health API after public DNS exposes GitHub addresses. Check certificate provisioning and the actual certificate served by each GitHub IPv4 endpoint, not only the browser connection through Cloudflare. Re-saving the existing custom domain was sufficient for this transition; it reset HTTPS enforcement, which was restored after certificate approval. Never assume a domain update preserves that setting.
 3. If `bad_authz` persists after correct DNS propagation, GitHub documents removing and re-adding the custom domain to restart provisioning. Do this only in a coordinated recovery window: removing the domain can temporarily interrupt routing, including behind Cloudflare. Do not perform this reset while DNS still points at the blocked proxy or remove HTTPS enforcement as a workaround.
 4. Require a replacement certificate covering both the apex and `www`, permanent `www` redirects that preserve paths and query strings, and HTTP-to-HTTPS redirects. Issuance may take time; the Enforce HTTPS option can take up to 24 hours to become available after domain configuration.
 5. Confirm organization-level domain verification under **Organization Settings > Pages**. The Pages API's `protected_domain_state` was null, and the conventional challenge TXT lookup returned no answer. Do not interpret these checks as proof that the domain is verified. If needed, the owner can add GitHub's generated TXT record in Cloudflare; its value must come from GitHub, not be invented.
