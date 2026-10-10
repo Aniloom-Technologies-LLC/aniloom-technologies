@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Scene from "../../components/Scene.astro";
 import PlayableNav from "../../components/PlayableNav.astro";
 import PricingCard from "../../components/PricingCard.astro";
 
@@ -141,6 +142,7 @@ const questions = [
       </div>
     </section>
 
+    <Scene appearance="dark">
     <section class="section-shell section-pad playable-readiness" id="delivery-details" aria-labelledby="delivery-title">
       <div class="section-heading" data-reveal><div><p class="eyebrow">Plan the production</p><h2 id="delivery-title">Agree on the creative before we build.</h2></div><p>We confirm the mechanic, asset sources, review checkpoints, and delivery requirements in one proposal.</p></div>
       <div class="playable-readiness__grid">
@@ -149,6 +151,7 @@ const questions = [
       </div>
       <a class="text-link" href="/playable-ads/#workflow">Explore the full production process <span>↗</span></a>
     </section>
+    </Scene>
 
     <section class="section-shell section-pad playable-faq" id="questions" aria-labelledby="questions-title">
       <div class="section-heading" data-reveal><div><p class="eyebrow">Questions & answers</p><h2 id="questions-title">Know what goes into your playable.</h2></div><p>The result, asset choices, reviews, and timing, explained before you commit.</p></div>

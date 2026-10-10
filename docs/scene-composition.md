@@ -1,6 +1,6 @@
 # Website scene composition
 
-Implementation map, established 2026-10-02. Canonical palette and cross-channel brand guidance live in the companion Aniloom Brand System, not here.
+Implementation map, established 2026-10-02 and updated 2026-10-09. Canonical palette and cross-channel brand guidance live in the companion Aniloom Brand System, not here.
 
 ## Content roles
 
@@ -13,13 +13,15 @@ Light is the reading and evaluation canvas: understand the offer, compare prices
 | Home | Dark Playable Ads, light Release Testing; light capabilities with decorative worktable/dog image and Notes; full-bleed mountain closing image | Playable Ads, compact company presentation, AI/delivery process, footer |
 | Playable Ads overview | Dark product introduction; light playable demos, platforms, creative production, interaction explanation, responsive/provider checks, and FAQ | Introduction, four-step delivery workflow, closing contact/footer |
 | Quality Engineering | Light introduction, choices, deliverables | Practice standards, closing contact/footer |
-| Both pricing catalogs | Light local navigation, immediately visible packages, add-ons, commercial terms; playable pricing contains development inputs, delivery, and production boundaries | Closing contact/footer |
+| Playable Ads pricing | Light local navigation, immediately visible packages, compact commercial note, FAQ | Compact production-planning method after the catalog, closing contact/footer |
+| Quality Engineering pricing | Continuous light package comparison, scope, exclusions, and commercial terms | Closing contact/footer |
 | Capabilities and About | Light introduction, expertise, people | Closing contact/footer |
 | How We Work | Light introduction, engagement models and entry points | Delivery process, closing contact/footer |
 | Notes index and articles | Continuous light reading canvas | Footer only |
 | Privacy and terms | Continuous light reading canvas | Footer only |
-| AniShot | Light product introduction, workflow, tools, availability, FAQ, and compact benchmark disclosure | Frozen-screen explanation, closing product action/footer |
+| AniShot | Light product introduction, workflow, tools, export inspection, settings, availability, FAQ, and compact benchmark disclosure | Frozen-screen explanation, local-processing responsibility, closing product action/footer |
 | Contact | Dark focused form; light direct-email reading and copying section below | Form entry and footer |
+| Support | Minimal standalone light email utility | None; no global header or footer |
 
 ## Implementation invariants
 
@@ -27,7 +29,8 @@ Light is the reading and evaluation canvas: understand the offer, compare prices
 - `BaseLayout` defaults to `appearance="light"`; home, Playable Ads overview, and Contact explicitly enter dark.
 - The appearance prop controls initial canvas, navigation, and browser theme color. It is page art direction, not a preference, toggle, saved setting, or OS-theme response.
 - `Scene.astro` groups related content into a full-width canvas; `section-shell` constrains only the inner content. Keep consecutive reading sections together.
-- Explicit dark scopes are required on method bands, closing callouts, footer, and the Contact form scene, even when the current ancestor is dark. This prevents future inherited token mismatches.
+- A scene is a semantic chapter, not one section per heading. Keep package comparisons, detailed scope, FAQ, people, and long reading light. A compact delivery method or product-responsibility passage may form a dark chapter between light chapters; do not split the package catalog or turn the privacy policy dark.
+- Explicit dark scopes are required on the homepage Playable Ads scene, method bands, closing callouts, footer, and the Contact form scene, even when the current ancestor is dark. This prevents future inherited token mismatches.
 - Swap background, raised surfaces, text tiers, lines, links, focus, gradients, and interaction roles together. Yellow decisions retain dark ink in either scene.
 - Light canvas is `#F5F5F7`, not white. White belongs to raised package/input surfaces. Dark base is `#07131A`, with `#0E1D25` emphasis bands and `#1B303A` raised surfaces.
 - Images and embedded playables keep their own grading. Their palette does not decide the surrounding reading canvas.
@@ -47,6 +50,36 @@ Light is the reading and evaluation canvas: understand the offer, compare prices
 ## Review checklist
 
 Inspect desktop, mobile portrait, and mobile landscape. Review each page family at entry, a light/dark boundary, and the closing action. Check text/link/focus roles, mobile menus, contact navigation and submission states, content width, and first-view pricing. Articles and legal reading must not acquire decorative scene interruptions. Run Astro validation and production build for layout changes.
+
+## Site-wide composition audit, October 9, 2026
+
+Audited all 18 current content pages and the five legacy redirect documents.
+The route map above is the current assignment; dated records below describe
+earlier revisions, not alternative templates.
+
+- Home and About retain their approved composition. The first homepage product
+  now has an explicit dark token scope, matching the explicit light scope of
+  Release Testing without changing its appearance.
+- Playable Pricing keeps all three packages and the commercial note together
+  on light. Production planning becomes a full-width dark method passage;
+  questions return to light before the existing dark contact invitation.
+- AniShot keeps actual tool screenshots, export choices, settings, FAQ, and
+  availability on light. The concise local-processing passage becomes a dark
+  responsibility chapter. The separate privacy policy remains continuously light.
+- Playable overview, Quality Engineering, its pricing, Capabilities, and How We
+  Work already distinguish evaluation from method or closing action. Their
+  existing assignments are retained. Notes index and all three articles, website
+  privacy, terms, and AniShot privacy stay light until the footer. Contact retains
+  dark form -> light direct email -> dark footer. Support stays a standalone
+  light utility. Legacy redirects add no presentation scenes.
+
+Public wording, package scope, prices, assets, and interactions are unchanged.
+Astro check reports zero errors, warnings, and hints; production build passes.
+A built-HTML audit verifies entry canvases, explicit dark footers, uninterrupted
+article/legal reading, new scene boundaries, light package catalogs, and 438
+internal page links/anchors. Browser review in desktop, portrait, and landscape
+is pending: the Mac is locked and browser control is unavailable. This revision
+must complete visual review before publication; build success is not visual QA.
 
 ## Playable consolidation, October 6, 2026
 

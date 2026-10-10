@@ -22,6 +22,8 @@ Preserve the established website style and approved brand palette in every chang
 
 The site has one art-directed appearance, not user-selectable light/dark themes. Choose scenes by content purpose: light for reading, comparison, scope, deliverables, demonstrations, and people; dark for immersive product presentation, delivery methods, and closing contact. Do not alternate sections merely for decoration or associate dark with a higher-priced package.
 
+Treat scenes as semantic chapters, not one scene per heading. Keep package catalogs together on light; a compact production-planning method may follow on dark before returning to a light FAQ. A concise product-responsibility passage may be dark, but detailed policies stay light. Support is a minimal standalone light utility, not a marketing scene sequence.
+
 Use the default light `BaseLayout` canvas. Dark-entry exceptions and section assignments are documented in `docs/scene-composition.md`. Use full-width `Scene` wrappers or explicit `surface-dark` bands, with the entire semantic token set scoped together. Never place a light canvas on a constrained content shell as an isolated oversized card. Light canvas is `#F5F5F7`; white is reserved for raised surfaces. Preserve image grading. Header follows the page entry canvas; footer and contact form scene are explicitly dark. Pricing packages remain immediately visible; articles and legal pages retain a continuous light reading canvas. Check both portrait and landscape, scene transitions, navigation, and readable controls after changing composition.
 
 ## Contact behavior
