@@ -82,3 +82,7 @@ These exports are the only website use of the supplied logo artwork. The header,
 ## Olena About portrait, October 9, 2026
 
 `public/assets/team/olena-portrait.webp`: owner-supplied portrait identified as Olena, 800x800 square crop, sRGB, metadata stripped. Documentary identity use, not office or client evidence. Source and crop provenance stay in the companion Brand System under `assets/team/olena/`; the original document-inbox file is unchanged.
+
+## Ino About portrait, October 10, 2026
+
+`public/assets/team/ino-portrait.webp`: owner-supplied real portrait, explicitly authorized for About. 520x520 square head/upper-body crop, sRGB, metadata stripped, no upscaling or generative edits. Source and crop record remain under `assets/team/ino/` in the companion Brand System. All three portrait frames use the same desktop/mobile maximum width.

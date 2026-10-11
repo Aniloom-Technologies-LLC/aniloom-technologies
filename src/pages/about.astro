@@ -32,7 +32,10 @@ import Scene from "../components/Scene.astro";
     <section class="leadership section-shell section-pad">
       <div class="section-heading" data-reveal><div><p class="eyebrow">Leadership</p><h2>Who leads the work.</h2></div><p>Company direction, technical decisions, and release quality each have a clear owner. Meet the people responsible for them.</p></div>
       <div class="leadership-grid">
-        <article class="leadership-card leadership-card--text" data-reveal>
+        <article class="leadership-card leadership-card--portrait" data-reveal>
+          <figure class="leadership-card__media">
+            <picture><img src="/assets/team/ino-portrait.webp" alt="Ino" width="520" height="520" loading="lazy" decoding="async" /></picture>
+          </figure>
           <div><p class="eyebrow">Founder & CEO</p><h2>Ino</h2><p>Ino leads company direction, major client relationships, and decisions about how Aniloom approaches a project. He brings more than 10 years of professional experience in game development.</p></div>
         </article>
         <article class="leadership-card leadership-card--portrait" data-reveal>
@@ -77,7 +80,7 @@ import Scene from "../components/Scene.astro";
   .leadership .section-heading { margin-bottom: clamp(32px, 4vw, 56px); }
   .leadership-card--portrait { grid-template-columns: minmax(160px, 200px) minmax(0, 1fr); gap: 28px; min-height: 0; align-items: center; }
   .leadership-card--portrait .leadership-card__media picture { flex: initial; min-height: 0; aspect-ratio: 1; }
-  .leadership-card--cto { grid-column: 1 / -1; grid-template-columns: minmax(180px, 240px) minmax(0, 1fr); min-height: 0; align-items: center; }
+  .leadership-card--cto { grid-column: 1 / -1; grid-template-columns: minmax(160px, 200px) minmax(0, 1fr); gap: 28px; min-height: 0; align-items: center; }
   .leadership-card--cto .leadership-card__media picture { flex: initial; min-height: 0; aspect-ratio: 1; }
   .leadership-card--cto h2 { overflow-wrap: anywhere; }
   @media (max-width: 900px) {
