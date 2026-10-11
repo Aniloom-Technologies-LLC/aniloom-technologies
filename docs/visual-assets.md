@@ -86,3 +86,7 @@ These exports are the only website use of the supplied logo artwork. The header,
 ## Ino About portrait, October 10, 2026
 
 `public/assets/team/ino-portrait.webp`: owner-supplied real portrait, explicitly authorized for About. 520x520 square head/upper-body crop, sRGB, metadata stripped, no upscaling or generative edits. Source and crop record remain under `assets/team/ino/` in the companion Brand System. All three portrait frames use the same desktop/mobile maximum width.
+
+## Rus and Serhii About portraits, October 10, 2026
+
+Owner selected Rus option 1 (navy shirt) and Serhii option 4 (charcoal shirt) and authorized profile publication with concise English descriptions. Public exports `rus-portrait.webp` and `serhii-portrait.webp` are 800x800 sRGB WebP with metadata excluded. Both are editorial AI-assisted likeness portraits based on supplied references, not documentary photo-session, employment, or office evidence. Exact prompts, source references, and selection records remain under `assets/team/rus/` and `assets/team/serhii/` in the companion Brand System. Personal LinkedIn URLs remain internal. No particular staffing availability or permanent employment is promised.
