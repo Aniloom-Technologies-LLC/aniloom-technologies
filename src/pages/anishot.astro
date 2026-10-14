@@ -5,7 +5,10 @@ import Scene from "../components/Scene.astro";
 // Product facts and release authority: companion AniShot docs/product.md.
 import latestRelease from "../../public/downloads/anishot/latest.json";
 const downloadUrl = latestRelease.url;
-const downloadWarning = `Development version ${latestRelease.version} for Intel and Apple silicon. Intel testing pending. Not notarized; macOS may block opening.`;
+const { notarized = false } = latestRelease as typeof latestRelease & { notarized?: boolean };
+const downloadWarning = notarized
+  ? `Development version ${latestRelease.version} for Intel and Apple silicon. Signed by Aniloom Technologies LLC and notarized by Apple. Intel testing pending.`
+  : `Development version ${latestRelease.version} for Intel and Apple silicon. Intel testing pending. Not notarized; macOS may block opening.`;
 
 const tools = [
   { name: "Pen & Marker", icon: "pen", text: "Sketch a thought or highlight several important rows and controls across a page." },
@@ -16,7 +19,9 @@ const tools = [
   { name: "Select", icon: "select", text: "Move, resize, or edit an individual annotation object." },
 ];
 const questions = [
-  { question: "Is AniShot available to download?", answer: "You can download the development build for testing. It is Apple Development signed, not notarized, and its recorded Gatekeeper assessment was rejected. macOS may block opening it. A free Mac App Store release is planned, not live." },
+  { question: "Is AniShot available to download?", answer: notarized
+    ? "You can download the development build for testing. It is signed by Aniloom Technologies LLC using Developer ID, notarized by Apple, and its packaged app passed Gatekeeper assessment. Physical Intel and minimum-OS testing remain pending. A free Mac App Store release is planned, not live."
+    : "You can download the development build for testing. It is Apple Development signed, not notarized, and its recorded Gatekeeper assessment was rejected. macOS may block opening it. A free Mac App Store release is planned, not live." },
   { question: "Is AniShot free?", answer: "AniShot is completely free to use. All features are included, and we currently plan to keep it free." },
   { question: "Does AniShot need Rosetta?", answer: "The Universal application and its bundled update components contain native Intel and Apple silicon code. Apple silicon runs without Rosetta. Real Intel hardware testing remains pending. Native architecture does not guarantee compatibility with every future macOS release." },
   { question: "Why does a screenshot app ask for Screen Recording permission?", answer: "macOS uses this permission for screen capture, including still screenshots. AniShot captures only when you request a screenshot; it does not record video or audio. Setup guides you to the screen-access setting. If access is missing, allow AniShot in Privacy & Security under Screen Recording or Screen & System Audio Recording, then reopen if macOS asks." },
@@ -125,7 +130,10 @@ const questions = [
     <section class="section-shell section-pad" aria-labelledby="faq-title">
       <p class="eyebrow">Availability and compatibility</p><h2 id="faq-title">Questions before using AniShot.</h2>
       <div class="anishot-faq">{questions.map((item) => <details><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div>
-      <aside class="anishot-release" aria-labelledby="release-status-title"><h3 id="release-status-title">This download is for development testing.</h3><p>Version {latestRelease.version} is Apple Development signed, not Developer ID signed or notarized. Its recorded Gatekeeper execution assessment was rejected. Downloading it does not establish that macOS will allow it to run. Minimum-OS and public-release verification remain pending.</p></aside>
+      <aside class="anishot-release" aria-labelledby="release-status-title"><h3 id="release-status-title">This download is for development testing.</h3>{notarized
+        ? <p>Version {latestRelease.version} is signed by Aniloom Technologies LLC using Developer ID and notarized by Apple. Its packaged app passed Gatekeeper assessment. Physical Intel, minimum-OS and full release verification remain pending.</p>
+        : <p>Version {latestRelease.version} is Apple Development signed, not Developer ID signed or notarized. Its recorded Gatekeeper execution assessment was rejected. Downloading it does not establish that macOS will allow it to run. Minimum-OS and public-release verification remain pending.</p>}
+      </aside>
     </section>
 
     <div class="section-shell anishot-footnote">
