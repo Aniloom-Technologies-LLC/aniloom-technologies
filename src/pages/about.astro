@@ -4,7 +4,7 @@ import GradientText from "../components/GradientText.astro";
 import Scene from "../components/Scene.astro";
 ---
 
-<BaseLayout appearance="dark" title="About Aniloom | Our Story and Leadership | Aniloom Technologies" description="Learn why Ino and Olena built Aniloom, how we work as product partners, and who leads our technology, Quality Engineering, and delivery.">
+<BaseLayout appearance="dark" title="About Aniloom | Our Story and Leadership | Aniloom Technologies" description="Learn why Ino and Olena built Aniloom, how we work as product partners, and the people behind our engineering, Quality Engineering, delivery, and business development.">
   <main id="main-content">
     <Scene appearance="dark">
       <section class="about-intro section-shell">
@@ -30,7 +30,7 @@ import Scene from "../components/Scene.astro";
       </figure>
 
     <section class="leadership section-shell section-pad">
-      <div class="section-heading" data-reveal><div><p class="eyebrow">People</p><h2>Who shapes the work.</h2></div><p>Meet the people shaping Aniloom's direction, development, testing, and delivery.</p></div>
+      <div class="section-heading" data-reveal><div><p class="eyebrow">People</p><h2>Who shapes the work.</h2></div><p>Meet the people shaping Aniloom's direction, development, testing, delivery, and client partnerships.</p></div>
       <div class="leadership-grid">
         <article class="leadership-card leadership-card--portrait" data-reveal>
           <figure class="leadership-card__media">
@@ -62,6 +62,9 @@ import Scene from "../components/Scene.astro";
           </figure>
           <div><p class="eyebrow">QA Automation Engineer</p><h2>Serhii</h2><p>Serhii focuses on automated testing. He develops repeatable checks that help the team verify product behavior and catch regressions as the software changes.</p></div>
         </article>
+        <article class="leadership-card leadership-card--text leadership-card--business" data-reveal>
+          <div><p class="eyebrow">Business Development Director</p><h2>Diego</h2><p>Diego leads sales and business development at Aniloom. He works with prospective clients to understand their goals and shape the right engagement with the team.</p></div>
+        </article>
       </div>
     </section>
 
@@ -90,6 +93,8 @@ import Scene from "../components/Scene.astro";
   .about-collaboration figcaption { padding-block: 14px 0; color: var(--quiet); font-size: .75rem; }
   .leadership { padding-block: clamp(56px, 6vw, 88px); }
   .leadership .section-heading { margin-bottom: clamp(32px, 4vw, 56px); }
+  .leadership-card--business { grid-column: 1 / -1; }
+  .leadership-card--business p:last-child { max-width: 76ch; }
   .leadership-card--portrait { grid-template-columns: minmax(160px, 200px) minmax(0, 1fr); gap: 28px; min-height: 0; align-items: center; }
   .leadership-card--portrait .leadership-card__media picture { flex: initial; min-height: 0; aspect-ratio: 1; }
   .leadership-card--cto { grid-column: 1 / -1; grid-template-columns: minmax(160px, 200px) minmax(0, 1fr); gap: 28px; min-height: 0; align-items: center; }
