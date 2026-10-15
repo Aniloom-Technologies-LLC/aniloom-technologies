@@ -4,12 +4,12 @@
     <title>AniShot Screen Capture updates</title>
     <link>https://aniloom.tech/anishot/</link>
     <item>
-      <title>AniShot 0.17.2</title>
-      <description>Adds Cancel with a cross icon beside Copy to close the overlay without exporting, including during text editing. Shows Cancel (Esc) on hover. Universal development testing download; not notarized.</description>
-      <sparkle:version>73</sparkle:version>
-      <sparkle:shortVersionString>0.17.2</sparkle:shortVersionString>
+      <title>AniShot 0.17.3</title>
+      <description>Company Developer ID signing under Aniloom Technologies LLC and Apple notarization. Includes Cancel after Copy. Universal development download for Intel and Apple silicon; physical Intel and minimum-OS testing remain pending.</description>
+      <sparkle:version>75</sparkle:version>
+      <sparkle:shortVersionString>0.17.3</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0.0</sparkle:minimumSystemVersion>
-      <enclosure sparkle:edSignature="bsXsbLT2bVHw74/xuu2/hgxePGvZvDC99I8X9QehsGnZ2OJWBY+fM8u/XQnNbxi60siPCrgXnmGjpdcdvQVQBg==" url="https://aniloom.tech/downloads/anishot/AniShot-Screen-Capture-0.17.2-universal-development.dmg" length="2737699" type="application/octet-stream" />
+      <enclosure sparkle:edSignature="OdbzUXw7MmWqDtUoAVwFLWOnr5B//cVRhQYmB8jXHazlbfU9d/JkgPOTMHAvgu5Nudcyn1keeWGOYVt7RgEcCA==" url="https://aniloom.tech/downloads/anishot/AniShot-Screen-Capture-0.17.3-universal-development.dmg" length="2757506" type="application/octet-stream" />
     </item>
     <item>
       <title>AniShot 0.15.0</title>
