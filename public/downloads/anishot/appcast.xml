@@ -4,12 +4,12 @@
     <title>AniShot Screen Capture updates</title>
     <link>https://aniloom.tech/anishot/</link>
     <item>
-      <title>AniShot 0.17.3</title>
-      <description>Company Developer ID signing under Aniloom Technologies LLC and Apple notarization. Includes Cancel after Copy. Universal development download for Intel and Apple silicon; physical Intel and minimum-OS testing remain pending.</description>
-      <sparkle:version>75</sparkle:version>
-      <sparkle:shortVersionString>0.17.3</sparkle:shortVersionString>
+      <title>AniShot 0.17.4</title>
+      <description>A thicker, rounded X makes Cancel easier to see. Universal development download for Intel and Apple silicon, signed by Aniloom Technologies LLC and notarized by Apple. Physical Intel and minimum-OS testing remain pending.</description>
+      <sparkle:version>76</sparkle:version>
+      <sparkle:shortVersionString>0.17.4</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0.0</sparkle:minimumSystemVersion>
-      <enclosure sparkle:edSignature="OdbzUXw7MmWqDtUoAVwFLWOnr5B//cVRhQYmB8jXHazlbfU9d/JkgPOTMHAvgu5Nudcyn1keeWGOYVt7RgEcCA==" url="https://aniloom.tech/downloads/anishot/AniShot-Screen-Capture-0.17.3-universal-development.dmg" length="2757506" type="application/octet-stream" />
+      <enclosure sparkle:edSignature="o5f0EaS4xY1KwPgRDv+Gpez9VnncyZrAztxoLafeKy5GCE/qsjpc19yqmQgdw1Z6XJz52umA0P7MQqtoJMAeAQ==" url="https://aniloom.tech/downloads/anishot/AniShot-Screen-Capture-0.17.4-universal-development.dmg" length="2757244" type="application/octet-stream" />
     </item>
     <item>
       <title>AniShot 0.15.0</title>
