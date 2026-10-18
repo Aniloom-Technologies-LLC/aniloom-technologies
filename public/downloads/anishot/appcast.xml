@@ -4,12 +4,12 @@
     <title>AniShot Screen Capture updates</title>
     <link>https://aniloom.tech/anishot/</link>
     <item>
-      <title>AniShot 0.17.4</title>
-      <description>A thicker, rounded X makes Cancel easier to see. Universal development download for Intel and Apple silicon, signed by Aniloom Technologies LLC and notarized by Apple. Physical Intel and minimum-OS testing remain pending.</description>
-      <sparkle:version>76</sparkle:version>
-      <sparkle:shortVersionString>0.17.4</sparkle:shortVersionString>
+      <title>AniShot 0.17.5</title>
+      <description>Choose Launch at Login during shortcut setup or in Settings. Startup is off by default. Screen-access setup now uses Continue before the macOS permission request.</description>
+      <sparkle:version>77</sparkle:version>
+      <sparkle:shortVersionString>0.17.5</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0.0</sparkle:minimumSystemVersion>
-      <enclosure sparkle:edSignature="o5f0EaS4xY1KwPgRDv+Gpez9VnncyZrAztxoLafeKy5GCE/qsjpc19yqmQgdw1Z6XJz52umA0P7MQqtoJMAeAQ==" url="https://aniloom.tech/downloads/anishot/AniShot-Screen-Capture-0.17.4-universal-development.dmg" length="2757244" type="application/octet-stream" />
+      <enclosure sparkle:edSignature="kIjXjxHFUxQ2btiwKS5oKzcU1tYnLXu3skjpY3QNz6R21bkXeEGXZlH8rEFjNsAKTrUl3XmFHP9VjhPYjOA5Bg==" url="https://aniloom.tech/downloads/anishot/AniShot-Screen-Capture-0.17.5-universal-development.dmg" length="2783748" type="application/octet-stream" />
     </item>
     <item>
       <title>AniShot 0.15.0</title>

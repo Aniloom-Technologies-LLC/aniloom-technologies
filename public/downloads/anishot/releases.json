@@ -1,12 +1,12 @@
 [
   {
-    "file": "AniShot-Screen-Capture-0.17.4-universal-development.dmg",
-    "version": "0.17.4",
-    "internalVersion": "76",
-    "signature": "o5f0EaS4xY1KwPgRDv+Gpez9VnncyZrAztxoLafeKy5GCE/qsjpc19yqmQgdw1Z6XJz52umA0P7MQqtoJMAeAQ==",
-    "length": 2757244,
-    "sha256": "4f6e237708d824e6a3f72920b0e31a54d5d91e47fbfc13be9641e5f7735cf70d",
-    "notes": "A thicker, rounded X makes Cancel easier to see. Universal development download for Intel and Apple silicon, signed by Aniloom Technologies LLC and notarized by Apple. Physical Intel and minimum-OS testing remain pending.",
+    "file": "AniShot-Screen-Capture-0.17.5-universal-development.dmg",
+    "version": "0.17.5",
+    "internalVersion": "77",
+    "signature": "kIjXjxHFUxQ2btiwKS5oKzcU1tYnLXu3skjpY3QNz6R21bkXeEGXZlH8rEFjNsAKTrUl3XmFHP9VjhPYjOA5Bg==",
+    "length": 2783748,
+    "sha256": "19d527795a19b389d25e20580203a86066dc79901e2072b23fe6e477486362b1",
+    "notes": "Choose Launch at Login during shortcut setup or in Settings. Startup is off by default. Screen-access setup now uses Continue before the macOS permission request.",
     "notarized": true,
     "architectures": [
       "arm64",
