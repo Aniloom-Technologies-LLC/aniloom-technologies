@@ -14,6 +14,8 @@ interface Props {
   imageAlt?: string;
   imageWidth?: number;
   imageHeight?: number;
+  pageType?: "WebPage" | "AboutPage" | "ContactPage" | "CollectionPage";
+  service?: { name: string; serviceType: string };
   article?: { headline: string; datePublished: string; dateModified?: string };
 }
 
@@ -29,12 +31,17 @@ const {
   imageWidth,
   imageHeight,
   article,
+  pageType = "WebPage",
+  service,
 } = Astro.props;
 
 const pathname = Astro.url.pathname;
 const canonical = new URL(pathname, "https://aniloom.tech");
 const socialImage = image ? new URL(image, canonical) : null;
 const organizationId = "https://aniloom.tech/#organization";
+const websiteId = "https://aniloom.tech/#website";
+const pageId = `${canonical}#webpage`;
+const mainEntityId = article ? `${canonical}#article` : service ? `${canonical}#service` : pageType === "AboutPage" ? organizationId : undefined;
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -42,6 +49,7 @@ const structuredData = {
       "@type": "Organization",
       "@id": organizationId,
       name: "Aniloom Technologies",
+      alternateName: "Aniloom",
       legalName: "Aniloom Technologies LLC",
       url: "https://aniloom.tech/",
       email: "support@aniloom.tech",
@@ -52,8 +60,29 @@ const structuredData = {
         addressCountry: "US",
       },
     },
-    { "@type": "WebSite", "@id": "https://aniloom.tech/#website", url: "https://aniloom.tech/", name: "Aniloom Technologies", publisher: { "@id": organizationId } },
-    ...(article ? [{ "@type": "Article", "@id": `${canonical}#article`, mainEntityOfPage: canonical.toString(), headline: article.headline, description, datePublished: article.datePublished, ...(article.dateModified ? { dateModified: article.dateModified } : {}), author: { "@id": organizationId }, publisher: { "@id": organizationId }, ...(socialImage ? { image: socialImage.toString() } : {}) }] : []),
+    { "@type": "WebSite", "@id": websiteId, url: "https://aniloom.tech/", name: "Aniloom Technologies", alternateName: "Aniloom", publisher: { "@id": organizationId }, inLanguage: "en" },
+    {
+      "@type": pageType,
+      "@id": pageId,
+      url: canonical.toString(),
+      name: title,
+      description,
+      inLanguage: "en",
+      isPartOf: { "@id": websiteId },
+      publisher: { "@id": organizationId },
+      ...(mainEntityId ? { mainEntity: { "@id": mainEntityId } } : {}),
+    },
+    ...(service ? [{
+      "@type": "Service",
+      "@id": `${canonical}#service`,
+      name: service.name,
+      serviceType: service.serviceType,
+      description,
+      url: canonical.toString(),
+      provider: { "@id": organizationId },
+      mainEntityOfPage: { "@id": pageId },
+    }] : []),
+    ...(article ? [{ "@type": "Article", "@id": `${canonical}#article`, mainEntityOfPage: { "@id": pageId }, headline: article.headline, description, datePublished: article.datePublished, ...(article.dateModified ? { dateModified: article.dateModified } : {}), author: { "@id": organizationId }, publisher: { "@id": organizationId }, ...(socialImage ? { image: socialImage.toString() } : {}) }] : []),
   ],
 };
 const navItems = [

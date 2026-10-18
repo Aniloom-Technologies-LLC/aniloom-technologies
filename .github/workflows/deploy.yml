@@ -39,6 +39,9 @@ jobs:
         env:
           ASTRO_TELEMETRY_DISABLED: "1"
 
+      - name: Check search discovery and metadata
+        run: npm run test:search
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -31,10 +31,14 @@ Static marketing website for Aniloom Technologies, built around the positioning 
 - `npm run check` - validate Astro and TypeScript
 - `npm run build` - generate the production site in `dist/`
 - `npm run preview` - preview the production build
+- `npm run test:search` - audit the existing production build for search discovery and metadata (run after build)
+- `npm run check:search:live` - compare published HTTP responses with the local production build
 - `npm run test:contact` - run focused server validation, delivery, and abuse-limit tests
 - `npm run contact:deploy -- --dry-run` - validate the Worker bundle without deploying
 
 Contact service setup and activation are documented in [docs/contact-form.md](docs/contact-form.md). Static builds do not embed email-provider or Turnstile secrets. Do not publish the new contact flow until the service and recipient mailbox have been verified.
+
+Search policy, audit evidence, owner console steps, and the repeat-check protocol are in [docs/search-discovery.md](docs/search-discovery.md).
 
 ## Content and claims
 

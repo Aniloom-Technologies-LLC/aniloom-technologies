@@ -2,11 +2,16 @@ import { getCollection } from "astro:content";
 
 export async function GET() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
+  // Intentional public catalog. test:search checks it against every built page.
+  // Keep support, legacy redirects, and unpublished posts out.
+  // Omit lastmod until content modification dates have a reliable source.
   const routes = [
     "",
     "about/",
     "anishot/",
+    "anishot/privacy-policy/",
     "capabilities/",
+    "contact/",
     "how-we-work/",
     "insights/",
     "playable-ads/",
