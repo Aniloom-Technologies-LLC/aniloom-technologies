@@ -1,12 +1,12 @@
 [
   {
-    "file": "AniShot-Screen-Capture-0.17.5-universal-development.dmg",
-    "version": "0.17.5",
-    "internalVersion": "77",
-    "signature": "kIjXjxHFUxQ2btiwKS5oKzcU1tYnLXu3skjpY3QNz6R21bkXeEGXZlH8rEFjNsAKTrUl3XmFHP9VjhPYjOA5Bg==",
-    "length": 2783748,
-    "sha256": "19d527795a19b389d25e20580203a86066dc79901e2072b23fe6e477486362b1",
-    "notes": "Choose Launch at Login during shortcut setup or in Settings. Startup is off by default. Screen-access setup now uses Continue before the macOS permission request.",
+    "file": "AniShot-Screen-Capture-0.17.6-universal-development.dmg",
+    "version": "0.17.6",
+    "internalVersion": "78",
+    "signature": "Ul4GmldVGwmr5c5o0lBFb3sdPucz7qS8n8612P8cub/CvIB/8qASCmnUBcm8TxVGg1cUyw5Y6QZGyKMSzPRDCA==",
+    "length": 2783905,
+    "sha256": "8ac8577b574bae2d1c3b8612acba7b5964371dced984a739207f285fe63c5826",
+    "notes": "Diagnostic history controls are now in Settings > Support > Diagnostics, beneath the report form. Local history and explicit report sending work as before.",
     "notarized": true,
     "architectures": [
       "arm64",
