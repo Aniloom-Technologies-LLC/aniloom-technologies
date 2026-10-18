@@ -218,3 +218,20 @@ overflow.
 ## About composition, October 9, 2026
 
 Owner-approved: combine the introduction and founding story into one compact dark entry. Follow with an edge-to-edge collaboration panorama without border or rounded corners, immediately before the light leadership chapter. Keep its editorial caption below the image, never text over the image or a documentary team claim. Retain the dark closing invitation. About explicitly enters dark so header, browser theme color, and semantic roles agree. This supersedes the earlier light About entry in the site-wide scene audit.
+
+
+## Playable package names and mechanics, October 17, 2026
+
+Owner direction renames the $799 main package to Simple Playable and describes
+one simple mechanic rather than adaptation of a ready mechanic. Custom Playable
+(3 skins), from $4,499, can include a complex mechanic or a combination of
+mechanics. All skins share the approved gameplay structure. Prices and remaining
+inclusions are unchanged. Cards, chooser FAQ, metadata, and contact topics use
+the updated wording. The legacy adapted-playable anchor is retained for links.
+Canonical Brand System offers and proof record the same direction.
+
+Validation: Astro check reports zero diagnostics and the production build passes.
+Built-page checks confirm the three package names, unchanged prices, new
+mechanics descriptions, absence of the former public name, and package-specific
+contact topics. Visual review is pending because the Mac is locked and no
+browser surface is available; review portrait and landscape before publication.

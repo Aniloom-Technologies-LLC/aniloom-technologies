@@ -46,7 +46,7 @@ scene without recoloring. Empty alt text avoids repeating the adjacent visible n
 
 ## Production checks and delivery, October 7, 2026
 
-Owner direction positions Playable Ads as the finished creative, with checks embedded in production. Standalone third-party playable testing is omitted from both playable pages. Overview describes capabilities; Pricing defines the commercial base scope. This direction supersedes the earlier public development-versus-QA split with $799 Adapted, $4,499 Custom, and the owner-requested Micro production path from $299.
+Owner direction positions Playable Ads as the finished creative, with checks embedded in production. Standalone third-party playable testing is omitted from both playable pages. Overview describes capabilities; Pricing defines the commercial base scope. This direction supersedes the earlier public development-versus-QA split with $799 Simple, $4,499 Custom (3 skins), and the owner-requested Micro production path from $299.
 
 Verified against companion `../playable-ads/docs/PROVIDERS.md` (Manual playable validators), `docs/PLAYABLE_WORKFLOW.md` (responsive and final-artifact checks), and `docs/CLOUDFLARE_HOSTING.md`:
 
