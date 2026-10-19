@@ -1,12 +1,12 @@
 [
   {
-    "file": "AniShot-Screen-Capture-0.17.6-universal-development.dmg",
-    "version": "0.17.6",
-    "internalVersion": "78",
-    "signature": "Ul4GmldVGwmr5c5o0lBFb3sdPucz7qS8n8612P8cub/CvIB/8qASCmnUBcm8TxVGg1cUyw5Y6QZGyKMSzPRDCA==",
-    "length": 2783905,
-    "sha256": "8ac8577b574bae2d1c3b8612acba7b5964371dced984a739207f285fe63c5826",
-    "notes": "Diagnostic history controls are now in Settings > Support > Diagnostics, beneath the report form. Local history and explicit report sending work as before.",
+    "file": "AniShot-Screen-Capture-0.17.7-universal-development.dmg",
+    "version": "0.17.7",
+    "internalVersion": "79",
+    "signature": "tIkBtSylNfCrHhJnpPUMToJ2z0e2Ix4q0IUIrzauJ8nzDxd+8f+G+xrTLQnF5TxU+PyABm02Bhl6ejncTpP+Bw==",
+    "length": 2783574,
+    "sha256": "5ff59cc9e93d117648d94176e0dc35a376773caebc31f925fc507f3dfbfe01b3",
+    "notes": "Fixes overlay shortcuts across input languages, including Copy/Save, Undo/Redo, tool selection and size controls. Native text editing is preserved. Notarized Universal development download; physical Intel and minimum-OS testing remain pending.",
     "notarized": true,
     "architectures": [
       "arm64",

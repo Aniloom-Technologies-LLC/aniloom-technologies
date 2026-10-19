@@ -4,12 +4,12 @@
     <title>AniShot Screen Capture updates</title>
     <link>https://aniloom.tech/anishot/</link>
     <item>
-      <title>AniShot 0.17.6</title>
-      <description>Diagnostic history controls are now in Settings &gt; Support &gt; Diagnostics, beneath the report form. Local history and explicit report sending work as before.</description>
-      <sparkle:version>78</sparkle:version>
-      <sparkle:shortVersionString>0.17.6</sparkle:shortVersionString>
+      <title>AniShot 0.17.7</title>
+      <description>Fixes overlay shortcuts across input languages, including Copy/Save, Undo/Redo, tool selection and size controls. Native text editing is preserved. Notarized Universal development download; physical Intel and minimum-OS testing remain pending.</description>
+      <sparkle:version>79</sparkle:version>
+      <sparkle:shortVersionString>0.17.7</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0.0</sparkle:minimumSystemVersion>
-      <enclosure sparkle:edSignature="Ul4GmldVGwmr5c5o0lBFb3sdPucz7qS8n8612P8cub/CvIB/8qASCmnUBcm8TxVGg1cUyw5Y6QZGyKMSzPRDCA==" url="https://aniloom.tech/downloads/anishot/AniShot-Screen-Capture-0.17.6-universal-development.dmg" length="2783905" type="application/octet-stream" />
+      <enclosure sparkle:edSignature="tIkBtSylNfCrHhJnpPUMToJ2z0e2Ix4q0IUIrzauJ8nzDxd+8f+G+xrTLQnF5TxU+PyABm02Bhl6ejncTpP+Bw==" url="https://aniloom.tech/downloads/anishot/AniShot-Screen-Capture-0.17.7-universal-development.dmg" length="2783574" type="application/octet-stream" />
     </item>
     <item>
       <title>AniShot 0.15.0</title>
