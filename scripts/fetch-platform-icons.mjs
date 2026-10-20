@@ -13,7 +13,6 @@ const sources = {
   mintegral: 'https://assets-official.mintegral.com/v3/assets/image/common/favicon.png',
   liftoff: 'https://liftoff.ai/wp-content/themes/liftoff/images/favicon.svg?v=3',
   moloco: 'https://cdn.prod.website-files.com/6a59dd0133b776de7ec526cd/6a8fdd99f0b6e0102ab8f943_moloco-webclip-l.png',
-  ironsource: 'https://companieslogo.com/img/orig/IS-b6ade979.svg?download=true&t=1720244492',
 };
 const destination = new URL('../public/assets/images/platforms/', import.meta.url);
 await mkdir(destination, { recursive: true });

@@ -18,7 +18,6 @@ Names use site typography with locally hosted marks for editorial identification
 | Mintegral | mintegral | Matching-name ZIP / install bridge |
 | Liftoff | liftoff | ZIP / MRAID |
 | Moloco | moloco | HTML / FbPlayableAd |
-| ironSource Exchange | ironsource2025 | Raw HTML/JS MRAID tag |
 
 Bigabid, Nefta, Snapchat, Smadex, and Vungle are intentionally omitted because
 their profiles have `requiresExternalValidation: true`. The internal `common`
@@ -27,7 +26,7 @@ acceptance for any listed provider. Recheck account requirements and provider
 preview behavior for each project. Provider specifications were reviewed in the
 source project on September 27, 2026.
 
-Owner approval on October 7 includes builds for all ten public supported networks
+Owner approval on October 7 includes builds for all publicly supported networks
 as a bonus in all three playable production packages, and for all three Custom skins.
 Confirm current provider and account requirements per project. This does not
 extend public support to the excluded profiles or guarantee campaign acceptance.
@@ -37,8 +36,7 @@ homepage introduction. It advances one item every four seconds while visible, wi
 `scripts/fetch-platform-icons.mjs`. Reviewed October 3, 2026. AppLovin, Google,
 Meta, Pangle, Mintegral, Liftoff, and Moloco use assets linked from official sites.
 Unity uses the Simple Icons v16 mark (CC0 collection, trademark rights retained).
-TikTok uses AdManage's platform asset collection; ironSource uses CompaniesLogo's
-icon for the named legacy Exchange target. These are not evidence of endorsement.
+TikTok uses AdManage's platform asset collection. These are not evidence of endorsement.
 SVG marks are rasterized to 96px PNG without changing colors or geometry. Pangle
 retains its official ICO. White icon wells preserve black marks on the dark home
 scene without recoloring. Empty alt text avoids repeating the adjacent visible name.
@@ -69,3 +67,12 @@ https://cf-assets.www.cloudflare.com/dzlvafdwdttg/2Twekn3xyYyd94qDYAl0ed/9ab649c
 The mark identifies Workers-hosted browser demo delivery, not endorsement or a
 partnership. Keep source colors and geometry; load the image locally. The
 provider-validation block links to the same page's `#platforms` carousel.
+
+
+## Public network list, October 19, 2026
+
+The owner removes ironSource Exchange from the website. The current public list
+has nine networks and retains Unity Ads. Remove the legacy Exchange carousel
+entry, pricing FAQ mention, public logo asset, and icon-import source. This is a
+website offer decision; it does not remove a delivery profile from the companion
+playable-ads implementation or independently establish a platform shutdown date.
