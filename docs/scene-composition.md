@@ -233,5 +233,17 @@ Canonical Brand System offers and proof record the same direction.
 Validation: Astro check reports zero diagnostics and the production build passes.
 Built-page checks confirm the three package names, unchanged prices, new
 mechanics descriptions, absence of the former public name, and package-specific
-contact topics. Visual review is pending because the Mac is locked and no
-browser surface is available; review portrait and landscape before publication.
+contact topics. Visual review completed October 19 at desktop, 390px portrait,
+and 844px landscape after browser access was restored. Names and descriptions
+remain readable without horizontal overflow.
+
+
+## Public playable networks, October 19, 2026
+
+Owner direction removes ironSource Exchange from the carousel, pricing FAQ,
+public logo assets, and the icon-import script. Unity Ads remains listed among
+nine public networks. Brand System proof and platform-support documentation
+record the revised public selection without changing companion delivery code.
+Visual review covers desktop, 390px portrait, and 844px landscape; carousel
+navigation and pause controls work, and the original list contains nine entries.
+The established palette, card styling, and four-second loop behavior remain.
