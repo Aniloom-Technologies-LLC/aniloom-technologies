@@ -94,3 +94,7 @@ Owner selected Rus option 1 (navy shirt) and Serhii option 4 (charcoal shirt) an
 ## Diego About portrait, October 22, 2026
 
 Owner explicitly approved the revised charcoal-shirt likeness portrait for About: `diego-portrait-charcoal-soft-v2.png` in the companion Brand System. Public export: `public/assets/team/diego-portrait.webp`, 800x800 sRGB WebP quality 88, metadata excluded. Same square portrait/card treatment as the other profiles. Classification: editorial AI-assisted likeness, not documentary photography or evidence of a studio session, office, or employment arrangement. Source, selection correction, and exact edit prompt remain under `assets/team/diego/` in the Brand System. Existing role, biography and team order are unchanged.
+
+## Serhii and Alex clothing revisions, October 22, 2026
+
+Owner explicitly requested replacement portraits with Serhii in a black T-shirt and Alex in a gray T-shirt. Public exports: `serhii-black-tshirt-portrait.webp` and `alex-gray-tshirt-portrait.webp`, 800x800 sRGB WebP quality 88, metadata excluded. Built-in ImageGen clothing edits of the previously published portraits, retaining the existing editorial likeness classification. New filenames avoid stale portrait caches. Masters and exact prompts remain in the companion Brand System at `assets/team/serhii/tshirt-revision.md` and `assets/team/oleksandr-mushnykov/tshirt-revision.md`. Previous files are retained; About references the new portraits. Card order, copy, dimensions and layout are unchanged.
