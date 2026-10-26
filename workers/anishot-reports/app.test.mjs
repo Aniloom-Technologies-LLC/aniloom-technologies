@@ -44,6 +44,33 @@ test('stores exactly once, private retrieval, deletion and conflicting retries',
   assert.equal((await handleRequest(s.req({ ...data, comment: 'different' }), s.env)).status, 409);
   assert.equal((await handleRequest(new Request(url, { method: 'DELETE', headers: { Authorization: 'Bearer operator-fixture' } }), s.env)).status, 200);
 });
+function windowsFixture(extra = {}) {
+  return fixture({ schema: 3, environment: { version: '0.17.7.1', platform: 'windows', osVersion: '10.0.26200.0',
+    architecture: 'x86_64', displayCount: 2, panelPercent: 100, reduceHighDpi: true, saveFormat: 'png',
+    journalEnabled: true, journalWriteFailed: false }, ...extra });
+}
+test('Windows reports use a separate strict environment and preserve the macOS schema', () => {
+  assert.ok(validate(windowsFixture())); assert.ok(validate(fixture()));
+  for (const data of [windowsFixture({ schema: 2 }), fixture({ schema: 3 })]) assert.equal(validate(data), null);
+  for (const [key, value] of Object.entries({ platform: 'linux', osVersion: 'private OS text', architecture: 'computer serial', computerName: 'private', macOS: '14.0.0', reduceHighDpi: 'yes' })) {
+    const data = windowsFixture(); data.environment[key] = value; assert.equal(validate(data), null);
+  }
+  const raw = windowsFixture(); raw.events[0].details.path = 'C:\\Users\\private'; assert.equal(validate(raw), null);
+});
+test('Windows reports receive durable receipts and preserve idempotency and private access', async () => {
+  const s = setup(); const data = windowsFixture();
+  const first = await handleRequest(s.req(data), s.env); assert.equal(first.status, 201);
+  assert.equal((await first.json()).reportID, data.reportID);
+  assert.equal((await handleRequest(s.req(data), s.env)).status, 200);
+  const url = `https://worker/admin/reports/${data.reportID}`;
+  assert.equal((await handleRequest(new Request(url), s.env)).status, 401);
+  const reply = await handleRequest(new Request(url, { headers: { Authorization: 'Bearer operator-fixture' } }), s.env);
+  assert.deepEqual(await reply.json(), data);
+});
+test('health advertises both schemas without exposing operator credentials', async () => {
+  const s = setup(); const response = await handleRequest(new Request('https://worker/health'), s.env);
+  assert.deepEqual(await response.json(), { ready: true, schema: 2, schemas: [2, 3], platforms: ['macos', 'windows'] });
+});
 test('invalid attempts consume rate budget and body streaming is bounded', async () => {
   const s = setup();
   for (let i = 0; i < 5; i++) assert.equal((await handleRequest(s.req({ invalid: true }), s.env)).status, 400);

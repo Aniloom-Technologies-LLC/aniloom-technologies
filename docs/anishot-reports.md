@@ -33,7 +33,7 @@ The public endpoint permits POST only and has no embedded client secret. Adminis
 
 ## Storage, protection and retention
 
-`app.mjs` accepts a strict schema-2 allowlist and recomputes action counts. Uploads are limited to 1 MiB, 2,000 events and 5,000 Unicode scalar values in comments. Ordinary browser Origin headers and encoded bodies are rejected. Unknown fields, arbitrary diagnostic strings and raw crash files are rejected. Output receipts identify a durably stored report; storage failure cannot be reported as success. Same-ID identical requests return the existing receipt; changed content conflicts.
+`app.mjs` accepts the existing schema-2 macOS allowlist and a separate schema-3 Windows allowlist, and recomputes action counts. The Windows environment identifies its platform and OS version explicitly, without impersonating macOS. Uploads are limited to 1 MiB, 2,000 events and 5,000 Unicode scalar values in comments. Ordinary browser Origin headers and encoded bodies are rejected. Unknown fields, arbitrary diagnostic strings and raw crash files are rejected. Output receipts identify a durably stored report; storage failure cannot be reported as success. Same-ID identical requests return the existing receipt; changed content conflicts.
 
 Active storage keeps the latest 100 reports for at most 30 days. Cleanup runs on requests and hourly alarms. SQLite point-in-time recovery can retain deleted states for another 30 days. Exported operator copies have separate retention. Cloudflare infrastructure processes network metadata; code never logs raw IPs, bodies or secrets and Worker observability is disabled. IP addresses are keyed-hashed for ten-minute request counters.
 

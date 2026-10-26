@@ -19,14 +19,19 @@ function details(x) {
     optional(x, 'errorKind', v => ['capture', 'encoding', 'cocoa', 'screenCaptureKit', 'hotkey', 'other'].includes(v));
 }
 export function validate(x) {
-  if (!keys(x, ['schema', 'reportID', 'installationID', 'createdAt', 'comment', 'environment', 'events', 'counts']) || x.schema !== 2 ||
+  if (!keys(x, ['schema', 'reportID', 'installationID', 'createdAt', 'comment', 'environment', 'events', 'counts']) || ![2, 3].includes(x.schema) ||
       !UUID.test(x.reportID) || !UUID.test(x.installationID) || !date(x.createdAt) || typeof x.comment !== 'string' ||
       Array.from(x.comment).length > 5_000 || new TextEncoder().encode(x.comment).byteLength > 20_000) return null;
   const e = x.environment;
-  if (!keys(e, ['version', 'macOS', 'architecture', 'hardwareModel', 'translated', 'screenAccess', 'displayCount', 'panelPercent', 'reduceRetina', 'saveFormat', 'journalEnabled', 'journalWriteFailed']) ||
-      !version(e.version) || !version(e.macOS) || !['arm64', 'x86_64'].includes(e.architecture) ||
-      !optional(e, 'hardwareModel', v => typeof v === 'string' && /^[A-Za-z0-9,]{1,64}$/.test(v)) ||
-      !['translated', 'screenAccess', 'reduceRetina', 'journalEnabled', 'journalWriteFailed'].every(k => typeof e[k] === 'boolean') ||
+  const validMac = x.schema === 2 && keys(e, ['version', 'macOS', 'architecture', 'hardwareModel', 'translated', 'screenAccess', 'displayCount', 'panelPercent', 'reduceRetina', 'saveFormat', 'journalEnabled', 'journalWriteFailed']) &&
+      version(e.macOS) && ['arm64', 'x86_64'].includes(e.architecture) &&
+      optional(e, 'hardwareModel', v => typeof v === 'string' && /^[A-Za-z0-9,]{1,64}$/.test(v)) &&
+      ['translated', 'screenAccess', 'reduceRetina'].every(k => typeof e[k] === 'boolean');
+  const validWindows = x.schema === 3 && keys(e, ['version', 'platform', 'osVersion', 'architecture', 'displayCount', 'panelPercent', 'reduceHighDpi', 'saveFormat', 'journalEnabled', 'journalWriteFailed']) &&
+      e.platform === 'windows' && typeof e.osVersion === 'string' && /^\d{1,6}(\.\d{1,6}){1,3}$/.test(e.osVersion) &&
+      ['x86_64', 'arm64'].includes(e.architecture) && typeof e.reduceHighDpi === 'boolean';
+  if ((!validMac && !validWindows) ||
+      !version(e.version) || !['journalEnabled', 'journalWriteFailed'].every(k => typeof e[k] === 'boolean') ||
       !integer(e.displayCount, 0, 64) || !integer(e.panelPercent, 50, 150) || !['png', 'jpg'].includes(e.saveFormat)) return null;
   if (!Array.isArray(x.events) || x.events.length > 2_000) return null;
   const counts = {};
@@ -60,7 +65,7 @@ async function hashIP(ip, secret) {
 export async function handleRequest(request, env) {
   const url = new URL(request.url);
   const ready = Boolean(env.REPORT_INBOX && env.HASH_SECRET && env.ADMIN_TOKEN);
-  if (url.pathname === '/health' && request.method === 'GET') return json({ ready, schema: 2 }, ready ? 200 : 503);
+  if (url.pathname === '/health' && request.method === 'GET') return json({ ready, schema: 2, schemas: [2, 3], platforms: ['macos', 'windows'] }, ready ? 200 : 503);
   if (!ready) return json({ code: 'unavailable' }, 503);
   const inbox = env.REPORT_INBOX.get(env.REPORT_INBOX.idFromName('private-inbox-v1'));
   try {
