@@ -27,7 +27,7 @@ After each deployment, make a public HTTPS GET without following redirects.
 Require status 200, the two headers above, a URL still ending in `.html`,
 and a SHA-256 matching the intended local Unity file. Record the byte size,
 verify `platform: unity`, and check the intended project and variant. Normal
-Unity deliveries must stay under 5,000,000 bytes. The current packed diagnostic
+Unity deliveries must stay under 5,000,000 bytes. The current FindTheBall
 file meets that byte limit; the owner also authorized the earlier oversized
 unpacked comparison. Confirm the built sitemap and website pages do not link
 to the slot. Hosting verification does not establish Unity uploader acceptance
@@ -39,14 +39,25 @@ inline HTML below 5 MB in its
 
 ## Current upload
 
-- Project: `RealPlay_PiggyfestBonanza`
+- Project: `BingoBlitz_FindTheBall`
 - Variant: `3_click_auto`
 - Delivery: Unity, MRAID, both orientations, technical controls disabled
-- Original: `../playable-ads/dist/RealPlay_PiggyfestBonanza/3_click_auto/unity/index.html`
-- Transport: gzip/base122-packed game, visible shared MRAID lifecycle script
-- Source: playable-ads shared lifecycle and SDK visibility commit `eef8235f`
-- Bytes: `4587065`
-- SHA-256: `576120d6d7641d2d65db5fda535a038d23d18947c4d43ffb4f6e6463c1d26311`
+- Original: `../playable-ads/dist/BingoBlitz_FindTheBall/3_click_auto/unity/index.html`
+- Transport: ordinary inline HTML, no gzip/base122; visible shared MRAID lifecycle
+- Shared lifecycle/SDK implementation: playable-ads commit `eef8235f`
+- Current source policy: `f14bda65`; this existing plain export needs no repacking
+- Bytes: `3981051`
+- SHA-256: `ccac4f5800aed5a2cb7de49adee053ee5922e7fdaf0127a8ad5ac7fc102fe1d6`
+
+On 28 October 2026, the owner requested FindTheBall in the same stable slot
+for testing in Unity's native application. This is a byte-for-byte copy of the
+existing Unity `3_click_auto` delivery, with no game rebuild or runtime patch.
+The visible lifecycle and CTA checks pass. Native-app behavior and acceptance
+remain for the owner's test.
+
+The preceding slot contained Piggyfest `3_click_auto`, packed game with visible
+shared MRAID lifecycle, 4,587,065 bytes, SHA-256
+`576120d6d7641d2d65db5fda535a038d23d18947c4d43ffb4f6e6463c1d26311`.
 
 ## Previous comparisons
 
@@ -126,7 +137,7 @@ updates and the existing desktop fallback. The owner reported that this control
 did not pass native-app validation. Its SHA-256 was
 `44924e017509cd12cae2a22a6efd3d0a624f7e54584de756c9c942695505383e`.
 
-## Current shared implementation and packing visibility
+## Shared implementation and previous Piggyfest upload
 
 The owner requested the same shared implementation for every playable's Unity
 and AppLovin delivery. The source project now generates a visible
@@ -137,12 +148,12 @@ packed game invokes `window.__PLAYABLE_WAIT_FOR_MRAID__` with the existing
 visibility and sizing callbacks. The final-artifact validator checks this script
 before unpacking, so hidden MRAID calls cannot satisfy that contract.
 
-This website file is a byte-for-byte copy of the strict Unity `3_click_auto`
-delivery generated from that shared source, with no website-only runtime patch.
+The previous Piggyfest website file was a byte-for-byte copy of the strict
+Unity `3_click_auto` delivery generated from that shared source, with no
+website-only runtime patch.
 Source tests cover real/injected gate execution, missing/late ready, hidden
 viewability, pause/resume, listener cleanup, desktop fallback, packing and
-validation failures. Native-app acceptance of this newly generated file still
-requires the owner's next test.
+validation failures. Native-app acceptance remains separate from these source checks.
 
 The shared generator now selects visible lifecycle scripts by the standard
 MRAID adapter, including Nefta and Smadex, rather than a Unity/AppLovin list.
@@ -152,4 +163,4 @@ The current source audit covers 120 HTMLs across eight ready projects and five
 profiles (Unity, AppLovin, Nefta, Smadex, Moloco), plus 24 Nefta ZIPs. The Unity
 Piggyfest file was rebuilt from this generator and is byte-identical to the
 previous shared Unity upload, because the added changes affect other profiles
-and validation rules. It is copied and redeployed here as the current test file.
+and validation rules. It was copied and deployed here before the FindTheBall replacement above.
