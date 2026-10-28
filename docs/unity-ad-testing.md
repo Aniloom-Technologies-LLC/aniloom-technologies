@@ -43,16 +43,23 @@ inline HTML below 5 MB in its
 - Variant: `3_click_auto`
 - Delivery: Unity, MRAID, both orientations, technical controls disabled
 - Original: `../playable-ads/dist/RealPlay_TrumpItBonanza/3_click_auto/unity/index.html`
-- Transport: gzip/base122-packed game; visible shared MRAID lifecycle and CTA
-- Shared lifecycle/SDK implementation: playable-ads commit `eef8235f`
-- Bytes: `4324947`
-- SHA-256: `e3932e571b67fa17f93d63fd738c8a082bfab6e2f37895f93a6e2da1e9c612cb`
+- Transport: gzip/base122-packed game; visible shared MRAID lifecycle, CTA and resize subscription
+- Shared implementation: playable-ads commit `33ea04c7`
+- Bytes: `4325266`
+- SHA-256: `0d9f3bbab07314d1020528a39cf1f135f6b483386805d73b3af1a44b78367f31`
 
-On 28 October 2026, the owner requested TrumpItBonanza in the same stable slot
-for comparison in Unity's native application. This is a byte-for-byte copy of
-the existing Unity `3_click_auto` delivery, with no game rebuild or runtime
-patch. The visible lifecycle and CTA checks and decoded-script syntax pass.
-Native-app behavior and acceptance remain for the owner's test.
+The owner requested exposing the resize handler after the preceding TrumpIt
+report passed validation but warned that no resize/orientation handler was
+found. The preceding file was 4,324,947 bytes, SHA-256
+`e3932e571b67fa17f93d63fd738c8a082bfab6e2f37895f93a6e2da1e9c612cb`.
+
+The updated Unity build uses a shared `data-playable-resize` script outside the
+compressed module. The game transfers Pixi's actual queued resize callback to
+this visible subscription; it is not a validation-only listener. All 45 embedded
+media data URLs match the previous decoded build. TypeScript, 52 focused tests,
+and strict Unity packaging pass. Browser resizing from 390x844 to 844x390 updates
+the canvas and scene with no JavaScript errors. Native-app detection of the
+new visible handler remains for the owner's next test.
 
 ## Previous FindTheBall test
 
