@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /temp-unity/
 
 Sitemap: https://aniloom.tech/sitemap.xml
