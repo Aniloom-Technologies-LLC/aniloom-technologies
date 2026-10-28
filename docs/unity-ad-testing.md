@@ -27,8 +27,9 @@ After each deployment, make a public HTTPS GET without following redirects.
 Require status 200, the two headers above, a URL still ending in `.html`,
 and a SHA-256 matching the intended local Unity file. Record the byte size,
 verify `platform: unity`, and check the intended project and variant. Normal
-Unity deliveries must stay under 5,000,000 bytes; the owner explicitly authorized
-the current oversized, unpacked diagnostic file. Confirm the built sitemap and website pages do not link
+Unity deliveries must stay under 5,000,000 bytes. The current packed diagnostic
+file meets that byte limit; the owner also authorized the earlier oversized
+unpacked comparison. Confirm the built sitemap and website pages do not link
 to the slot. Hosting verification does not establish Unity uploader acceptance
 or correct behavior in the native Ad Testing application.
 
@@ -42,9 +43,9 @@ inline HTML below 5 MB in its
 - Variant: `3_click_auto`
 - Delivery: Unity, MRAID, both orientations, technical controls disabled
 - Original: `../playable-ads/dist/RealPlay_PiggyfestBonanza/3_click_auto/unity/index.html`
-- Transport: unpacked inline JavaScript module and base64 assets
-- Bytes: `5803979`
-- SHA-256: `fe8a4be57c6dca77c9923a4699f82c7c484e1202115771acd1d3282f34f5b599`
+- Transport: gzip/base122-packed game module and assets, visible MRAID lifecycle script
+- Bytes: `4595541`
+- SHA-256: `3ad4190607232b2485e8171c75cb556577c82dde4e563be7998afe317407b1eb`
 
 On 28 October 2026, the owner requested an unpacked version despite the 5 MB
 delivery cap, to compare validation in Unity's application. First, the sibling
@@ -60,12 +61,12 @@ It waits without a timeout for ready and, when hidden, for viewability.
 The persistent visibility listener still handles pause/resume. The existing
 desktop fallback when MRAID is absent is retained.
 
-Only the lifecycle block of this hosted diagnostic file changed; the surrounding
-HTML, game code, assets, and sibling playable-ads repository are unchanged.
+In that unpacked comparison, only the lifecycle block changed; the surrounding
+HTML, game code, assets, and sibling playable-ads repository were unchanged.
 The previous unpacked SHA-256 was
 `d4e4d353f639e05b17544c8d97e4b58c69dd46af3a059acdfb8d32335a2326f5`.
-These are diagnostic changes, not a release-compliant delivery or a confirmed
-Unity validation fix. They must be reconciled into the playable delivery source
+These are diagnostic changes, not complete release acceptance. They must be
+reconciled into the playable delivery source
 after the experiment, rather than silently overwritten by a rebuild.
 
 Focused checks executed the actual hosted lifecycle block with simulated MRAID:
@@ -74,3 +75,24 @@ viewability, false viewability ignored, startup when both conditions hold,
 already-ready/visible behavior, listener cleanup, continued visibility updates,
 and the existing desktop fallback. The complete inline module passed syntax
 validation, and all content outside the lifecycle block matched the prior file.
+
+The owner's subsequent screenshot reports that the unpacked version with direct
+calls passes validation, with warnings about size, mraid.js, and the absent Play
+Store URL. This is evidence from the app report, not confirmation of gameplay or
+campaign acceptance. That unpacked file had SHA-256
+`fe8a4be57c6dca77c9923a4699f82c7c484e1202115771acd1d3282f34f5b599`.
+
+At the owner's request, the current version repacks the game and assets using
+the sibling `packInlineModule`. The working lifecycle function is exposed as
+`window.__PLAYABLE_WAIT_FOR_UNITY_START__` in an ordinary head script so its
+direct MRAID calls remain visible to validation. The packed module calls that
+function with its existing visibility and sizing callbacks. The gate is invoked
+at the same point before game creation; it is not an unused validation stub.
+No timeout bypasses were restored. All game code and assets outside this
+function bridge match the previous unpacked version byte-for-byte after decoding.
+
+Checks executed the actual emitted browser decoder, compared its injected module
+with the original module, validated JavaScript syntax, and exercised the visible
+gate with the packed module's real wrapper and visibility handlers. Waiting,
+listener cleanup, continued visibility changes, and desktop fallback passed.
+The packed version still requires the owner's next native-app validation test.
