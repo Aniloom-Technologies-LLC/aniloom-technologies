@@ -27,7 +27,7 @@ After each deployment, make a public HTTPS GET without following redirects.
 Require status 200, the two headers above, a URL still ending in `.html`,
 and a SHA-256 matching the intended local Unity file. Record the byte size,
 verify `platform: unity`, and check the intended project and variant. Normal
-Unity deliveries must stay under 5,000,000 bytes. The current FindTheBall
+Unity deliveries must stay under 5,000,000 bytes. The current TrumpItBonanza
 file meets that byte limit; the owner also authorized the earlier oversized
 unpacked comparison. Confirm the built sitemap and website pages do not link
 to the slot. Hosting verification does not establish Unity uploader acceptance
@@ -39,23 +39,33 @@ inline HTML below 5 MB in its
 
 ## Current upload
 
-- Project: `BingoBlitz_FindTheBall`
+- Project: `RealPlay_TrumpItBonanza`
 - Variant: `3_click_auto`
 - Delivery: Unity, MRAID, both orientations, technical controls disabled
-- Original: `../playable-ads/dist/BingoBlitz_FindTheBall/3_click_auto/unity/index.html`
-- Transport: ordinary inline HTML, no gzip/base122; visible shared MRAID lifecycle
+- Original: `../playable-ads/dist/RealPlay_TrumpItBonanza/3_click_auto/unity/index.html`
+- Transport: gzip/base122-packed game; visible shared MRAID lifecycle and CTA
 - Shared lifecycle/SDK implementation: playable-ads commit `eef8235f`
-- Current source policy: `f14bda65`; this existing plain export needs no repacking
-- Bytes: `3981051`
-- SHA-256: `ccac4f5800aed5a2cb7de49adee053ee5922e7fdaf0127a8ad5ac7fc102fe1d6`
+- Bytes: `4324947`
+- SHA-256: `e3932e571b67fa17f93d63fd738c8a082bfab6e2f37895f93a6e2da1e9c612cb`
 
-On 28 October 2026, the owner requested FindTheBall in the same stable slot
-for testing in Unity's native application. This is a byte-for-byte copy of the
-existing Unity `3_click_auto` delivery, with no game rebuild or runtime patch.
-The visible lifecycle and CTA checks pass. Native-app behavior and acceptance
-remain for the owner's test.
+On 28 October 2026, the owner requested TrumpItBonanza in the same stable slot
+for comparison in Unity's native application. This is a byte-for-byte copy of
+the existing Unity `3_click_auto` delivery, with no game rebuild or runtime
+patch. The visible lifecycle and CTA checks and decoded-script syntax pass.
+Native-app behavior and acceptance remain for the owner's test.
 
-The preceding slot contained Piggyfest `3_click_auto`, packed game with visible
+## Previous FindTheBall test
+
+The preceding slot contained `BingoBlitz_FindTheBall`, Unity `3_click_auto`,
+ordinary inline HTML without gzip, 3,981,051 bytes, SHA-256
+`ccac4f5800aed5a2cb7de49adee053ee5922e7fdaf0127a8ad5ac7fc102fe1d6`.
+The owner's screenshot reports that this file passes Unity Ads validation.
+It recognizes both store URLs and the visible MRAID calls; its remaining
+warning is the missing `mraid.js` reference. The screenshot also reports
+99 base64 assets, 3.15 MB of base64 data, 2.36 MB of binary assets and
+0.64 MB of code. These are app-reported measurements, not campaign acceptance.
+
+The earlier slot contained Piggyfest `3_click_auto`, packed game with visible
 shared MRAID lifecycle, 4,587,065 bytes, SHA-256
 `576120d6d7641d2d65db5fda535a038d23d18947c4d43ffb4f6e6463c1d26311`.
 
