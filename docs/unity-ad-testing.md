@@ -43,14 +43,34 @@ inline HTML below 5 MB in its
 - Delivery: Unity, MRAID, both orientations, technical controls disabled
 - Original: `../playable-ads/dist/RealPlay_PiggyfestBonanza/3_click_auto/unity/index.html`
 - Transport: unpacked inline JavaScript module and base64 assets
-- Bytes: `5803787`
-- SHA-256: `d4e4d353f639e05b17544c8d97e4b58c69dd46af3a059acdfb8d32335a2326f5`
+- Bytes: `5803979`
+- SHA-256: `fe8a4be57c6dca77c9923a4699f82c7c484e1202115771acd1d3282f34f5b599`
 
 On 28 October 2026, the owner requested an unpacked version despite the 5 MB
-delivery cap, to compare validation in Unity's application. The only HTML
-transformation is the sibling project's `unpackInlineModule`: it restores the
-original inline JavaScript module and removes its gzip/base122 payload and
+delivery cap, to compare validation in Unity's application. First, the sibling
+project's `unpackInlineModule` restored the
+original inline JavaScript module and removed its gzip/base122 payload and
 decoder. The packed input SHA-256 was
 `4a9af841602144277326ec4822d4e5cc8a1b82d05e4ddbc66a1c2fec195fc76a`.
-Game code, assets, MRAID behavior, and timeout values are unchanged. This is a
-diagnostic test, not a release-compliant delivery or a confirmed validation fix.
+The owner then requested removing the MRAID timeout bypasses and using direct
+MRAID calls. The hosted diagnostic HTML now explicitly calls
+`mraid.getState()`, `mraid.addEventListener("ready", ...)`,
+`mraid.isViewable()`, and `mraid.addEventListener("viewableChange", ...)`.
+It waits without a timeout for ready and, when hidden, for viewability.
+The persistent visibility listener still handles pause/resume. The existing
+desktop fallback when MRAID is absent is retained.
+
+Only the lifecycle block of this hosted diagnostic file changed; the surrounding
+HTML, game code, assets, and sibling playable-ads repository are unchanged.
+The previous unpacked SHA-256 was
+`d4e4d353f639e05b17544c8d97e4b58c69dd46af3a059acdfb8d32335a2326f5`.
+These are diagnostic changes, not a release-compliant delivery or a confirmed
+Unity validation fix. They must be reconciled into the playable delivery source
+after the experiment, rather than silently overwritten by a rebuild.
+
+Focused checks executed the actual hosted lifecycle block with simulated MRAID:
+no startup after 10 seconds without ready, no startup after 10 seconds without
+viewability, false viewability ignored, startup when both conditions hold,
+already-ready/visible behavior, listener cleanup, continued visibility updates,
+and the existing desktop fallback. The complete inline module passed syntax
+validation, and all content outside the lifecycle block matched the prior file.
