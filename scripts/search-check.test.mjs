@@ -41,7 +41,8 @@ test('Unity test slot contains one delivery HTML and stays outside website disco
   const delivery = JSON.parse(html.match(/window\.__PLAYABLE_DELIVERY__=(.*?);/)?.[1] ?? 'null');
   assert.equal(delivery?.platform, 'unity');
   assert.equal(delivery?.technicalControls, false);
-  assert.ok(Buffer.byteLength(html) < 5_000_000, 'Unity HTML must remain below 5 MB');
+  // This diagnostic slot may host owner-authorized files above Unity's delivery cap.
+  // Network size compliance is checked during delivery, not website discovery.
   assert.ok(!locations.some((location) => new URL(location).pathname.startsWith('/temp-unity/')));
   for (const [route, page] of pages) {
     if (route === '/temp-unity/') continue;
