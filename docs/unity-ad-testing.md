@@ -43,9 +43,10 @@ inline HTML below 5 MB in its
 - Variant: `3_click_auto`
 - Delivery: Unity, MRAID, both orientations, technical controls disabled
 - Original: `../playable-ads/dist/RealPlay_PiggyfestBonanza/3_click_auto/unity/index.html`
-- Transport: gzip/base122-packed complete module, original indirect MRAID calls
-- Bytes: `4594761`
-- SHA-256: `44924e017509cd12cae2a22a6efd3d0a624f7e54584de756c9c942695505383e`
+- Transport: gzip/base122-packed game, visible shared MRAID lifecycle script
+- Source: playable-ads shared lifecycle commit `8401e34f`
+- Bytes: `4587065`
+- SHA-256: `576120d6d7641d2d65db5fda535a038d23d18947c4d43ffb4f6e6463c1d26311`
 
 ## Previous comparisons
 
@@ -102,7 +103,7 @@ with warnings about mraid.js, the absent Play Store URL, and resize detection.
 Its SHA-256 was
 `3ad4190607232b2485e8171c75cb556577c82dde4e563be7998afe317407b1eb`.
 
-## Current control: timeouts only
+## Previous control: timeouts only
 
 The owner requested a control that removes only the timeout bypasses, without
 the direct or visible MRAID-call changes. This version starts from the original
@@ -121,5 +122,24 @@ Focused checks executed the real browser decoder and the resulting lifecycle
 code. Startup remains blocked after 10 seconds without ready and after 10
 seconds without viewability, starts when the required events arrive, ignores
 false viewability, cleans up temporary listeners, preserves ongoing visibility
-updates and the existing desktop fallback. This control still needs the owner's
-native-app validation result; previous passing reports belong to other versions.
+updates and the existing desktop fallback. The owner reported that this control
+did not pass native-app validation. Its SHA-256 was
+`44924e017509cd12cae2a22a6efd3d0a624f7e54584de756c9c942695505383e`.
+
+## Current shared Unity/AppLovin implementation
+
+The owner requested the same shared implementation for every playable's Unity
+and AppLovin delivery. The source project now generates a visible
+`data-playable-mraid-lifecycle` script from the actual `waitForMraidStart`
+function in `src/framework/platform/deliveryEnvironment.ts`. Both networks use
+`mraid-viewable`: ready first, then visibility, without timeout bypasses. The
+packed game invokes `window.__PLAYABLE_WAIT_FOR_MRAID__` with the existing
+visibility and sizing callbacks. The final-artifact validator checks this script
+before unpacking, so hidden MRAID calls cannot satisfy that contract.
+
+This website file is a byte-for-byte copy of the strict Unity `3_click_auto`
+delivery generated from that shared source, with no website-only runtime patch.
+Source tests cover real/injected gate execution, missing/late ready, hidden
+viewability, pause/resume, listener cleanup, desktop fallback, packing and
+validation failures. Native-app acceptance of this newly generated file still
+requires the owner's next test.
