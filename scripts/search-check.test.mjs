@@ -22,17 +22,36 @@ const xml = await readFile(new URL('sitemap.xml', dist), 'utf8');
 const locations = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 const sitemap = new Set(locations);
 const redirects = config.redirects;
-// Support is intentionally an unlisted email utility, not a marketing page.
-const unlisted = new Set(['/support/']);
+// Support and the raw Unity test slot are intentionally unlisted utilities.
+const unlisted = new Set(['/support/', '/temp-unity/']);
 const contentPages = [...pages].filter(([route]) => !unlisted.has(route) && !(route in redirects));
 const graphs = new Map(contentPages.map(([route, page]) => {
   const data = JSON.parse(text(select(page, 'script[type="application/ld+json"]')));
   return [route, new Map(data['@graph'].map((entity) => [entity['@id'], entity]))];
 }));
 
-test('robots preserves the existing crawl policy and points to the production sitemap', async () => {
+test('robots excludes the Unity test slot and points to the production sitemap', async () => {
   const robots = await readFile(new URL('robots.txt', dist), 'utf8');
-  assert.equal(robots.replace(/\r/g, '').trim(), `User-agent: *\nAllow: /\n\nSitemap: ${absolute('/sitemap.xml')}`);
+  assert.equal(robots.replace(/\r/g, '').trim(), `User-agent: *\nAllow: /\nDisallow: /temp-unity/\n\nSitemap: ${absolute('/sitemap.xml')}`);
+});
+
+test('Unity test slot contains one delivery HTML and stays outside website discovery', async () => {
+  assert.deepEqual(files.filter((file) => file.startsWith('temp-unity/')), ['temp-unity/index.html']);
+  const html = await readFile(new URL('temp-unity/index.html', dist), 'utf8');
+  const delivery = JSON.parse(html.match(/window\.__PLAYABLE_DELIVERY__=(.*?);/)?.[1] ?? 'null');
+  assert.equal(delivery?.platform, 'unity');
+  assert.equal(delivery?.technicalControls, false);
+  assert.ok(Buffer.byteLength(html) < 5_000_000, 'Unity HTML must remain below 5 MB');
+  assert.ok(!locations.some((location) => new URL(location).pathname.startsWith('/temp-unity/')));
+  for (const [route, page] of pages) {
+    if (route === '/temp-unity/') continue;
+    for (const link of selectAll(page, 'a[href]')) {
+      const url = new URL(link.attributes.href, absolute(route));
+      if (url.origin === new URL(origin).origin) {
+        assert.ok(!url.pathname.startsWith('/temp-unity/'), `Test slot must stay unlisted: ${route} -> ${url.pathname}`);
+      }
+    }
+  }
 });
 
 test('sitemap covers every public content page, without duplicates, redirects or utility routes', () => {
