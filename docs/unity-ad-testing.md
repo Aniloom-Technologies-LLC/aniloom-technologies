@@ -43,9 +43,11 @@ inline HTML below 5 MB in its
 - Variant: `3_click_auto`
 - Delivery: Unity, MRAID, both orientations, technical controls disabled
 - Original: `../playable-ads/dist/RealPlay_PiggyfestBonanza/3_click_auto/unity/index.html`
-- Transport: gzip/base122-packed game module and assets, visible MRAID lifecycle script
-- Bytes: `4595541`
-- SHA-256: `3ad4190607232b2485e8171c75cb556577c82dde4e563be7998afe317407b1eb`
+- Transport: gzip/base122-packed complete module, original indirect MRAID calls
+- Bytes: `4594761`
+- SHA-256: `44924e017509cd12cae2a22a6efd3d0a624f7e54584de756c9c942695505383e`
+
+## Previous comparisons
 
 On 28 October 2026, the owner requested an unpacked version despite the 5 MB
 delivery cap, to compare validation in Unity's application. First, the sibling
@@ -54,12 +56,12 @@ original inline JavaScript module and removed its gzip/base122 payload and
 decoder. The packed input SHA-256 was
 `4a9af841602144277326ec4822d4e5cc8a1b82d05e4ddbc66a1c2fec195fc76a`.
 The owner then requested removing the MRAID timeout bypasses and using direct
-MRAID calls. The hosted diagnostic HTML now explicitly calls
+MRAID calls. That diagnostic HTML explicitly called
 `mraid.getState()`, `mraid.addEventListener("ready", ...)`,
 `mraid.isViewable()`, and `mraid.addEventListener("viewableChange", ...)`.
-It waits without a timeout for ready and, when hidden, for viewability.
-The persistent visibility listener still handles pause/resume. The existing
-desktop fallback when MRAID is absent is retained.
+It waited without a timeout for ready and, when hidden, for viewability.
+The persistent visibility listener still handled pause/resume. The existing
+desktop fallback when MRAID was absent was retained.
 
 In that unpacked comparison, only the lifecycle block changed; the surrounding
 HTML, game code, assets, and sibling playable-ads repository were unchanged.
@@ -82,8 +84,8 @@ Store URL. This is evidence from the app report, not confirmation of gameplay or
 campaign acceptance. That unpacked file had SHA-256
 `fe8a4be57c6dca77c9923a4699f82c7c484e1202115771acd1d3282f34f5b599`.
 
-At the owner's request, the current version repacks the game and assets using
-the sibling `packInlineModule`. The working lifecycle function is exposed as
+At the owner's request, the previous version repacked the game and assets using
+the sibling `packInlineModule`. Its working lifecycle function was exposed as
 `window.__PLAYABLE_WAIT_FOR_UNITY_START__` in an ordinary head script so its
 direct MRAID calls remain visible to validation. The packed module calls that
 function with its existing visibility and sizing callbacks. The gate is invoked
@@ -95,4 +97,29 @@ Checks executed the actual emitted browser decoder, compared its injected module
 with the original module, validated JavaScript syntax, and exercised the visible
 gate with the packed module's real wrapper and visibility handlers. Waiting,
 listener cleanup, continued visibility changes, and desktop fallback passed.
-The packed version still requires the owner's next native-app validation test.
+The owner's next screenshot reported that this packed version passed validation,
+with warnings about mraid.js, the absent Play Store URL, and resize detection.
+Its SHA-256 was
+`3ad4190607232b2485e8171c75cb556577c82dde4e563be7998afe317407b1eb`.
+
+## Current control: timeouts only
+
+The owner requested a control that removes only the timeout bypasses, without
+the direct or visible MRAID-call changes. This version starts from the original
+Unity HTML at website commit `61c895d`, unpacks it, and removes only the two
+lifecycle timers and their delay arguments. It then repacks the complete module
+with the existing `packInlineModule` helper.
+
+The original minified `getState` call, optional chaining, generic ready-event
+helper, visibility listener, MRAID store bridge, and full-module packing remain.
+There is no visible lifecycle script or `__PLAYABLE_WAIT_FOR_UNITY_START__`
+bridge. No gameplay, asset, click-through, or source playable-ads files changed.
+Reversing the four timeout-related replacements reproduces the original
+unpacked HTML exactly.
+
+Focused checks executed the real browser decoder and the resulting lifecycle
+code. Startup remains blocked after 10 seconds without ready and after 10
+seconds without viewability, starts when the required events arrive, ignores
+false viewability, cleans up temporary listeners, preserves ongoing visibility
+updates and the existing desktop fallback. This control still needs the owner's
+native-app validation result; previous passing reports belong to other versions.
