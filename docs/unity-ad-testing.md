@@ -44,7 +44,7 @@ inline HTML below 5 MB in its
 - Delivery: Unity, MRAID, both orientations, technical controls disabled
 - Original: `../playable-ads/dist/RealPlay_PiggyfestBonanza/3_click_auto/unity/index.html`
 - Transport: gzip/base122-packed game, visible shared MRAID lifecycle script
-- Source: playable-ads shared lifecycle commit `8401e34f`
+- Source: playable-ads shared lifecycle and SDK visibility commit `eef8235f`
 - Bytes: `4587065`
 - SHA-256: `576120d6d7641d2d65db5fda535a038d23d18947c4d43ffb4f6e6463c1d26311`
 
@@ -126,7 +126,7 @@ updates and the existing desktop fallback. The owner reported that this control
 did not pass native-app validation. Its SHA-256 was
 `44924e017509cd12cae2a22a6efd3d0a624f7e54584de756c9c942695505383e`.
 
-## Current shared Unity/AppLovin implementation
+## Current shared implementation and packing visibility
 
 The owner requested the same shared implementation for every playable's Unity
 and AppLovin delivery. The source project now generates a visible
@@ -143,3 +143,13 @@ Source tests cover real/injected gate execution, missing/late ready, hidden
 viewability, pause/resume, listener cleanup, desktop fallback, packing and
 validation failures. Native-app acceptance of this newly generated file still
 requires the owner's next test.
+
+The shared generator now selects visible lifecycle scripts by the standard
+MRAID adapter, including Nefta and Smadex, rather than a Unity/AppLovin list.
+All packed profiles also validate their provider click bridge outside the
+encoded payload; Moloco keeps its Facebook API without an added MRAID block.
+The current source audit covers 120 HTMLs across eight ready projects and five
+profiles (Unity, AppLovin, Nefta, Smadex, Moloco), plus 24 Nefta ZIPs. The Unity
+Piggyfest file was rebuilt from this generator and is byte-identical to the
+previous shared Unity upload, because the added changes affect other profiles
+and validation rules. It is copied and redeployed here as the current test file.
