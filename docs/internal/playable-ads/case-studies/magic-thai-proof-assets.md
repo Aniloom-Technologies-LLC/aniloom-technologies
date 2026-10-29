@@ -47,3 +47,15 @@ Captured through the Codex browser screenshot API. A is the complete 390×844
 standalone preview; B is the game viewport cropped from the native embedded
 page overlay (618×1336), resized to 390×844. Both use WebP quality 90. No
 generative edits were made. Neither capture contains personal data.
+
+## Pending local art review, 2026-10-29
+
+The animated-builder candidate uses `magic-thai-a-animated-builder-review-20261029.webp`, captured from the local
+website-demo dev server at http://127.0.0.1:5192/ with a 390×844 viewport.
+State: intro finished, idle character, five unbuilt sites, continuous field.
+The screenshot was encoded to WebP quality 90 without cropping or generative
+edits. SHA-256: `042d65d32cee594dfc8c1e33df3d95fc6dce78992eb9d4b02e8d44b89f7fd654`. Source implementation: playable-ads
+branch codex/magic-thai-builder-polish. The user requested the new character
+animation and website controls; visual approval and publication remain pending.
+This record does not extend the approved-publication status above to this
+candidate. Existing public claim boundaries remain unchanged.
