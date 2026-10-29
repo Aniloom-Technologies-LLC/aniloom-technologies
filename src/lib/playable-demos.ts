@@ -6,7 +6,7 @@ type Phase = "idle" | "loading" | "playing" | "paused" | "complete" | "error";
 type Player = {
   id: string; card: HTMLElement; stage: HTMLElement; viewport: HTMLElement;
   overlay: HTMLElement; play: HTMLButtonElement; status: HTMLElement;
-  fullscreen: HTMLButtonElement; close: HTMLButtonElement; restart: HTMLButtonElement;
+  fullscreen: HTMLButtonElement; restart: HTMLButtonElement;
   moduleUrl: string; mount: HTMLElement; game?: GameHandle; module?: Promise<GameModule>;
   pending?: Promise<void>; generation: number; started: boolean; ready: boolean;
   active: boolean; complete: boolean; failed: boolean; timer?: ReturnType<typeof setTimeout>;
@@ -20,7 +20,7 @@ export function initializePlayableDemos(root: HTMLElement) {
     id: card.id, card, stage: find(card, "[data-demo-stage]"), viewport: find(card, "[data-demo-viewport]"),
     overlay: find(card, "[data-demo-overlay]"), play: find(card, "[data-demo-start]"),
     status: find(card, "[data-demo-status]"), fullscreen: find(card, "[data-demo-fullscreen]"),
-    close: find(card, "[data-demo-close]"), restart: find(card, "[data-demo-restart]"),
+    restart: find(card, "[data-demo-restart]"),
     moduleUrl: card.dataset.gameModule!, mount: find(card, "[data-demo-mount]"), generation: 0, started: false, ready: false, active: false, complete: false, failed: false,
   }));
   let expanded: Player | null = null;
@@ -81,7 +81,8 @@ export function initializePlayableDemos(root: HTMLElement) {
         clearTimeout(player.timer);
         if (audio.activeId === player.id) audio.activate(player.id);
         else sendActive(player, false);
-      } catch {
+      } catch (error) {
+        if (import.meta.env.DEV) console.error("Playable demo failed to mount", error);
         if (generation === player.generation) { player.failed = true; clearTimeout(player.timer); phase(player, "error"); }
       }
     })();
@@ -97,9 +98,10 @@ export function initializePlayableDemos(root: HTMLElement) {
     player.stage.classList.remove("is-expanded", "surface-dark");
     player.stage.removeAttribute("role"); player.stage.removeAttribute("aria-modal");
     player.card.style.removeProperty("--demo-player-height");
-    player.fullscreen.textContent = "Expand";
+    player.fullscreen.setAttribute("aria-label", `Expand ${player.card.dataset.gameName}`);
+    player.fullscreen.title = "Expand";
     player.fullscreen.setAttribute("aria-expanded", "false");
-    player.close.hidden = true;
+
     document.body.style.overflow = previousOverflow;
     for (const [element, previous] of inertSiblings) element.inert = previous;
     inertSiblings.clear();
@@ -111,30 +113,40 @@ export function initializePlayableDemos(root: HTMLElement) {
   function toggleExpanded(player: Player) {
     if (expanded === player) { void exitExpanded(); return; }
     start(player);
-    player.card.style.setProperty("--demo-player-height", `${player.stage.getBoundingClientRect().height}px`);
+    player.card.style.setProperty("--demo-player-height", `${player.stage.parentElement!.getBoundingClientRect().height}px`);
     expanded = player;
     previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     player.stage.classList.add("is-expanded", "surface-dark");
     player.stage.setAttribute("role", "dialog"); player.stage.setAttribute("aria-modal", "true");
-    player.fullscreen.textContent = "Collapse";
+    player.fullscreen.setAttribute("aria-label", `Close ${player.card.dataset.gameName}`);
+    player.fullscreen.title = "Close";
     player.fullscreen.setAttribute("aria-expanded", "true");
-    player.close.hidden = false;
+
     // Keep the canvas in place so entering/exiting preserves the current run.
     for (let branch: HTMLElement | null = player.stage; branch?.parentElement; branch = branch.parentElement) {
       for (const sibling of branch.parentElement.children) if (sibling !== branch && sibling instanceof HTMLElement) {
         inertSiblings.set(sibling, sibling.inert); sibling.inert = true;
       }
     }
-    player.close.focus({ preventScroll: true });
+    player.fullscreen.focus({ preventScroll: true });
 
   }
+  const controlsObserver = new ResizeObserver(entries => {
+    for (const entry of entries) {
+      const height = entry.contentRect.height;
+      const viewport = entry.target as HTMLElement;
+      viewport.style.setProperty("--demo-control-size", `${48 * height / 1080}px`);
+      viewport.style.setProperty("--demo-control-gap", `${8 * height / 1080}px`);
+    }
+  });
   for (const player of players) {
+    controlsObserver.observe(player.viewport);
     phase(player, "idle");
     player.play.addEventListener("click", () => start(player));
     player.restart.addEventListener("click", () => start(player, true));
     player.fullscreen.addEventListener("click", () => toggleExpanded(player));
-    player.close.addEventListener("click", () => void exitExpanded());
+
   }
   document.addEventListener("keydown", event => {
     if (!expanded) return;
@@ -153,6 +165,7 @@ export function initializePlayableDemos(root: HTMLElement) {
   });
   window.addEventListener("pagehide", event => {
     audio.pause();
+    if (!event.persisted) controlsObserver.disconnect();
     if (!event.persisted) for (const player of players) { player.generation++; clearTimeout(player.timer); player.game?.destroy(); }
   });
   // Warm the game modules only after the website has loaded, outside its critical path.

@@ -1,4 +1,5 @@
 ---
+const localBuilderModule = import.meta.env.DEV ? import.meta.env.PUBLIC_MAGIC_THAI_A_MODULE_URL : undefined;
 const demos = [
   { id: "magic-thai-a", name: "Magic Thai A", mechanic: "Build a village", description: "Help the builder turn five construction sites into a village.", url: "https://magic-thai-ad-a1.aniloom.workers.dev/", image: "magic-thai-a-builder-village-20261029.webp", alt: "Magic Thai A with a builder asking for help above five construction sites." },
   { id: "magic-thai-b", name: "Magic Thai B", mechanic: "Collect and spin", description: "Collect coins along the path, then spin the reels for a cherry jackpot.", url: "https://magic-thai-ad-b1.aniloom.workers.dev/", image: "magic-thai-b-collect-spin-20261029.webp", alt: "Magic Thai B with five reels, a coin counter, and a runner on a tropical path." },
@@ -13,7 +14,7 @@ const demos = [
   </div>
   <div class="playable-demo-grid">
     {demos.map((demo) => (
-      <article class="playable-demo" id={demo.id} data-game-module={`${demo.url}game.js`} data-game-name={demo.name} data-playable-demo aria-labelledby={`${demo.id}-title`}>
+      <article class="playable-demo" id={demo.id} data-game-module={demo.id === "magic-thai-a" && localBuilderModule ? localBuilderModule : `${demo.url}game.js`} data-game-name={demo.name} data-playable-demo aria-labelledby={`${demo.id}-title`}>
         <div class="playable-demo__preview">
           <div class="playable-demo__player" data-demo-stage aria-label={`${demo.name} player`}>
             <div class="playable-demo__viewport" data-demo-viewport>
@@ -23,12 +24,17 @@ const demos = [
                 <p class="playable-demo__status" data-demo-status role="status" aria-live="polite"></p>
                 <button class="button button--small" type="button" data-demo-start disabled aria-label={`Play ${demo.name}`}>Play</button>
               </div>
+              <div class="playable-demo__controls" aria-label="Game controls">
+                <button class="playable-demo__control" type="button" data-demo-restart hidden aria-label={`Restart ${demo.name}`} title="Restart">
+                  <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M35 15a14 14 0 0 0-23 6M12 21v-9m0 9h9M13 33a14 14 0 0 0 23-6m0 0v9m0-9h-9" /></svg>
+                </button>
+                <button class="playable-demo__control" type="button" data-demo-fullscreen aria-expanded="false" aria-label={`Expand ${demo.name}`} title="Expand">
+                  <svg class="playable-demo__expand-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M18 10h-8v8m20-8h8v8M10 30v8h8m20-8v8h-8" /></svg>
+                  <svg class="playable-demo__close-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="m13 13 22 22m0-22L13 35" /></svg>
+                </button>
+              </div>
             </div>
-            <div class="playable-demo__controls">
-              <button class="playable-demo__control" type="button" data-demo-restart hidden>Restart</button>
-              <button class="playable-demo__control" type="button" data-demo-fullscreen aria-expanded="false">Expand</button>
-              <button class="playable-demo__control" type="button" data-demo-close hidden>Close</button>
-            </div>
+
           </div>
         </div>
         <div class="playable-demo__body">

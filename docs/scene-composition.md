@@ -267,3 +267,18 @@ The website remains a static GitHub Pages build.
 
 A/B captions and poster captures reflect the builder/village and collect/spin
 versions. Public proof boundaries remain unchanged.
+
+## Magic Thai player control polish, October 29, 2026
+
+Local visual review: Play is doubled in both dimensions. Restart and Expand
+are white SVG icons inside the game viewport, immediately left of the existing
+canvas Sound icon. The Expand icon becomes a close cross in the page popup.
+There is no bottom control bar. Icons preserve accessible names, keyboard focus,
+Escape and progress-preserving expansion. Their 48px reference geometry, 2.7px
+strokes and height-based scaling match SoundModeToggle.
+
+For local art review without a production build, run the playable repository's
+Vite demo config on port 5192 (PLAYABLE=magic-thai-a). Run the website dev server
+with PUBLIC_MAGIC_THAI_A_MODULE_URL=http://127.0.0.1:5192/src/web-demo.ts. This
+override is read only in dev. Web demo development uses absolute asset URLs and
+module-local constants because it bypasses the game's HTML bootstrap.
