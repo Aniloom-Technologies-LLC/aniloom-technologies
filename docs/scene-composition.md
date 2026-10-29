@@ -101,7 +101,7 @@ artifacts, not public site assets.
 - The playable section has two content pages: `/playable-ads/` and `/playable-ads/pricing/`. Overview includes the Magic Thai demos, full-cycle creative production, four delivery steps, responsive/provider checks, delivery, and practical FAQ. Pricing contains the development package, creative/adaptation add-ons, inputs, delivery, and commercial terms. Owner direction on October 7 removes standalone existing-playable QA from this section and keeps all prices and package limits on Pricing.
 - Legacy development, QA, workflow, demonstration, and readiness routes use Astro static redirects to the corresponding page anchors. GitHub Pages serves the generated HTML redirects, not server-side HTTP 301 responses. Keep these legacy destinations out of the sitemap and internal navigation.
 - The ad-network carousel loops in both directions and advances one item every four seconds while visible. Preserve its existing palette and controls. Pause automatic movement on hover, keyboard focus, hidden tabs, and reduced-motion preferences; keep the explicit pause/resume control and arrow-key navigation. Duplicate items used for looping remain hidden from assistive technology.
-- Each demo is a single accessible anchor: the screenshot, title, description, and visible `Try it` action all open the same game in a new tab. Keep the action immediately below the screenshot.
+- Historical October 6 behavior used external anchors. Superseded by the native website players below.
 - Stable card anchors are `#magic-thai-a`, `#magic-thai-b`, and `#magic-thai-c`. The game URL receives an encoded `returnUrl` pointing to its card. Use the canonical HTTPS overview URL so public games accept the destination even when opened from a local website preview. The final in-game CTA implementation belongs to the companion playable-ads project.
 - Demo cards reuse the existing neutral borders and restrained hover lift. Returned cards use a brief `:target` surface highlight and header-safe scroll spacing, without a persistent selection ring. Keep the standard keyboard-focus indicator and disable movement/highlight animation for reduced motion. Inspect desktop, portrait, and landscape, including keyboard card activation and the pricing link.
 
@@ -247,3 +247,23 @@ record the revised public selection without changing companion delivery code.
 Visual review covers desktop, 390px portrait, and 844px landscape; carousel
 navigation and pause controls work, and the original list contains nine entries.
 The established palette, card styling, and four-second loop behavior remain.
+
+## Native Magic Thai players, October 29, 2026
+
+Owner direction embeds the actual game canvases into `/playable-ads/`, with no
+iframe, external Play link or new tab. Each card has Play/Resume/Play again,
+Restart, and Expand. The preview and expanded view share one canvas and
+retain progress. Both use a fixed 390:844 phone portrait ratio. Expansion is a
+page-sized modal overlay and never requests system fullscreen;
+Close and Escape restore the page, focus and scroll. Expanded content traps
+keyboard focus and makes surrounding page content inert.
+
+Game ESM is served from the existing Cloudflare Workers and imported after the
+website load event during idle time. Art/audio load asynchronously on Play.
+Only the active card renders and plays sound, including after focus/visibility
+changes. Other runs stay paused and can resume. A completed demo returns control
+to its website card; replay creates a fresh run. Failures expose Try again.
+The website remains a static GitHub Pages build.
+
+A/B captions and poster captures reflect the builder/village and collect/spin
+versions. Public proof boundaries remain unchanged.

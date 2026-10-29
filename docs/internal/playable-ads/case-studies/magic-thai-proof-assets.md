@@ -30,3 +30,20 @@ Status: approved production evidence for the Magic Thai demonstration section in
 ## Development-environment follow-up
 
 A separate non-confidential Magic Thai A development-build capture of the Layout Tool remains a private follow-up. Do not add a public block, asset, filename, caption, or route until the local source, visible content, permission, build reference, and `Development environment` caption have been reviewed and recorded here.
+
+## Updated website posters, 2026-10-29
+
+Owner-requested public demos now mount directly in the website. New versioned A/B
+posters show the current builder/village and collect/spin scenes. C retains its
+existing capture. These records supersede the A/B posters above in the live UI;
+permission and claim boundaries remain unchanged.
+
+| Public asset | Source | Capture date | Viewport and state | Classification | SHA-256 |
+| --- | --- | --- | --- | --- | --- |
+| `magic-thai-a-builder-village-20261029.webp` | `https://magic-thai-ad-a1.aniloom.workers.dev/` | 2026-10-29 | 390×844 portrait, builder introduction and five unbuilt sites | `proof` | `ef12b9fb80c94b651c911ba3a9f7f8c56542b8837282f5dc83efdebdcec0db53` |
+| `magic-thai-b-collect-spin-20261029.webp` | `https://magic-thai-ad-b1.aniloom.workers.dev/` | 2026-10-29 | 390×844 output, native embedded collect/spin game with 16/20 coins | `proof` | `67371c738ccb6445b607fc8d12c31d79f60974fdb1635ebbc382cbf09a923d45` |
+
+Captured through the Codex browser screenshot API. A is the complete 390×844
+standalone preview; B is the game viewport cropped from the native embedded
+page overlay (618×1336), resized to 390×844. Both use WebP quality 90. No
+generative edits were made. Neither capture contains personal data.

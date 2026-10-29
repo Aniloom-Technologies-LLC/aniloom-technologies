@@ -1,27 +1,49 @@
 ---
 const demos = [
-  { id: "magic-thai-a", name: "Magic Thai A", mechanic: "Build and place", description: "Choose a mallet, build, and follow the interaction through to its result.", url: "https://magic-thai-ad-a1.aniloom.workers.dev/", image: "magic-thai-a-build-interaction.webp", alt: "Magic Thai A with five selectable mallets and a green Build button." },
-  { id: "magic-thai-b", name: "Magic Thai B", mechanic: "Swipe and collect", description: "Guide the runner along the lotus path with swipe controls and collection feedback.", url: "https://magic-thai-ad-b1.aniloom.workers.dev/", image: "magic-thai-b-swipe-collection.webp", alt: "Magic Thai B with a runner, swipe instruction, and lotus collection counter." },
+  { id: "magic-thai-a", name: "Magic Thai A", mechanic: "Build a village", description: "Help the builder turn five construction sites into a village.", url: "https://magic-thai-ad-a1.aniloom.workers.dev/", image: "magic-thai-a-builder-village-20261029.webp", alt: "Magic Thai A with a builder asking for help above five construction sites." },
+  { id: "magic-thai-b", name: "Magic Thai B", mechanic: "Collect and spin", description: "Collect coins along the path, then spin the reels for a cherry jackpot.", url: "https://magic-thai-ad-b1.aniloom.workers.dev/", image: "magic-thai-b-collect-spin-20261029.webp", alt: "Magic Thai B with five reels, a coin counter, and a runner on a tropical path." },
   { id: "magic-thai-c", name: "Magic Thai C", mechanic: "Tap and match", description: "Pick items to complete matching sets, with visible tray progress and selection feedback.", url: "https://magic-thai-ad-c1.aniloom.workers.dev/", image: "magic-thai-c-tap-match-trays.webp", alt: "Magic Thai C with apple, avocado, and berry trays and tap-to-match choices." },
 ];
 ---
 
-<section class="playable-demos section-shell section-pad" id="demonstrations" aria-labelledby="demos-title">
+<section class="playable-demos section-shell section-pad" id="demonstrations" aria-labelledby="demos-title" data-playable-demos>
   <div class="section-heading" data-reveal>
     <div><p class="eyebrow">Play our work</p><h2 id="demos-title">Try three playable ads.</h2></div>
-    <p>Explore three Magic Thai interactions built by Aniloom. Open any card to play in a new tab.</p>
+    <p>Choose a Magic Thai demo and play here. Expand a game for a larger view. Sound follows the game you are playing.</p>
   </div>
   <div class="playable-demo-grid">
     {demos.map((demo) => (
-      <a class="playable-demo" id={demo.id} href={`${demo.url}?returnUrl=${encodeURIComponent(`https://aniloom.tech/playable-ads/#${demo.id}`)}`} target="_blank" rel="noopener noreferrer" data-playable-demo aria-labelledby={`${demo.id}-title ${demo.id}-action`}>
-        <picture class="playable-demo__preview"><img src={`/assets/images/proof/${demo.image}`} alt={demo.alt} width="390" height="844" loading="lazy" decoding="async" /></picture>
+      <article class="playable-demo" id={demo.id} data-game-module={`${demo.url}game.js`} data-game-name={demo.name} data-playable-demo aria-labelledby={`${demo.id}-title`}>
+        <div class="playable-demo__preview">
+          <div class="playable-demo__player" data-demo-stage aria-label={`${demo.name} player`}>
+            <div class="playable-demo__viewport" data-demo-viewport>
+              <div class="playable-demo__mount" data-demo-mount></div>
+              <img src={`/assets/images/proof/${demo.image}`} alt={demo.alt} width="390" height="844" loading="lazy" decoding="async" />
+              <div class="playable-demo__overlay" data-demo-overlay>
+                <p class="playable-demo__status" data-demo-status role="status" aria-live="polite"></p>
+                <button class="button button--small" type="button" data-demo-start disabled aria-label={`Play ${demo.name}`}>Play</button>
+              </div>
+            </div>
+            <div class="playable-demo__controls">
+              <button class="playable-demo__control" type="button" data-demo-restart hidden>Restart</button>
+              <button class="playable-demo__control" type="button" data-demo-fullscreen aria-expanded="false">Expand</button>
+              <button class="playable-demo__control" type="button" data-demo-close hidden>Close</button>
+            </div>
+          </div>
+        </div>
         <div class="playable-demo__body">
-          <div class="playable-demo__action"><h3 id={`${demo.id}-title`}>{demo.name}</h3><span class="button button--small" id={`${demo.id}-action`}>Try it <span aria-hidden="true">↗</span><span class="visually-hidden"> in a new tab</span></span></div>
+          <div class="playable-demo__action"><h3 id={`${demo.id}-title`}>{demo.name}</h3></div>
           <p class="eyebrow">{demo.mechanic}</p>
           <p>{demo.description}</p>
         </div>
-      </a>
+      </article>
     ))}
   </div>
   <p class="playable-demos__note">Public demonstrations, not client campaign results or evidence of advertising-platform acceptance.</p>
+  <noscript><p>Enable JavaScript to play the demos.</p></noscript>
 </section>
+
+<script>
+  import { initializePlayableDemos } from "../lib/playable-demos";
+  document.querySelectorAll<HTMLElement>("[data-playable-demos]").forEach(initializePlayableDemos);
+</script>

@@ -914,15 +914,34 @@ p { color: var(--muted); }
 /* Consolidated Playable Ads overview and package details */
 .playable-demo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
 .playable-demo { display: block; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-elevated); color: var(--text); transition: transform .25s ease, border-color .25s ease; scroll-margin-top: 90px; }
-.playable-demo:hover { transform: translateY(-5px); border-color: var(--line-strong); }
+.playable-demo:hover { border-color: var(--line-strong); }
 .playable-demo:focus-visible { border-color: var(--line-strong); }
 .playable-demo:target { animation: playable-return-highlight 1.6s ease-out; }
 @keyframes playable-return-highlight {
   0%, 25% { background: var(--surface-soft); }
   100% { background: var(--bg-elevated); }
 }
-.playable-demo__preview { display: block; height: clamp(260px, 28vw, 360px); padding: 16px; background: var(--surface-soft); }
-.playable-demo__preview img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.playable-demo__preview { display: block; min-height: var(--demo-player-height, 0px); padding: 16px; background: var(--surface-soft); }
+.playable-demo__player { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.playable-demo__viewport { position: relative; isolation: isolate; width: min(100%, 320px); aspect-ratio: 390 / 844; flex: none; overflow: hidden; background: var(--bg); }
+.playable-demo__viewport > img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.playable-demo__mount { position: absolute; inset: 0; z-index: 1; }
+.playable-demo__mount canvas { display: block; width: 100%; height: 100%; }
+.page-shell:has(.playable-demo__player.is-expanded) { z-index: 1001; }
+.page-scene:has(.playable-demo__player.is-expanded) { overflow: visible; }
+.playable-demo__overlay { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding: 24px; text-align: center; background: color-mix(in srgb, var(--bg-elevated) 76%, transparent); }
+.playable-demo__overlay[hidden] { display: none; }
+.playable-demo__overlay button[hidden] { display: none; }
+.playable-demo__status { margin: 0; max-width: 24ch; color: var(--text); font-size: .95rem; }
+.playable-demo__status:empty { display: none; }
+.playable-demo__controls { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px 20px; min-height: 44px; }
+.playable-demo__control { min-height: 44px; border: 0; border-radius: 6px; padding: 8px 4px; background: transparent; color: var(--link); font: inherit; font-size: .875rem; cursor: pointer; text-underline-offset: 4px; }
+.playable-demo__control:hover { text-decoration: underline; }
+.playable-demo__control[hidden] { display: none; }
+.playable-demo:has(.is-expanded) { overflow: visible; transform: none; }
+.playable-demo__player.is-expanded { position: fixed; inset: 0; z-index: 1000; width: 100%; height: 100dvh; justify-content: center; padding: 16px; background: var(--bg); color: var(--text); }
+.playable-demo__player.is-expanded .playable-demo__viewport { width: min(calc(100vw - 32px), calc((100dvh - 104px) * 390 / 844)); }
+.playable-demo__player.is-expanded .playable-demo__controls { flex: none; }
 .playable-demo__body { padding: 20px 22px 24px; border-top: 1px solid var(--line); }
 .playable-demo__action { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
 .playable-demo__action h3 { margin: 0; font-size: clamp(1.4rem, 2vw, 1.8rem); font-weight: 500; }
@@ -955,7 +974,6 @@ p { color: var(--muted); }
 }
 @media (max-width: 700px) {
   .playable-demo-grid, .playable-readiness__grid { grid-template-columns: 1fr; }
-  .playable-demo__preview { height: 320px; }
   .playable-demo__body { padding: 18px 20px 22px; }
   .playable-demo__action { align-items: center; margin-bottom: 14px; }
   .playable-demo__action h3 { font-size: 1.55rem; }
