@@ -923,7 +923,7 @@ p { color: var(--muted); }
 }
 .playable-demo__preview { display: block; min-height: var(--demo-player-height, 0px); padding: 16px; background: var(--surface-soft); }
 .playable-demo__player { display: flex; flex-direction: column; align-items: center; gap: 12px; }
-.playable-demo__viewport { position: relative; isolation: isolate; width: min(100%, 320px); aspect-ratio: 390 / 844; flex: none; overflow: hidden; background: var(--bg); }
+.playable-demo__viewport { position: relative; isolation: isolate; width: min(100%, 320px); aspect-ratio: 9 / 16; flex: none; overflow: hidden; background: var(--bg); }
 .playable-demo__viewport > img { display: block; width: 100%; height: 100%; object-fit: contain; }
 .playable-demo__mount { position: absolute; inset: 0; z-index: 1; }
 .playable-demo__mount canvas { display: block; width: 100%; height: 100%; }
@@ -936,7 +936,7 @@ body:has(.playable-demo__player.is-expanded) astro-dev-toolbar { display: none; 
 .playable-demo__status { margin: 0; max-width: 24ch; color: var(--text); font-size: .95rem; }
 .playable-demo__status:empty { display: none; }
 .playable-demo__overlay [data-demo-start] { min-height: 80px; padding-inline: 36px; font-size: 1.56rem; }
-.playable-demo__controls { position: absolute; z-index: 3; top: 12px; right: calc(12px + var(--demo-control-size, 32px) + var(--demo-control-gap, 5px)); display: flex; gap: var(--demo-control-gap, 5px); }
+.playable-demo__controls { position: absolute; z-index: 3; top: 12px; right: 12px; display: flex; gap: var(--demo-control-gap, 5px); }
 .playable-demo__control { width: var(--demo-control-size, 32px); height: var(--demo-control-size, 32px); border: 0; padding: 0; background: transparent; color: white; cursor: pointer; }
 .playable-demo__control svg { display: block; width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 2.7; stroke-linecap: round; stroke-linejoin: round; }
 .playable-demo__control:hover { opacity: .82; }
@@ -947,7 +947,7 @@ body:has(.playable-demo__player.is-expanded) astro-dev-toolbar { display: none; 
 .playable-demo__control[aria-expanded="true"] .playable-demo__close-icon { display: block; }
 .playable-demo:has(.is-expanded) { overflow: visible; transform: none; }
 .playable-demo__player.is-expanded { position: fixed; inset: 0; z-index: 1000; width: 100%; height: 100dvh; justify-content: center; padding: 16px; background: var(--bg); color: var(--text); }
-.playable-demo__player.is-expanded .playable-demo__viewport { width: min(calc(100vw - 32px), calc((100dvh - 32px) * 390 / 844)); }
+.playable-demo__player.is-expanded .playable-demo__viewport { width: min(calc(100vw - 32px), calc((100dvh - 32px) * 9 / 16)); }
 .playable-demo__player.is-expanded .playable-demo__controls { flex: none; }
 .playable-demo__body { padding: 20px 22px 24px; border-top: 1px solid var(--line); }
 .playable-demo__action { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
