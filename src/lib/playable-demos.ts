@@ -146,6 +146,16 @@ export function initializePlayableDemos(root: HTMLElement) {
     player.play.addEventListener("click", () => start(player));
     player.restart.addEventListener("click", () => start(player, true));
     player.fullscreen.addEventListener("click", () => toggleExpanded(player));
+    let backdropPressed = false;
+    player.stage.addEventListener("pointerdown", event => {
+      backdropPressed = expanded === player && event.target === player.stage;
+    });
+    player.stage.addEventListener("pointercancel", () => { backdropPressed = false; });
+    player.stage.addEventListener("click", event => {
+      const close = backdropPressed && expanded === player && event.target === player.stage;
+      backdropPressed = false;
+      if (close) void exitExpanded();
+    });
 
   }
   document.addEventListener("keydown", event => {
