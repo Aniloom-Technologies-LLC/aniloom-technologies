@@ -77,6 +77,7 @@ export function initializePlayableDemos(root: HTMLElement) {
           onError() { if (generation === player.generation) { player.failed = true; player.game?.setActive(false); phase(player, "error"); } },
         });
         if (generation !== player.generation) { game.destroy(); return; }
+        player.mount.querySelector("canvas")?.setAttribute("aria-label", player.card.dataset.gameName!);
         player.game = game; player.ready = true; player.failed = false;
         clearTimeout(player.timer);
         if (audio.activeId === player.id) audio.activate(player.id);

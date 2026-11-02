@@ -282,3 +282,15 @@ Vite demo config on port 5192 (PLAYABLE=magic-thai-a). Run the website dev serve
 with PUBLIC_MAGIC_THAI_A_MODULE_URL=http://127.0.0.1:5192/src/web-demo.ts. This
 override is read only in dev. Web demo development uses absolute asset URLs and
 module-local constants because it bypasses the game's HTML bootstrap.
+
+## Mechanic-based demo names, November 1, 2026
+
+Public headings, controls, player/canvas accessible names and image text use:
+
+- `magic-thai-a`: Tap to Build with a Character
+- `magic-thai-b`: Spin and Run for Coins
+- `magic-thai-c`: Match Three to Clear Trays
+
+The component owns these display names. Existing anchors, module URLs and
+environment variables stay stable for shared links and mounted game identity.
+The three current poster filenames use the descriptive public names.
